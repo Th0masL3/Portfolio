@@ -1,0 +1,50 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: src/main/java/com/example/gameoverstore/backend/Dockerfile
+    container_name: gameoverstore_backend
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - MONGO_URI=mongodb://mongo1:27017/gameoverstore
+    depends_on:
+      - mongo1
+    networks:
+      - app_network
+
+  frontend:
+    build:
+      context: ./src/main/java/com/example/gameoverstore/frontend
+      dockerfile: Dockerfile
+    container_name: gameoverstore_frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - app_network
+
+  mongo1:
+    image: mongo
+    container_name: mongo1
+    ports:
+      - "27017:27017"
+    volumes:
+      - db_data:/data/db
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo localhost:27017/gameoverstore --quiet || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - app_network
+
+volumes:
+  db_data:
+
+networks:
+  app_network:
