@@ -1,32 +1,6 @@
 version: "3.9"
 
 services:
-  backend:
-    build:
-      context: .
-      dockerfile: src/main/java/com/example/gameoverstore/backend/Dockerfile
-    container_name: gameoverstore_backend
-    ports:
-      - "8080:8080"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-      - MONGO_URI=mongodb://mongo1:27017/gameoverstore
-    depends_on:
-      - mongo1
-    networks:
-      - app_network
-
-  frontend:
-    build:
-      context: ./src/main/java/com/example/gameoverstore/frontend
-      dockerfile: Dockerfile
-    container_name: gameoverstore_frontend
-    ports:
-      - "3000:80"
-    depends_on:
-      - backend
-    networks:
-      - app_network
 
   mongo1:
     image: mongo
@@ -34,17 +8,65 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - db_data:/data/db
-    healthcheck:
-      test: echo 'db.runCommand("ping").ok' | mongo localhost:27017/gameoverstore --quiet || exit 1
-      interval: 30s
-      timeout: 10s
-      retries: 5
-    networks:
-      - app_network
+      - mongo:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=user
+      - MONGO_INITDB_ROOT_PASSWORD=pwd
+      # healthcheck:
+      #  test: echo 'db.runCommand("ping").ok' | mongo localhost:27017/gameoverstore --quiet || exit 1
+      # interval: 30s
+      #timeout: 10s
+      # retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: src/main/java/com/example/gameoverstore/backend/Dockerfile
+    container_name: lecoingameover-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_DATA_MONGODB_URI=mongodb://mongo1:27017/gameoverstore
+      - MONGO_URI=mongodb://mongo1:27017/gameoverstore
+    depends_on:
+      - mongo1
+#    networks:
+#      - app_network
+
+  frontend:
+    build:
+      context: .
+      dockerfile: src/main/java/com/example/gameoverstore/frontend/Dockerfile
+    container_name: gameoverstore_frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+#    networks:
+#      - app_network
+
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongo_express
+    hostname: mongo_express
+    restart: always
+    ports:
+      - "8081:8081"
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongo1
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=user
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=pwd
+      - ME_CONFIG_MONGODB_URL=mongodb://admin:pass@mongo1:27017
+      - ME_CONFIG_MONGODB_ENABLE_ADMIN=true
+    depends_on:
+      - mongo1
+
 
 volumes:
-  db_data:
+  mongo: { }
+
 
 networks:
   app_network:
