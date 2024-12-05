@@ -1,72 +1,53 @@
-version: "3.9"
+version: '3.9'
 
 services:
-
-  mongo1:
-    image: mongo
-    container_name: mongo1
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo:/data/db
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=user
-      - MONGO_INITDB_ROOT_PASSWORD=pwd
-      # healthcheck:
-      #  test: echo 'db.runCommand("ping").ok' | mongo localhost:27017/gameoverstore --quiet || exit 1
-      # interval: 30s
-      #timeout: 10s
-      # retries: 5
-
-  backend:
+  fe-lecoingameover:
+    image: fe-lecoingameover
+    container_name: fe-lecoingameover
     build:
-      context: .
-      dockerfile: src/main/java/com/example/gameoverstore/backend/Dockerfile
-    container_name: lecoingameover-backend
+      context: fe-lecoingameover
+      dockerfile: Dockerfile
+      args:
+        - BUILD_MODE=development
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./fe-lecoingameover/src:/app/src
+
+  be-lecoingameover:
+    image: openjdk:17
+    hostname: be-lecoingameover
+    build:
+      context: be-lecoingameover
+      dockerfile: Dockerfile
     ports:
       - "8080:8080"
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      - SPRING_DATA_MONGODB_URI=mongodb://mongo1:27017/gameoverstore
-      - MONGO_URI=mongodb://mongo1:27017/gameoverstore
     depends_on:
-      - mongo1
-#    networks:
-#      - app_network
+      - mongo
 
-  frontend:
-    build:
-      context: .
-      dockerfile: src/main/java/com/example/gameoverstore/frontend/Dockerfile
-    container_name: gameoverstore_frontend
-    ports:
-      - "3000:80"
-    depends_on:
-      - backend
-#    networks:
-#      - app_network
-
-
-  mongo-express:
-    image: mongo-express
-    container_name: mongo_express
-    hostname: mongo_express
+  mongo:
+    image: mongo
+    container_name: mongo
     restart: always
     ports:
-      - "8081:8081"
+      - "27017:27017"
     environment:
-      - ME_CONFIG_MONGODB_SERVER=mongo1
-      - ME_CONFIG_MONGODB_ADMINUSERNAME=user
-      - ME_CONFIG_MONGODB_ADMINPASSWORD=pwd
-      - ME_CONFIG_MONGODB_URL=mongodb://admin:pass@mongo1:27017
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo-express
+    ports:
+      - "8082:8081"
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=root
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=password
+      - ME_CONFIG_MONGODB_SERVER=mongo
       - ME_CONFIG_MONGODB_ENABLE_ADMIN=true
     depends_on:
-      - mongo1
-
-
-volumes:
-  mongo: { }
-
-
-networks:
-  app_network:
+      - mongo
