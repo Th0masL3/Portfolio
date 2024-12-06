@@ -1,9 +1,6 @@
 package com.lecoingameover.belecoingameover.utils;
 
-import com.lecoingameover.belecoingameover.dataaccess.Console;
-import com.lecoingameover.belecoingameover.dataaccess.ConsoleRepository;
-import com.lecoingameover.belecoingameover.dataaccess.Product;
-import com.lecoingameover.belecoingameover.dataaccess.ProductRepository;
+import com.lecoingameover.belecoingameover.dataaccess.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -23,9 +20,9 @@ public class DatabaseInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         List <Console> consoleList = new ArrayList<>();
-
+var consoleIdentifier = new ConsoleIdentifier();
         Console NES = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("NES")
                 .releaseDate(LocalDate.of(1983, 7, 15))
                 .price(199.99)
@@ -35,7 +32,7 @@ public class DatabaseInitializer implements CommandLineRunner {
         consoleList.add(NES);
 
         Console SNES = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("SNES")
                 .releaseDate(LocalDate.of(1990, 11, 21))
                 .price(249.99)
@@ -45,7 +42,7 @@ public class DatabaseInitializer implements CommandLineRunner {
         consoleList.add(SNES);
 
         Console N64 = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("N64")
                 .releaseDate(LocalDate.of(1996, 6, 23))
                 .price(299.99)
@@ -56,7 +53,7 @@ public class DatabaseInitializer implements CommandLineRunner {
         consoleList.add(N64);
 
         Console GameCube = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("GameCube")
                 .releaseDate(LocalDate.of(2001, 9, 14))
                 .price(199.99)
@@ -66,7 +63,7 @@ public class DatabaseInitializer implements CommandLineRunner {
         consoleList.add(GameCube);
 
         Console Wii = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("Wii")
                 .releaseDate(LocalDate.of(2006, 11, 19))
                 .price(249.99)
@@ -75,7 +72,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                 .build();
         consoleList.add(Wii);
         Console WiiU = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("WiiU")
                 .releaseDate(LocalDate.of(2012, 11, 18))
                 .price(299.99)
@@ -85,7 +82,7 @@ public class DatabaseInitializer implements CommandLineRunner {
         consoleList.add(WiiU);
 
         Console Switch = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("Switch")
                 .releaseDate(LocalDate.of(2017, 3, 3))
                 .price(599.99)
@@ -94,7 +91,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                 .build();
         consoleList.add(Switch);
         Console PS1 = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("PS1")
                 .releaseDate(LocalDate.of(1994, 12, 3))
                 .price(299.99)
@@ -104,7 +101,7 @@ public class DatabaseInitializer implements CommandLineRunner {
         consoleList.add(PS1);
 
         Console PS2 = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("PS2")
                 .releaseDate(LocalDate.of(2000, 3, 4))
                 .price(299.99)
@@ -113,7 +110,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                 .build();
         consoleList.add(PS2);
         Console PS3 = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("PS3")
                 .releaseDate(LocalDate.of(2006, 11, 11))
                 .price(399.99)
@@ -123,7 +120,7 @@ public class DatabaseInitializer implements CommandLineRunner {
         consoleList.add(PS3);
 
         Console PS5 = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("PS5")
                 .releaseDate(LocalDate.of(2020, 11, 12))
                 .price(599.99)
@@ -132,7 +129,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                 .build();
         consoleList.add(PS5);
         Console PS4 = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("PS4")
                 .releaseDate(LocalDate.of(2013, 11, 15))
                 .price(399.99)
@@ -142,7 +139,7 @@ public class DatabaseInitializer implements CommandLineRunner {
         consoleList.add(PS4);
 
         Console PSP = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("PSP")
                 .releaseDate(LocalDate.of(2004, 12, 12))
                 .price(249.99)
@@ -152,7 +149,7 @@ public class DatabaseInitializer implements CommandLineRunner {
         consoleList.add(PSP);
 
         Console PSVita = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("PSVita")
                 .releaseDate(LocalDate.of(2011, 12, 17))
                 .price(249.99)
@@ -162,7 +159,7 @@ public class DatabaseInitializer implements CommandLineRunner {
         consoleList.add(PSVita);
 
         Console GameBoy = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("GameBoy")
                 .releaseDate(LocalDate.of(1989, 4, 21))
                 .price(99.99)
@@ -172,7 +169,7 @@ public class DatabaseInitializer implements CommandLineRunner {
         consoleList.add(GameBoy);
 
         Console GameBoyColor = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("GameBoyColor")
                 .releaseDate(LocalDate.of(1998, 10, 21))
                 .price(129.99)
@@ -182,7 +179,7 @@ public class DatabaseInitializer implements CommandLineRunner {
         consoleList.add(GameBoyColor);
 
         Console GameBoyAdvance = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("GameBoyAdvance")
                 .releaseDate(LocalDate.of(2001, 3, 21))
                 .price(99.99)
@@ -192,7 +189,7 @@ public class DatabaseInitializer implements CommandLineRunner {
         consoleList.add(GameBoyAdvance);
 
         Console GameBoyAdvanceSP = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("GameBoyAdvanceSP")
                 .releaseDate(LocalDate.of(2003, 2, 14))
                 .price(129.99)
@@ -201,7 +198,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                 .build();
         consoleList.add(GameBoyAdvanceSP);
         Console DS = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("DS")
                 .releaseDate(LocalDate.of(2004, 11, 21))
                 .price(149.99)
@@ -210,7 +207,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                 .build();
         consoleList.add(DS);
         Console DSi = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("DSi")
                 .releaseDate(LocalDate.of(2008, 11, 1))
                 .price(169.99)
@@ -220,7 +217,7 @@ public class DatabaseInitializer implements CommandLineRunner {
         consoleList.add(DSi);
 
         Console DS3D = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("3DS")
                 .releaseDate(LocalDate.of(2011, 2, 26))
                 .price(249.99)
@@ -230,7 +227,7 @@ public class DatabaseInitializer implements CommandLineRunner {
         consoleList.add(DS3D);
 
         Console New3DS = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("New3DS")
                 .releaseDate(LocalDate.of(2014, 10, 11))
                 .price(199.99)
@@ -239,7 +236,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                 .build();
         consoleList.add(New3DS);
         Console Xbox = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("Xbox")
                 .releaseDate(LocalDate.of(2001, 11, 15))
                 .price(299.99)
@@ -249,7 +246,7 @@ public class DatabaseInitializer implements CommandLineRunner {
         consoleList.add(Xbox);
 
         Console Xbox360 = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("Xbox360")
                 .releaseDate(LocalDate.of(2005, 11, 22))
                 .price(399.99)
@@ -261,7 +258,7 @@ public class DatabaseInitializer implements CommandLineRunner {
 
 
         Console XboxOne = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("XboxOne")
                 .releaseDate(LocalDate.of(2013, 11, 22))
                 .price(499.99)
@@ -272,7 +269,7 @@ public class DatabaseInitializer implements CommandLineRunner {
 
 
         Console XboxSeriesX = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("XboxSeriesX")
                 .releaseDate(LocalDate.of(2020, 11, 10))
                 .price(599.99)
@@ -283,7 +280,7 @@ public class DatabaseInitializer implements CommandLineRunner {
 
 
         Console SegaMasterSystem = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("Sega Master System")
                 .releaseDate(LocalDate.of(1985, 10, 20))
                 .price(199.99)
@@ -295,7 +292,7 @@ public class DatabaseInitializer implements CommandLineRunner {
 
 
         Console SegaGenesis = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("Sega Genesis")
                 .releaseDate(LocalDate.of(1988, 10, 29))
                 .price(249.99)
@@ -305,7 +302,7 @@ public class DatabaseInitializer implements CommandLineRunner {
         consoleList.add(SegaGenesis);
 
         Console SegaSaturn = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("Sega Saturn")
                 .releaseDate(LocalDate.of(1994, 11, 22))
                 .price(299.99)
@@ -316,7 +313,7 @@ public class DatabaseInitializer implements CommandLineRunner {
 
 
         Console SegaDreamcast = Console.builder()
-                .consoleId(UUID.randomUUID().toString())
+                .consoleIdentifier(consoleIdentifier)
                 .consoleName("Sega Dreamcast")
                 .releaseDate(LocalDate.of(1998, 11, 27))
                 .price(249.99)

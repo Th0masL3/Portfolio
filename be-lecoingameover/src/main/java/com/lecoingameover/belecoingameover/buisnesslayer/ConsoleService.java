@@ -4,7 +4,7 @@ import com.lecoingameover.belecoingameover.presentationlayer.ConsoleResponseMode
 
 import java.util.List;
 
-public interface OrderService {
-    List<ConsoleResponseModel> getConsoles(String customerId);
+public interface ConsoleService {
+    List<ConsoleResponseModel> getAllConsoles();
 
 }

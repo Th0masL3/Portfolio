@@ -1,6 +1,7 @@
 package com.lecoingameover.belecoingameover.dataaccess;
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
@@ -15,7 +16,9 @@ public class Console {
     @Id
     private String id;
     //check for id
-    private String consoleId;
+
+    @Indexed(unique = true)
+    private ConsoleIdentifier consoleIdentifier;
     private String consoleName;
     private LocalDate releaseDate;
     private double price;
