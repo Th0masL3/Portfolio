@@ -15,7 +15,7 @@ import java.time.LocalDate;
 
 public class ConsoleResponseModel {
 
-    
+
     private ConsoleIdentifier consoleIdentifier;
     private String consoleName;
     private LocalDate releaseDate;
