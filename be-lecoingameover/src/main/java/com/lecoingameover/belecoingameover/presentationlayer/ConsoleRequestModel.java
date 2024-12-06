@@ -1,13 +1,13 @@
 package com.lecoingameover.belecoingameover.presentationlayer;
 
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor
+@Builder
 public class ConsoleRequestModel {
 
     private String consoleName;

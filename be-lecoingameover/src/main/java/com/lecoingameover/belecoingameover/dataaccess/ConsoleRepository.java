@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface ConsoleRepository extends MongoRepository<Console, String> {
-    List<Console> getConsoleByConsoleId(String consoleId);
+    //List<Console> getConsoleByConsoleId(String consoleId);
 }
