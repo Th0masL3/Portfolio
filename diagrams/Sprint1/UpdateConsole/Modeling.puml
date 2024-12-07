@@ -1,0 +1,13 @@
+@startuml
+class Console {
+  - String consoleId
+  - String consoleName
+  - LocalDate releaseDate
+  - double price
+  - int quantityInStock
+  - String company
+  + getConsoleDetails(): String
+}
+
+
+@enduml
