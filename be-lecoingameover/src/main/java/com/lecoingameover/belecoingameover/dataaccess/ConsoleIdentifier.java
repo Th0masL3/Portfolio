@@ -9,7 +9,7 @@ import java.util.UUID;
 @Getter
 public class ConsoleIdentifier
 {
-private String consoleId;
+private final String consoleId;
 public ConsoleIdentifier(){ this.consoleId = UUID.randomUUID().toString();
 }
 }

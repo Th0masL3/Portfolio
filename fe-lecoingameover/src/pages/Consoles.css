@@ -1,166 +1,123 @@
-/* Stylesheet for Gaming Company Page */
-
-/* General Reset */
+/* General body styles for a uniform background */
 body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #4b0082, #9932cc);
+    color: #fff;
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #2D0A45; /* Dark purple background */
-    color: #FFFFFF; /* White text */
-}
-
-/* Header */
-h1 {
-    text-align: center;
-    color: #FF8CFF; /* Light pink */
-    margin-bottom: 20px;
-}
-
-/* Filter Section */
-.filters {
-    background-color: #4A148C; /* Deep purple */
-    color: #FFFFFF;
-    padding: 20px;
-    width: 300px;
-    border-radius: 10px;
-    margin-right: 20px;
-}
-
-.filters h2 {
-    margin-bottom: 15px;
-    color: #FF8CFF;
-}
-
-/* Container for Results */
-.results-container {
+    min-height: 100vh;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+}
+
+/* Container to center the table and make it more visually structured */
+.console-container,
+.console-edit-container {
+    width: 95%;
+    max-width: 1200px;
+    background-color: #4b0082;
     padding: 20px;
-    gap: 20px;
-}
-
-/* Cards */
-.card {
-    background-color: #813BA0; /* Light purple */
     border-radius: 15px;
-    padding: 15px;
-    width: 180px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    margin: auto;
+}
+
+/* Header title styling */
+.console-title {
     text-align: center;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-    transition: transform 0.3s, box-shadow 0.3s;
+    font-size: 2.5em;
+    color: #ffc0cb;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4);
-}
-
-.card img {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-.card h3 {
-    color: #FFFFFF;
-    font-size: 1.1rem;
-}
-
-.card p {
-    color: #C2C2C2;
-    font-size: 0.9rem;
-    margin-bottom: 5px;
-}
-
-/* Buttons */
-button {
-    background-color: #FF8CFF; /* Light pink */
-    color: #2D0A45; /* Dark purple */
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #FFB2FF; /* Lighter pink */
-}
-
-/* Table */
-table {
+/* Table styles for better readability */
+/* Table styles for better readability */
+.console-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
-    background-color: #4A148C; /* Deep purple */
-    color: #FFFFFF;
-}
-
-th, td {
-    border: 1px solid #FFFFFF;
     text-align: left;
-    padding: 10px;
 }
 
-th {
-    background-color: #6A1B9A; /* Medium purple */
-    color: #FFFFFF;
+.console-table th,
+.console-table td {
+    padding: 12px;
+    border: 1px solid #fff;
+    color: #fff; /* Ensure text inside cells is white */
 }
 
-td {
-    background-color: #813BA0; /* Light purple */
+.console-table th {
+    background-color: #4b0082;
+    color: #ffc0cb;
+    font-size: 1.1em;
 }
 
-tr:hover {
-    background-color: #9E4BB4; /* Highlight row */
+.console-table tr:nth-child(even),
+.console-table tr:nth-child(odd) {
+    background-color: #9932cc; /* Alternating purple rows */
+    color: #fff; /* White text for all rows */
 }
 
-/* Pagination */
-.pagination {
-    text-align: center;
-    margin-top: 20px;
+.console-table tr:hover {
+    background-color: #ff69b4; /* Pink hover */
+    color: #fff; /* White text on hover */
 }
 
-.pagination button {
-    margin: 0 5px;
-}
 
-/* Admin Button */
-.admin-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #FF8CFF;
-    color: #2D0A45;
+/* Button styling for "Update" and form buttons */
+.console-button {
+    background-color: #ffc0cb;
     border: none;
-    padding: 10px 20px;
-    border-radius: 25px;
-    font-weight: bold;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-    transition: transform 0.3s, box-shadow 0.3s;
+    color: #4b0082;
+    padding: 8px 12px;
+    font-size: 0.9em;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.admin-button:hover {
-    transform: scale(1.1);
-    background-color: #FFB2FF;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4);
+.console-button:hover {
+    background-color: #ff69b4;
+    color: #fff;
 }
 
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-    .results-container {
-        flex-direction: column;
-        align-items: center;
-    }
+.console-button-cancel {
+    background-color: #4b0082;
+    border: 1px solid #ffc0cb;
+    color: #ffc0cb;
+    padding: 8px 12px;
+    font-size: 0.9em;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-    .filters {
-        width: 100%;
-        margin-bottom: 20px;
-    }
+.console-button-cancel:hover {
+    background-color: #9932cc;
+    color: #fff;
+}
 
-    .card {
-        width: 90%;
-    }
+/* Form group styling for edit console page */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ffc0cb;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #9932cc;
+    border-radius: 5px;
+    background-color: #4b0082;
+    color: #fff;
+}
+
+/* Make the container take up the whole screen height */
+.console-container,
+.console-edit-container {
+    min-height: 90vh;
 }

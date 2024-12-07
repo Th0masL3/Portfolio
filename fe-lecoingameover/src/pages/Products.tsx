@@ -1,7 +1,7 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Consoles.css';
-
 
 interface ConsoleResponseModel {
     consoleId: string;
@@ -15,6 +15,11 @@ interface ConsoleResponseModel {
 export default function Consoles(): JSX.Element {
     const [consoles, setConsoles] = useState<ConsoleResponseModel[]>([]);
     const [error, setError] = useState<string | null>(null);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        fetchAllConsoles();
+    }, []);
 
     const fetchAllConsoles = async (): Promise<void> => {
         try {
@@ -28,42 +33,47 @@ export default function Consoles(): JSX.Element {
         }
     };
 
-    useEffect(() => {
-        fetchAllConsoles();
-    }, []);
+    const handleEdit = (console: ConsoleResponseModel) => {
+        navigate('/consoles/edit', { state: { console } });
+    };
 
     return (
-        <div style={{padding: '20px'}}>
-            <h1>Consoles</h1>
-            {error && <p style={{color: 'red'}}>{error}</p>}
-            {consoles.length > 0 ? (
-                <table style={{width: '100%', borderCollapse: 'collapse', marginTop: '20px'}}>
-                    <thead>
-                    <tr>
-                        <th style={{border: '1px solid #ddd', padding: '8px'}}>Console ID</th>
-                        <th style={{border: '1px solid #ddd', padding: '8px'}}>Name</th>
-                        <th style={{border: '1px solid #ddd', padding: '8px'}}>Release Date</th>
-                        <th style={{border: '1px solid #ddd', padding: '8px'}}>Price</th>
-                        <th style={{border: '1px solid #ddd', padding: '8px'}}>Quantity</th>
-                        <th style={{border: '1px solid #ddd', padding: '8px'}}>Company</th>
+        <div className="console-container">
+            <h1 className="console-title">Consoles</h1>
+            {error && <p className="console-error">{error}</p>}
+            <table className="console-table">
+                <thead>
+                <tr>
+                    <th>Console ID</th>
+                    <th>Name</th>
+                    <th>Release Date</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Company</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {consoles.map((console) => (
+                    <tr key={console.consoleId}>
+                        <td>{console.consoleId}</td>
+                        <td>{console.consoleName}</td>
+                        <td>{console.releaseDate}</td>
+                        <td>${console.price.toFixed(2)}</td>
+                        <td>{console.quantityInStock}</td>
+                        <td>{console.company}</td>
+                        <td>
+                            <button
+                                className="console-button"
+                                onClick={() => handleEdit(console)}
+                            >
+                                Update
+                            </button>
+                        </td>
                     </tr>
-                    </thead>
-                    <tbody>
-                    {consoles.map(console => (
-                        <tr key={console.consoleId}>
-                            <td style={{border: '1px solid #ddd', padding: '8px'}}>{console.consoleId}</td>
-                            <td style={{border: '1px solid #ddd', padding: '8px'}}>{console.consoleName}</td>
-                            <td style={{border: '1px solid #ddd', padding: '8px'}}>{console.releaseDate}</td>
-                            <td style={{border: '1px solid #ddd', padding: '8px'}}>${console.price.toFixed(2)}</td>
-                            <td style={{border: '1px solid #ddd', padding: '8px'}}>{console.quantityInStock}</td>
-                            <td style={{border: '1px solid #ddd', padding: '8px'}}>{console.company}</td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </table>
-            ) : (
-                <p>No consoles available.</p>
-            )}
+                ))}
+                </tbody>
+            </table>
         </div>
     );
 }
