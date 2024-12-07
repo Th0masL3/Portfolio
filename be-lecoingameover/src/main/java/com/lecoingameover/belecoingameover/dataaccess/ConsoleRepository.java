@@ -11,4 +11,5 @@ import java.util.Optional;
 public interface ConsoleRepository extends MongoRepository<Console, String> {
     List<Console> findAllByConsoleIdentifier_ConsoleId(String consoleId);
     Optional<Console> findByConsoleId(String consoleId);
+
 }
