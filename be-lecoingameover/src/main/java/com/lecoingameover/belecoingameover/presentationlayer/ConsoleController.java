@@ -1,13 +1,11 @@
 package com.lecoingameover.belecoingameover.presentationlayer;
 
 import com.lecoingameover.belecoingameover.buisnesslayer.ConsoleService;
+import jakarta.validation.Valid;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,4 +21,17 @@ public ConsoleController(ConsoleService consoleService) {this.consoleService = c
 public ResponseEntity<List<ConsoleResponseModel>> getAllConsoles() {
     return ResponseEntity.ok().body(consoleService.getAllConsoles());
 }
+    @PutMapping("/{consoleId}")
+    public ResponseEntity<ConsoleResponseModel> updateConsole(
+            @PathVariable String consoleId,
+            @Valid @RequestBody ConsoleRequestModel consoleRequestModel) {
+        return ResponseEntity.ok(consoleService.updateConsole(consoleId, consoleRequestModel));
+    }
+
+    @GetMapping("/{consoleId}")
+    public ResponseEntity<ConsoleResponseModel> getConsoleById(@PathVariable String consoleId) {
+        return ResponseEntity.ok(consoleService.getConsoleById(consoleId));
+    }
+
+
 }

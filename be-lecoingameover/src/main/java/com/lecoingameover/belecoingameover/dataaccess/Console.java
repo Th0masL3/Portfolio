@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @Document(collection = "consoles")
 public class Console {
     @Id
-    private String id;
+    private String consoleId;
     //check for id
 
     @Indexed(unique = true)

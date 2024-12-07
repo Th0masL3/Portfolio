@@ -9,6 +9,8 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface ConsoleResponseMapper {
-    @Mapping(expression= "java(console.getConsoleIdentifier().getConsoleId())", target = "consoleId")
+    @Mapping(source = "consoleId", target = "consoleId")
+    ConsoleResponseModel entityToResponseModel(Console console);
+
     List<ConsoleResponseModel> entityListToResponseModelList(List<Console> consoleList);
 }

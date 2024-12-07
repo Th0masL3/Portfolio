@@ -5,7 +5,7 @@ import lombok.*;
 import java.time.LocalDate;
 
 @Data
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class ConsoleRequestModel {
