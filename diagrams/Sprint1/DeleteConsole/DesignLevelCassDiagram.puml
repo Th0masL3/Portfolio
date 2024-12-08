@@ -1,0 +1,34 @@
+@startuml
+interface ConsoleService {
+    +deleteConsoleByConsoleId(consoleId: String): void
+}
+
+class ConsoleServiceImpl {
+    +deleteConsoleByConsoleId(consoleId: String): void
+    -consoleRepository: ConsoleRepository
+}
+
+class ConsoleRepository {
+    +findById(id: String): Optional<Console>
+    +delete(entity: Console): void
+}
+
+class ConsoleController {
+    +deleteConsoleById(consoleId: String): ResponseEntity<Void>
+}
+
+class Console {
+    -consoleId: String
+    -consoleName: String
+    -releaseDate: LocalDate
+    -price: Double
+    -quantityInStock: int
+    -company: String
+}
+
+ConsoleController --> ConsoleService : calls
+ConsoleService <|.. ConsoleServiceImpl : implements
+ConsoleServiceImpl --> ConsoleRepository : calls
+ConsoleRepository --> Console : operates on
+
+@enduml

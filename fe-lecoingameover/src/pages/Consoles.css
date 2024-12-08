@@ -121,3 +121,21 @@ body {
 .console-edit-container {
     min-height: 90vh;
 }
+
+.delete-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: darkred;
+}
+
+.console-success {
+    color: green;
+    font-weight: bold;
+    margin-bottom: 10px;
+}

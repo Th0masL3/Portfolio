@@ -17,6 +17,7 @@ export default function Consoles(): JSX.Element {
     const [error, setError] = useState<string | null>(null);
     const navigate = useNavigate();
 
+
     useEffect(() => {
         fetchAllConsoles();
     }, []);
@@ -37,10 +38,24 @@ export default function Consoles(): JSX.Element {
         navigate('/consoles/edit', { state: { console } });
     };
 
+    const deleteConsole = async (id: string): Promise<void> => {
+        try {
+            const response = await axios.delete(`http://localhost:8080/api/v1/consoles/${id}`);
+            if (response.status === 204) {
+                setConsoles((prevConsoles) => prevConsoles.filter((console) => console.consoleId !== id));
+                alert('Console deleted successfully!');
+            }
+        } catch (err) {
+            console.error('Error deleting console:', err);
+            setError('Failed to delete console.');
+        }
+    };
+
     return (
         <div className="console-container">
             <h1 className="console-title">Consoles</h1>
             {error && <p className="console-error">{error}</p>}
+
             <table className="console-table">
                 <thead>
                 <tr>
@@ -69,6 +84,13 @@ export default function Consoles(): JSX.Element {
                             >
                                 Update
                             </button>
+                            <button
+                                className="console-button delete-button"
+                                onClick={() => deleteConsole(console.consoleId)}
+                            >
+                                Delete
+                            </button>
+
                         </td>
                     </tr>
                 ))}
