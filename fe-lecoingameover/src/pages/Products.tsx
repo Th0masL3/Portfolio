@@ -37,10 +37,19 @@ export default function Consoles(): JSX.Element {
         navigate('/consoles/edit', { state: { console } });
     };
 
+    const handleAddConsole = () => {
+        navigate('/consoles/add');
+    };
+
     return (
         <div className="console-container">
             <h1 className="console-title">Consoles</h1>
             {error && <p className="console-error">{error}</p>}
+            <div className="console-actions">
+                <button className="console-button" onClick={handleAddConsole}>
+                    Add Console
+                </button>
+            </div>
             <table className="console-table">
                 <thead>
                 <tr>

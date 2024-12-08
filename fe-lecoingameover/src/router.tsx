@@ -3,6 +3,7 @@ import Consoles from './pages/Products';
 import EditConsole from './pages/EditConsole';
 import { ProtectedRoute } from './shared/components/ProtectedRoute';
 import { AppRoutes } from './shared/models/app.routes';
+import AddConsole from './pages/AddConsole';
 
 const router = createBrowserRouter([
     {
@@ -23,6 +24,14 @@ const router = createBrowserRouter([
                     </ProtectedRoute>
                 ),
             },
+            {
+                path: AppRoutes.AddConsole,
+                element: (
+                    <ProtectedRoute>
+                        <AddConsole />
+                    </ProtectedRoute>
+                ),
+            }
         ],
     },
 ]);

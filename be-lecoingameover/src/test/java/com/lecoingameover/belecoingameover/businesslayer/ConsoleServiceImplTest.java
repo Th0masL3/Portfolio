@@ -1,9 +1,11 @@
 package com.lecoingameover.belecoingameover.businesslayer;
 
 
+import com.lecoingameover.belecoingameover.DataMapperLayer.ConsoleRequestMapper;
 import com.lecoingameover.belecoingameover.DataMapperLayer.ConsoleResponseMapper;
 import com.lecoingameover.belecoingameover.buisnesslayer.ConsoleServiceImpl;
 import com.lecoingameover.belecoingameover.dataaccess.Console;
+import com.lecoingameover.belecoingameover.dataaccess.ConsoleIdentifier;
 import com.lecoingameover.belecoingameover.dataaccess.ConsoleRepository;
 import com.lecoingameover.belecoingameover.presentationlayer.ConsoleRequestModel;
 import com.lecoingameover.belecoingameover.presentationlayer.ConsoleResponseModel;
@@ -28,6 +30,9 @@ class ConsoleServiceImplTest {
 
     @Mock
     private ConsoleResponseMapper consoleResponseMapper;
+
+    @Mock
+    private ConsoleRequestMapper consoleRequestMapper;
 
     @InjectMocks
     private ConsoleServiceImpl consoleService;
@@ -123,4 +128,5 @@ class ConsoleServiceImplTest {
         assertThrows(NotFoundException.class, () -> consoleService.getConsoleById(consoleId));
         verify(consoleRepository, times(1)).findById(consoleId);
     }
+
 }

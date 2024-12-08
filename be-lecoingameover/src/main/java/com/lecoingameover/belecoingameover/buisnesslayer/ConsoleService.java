@@ -9,4 +9,5 @@ public interface ConsoleService {
     List<ConsoleResponseModel> getAllConsoles();
     ConsoleResponseModel updateConsole(String consoleId, ConsoleRequestModel consoleRequestModel);
     ConsoleResponseModel getConsoleById(String consoleId);
+    ConsoleResponseModel addConsole(ConsoleRequestModel consoleRequestModel);
 }
