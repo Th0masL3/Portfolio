@@ -152,4 +152,55 @@ class ConsoleControllerTest {
         verify(consoleService, times(1)).getConsoleById(consoleId);
     }
 
+    @Test
+    void testDeleteConsoleById_ValidId_ReturnsNoContent() {
+        // Arrange
+        String consoleId = "1";
+
+        // Mock the service method to do nothing
+        doNothing().when(consoleService).deleteConsoleByConsoleId(consoleId);
+
+        // Act
+        ResponseEntity<Void> response = consoleController.deleteConsoleById(consoleId);
+
+        // Assert
+        assertEquals(204, response.getStatusCodeValue());
+        verify(consoleService, times(1)).deleteConsoleByConsoleId(consoleId);
+    }
+
+    @Test
+    void testDeleteConsoleById_ConsoleNotFound_ThrowsNotFoundException() {
+        // Arrange
+        String consoleId = "1";
+
+        // Mock the service method to throw NotFoundException
+        doThrow(new NotFoundException("Console with ID " + consoleId + " not found"))
+                .when(consoleService).deleteConsoleByConsoleId(consoleId);
+
+        // Act & Assert
+        NotFoundException exception = assertThrows(NotFoundException.class,
+                () -> consoleController.deleteConsoleById(consoleId));
+        assertEquals("Console with ID 1 not found", exception.getMessage());
+        verify(consoleService, times(1)).deleteConsoleByConsoleId(consoleId);
+    }
+    
+
+    @Test
+    void testDeleteConsoleById_ServiceThrowsRuntimeException() {
+        // Arrange
+        String consoleId = "1";
+
+        // Mock service to throw a runtime exception
+        doThrow(new RuntimeException("Unexpected error")).when(consoleService).deleteConsoleByConsoleId(consoleId);
+
+        // Act & Assert
+        RuntimeException exception = assertThrows(RuntimeException.class,
+                () -> consoleController.deleteConsoleById(consoleId));
+        assertEquals("Unexpected error", exception.getMessage());
+        verify(consoleService, times(1)).deleteConsoleByConsoleId(consoleId);
+    }
+
+
 }
+
+

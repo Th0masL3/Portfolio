@@ -1,0 +1,19 @@
+@startuml
+actor Client
+
+Client -> ConsoleController : deleteConsoleById(consoleId)
+ConsoleController -> ConsoleServiceImpl : deleteConsoleByConsoleId(consoleId)
+ConsoleServiceImpl -> ConsoleRepository : findById(consoleId)
+ConsoleRepository --> ConsoleServiceImpl : Optional<Console>
+ConsoleServiceImpl -> ConsoleRepository : delete(console)
+ConsoleRepository --> ConsoleServiceImpl : void
+ConsoleServiceImpl --> ConsoleController : void
+ConsoleController --> Client : ResponseEntity<Void> (204 No Content)
+
+alt Console Not Found
+    ConsoleRepository --> ConsoleServiceImpl : Optional.empty
+    ConsoleServiceImpl --> ConsoleController : throws NotFoundException
+    ConsoleController --> Client : ResponseEntity (404 Not Found)
+end
+
+@enduml

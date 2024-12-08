@@ -1,4 +1,4 @@
-@startuml
+ @startuml
 start
 :Admin selects a console;
 :Admin clicks 'Update';
