@@ -1,0 +1,13 @@
+@startuml
+start
+:Admin selects "View All Consoles";
+:System receives request;
+:System queries database;
+if (Data retrieved?) then (Yes)
+    :Map data to response models;
+    :Return console list to admin;
+else (No)
+    :Return error message;
+endif
+stop
+@enduml

@@ -1,21 +1,20 @@
 @startuml
 interface ConsoleService {
-    +updateConsole(consoleId: String, requestModel: ConsoleRequestModel): ConsoleResponseModel
+    +getAllConsoles(): List<ConsoleResponseModel>
 }
 
 class ConsoleServiceImpl {
-    +updateConsole(consoleId: String, requestModel: ConsoleRequestModel): ConsoleResponseModel
+    +getAllConsoles(): List<ConsoleResponseModel>
     -consoleRepository: ConsoleRepository
     -consoleResponseMapper: ConsoleResponseMapper
 }
 
 class ConsoleRepository {
-    +findById(id: String): Optional<Console>
-    +save(entity: Console): Console
+    +findAll(): List<Console>
 }
 
 class ConsoleController {
-    +updateConsole(consoleId: String, requestModel: ConsoleRequestModel): ResponseEntity<ConsoleResponseModel>
+    +getAllConsoles(): ResponseEntity<List<ConsoleResponseModel>>
 }
 
 class Console {
@@ -25,14 +24,6 @@ class Console {
     -price: Double
     -quantityInStock: int
     -company: String
-}
-
-class ConsoleRequestModel {
-    +consoleName: String
-    +releaseDate: LocalDate
-    +price: double
-    +quantityInStock: int
-    +company: String
 }
 
 class ConsoleResponseModel {
@@ -45,7 +36,7 @@ class ConsoleResponseModel {
 }
 
 class ConsoleResponseMapper {
-    +entityToResponseModel(console: Console): ConsoleResponseModel
+    +entityListToResponseModelList(consoleList: List<Console>): List<ConsoleResponseModel>
 }
 
 ConsoleController --> ConsoleService : calls

@@ -1,0 +1,18 @@
+@startuml
+start
+:Admin selects 'Add Console';
+:Admin fills in console details;
+if (Submit form?) then (Yes)
+    :System validates data;
+    if (Validation passes?) then (Yes)
+        :System adds console to database;
+        :System confirms addition;
+        :Refresh UI to show new console;
+    else (No)
+        :Show validation error message;
+    endif
+else (No)
+    :Cancel addition;
+endif
+stop
+@enduml

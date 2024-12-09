@@ -152,4 +152,35 @@ class ConsoleControllerTest {
         verify(consoleService, times(1)).getConsoleById(consoleId);
     }
 
+    @Test
+    void testAddConsole_ValidRequest_ReturnsAddedConsole() {
+        // Arrange
+        ConsoleRequestModel requestModel = ConsoleRequestModel.builder()
+                .consoleName("PlayStation 5")
+                .releaseDate(LocalDate.of(2020, 11, 12))
+                .price(499.99)
+                .quantityInStock(100)
+                .company("Sony")
+                .build();
+
+        ConsoleResponseModel addedConsole = ConsoleResponseModel.builder()
+                .consoleId("1")
+                .consoleName("PlayStation 5")
+                .releaseDate(LocalDate.of(2020, 11, 12))
+                .price(499.99)
+                .quantityInStock(100)
+                .company("Sony")
+                .build();
+
+        when(consoleService.addConsole(requestModel)).thenReturn(addedConsole);
+
+        // Act
+        ResponseEntity<ConsoleResponseModel> response = consoleController.addConsole(requestModel);
+
+        // Assert
+        assertEquals(201, response.getStatusCodeValue());
+        assertEquals(addedConsole, response.getBody());
+        verify(consoleService, times(1)).addConsole(requestModel);
+    }
+
 }

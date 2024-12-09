@@ -75,7 +75,8 @@ public ConsoleRepository consoleRepository;
     @Override
     public ConsoleResponseModel addConsole(ConsoleRequestModel consoleRequestModel) {
         Console console = consoleRequestMapper.requestModelToEntity(consoleRequestModel, new ConsoleIdentifier());
-        return consoleResponseMapper.entityToResponseModel(consoleRepository.save(console));
+        Console savedConsole = consoleRepository.save(console);
+        return consoleResponseMapper.entityToResponseModel(savedConsole);
     }
 
 
