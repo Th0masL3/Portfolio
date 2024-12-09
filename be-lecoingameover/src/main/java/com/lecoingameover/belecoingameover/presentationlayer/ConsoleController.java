@@ -39,5 +39,10 @@ public ResponseEntity<List<ConsoleResponseModel>> getAllConsoles() {
         return ResponseEntity.status(HttpStatus.CREATED).body(consoleService.addConsole(consoleRequestModel));
     }
 
+    @DeleteMapping("/{consoleId}")
+    public ResponseEntity<Void> deleteConsoleById(@PathVariable String consoleId) {
+        consoleService.deleteConsoleByConsoleId(consoleId);
+        return ResponseEntity.noContent().build();
+    }
 
 }

@@ -170,6 +170,76 @@ class ConsoleServiceImplTest {
 //        verify(consoleResponseMapper, times(1)).entityToResponseModel(consoleEntity);
 //    }
 
+    @Test
+    void deleteConsoleByConsoleId_Test() {
+        // Arrange
+        String consoleId = "testConsoleId";
+        Console console = new Console();
+        console.setConsoleId(consoleId);
 
+        when(consoleRepository.findById(consoleId)).thenReturn(Optional.of(console));
+
+        // Act
+        consoleService.deleteConsoleByConsoleId(consoleId);
+
+        // Assert
+        verify(consoleRepository, times(1)).delete(console);
+    }
+
+    @Test
+    void deleteConsoleByConsoleId_NotFound() {
+        // Arrange
+        String consoleId = "invalidConsoleId";
+
+        when(consoleRepository.findById(consoleId)).thenReturn(Optional.empty());
+
+        // Act & Assert
+        assertThrows(NotFoundException.class, () -> consoleService.deleteConsoleByConsoleId(consoleId));
+        verify(consoleRepository, never()).delete(any());
+    }
+
+    @Test
+    void deleteConsoleByConsoleId_MultipleDeletes() {
+        // Arrange
+        String consoleId = "testConsoleId";
+        Console console = new Console();
+        console.setConsoleId(consoleId);
+
+        when(consoleRepository.findById(consoleId)).thenReturn(Optional.of(console));
+        doNothing().when(consoleRepository).delete(console);
+
+        // Act - First deletion
+        consoleService.deleteConsoleByConsoleId(consoleId);
+
+        // Act - Second deletion (console is not found)
+        when(consoleRepository.findById(consoleId)).thenReturn(Optional.empty());
+
+        NotFoundException exception = assertThrows(NotFoundException.class,
+                () -> consoleService.deleteConsoleByConsoleId(consoleId));
+
+        // Assert
+        assertEquals("Console with ID testConsoleId not found", exception.getMessage());
+        verify(consoleRepository, times(2)).findById(consoleId);
+        verify(consoleRepository, times(1)).delete(console);
+    }
+
+    @Test
+    void deleteConsoleByConsoleId_RepositoryThrowsException() {
+        // Arrange
+        String consoleId = "testConsoleId";
+        Console console = new Console();
+        console.setConsoleId(consoleId);
+
+        when(consoleRepository.findById(consoleId)).thenReturn(Optional.of(console));
+        doThrow(new RuntimeException("Database error")).when(consoleRepository).delete(console);
+
+        // Act & Assert
+        RuntimeException exception = assertThrows(RuntimeException.class,
+                () -> consoleService.deleteConsoleByConsoleId(consoleId));
+        assertEquals("Database error", exception.getMessage());
+        verify(consoleRepository, times(1)).findById(consoleId);
+        verify(consoleRepository, times(1)).delete(console);
+    }
 
 }
+

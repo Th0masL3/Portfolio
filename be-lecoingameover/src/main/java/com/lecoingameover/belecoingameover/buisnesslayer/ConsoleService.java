@@ -10,4 +10,5 @@ public interface ConsoleService {
     ConsoleResponseModel updateConsole(String consoleId, ConsoleRequestModel consoleRequestModel);
     ConsoleResponseModel getConsoleById(String consoleId);
     ConsoleResponseModel addConsole(ConsoleRequestModel consoleRequestModel);
+    void deleteConsoleByConsoleId(String consoleId);
 }

@@ -1,0 +1,26 @@
+Business Rules
+
+BR-01: Only authorized users can delete a console from the system.
+BR-02: A console can only be deleted if it exists in the system.
+BR-03: When a console is deleted, all related data (e.g., inventory, orders referencing the console) must remain unaffected.
+BR-04: If a console does not exist, the system must return a descriptive error message.
+
+
+Business Requirements
+
+BRQ-01: The system must verify the user's authorization level before allowing a console deletion request.
+BRQ-02: The system must validate the console ID before attempting deletion.
+BRQ-03: The system must perform a safe delete, ensuring no unintended data loss in related records.
+BRQ-04: If the console ID does not exist, the system must return a 404 Not Found error with a clear message.
+
+System Requirements
+
+SR-01: Implement role-based access control (RBAC) to ensure only authorized users can access the deleteConsoleById endpoint.
+SR-02: Validate the console ID in the ConsoleService layer using findById.
+SR-03: Ensure related tables (e.g., inventory, orders) are unaffected during console deletion.
+SR-04: Return appropriate HTTP status codes and error messages:
+204 No Content for successful deletion.
+404 Not Found for non-existent console ID.
+
+
+Note: The RBAC will be implemented during our second sprint with the authentication system.

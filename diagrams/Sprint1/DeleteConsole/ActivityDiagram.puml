@@ -1,0 +1,19 @@
+@startuml
+start
+:Controller.deleteConsoleById(consoleId);
+:Call Service.deleteConsoleByConsoleId(consoleId);
+
+if (Console ID exists?) then (yes)
+    :Call Repository.delete(console);
+    if (Successful deletion?) then (yes)
+        :Return 204 No Content;
+    else (no)
+        :Return 500 Internal Server Error;
+    endif
+else (no)
+    :Throw NotFoundException;
+    :Return 404 Not Found;
+endif
+
+stop
+@enduml

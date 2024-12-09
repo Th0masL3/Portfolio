@@ -7,7 +7,6 @@ import com.lecoingameover.belecoingameover.dataaccess.ConsoleIdentifier;
 import com.lecoingameover.belecoingameover.dataaccess.ConsoleRepository;
 import com.lecoingameover.belecoingameover.presentationlayer.ConsoleRequestModel;
 import com.lecoingameover.belecoingameover.presentationlayer.ConsoleResponseModel;
-import com.lecoingameover.belecoingameover.utils.exceptions.DuplicateConsoleException;
 import com.lecoingameover.belecoingameover.utils.exceptions.NotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -79,6 +78,12 @@ public ConsoleRepository consoleRepository;
         return consoleResponseMapper.entityToResponseModel(savedConsole);
     }
 
+    public void deleteConsoleByConsoleId(String consoleId) {
+       Console console = consoleRepository.findById(consoleId)
+               .orElseThrow(() -> new NotFoundException("Console with ID " + consoleId + " not found"));
+
+       consoleRepository.delete(console);
+    }
 
 
 
