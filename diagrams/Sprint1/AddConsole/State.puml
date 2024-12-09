@@ -1,0 +1,12 @@
+@startuml
+[*] --> Idle : Console exists
+
+Idle --> Updating : Admin initiates Add
+
+Updating --> Validating : Data submitted
+Validating --> Success : Data is valid
+Validating --> Error : Data is invalid
+
+Success --> Idle : Add complete
+Error --> Updating : Admin resubmits changes
+@enduml

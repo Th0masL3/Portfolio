@@ -1,0 +1,8 @@
+@startuml
+[*] --> Idle
+Idle --> FetchingConsoles: Admin sends request to fetch consoles
+FetchingConsoles --> ValidatingData: System fetches data from the database
+
+ReturningConsoles --> Idle: Consoles are returned successfully
+
+@enduml

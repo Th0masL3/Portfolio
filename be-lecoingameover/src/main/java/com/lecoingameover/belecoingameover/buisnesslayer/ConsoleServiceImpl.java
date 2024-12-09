@@ -1,7 +1,9 @@
 package com.lecoingameover.belecoingameover.buisnesslayer;
 
+import com.lecoingameover.belecoingameover.DataMapperLayer.ConsoleRequestMapper;
 import com.lecoingameover.belecoingameover.DataMapperLayer.ConsoleResponseMapper;
 import com.lecoingameover.belecoingameover.dataaccess.Console;
+import com.lecoingameover.belecoingameover.dataaccess.ConsoleIdentifier;
 import com.lecoingameover.belecoingameover.dataaccess.ConsoleRepository;
 import com.lecoingameover.belecoingameover.presentationlayer.ConsoleRequestModel;
 import com.lecoingameover.belecoingameover.presentationlayer.ConsoleResponseModel;
@@ -14,11 +16,13 @@ import java.util.List;
 public class ConsoleServiceImpl implements ConsoleService {
 
 public ConsoleRepository consoleRepository;
-private final ConsoleResponseMapper consoleResponseMapper;
+    private final ConsoleResponseMapper consoleResponseMapper;
+    private final ConsoleRequestMapper consoleRequestMapper;
 
-    public ConsoleServiceImpl(ConsoleRepository consoleRepository, ConsoleResponseMapper consoleResponseMapper) {
+    public ConsoleServiceImpl(ConsoleRepository consoleRepository, ConsoleResponseMapper consoleResponseMapper, ConsoleRequestMapper consoleRequestMapper) {
         this.consoleRepository = consoleRepository;
         this.consoleResponseMapper = consoleResponseMapper;
+        this.consoleRequestMapper = consoleRequestMapper;
     }
 
     @Override
@@ -68,6 +72,12 @@ private final ConsoleResponseMapper consoleResponseMapper;
     }
 
     @Override
+    public ConsoleResponseModel addConsole(ConsoleRequestModel consoleRequestModel) {
+        Console console = consoleRequestMapper.requestModelToEntity(consoleRequestModel, new ConsoleIdentifier());
+        Console savedConsole = consoleRepository.save(console);
+        return consoleResponseMapper.entityToResponseModel(savedConsole);
+    }
+
     public void deleteConsoleByConsoleId(String consoleId) {
        Console console = consoleRepository.findById(consoleId)
                .orElseThrow(() -> new NotFoundException("Console with ID " + consoleId + " not found"));

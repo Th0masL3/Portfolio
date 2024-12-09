@@ -1,0 +1,23 @@
+New Business Rules
+Data Validation Rule:
+All fields (e.g., name, release date, price, stock quantity, and company) in the ConsoleRequestModel must be validated for completeness and correctness before saving a new console. Invalid or incomplete data must be rejected with an appropriate error message.
+
+Stock Initialization Rule:
+When a new console is added, its stock quantity must be initialized to a non-negative value (defaulting to 0 if not provided).
+
+
+Business Requirements Derived
+BR1: The system must validate all fields in the console creation request for completeness, correctness, and uniqueness before saving the console.
+BR2: The system must reject requests to add consoles if a console with the same consoleName and releaseDate already exists in the database.
+BR3: The system must enforce that the quantityInStock is a non-negative number.
+
+
+System Requirements
+SR1: Implement server-side validation in the addConsole method to:
+Reject empty or invalid fields for consoleName, releaseDate, price, and company.
+Ensure quantityInStock is greater than or equal to 0.
+
+SR2: Implement appropriate error handling in the addConsole method to:
+Return a 400 Bad Request response if validation fails.
+
+SR3: Add validation logic to the frontend (if applicable) to ensure all required fields are completed and meet basic validation criteria before submitting the form.

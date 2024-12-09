@@ -1,0 +1,13 @@
+@startuml
+actor Admin
+participant "UI" as UI
+participant "System" as System
+participant "Database" as Database
+
+Admin -> UI: Request to view all consoles
+UI -> System: Fetch all consoles
+System -> Database: Retrieve all consoles
+Database -> System: Return list of consoles
+System -> UI: Map data to response models
+UI -> Admin: Display list of consoles
+@enduml

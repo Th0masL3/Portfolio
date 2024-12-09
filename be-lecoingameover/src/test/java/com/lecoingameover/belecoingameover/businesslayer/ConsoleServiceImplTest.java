@@ -1,9 +1,11 @@
 package com.lecoingameover.belecoingameover.businesslayer;
 
 
+import com.lecoingameover.belecoingameover.DataMapperLayer.ConsoleRequestMapper;
 import com.lecoingameover.belecoingameover.DataMapperLayer.ConsoleResponseMapper;
 import com.lecoingameover.belecoingameover.buisnesslayer.ConsoleServiceImpl;
 import com.lecoingameover.belecoingameover.dataaccess.Console;
+import com.lecoingameover.belecoingameover.dataaccess.ConsoleIdentifier;
 import com.lecoingameover.belecoingameover.dataaccess.ConsoleRepository;
 import com.lecoingameover.belecoingameover.presentationlayer.ConsoleRequestModel;
 import com.lecoingameover.belecoingameover.presentationlayer.ConsoleResponseModel;
@@ -123,6 +125,50 @@ class ConsoleServiceImplTest {
         assertThrows(NotFoundException.class, () -> consoleService.getConsoleById(consoleId));
         verify(consoleRepository, times(1)).findById(consoleId);
     }
+
+//    @Test
+//    void testAddConsole() {
+//        // Arrange
+//        ConsoleRequestModel requestModel = ConsoleRequestModel.builder()
+//                .consoleName("Test Console")
+//                .releaseDate(LocalDate.now())
+//                .price(100)
+//                .quantityInStock(10)
+//                .company("Test Company")
+//                .build();
+//
+//        Console consoleEntity = new Console();
+//        consoleEntity.setConsoleName("Test Console");
+//        consoleEntity.setReleaseDate(LocalDate.now());
+//        consoleEntity.setPrice(100);
+//        consoleEntity.setQuantityInStock(10);
+//        consoleEntity.setCompany("Test Company");
+//
+//        ConsoleResponseModel responseModel = ConsoleResponseModel.builder()
+//                .consoleId("123")
+//                .consoleName("Test Console")
+//                .releaseDate(LocalDate.now())
+//                .price(100)
+//                .quantityInStock(10)
+//                .company("Test Company")
+//                .build();
+//
+//        // Mock the mapper and repository
+//        when(consoleResponseMapper.entityToResponseModel(consoleEntity)).thenReturn(responseModel);
+//        when(consoleRepository.save(any(Console.class))).thenReturn(consoleEntity);
+//
+//        // Act
+//        ConsoleResponseModel result = consoleService.addConsole(requestModel);
+//
+//        // Assert
+//        assertNotNull(result, "The result should not be null");
+//        assertEquals("Test Console", result.getConsoleName());
+//        assertEquals(100, result.getPrice());
+//        assertEquals(10, result.getQuantityInStock());
+//        assertEquals("Test Company", result.getCompany());
+//        verify(consoleRepository, times(1)).save(any(Console.class));
+//        verify(consoleResponseMapper, times(1)).entityToResponseModel(consoleEntity);
+//    }
 
     @Test
     void deleteConsoleByConsoleId_Test() {
