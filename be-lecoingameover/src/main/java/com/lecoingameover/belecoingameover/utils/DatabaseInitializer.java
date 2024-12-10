@@ -22,6 +22,7 @@ public class DatabaseInitializer implements CommandLineRunner {
             if (consoleRepository.count() == 0) {
                     List<Console> consoleList = new ArrayList<>();
 
+
                     Console NES = Console.builder()
                             .consoleName("NES")
                             .releaseDate(LocalDate.of(1983, 7, 15))
@@ -294,4818 +295,2714 @@ public class DatabaseInitializer implements CommandLineRunner {
 
                     consoleRepository.saveAll(consoleList);
 
+                    List<Product> productList = new ArrayList<>();
+
+
                     //products
-                    Product PunchOut = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Punch-Out!!")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(NES)
-                            .build();
-
-                    Product DuckHunt = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Duck Hunt")
-                            .productSalePrice(29.99)
-                            .productQuantity(60)
-                            .console(NES)
-                            .build();
-
-                    Product Castlevania = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Castlevania")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(NES)
-                            .build();
-
-                    Product Excitebike = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Excitebike")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(NES)
-                            .build();
-
-                    Product DoubleDragon = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Double Dragon")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(NES)
-                            .build();
-
-                    Product KidIcarus = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Kid Icarus")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(NES)
-                            .build();
-
-                    Product NinjaGaiden = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Ninja Gaiden")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(NES)
-                            .build();
-
-                    Product BubbleBobble = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Bubble Bobble")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(NES)
-                            .build();
-
-                    Product KirbyAdventure = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Kirby's Adventure")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(NES)
-                            .build();
-
-                    Product DragonWarrior = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Dragon Warrior")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(NES)
-                            .build();
-
-                    Product ZeldaII = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Zelda II: The Adventure of Link")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(NES)
-                            .build();
-
-                    Product BalloonFight = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Balloon Fight")
-                            .productSalePrice(29.99)
-                            .productQuantity(20)
-                            .console(NES)
-                            .build();
-
-                    Product IceClimber = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Ice Climber")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(NES)
-                            .build();
-
-                    Product RCProAm = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("RC Pro-Am")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(NES)
-                            .build();
-
-                    Product AdventureIsland = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Adventure Island")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(NES)
-                            .build();
-
-                    Product Tetris = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Tetris")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(NES)
-                            .build();
-
-                    Product FinalFantasy = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Final Fantasy")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(NES)
-                            .build();
 
                     Product MarioBros = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Mario Bros.")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
+                            .productName("Super Mario Bros.")
+                            .productSalePrice(19.99)
+                            .productDescription("Classic Platformer where you play as a plumber to save princess toadstool")
+                            .genre("Platformer")
+                            .productQuantity(4)
                             .console(NES)
                             .build();
+                    productList.add(MarioBros);
 
-                    Product Paperboy = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Paperboy")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
+                    Product Zelda = Product.builder()
+                            .productName("The Legend of Zelda")
+                            .productSalePrice(24.99)
+                            .productDescription("Embark on an epic quest to rescue Princess Zelda and defeat Ganon.")
+                            .genre("Action-Adventure")
+                            .productQuantity(5)
                             .console(NES)
                             .build();
+                    productList.add(Zelda);
 
-                    Product DonkeyKong = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Donkey Kong")
-                            .productSalePrice(29.99)
-                            .productQuantity(20)
+                    Product Metroid = Product.builder()
+                            .productName("Metroid")
+                            .productSalePrice(19.99)
+                            .productDescription("Explore the alien world of Zebes as Samus Aran in this sci-fi adventure.")
+                            .genre("Action-Adventure")
+                            .productQuantity(6)
                             .console(NES)
                             .build();
+                    productList.add(Metroid);
 
-                    Product SMW = Product.builder()
-                            .productId(UUID.randomUUID().toString())
+                    Product MegaMan = Product.builder()
+                            .productName("Mega Man")
+                            .productSalePrice(22.99)
+                            .productDescription("Battle Dr. Wily's robot masters in this challenging platformer.")
+                            .genre("Platformer")
+                            .productQuantity(3)
+                            .console(NES)
+                            .build();
+                    productList.add(MegaMan);
+
+                    Product DuckHunt = Product.builder()
+                            .productName("Duck Hunt")
+                            .productSalePrice(14.99)
+                            .productDescription("Use the NES Zapper to shoot ducks in this classic light-gun game.")
+                            .genre("Shooter")
+                            .productQuantity(8)
+                            .console(NES)
+                            .build();
+                    productList.add(DuckHunt);
+
+                    Product Castlevania = Product.builder()
+                            .productName("Castlevania")
+                            .productSalePrice(18.99)
+                            .productDescription("Take on Dracula and his minions in this gothic platforming classic.")
+                            .genre("Platformer")
+                            .productQuantity(4)
+                            .console(NES)
+                            .build();
+                    productList.add(Castlevania);
+
+                    Product Contra = Product.builder()
+                            .productName("Contra")
+                            .productSalePrice(19.99)
+                            .productDescription("Team up or go solo in this action-packed run-and-gun game.")
+                            .genre("Shooter")
+                            .productQuantity(7)
+                            .console(NES)
+                            .build();
+                    productList.add(Contra);
+
+                    Product FinalFantasy = Product.builder()
+                            .productName("Final Fantasy")
+                            .productSalePrice(29.99)
+                            .productDescription("The RPG that started it all; embark on a journey to restore the crystals.")
+                            .genre("RPG")
+                            .productQuantity(5)
+                            .console(NES)
+                            .build();
+                    productList.add(FinalFantasy);
+
+                    Product PunchOut = Product.builder()
+                            .productName("Punch-Out!!")
+                            .productSalePrice(17.99)
+                            .productDescription("Step into the ring as Little Mac and take on boxing's biggest stars.")
+                            .genre("Sports")
+                            .productQuantity(6)
+                            .console(NES)
+                            .build();
+                    productList.add(PunchOut);
+
+                    Product SuperMarioWorld = Product.builder()
                             .productName("Super Mario World")
                             .productSalePrice(29.99)
-                            .productQuantity(50)
+                            .productDescription("Explore Dinosaur Land with Mario and Yoshi in this iconic platformer.")
+                            .genre("Platformer")
+                            .productQuantity(5)
                             .console(SNES)
                             .build();
+                    productList.add(SuperMarioWorld);
 
-                    Product ALttP = Product.builder()
-                            .productId(UUID.randomUUID().toString())
+                    Product ZeldaLinkToThePast = Product.builder()
                             .productName("The Legend of Zelda: A Link to the Past")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
+                            .productSalePrice(34.99)
+                            .productDescription("Travel between light and dark worlds in this legendary adventure.")
+                            .genre("Action-Adventure")
+                            .productQuantity(6)
                             .console(SNES)
                             .build();
+                    productList.add(ZeldaLinkToThePast);
 
                     Product SuperMetroid = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Super Metroid")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
+                            .productSalePrice(32.99)
+                            .productDescription("Join Samus Aran in her quest to recover the stolen Metroid.")
+                            .genre("Action-Adventure")
+                            .productQuantity(4)
                             .console(SNES)
                             .build();
-
-                    Product StreetFighterII = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Street Fighter II")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(SNES)
-                            .build();
-
-                    Product DKC = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Donkey Kong Country")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(SNES)
-                            .build();
-
-                    Product ChronoTrigger = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Chrono Trigger")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(SNES)
-                            .build();
-
-                    Product FFVI = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Final Fantasy VI")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(SNES)
-                            .build();
-
-                    Product EarthBound = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("EarthBound")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(SNES)
-                            .build();
-
-                    Product SecretOfMana = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Secret of Mana")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(SNES)
-                            .build();
-
-                    Product MegaManX = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Mega Man X")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(SNES)
-                            .build();
-
-                    Product FZero = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("F-Zero")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(SNES)
-                            .build();
-
-                    Product KirbySuperStar = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Kirby Super Star")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(SNES)
-                            .build();
-
-                    Product SMRPG = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Super Mario RPG: Legend of the Seven Stars")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(SNES)
-                            .build();
-
-                    Product YoshiIsland = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Yoshi's Island")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(SNES)
-                            .build();
-
-                    Product StarFox = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Star Fox")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(SNES)
-                            .build();
-
-                    Product CastlevaniaIV = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Super Castlevania IV")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(SNES)
-                            .build();
-
-                    Product MKII = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Mortal Kombat II")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(SNES)
-                            .build();
-
-                    Product ContraIII = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Contra III: The Alien Wars")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(SNES)
-                            .build();
-
-                    Product IllusionOfGaia = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Illusion of Gaia")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(SNES)
-                            .build();
-
-                    Product ActRaiser = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("ActRaiser")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(SNES)
-                            .build();
-
-                    Product SM64 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Super Mario 64")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(N64)
-                            .build();
-
-                    Product OOT = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("The Legend of Zelda: Ocarina of Time")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(N64)
-                            .build();
-
-                    Product MarioKart64 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Mario Kart 64")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(N64)
-                            .build();
-
-                    Product GoldenEye = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("GoldenEye 007")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(N64)
-                            .build();
-
-                    Product BanjoKazooie = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Banjo-Kazooie")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(N64)
-                            .build();
-
-                    Product StarFox64 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Star Fox 64")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(N64)
-                            .build();
-
-                    Product MajoraMask = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("The Legend of Zelda: Majora's Mask")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(N64)
-                            .build();
-
-                    Product DK64 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Donkey Kong 64")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(N64)
-                            .build();
-
-                    Product PaperMario = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Paper Mario")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(N64)
-                            .build();
-
-                    Product PerfectDark = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Perfect Dark")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(N64)
-                            .build();
-
-                    Product SmashBros = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Super Smash Bros.")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(N64)
-                            .build();
-
-                    Product FZeroX = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("F-Zero X")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(N64)
-                            .build();
-
-                    Product Conker = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Conker's Bad Fur Day")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(N64)
-                            .build();
-
-                    Product WaveRace = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Wave Race 64")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(N64)
-                            .build();
-
-                    Product Pilotwings64 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pilotwings 64")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(N64)
-                            .build();
-
-                    Product DiddyKong = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Diddy Kong Racing")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(N64)
-                            .build();
-
-                    Product YoshiStory = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Yoshi's Story")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(N64)
-                            .build();
-
-                    Product StarWars = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Star Wars: Rogue Squadron")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(N64)
-                            .build();
-
-                    Product Kirby64 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Kirby 64: The Crystal Shards")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(N64)
-                            .build();
-
-                    Product PokemonSnap = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon Snap")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(N64)
-                            .build();
-
-                    Product SSBM = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Super Smash Bros. Melee")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(GameCube)
-                            .build();
-
-                    Product LMansion = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Luigi's Mansion")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(GameCube)
-                            .build();
-
-                    Product WindWaker = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("The Legend of Zelda: The Wind Waker")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(GameCube)
-                            .build();
-
-                    Product MKDoubleDash = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Mario Kart: Double Dash!!")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(GameCube)
-                            .build();
-
-                    Product MetroidPrime = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Metroid Prime")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(GameCube)
-                            .build();
-
-                    Product Pikmin = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pikmin")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(GameCube)
-                            .build();
-
-                    Product Sunshine = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Super Mario Sunshine")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(GameCube)
-                            .build();
-
-                    Product FireEmblem = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Fire Emblem: Path of Radiance")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(GameCube)
-                            .build();
-
-                    Product AnimalCrossing = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Animal Crossing")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(GameCube)
-                            .build();
-
-                    Product PaperMarioTTYD = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Paper Mario: The Thousand-Year Door")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(GameCube)
-                            .build();
-
-                    Product StarFoxAdventures = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Star Fox Adventures")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(GameCube)
-                            .build();
-
-                    Product ViewtifulJoe = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Viewtiful Joe")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(GameCube)
-                            .build();
-
-                    Product SoulCaliburII = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("SoulCalibur II")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(GameCube)
-                            .build();
-
-                    Product ResidentEvil4 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Resident Evil 4")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(GameCube)
-                            .build();
-
-                    Product KirbyAirRide = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Kirby Air Ride")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(GameCube)
-                            .build();
-
-                    Product FZeroGX = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("F-Zero GX")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(GameCube)
-                            .build();
-
-                    Product BattalionWars = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Battalion Wars")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(GameCube)
-                            .build();
-
-                    Product SonicAdventure2Battle = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Sonic Adventure 2: Battle")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(GameCube)
-                            .build();
-
-                    Product TalesOfSymphonia = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Tales of Symphonia")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(GameCube)
-                            .build();
-
-                    Product EternalDarkness = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Eternal Darkness: Sanity's Requiem")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(GameCube)
-                            .build();
-
-                    Product WiiSports = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Wii Sports")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(Wii)
-                            .build();
-
-                    Product SMGalaxy = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Super Mario Galaxy")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(Wii)
-                            .build();
-
-                    Product SMGalaxy2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Super Mario Galaxy 2")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(Wii)
-                            .build();
-
-                    Product MKWii = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Mario Kart Wii")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(Wii)
-                            .build();
-
-                    Product TwilightPrincess = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("The Legend of Zelda: Twilight Princess")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(Wii)
-                            .build();
-
-                    Product SkywardSword = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("The Legend of Zelda: Skyward Sword")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(Wii)
-                            .build();
-
-                    Product WiiPlay = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Wii Play")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(Wii)
-                            .build();
-
-                    Product WiiFit = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Wii Fit")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(Wii)
-                            .build();
-
-                    Product DonkeyKongReturns = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Donkey Kong Country Returns")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(Wii)
-                            .build();
-
-                    Product NSMBWii = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("New Super Mario Bros. Wii")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(Wii)
-                            .build();
-
-                    Product XenobladeChronicles = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Xenoblade Chronicles")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(Wii)
-                            .build();
-
-                    Product MetroidPrime3 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Metroid Prime 3: Corruption")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(Wii)
-                            .build();
-
-                    Product KirbyEpicYarn = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Kirby's Epic Yarn")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(Wii)
-                            .build();
-
-                    Product PunchOutWii = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Punch-Out!!")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(Wii)
-                            .build();
-
-                    Product FireEmblemRadiantDawn = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Fire Emblem: Radiant Dawn")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(Wii)
-                            .build();
-
-                    Product AnimalCrossingCityFolk = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Animal Crossing: City Folk")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(Wii)
-                            .build();
-
-                    Product TheLastStory = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("The Last Story")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(Wii)
-                            .build();
-
-                    Product SonicColors = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Sonic Colors")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(Wii)
-                            .build();
-
-                    Product MonsterHunterTri = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Monster Hunter Tri")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(Wii)
-                            .build();
-
-                    Product EpicMickey = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Epic Mickey")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(Wii)
-                            .build();
-
-                    Product SM3DWorld = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Super Mario 3D World")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(WiiU)
-                            .build();
-
-                    Product MK8 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Mario Kart 8")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(WiiU)
-                            .build();
-
-                    Product BOTW = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("The Legend of Zelda: Breath of the Wild")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(WiiU)
-                            .build();
-
-                    Product NSMBU = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("New Super Mario Bros. U")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(WiiU)
-                            .build();
-
-                    Product Splatoon = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Splatoon")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(WiiU)
-                            .build();
-
-                    Product SMashBrosWiiU = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Super Smash Bros. for WiiU")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(WiiU)
-                            .build();
-
-                    Product XenobladeChroniclesX = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Xenoblade Chronicles X")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(WiiU)
-                            .build();
-
-                    Product Pikmin3 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pikmin 3")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(WiiU)
-                            .build();
-
-                    Product DonkeyKongTropicalFreeze = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Donkey Kong Country: Tropical Freeze")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(WiiU)
-                            .build();
-
-                    Product CaptainToad = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Captain Toad: Treasure Tracker")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(WiiU)
-                            .build();
-
-                    Product HyruleWarriors = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Hyrule Warriors")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(WiiU)
-                            .build();
-
-                    Product StarFoxZero = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Star Fox Zero")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(WiiU)
-                            .build();
-
-                    Product Bayonetta2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Bayonetta 2")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(WiiU)
-                            .build();
-
-                    Product TheWonderful101 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("The Wonderful 101")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(WiiU)
-                            .build();
-
-                    Product PaperMarioColorSplash = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Paper Mario: Color Splash")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(WiiU)
-                            .build();
-
-                    Product YoshiWoollyWorld = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Yoshi's Woolly World")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(WiiU)
-                            .build();
-
-                    Product LegoCityUndercover = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Lego City Undercover")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(WiiU)
-                            .build();
-
-                    Product TokyoMirageSessions = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Tokyo Mirage Sessions #FE")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(WiiU)
-                            .build();
-
-                    Product NintendoLand = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Nintendo Land")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(WiiU)
-                            .build();
-
-                    Product MarioParty10 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Mario Party 10")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(WiiU)
-                            .build();
-
-
-                    Product BOTWSwitch = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("The Legend of Zelda: Breath of the Wild")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(Switch)
-                            .build();
-
-                    Product MK8Deluxe = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Mario Kart 8 Deluxe")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(Switch)
-                            .build();
-
-                    Product SMO = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Super Mario Odyssey")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(Switch)
-                            .build();
-
-                    Product AnimalCrossingNH = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Animal Crossing: New Horizons")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(Switch)
-                            .build();
-
-                    Product Splatoon3 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Splatoon 3")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(Switch)
-                            .build();
-
-                    Product PokemonSword = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon Sword")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(Switch)
-                            .build();
-
-                    Product PokemonShield = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon Shield")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(Switch)
-                            .build();
-
-                    Product SmashUltimate = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Super Smash Bros. Ultimate")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(Switch)
-                            .build();
-
-                    Product XenobladeChronicles3 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Xenoblade Chronicles 3")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(Switch)
-                            .build();
-
-                    Product LuigiMansion3 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Luigi's Mansion 3")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(Switch)
-                            .build();
-
-                    Product MetroidDread = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Metroid Dread")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(Switch)
-                            .build();
-
-                    Product ZeldaTOTK = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("The Legend of Zelda: Tears of the Kingdom")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(Switch)
-                            .build();
-
-                    Product FireEmblemEngage = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Fire Emblem Engage")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(Switch)
-                            .build();
-
-                    Product MarioPartySuperstars = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Mario Party Superstars")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(Switch)
-                            .build();
-
-                    Product HyruleWarriorsAoC = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Hyrule Warriors: Age of Calamity")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(Switch)
-                            .build();
-
-                    Product KirbyForgottenLand = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Kirby and the Forgotten Land")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(Switch)
-                            .build();
-
-                    Product NSMBUDeluxe = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("New Super Mario Bros. U Deluxe")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(Switch)
-                            .build();
-
-                    Product PokemonLegendsArceus = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon Legends: Arceus")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(Switch)
-                            .build();
-
-                    Product Bayonetta3 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Bayonetta 3")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(Switch)
-                            .build();
-
-                    Product Pikmin4 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pikmin 4")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(Switch)
-                            .build();
-
-
-                    Product FFVII = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Final Fantasy VII")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(PS1)
-                            .build();
-
-                    Product MGS = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Metal Gear Solid")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(PS1)
-                            .build();
-
-                    Product ResidentEvil = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Resident Evil")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(PS1)
-                            .build();
-
-                    Product CrashBandicoot = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Crash Bandicoot")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(PS1)
-                            .build();
-
-                    Product SpyroTheDragon = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Spyro the Dragon")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(PS1)
-                            .build();
-
-                    Product Tekken3 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Tekken 3")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(PS1)
-                            .build();
-
-                    Product GranTurismo = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Gran Turismo")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(PS1)
-                            .build();
-
-                    Product TombRaider = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Tomb Raider")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(PS1)
-                            .build();
-
-                    Product SilentHill = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Silent Hill")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(PS1)
-                            .build();
-
-                    Product CastlevaniaSOTN = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Castlevania: Symphony of the Night")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(PS1)
-                            .build();
-
-                    Product THPS = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Tony Hawk's Pro Skater")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(PS1)
-                            .build();
-
-                    Product DinoCrisis = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Dino Crisis")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(PS1)
-                            .build();
-
-                    Product VagrantStory = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Vagrant Story")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(PS1)
-                            .build();
-
-                    Product ParasiteEve = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Parasite Eve")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(PS1)
-                            .build();
-
-                    Product ChronoCross = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Chrono Cross")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(PS1)
-                            .build();
-
-                    Product RidgeRacer = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Ridge Racer")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(PS1)
-                            .build();
-
-                    Product OddworldAbe = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Oddworld: Abe's Oddysee")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(PS1)
-                            .build();
-
-                    Product LegacyOfKain = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Legacy of Kain: Soul Reaver")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(PS1)
-                            .build();
-
-                    Product Driver = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Driver")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(PS1)
-                            .build();
-
-                    Product ApeEscape = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Ape Escape")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(PS1)
-                            .build();
-
-
-                    Product PokemonRed = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon Red")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(GameBoy)
-                            .build();
-
-                    Product PokemonBlue = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon Blue")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(GameBoy)
-                            .build();
-
-                    Product TetrisGB = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Tetris")
-                            .productSalePrice(29.99)
-                            .productQuantity(60)
-                            .console(GameBoy)
-                            .build();
-
-                    Product SuperMarioLand = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Super Mario Land")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(GameBoy)
-                            .build();
-
-                    Product ZeldaLA = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("The Legend of Zelda: Link's Awakening")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(GameBoy)
-                            .build();
-
-                    Product KirbyDreamLand = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Kirby's Dream Land")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(GameBoy)
-                            .build();
-
-                    Product DonkeyKongGB = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Donkey Kong")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(GameBoy)
-                            .build();
-
-                    Product MetroidII = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Metroid II: Return of Samus")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(GameBoy)
-                            .build();
-
-                    Product WarioLand = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Wario Land: Super Mario Land 3")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(GameBoy)
-                            .build();
-
-                    Product MegaManDrWily = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Mega Man: Dr. Wily's Revenge")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(GameBoy)
-                            .build();
-
-                    Product FinalFantasyAdventure = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Final Fantasy Adventure")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(GameBoy)
-                            .build();
-
-                    Product DuckTalesGB = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("DuckTales")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(GameBoy)
-                            .build();
-
-                    Product BalloonKid = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Balloon Kid")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(GameBoy)
-                            .build();
-
-                    Product DrMarioGB = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Dr. Mario")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(GameBoy)
-                            .build();
-
-                    Product GargoyleQuest = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Gargoyle's Quest")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(GameBoy)
-                            .build();
-
-                    Product WaveRaceGB = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Wave Race")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(GameBoy)
-                            .build();
-
-                    Product CastlevaniaAdventure = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Castlevania: The Adventure")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(GameBoy)
-                            .build();
-
-                    Product MarioPicross = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Mario's Picross")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(GameBoy)
-                            .build();
-
-                    Product AdventureIslandGB = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Adventure Island")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(GameBoy)
-                            .build();
-
-                    Product StarWarsGB = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Star Wars")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(GameBoy)
-                            .build();
-
-                    Product PokemonGold = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon Gold")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(GameBoyColor)
-                            .build();
-
-                    Product PokemonSilver = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon Silver")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(GameBoyColor)
-                            .build();
-
-                    Product ZeldaOracleSeasons = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("The Legend of Zelda: Oracle of Seasons")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(GameBoyColor)
-                            .build();
-
-                    Product ZeldaOracleAges = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("The Legend of Zelda: Oracle of Ages")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(GameBoyColor)
-                            .build();
-
-                    Product SuperMarioBrosDeluxe = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Super Mario Bros. Deluxe")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(GameBoyColor)
-                            .build();
-
-                    Product TetrisDX = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Tetris DX")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(GameBoyColor)
-                            .build();
-
-                    Product WarioLandII = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Wario Land II")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(GameBoyColor)
-                            .build();
+                    productList.add(SuperMetroid);
 
                     Product DonkeyKongCountry = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Donkey Kong Country")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(GameBoyColor)
-                            .build();
-
-                    Product PokemonCrystal = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon Crystal")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(GameBoyColor)
-                            .build();
-
-                    Product HarvestMoonGBC = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Harvest Moon GBC")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(GameBoyColor)
-                            .build();
-
-                    Product DragonQuestIII = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Dragon Quest III")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(GameBoyColor)
-                            .build();
-
-                    Product KirbyTiltTumble = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Kirby Tilt 'n' Tumble")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(GameBoyColor)
-                            .build();
-
-                    Product MetalGearSolidGBC = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Metal Gear Solid")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(GameBoyColor)
-                            .build();
-
-                    Product MarioGolf = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Mario Golf")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(GameBoyColor)
-                            .build();
-
-                    Product MarioTennis = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Mario Tennis")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(GameBoyColor)
-                            .build();
-
-                    Product Shantae = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Shantae")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(GameBoyColor)
-                            .build();
-
-                    Product MegaManXtreme = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Mega Man Xtreme")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(GameBoyColor)
-                            .build();
-
-                    Product RaymanGBC = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Rayman")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(GameBoyColor)
-                            .build();
-
-                    Product BombermanMax = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Bomberman Max")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(GameBoyColor)
-                            .build();
-
-                    Product RTypeDX = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("R-Type DX")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(GameBoyColor)
-                            .build();
-
-
-                    Product PokemonRuby = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon Ruby")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(GameBoyAdvance)
-                            .build();
-
-                    Product PokemonSapphire = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon Sapphire")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(GameBoyAdvance)
-                            .build();
-
-                    Product ZeldaMinishCap = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("The Legend of Zelda: The Minish Cap")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(GameBoyAdvance)
-                            .build();
-
-                    Product MetroidFusion = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Metroid Fusion")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(GameBoyAdvance)
-                            .build();
-
-                    Product MetroidZeroMission = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Metroid: Zero Mission")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(GameBoyAdvance)
-                            .build();
-
-                    Product MarioKartSuperCircuit = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Mario Kart: Super Circuit")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(GameBoyAdvance)
-                            .build();
-
-                    Product SuperMarioAdvance = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Super Mario Advance")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(GameBoyAdvance)
-                            .build();
-
-                    Product GoldenSun = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Golden Sun")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(GameBoyAdvance)
-                            .build();
-
-                    Product AdvanceWars = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Advance Wars")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(GameBoyAdvance)
-                            .build();
-
-                    Product FireEmblemGBA = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Fire Emblem")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(GameBoyAdvance)
-                            .build();
-
-                    Product CastlevaniaAria = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Castlevania: Aria of Sorrow")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(GameBoyAdvance)
-                            .build();
-
-                    Product CastlevaniaHarmony = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Castlevania: Harmony of Dissonance")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(GameBoyAdvance)
-                            .build();
-
-                    Product WarioWare = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("WarioWare, Inc.: Mega Microgame$")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(GameBoyAdvance)
-                            .build();
-
-                    Product FinalFantasyTacticsAdvance = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Final Fantasy Tactics Advance")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(GameBoyAdvance)
-                            .build();
-
-                    Product SonicAdvance = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Sonic Advance")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(GameBoyAdvance)
-                            .build();
-
-                    Product MegaManBattleNetwork = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Mega Man Battle Network")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(GameBoyAdvance)
-                            .build();
-
-                    Product KirbyNightmare = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Kirby: Nightmare in Dream Land")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(GameBoyAdvance)
-                            .build();
-
-                    Product DonkeyKongKingSwing = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Donkey Kong: King of Swing")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(GameBoyAdvance)
-                            .build();
-
-                    Product PokemonFireRed = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon FireRed")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(GameBoyAdvance)
-                            .build();
-
-                    Product PokemonLeafGreen = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon LeafGreen")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(GameBoyAdvance)
-                            .build();
-
-
-                    Product PokemonEmerald = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon Emerald")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(GameBoyAdvanceSP)
-                            .build();
-
-                    Product MarioLuigiSuperstarSaga = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Mario & Luigi: Superstar Saga")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(GameBoyAdvanceSP)
-                            .build();
-
-                    Product ZeldaFourSwords = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("The Legend of Zelda: A Link to the Past & Four Swords")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(GameBoyAdvanceSP)
-                            .build();
-
-                    Product MetroidZeroMissionSP = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Metroid: Zero Mission")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(GameBoyAdvanceSP)
-                            .build();
-
-                    Product GoldenSunTheLostAge = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Golden Sun: The Lost Age")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(GameBoyAdvanceSP)
-                            .build();
-
-                    Product FinalFantasyIVAdvance = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Final Fantasy IV Advance")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(GameBoyAdvanceSP)
-                            .build();
-
-                    Product SonicAdvance2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Sonic Advance 2")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(GameBoyAdvanceSP)
-                            .build();
-
-                    Product WarioLand4 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Wario Land 4")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(GameBoyAdvanceSP)
-                            .build();
-
-                    Product FireEmblemSacredStones = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Fire Emblem: The Sacred Stones")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(GameBoyAdvanceSP)
-                            .build();
-
-                    Product PokemonMysteryDungeon = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon Mystery Dungeon: Red Rescue Team")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(GameBoyAdvanceSP)
-                            .build();
-
-                    Product CastlevaniaCircleMoon = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Castlevania: Circle of the Moon")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(GameBoyAdvanceSP)
-                            .build();
-
-                    Product AdvanceWars2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Advance Wars 2: Black Hole Rising")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(GameBoyAdvanceSP)
-                            .build();
-
-                    Product MegaManBattleNetwork2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Mega Man Battle Network 2")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(GameBoyAdvanceSP)
-                            .build();
-
-                    Product KingdomHeartsCoM = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Kingdom Hearts: Chain of Memories")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(GameBoyAdvanceSP)
-                            .build();
-
-                    Product HarvestMoonFriendsMineralTown = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Harvest Moon: Friends of Mineral Town")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(GameBoyAdvanceSP)
-                            .build();
-
-                    Product KirbyAmazingMirror = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Kirby & The Amazing Mirror")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(GameBoyAdvanceSP)
-                            .build();
-
-                    Product DonkeyKongCountrySP = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Donkey Kong Country")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(GameBoyAdvanceSP)
-                            .build();
-
-                    Product PokemonPinballRS = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon Pinball: Ruby & Sapphire")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(GameBoyAdvanceSP)
-                            .build();
-
-                    Product MarioPartyAdvance = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Mario Party Advance")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(GameBoyAdvanceSP)
-                            .build();
-
-                    Product YuGiOhEternalDuelist = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Yu-Gi-Oh! The Eternal Duelist Soul")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(GameBoyAdvanceSP)
-                            .build();
-
-
-                    Product PokemonDiamond = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon Diamond")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(DS)
-                            .build();
-
-                    Product PokemonPearl = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon Pearl")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(DS)
-                            .build();
-
-                    Product NewSuperMarioBros = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("New Super Mario Bros.")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(DS)
-                            .build();
-
-                    Product MarioKartDS = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Mario Kart DS")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(DS)
-                            .build();
-
-                    Product ZeldaPH = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("The Legend of Zelda: Phantom Hourglass")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(DS)
-                            .build();
-
-                    Product ZeldaST = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("The Legend of Zelda: Spirit Tracks")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(DS)
-                            .build();
-
-                    Product AnimalCrossingWW = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Animal Crossing: Wild World")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(DS)
-                            .build();
-
-                    Product ProfessorLaytonCuriousVillage = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Professor Layton and the Curious Village")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(DS)
-                            .build();
-
-                    Product KirbySqueakSquad = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Kirby: Squeak Squad")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(DS)
-                            .build();
-
-                    Product MetroidPrimeHunters = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Metroid Prime: Hunters")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(DS)
-                            .build();
-
-                    Product FireEmblemShadowDragon = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Fire Emblem: Shadow Dragon")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(DS)
-                            .build();
-
-                    Product ChronoTriggerDS = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Chrono Trigger DS")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(DS)
-                            .build();
-
-                    Product CastlevaniaDawnOfSorrow = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Castlevania: Dawn of Sorrow")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(DS)
-                            .build();
-
-                    Product AdvanceWarsDualStrike = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Advance Wars: Dual Strike")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(DS)
-                            .build();
-
-                    Product FinalFantasyIVDS = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Final Fantasy IV DS")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(DS)
-                            .build();
-
-                    Product DragonQuestIX = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Dragon Quest IX: Sentinels of the Starry Skies")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(DS)
-                            .build();
-
-                    Product Nintendogs = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Nintendogs")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(DS)
-                            .build();
-
-                    Product PokemonMysteryDungeonBlue = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon Mystery Dungeon: Blue Rescue Team")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(DS)
-                            .build();
-
-                    Product MarioLuigiPartnersInTime = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Mario & Luigi: Partners in Time")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(DS)
-                            .build();
-
-                    Product PhoenixWrightAceAttorney = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Phoenix Wright: Ace Attorney")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(DS)
-                            .build();
-
-
-                    Product PokemonBlack = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon Black")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(DSi)
-                            .build();
-
-                    Product PokemonWhite = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon White")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(DSi)
-                            .build();
-
-                    Product NewSuperMarioBrosDSi = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("New Super Mario Bros.")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(DSi)
-                            .build();
-
-                    Product MarioPartyDS = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Mario Party DS")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(DSi)
-                            .build();
-
-                    Product ZeldaSpiritTracksDSi = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("The Legend of Zelda: Spirit Tracks")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(DSi)
-                            .build();
-
-                    Product AnimalCrossingWildWorldDSi = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Animal Crossing: Wild World")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(DSi)
-                            .build();
-
-                    Product ProfessorLaytonPandorasBox = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Professor Layton and the Pandora's Box")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(DSi)
-                            .build();
-
-                    Product KirbyMassAttack = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Kirby Mass Attack")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(DSi)
-                            .build();
-
-                    Product PokemonMysteryDungeonExplorersSky = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon Mystery Dungeon: Explorers of Sky")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(DSi)
-                            .build();
-
-                    Product MetroidPrimeHuntersDSi = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Metroid Prime: Hunters")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(DSi)
-                            .build();
-
-                    Product FireEmblemShadowDragonDSi = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Fire Emblem: Shadow Dragon")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(DSi)
-                            .build();
-
-                    Product CastlevaniaOrderOfEcclesia = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Castlevania: Order of Ecclesia")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(DSi)
-                            .build();
-
-                    Product AdvanceWarsDaysOfRuin = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Advance Wars: Days of Ruin")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(DSi)
-                            .build();
-
-                    Product DragonQuestVI = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Dragon Quest VI: Realms of Revelation")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(DSi)
-                            .build();
-
-                    Product FinalFantasyTacticsA2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Final Fantasy Tactics A2: Grimoire of the Rift")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(DSi)
-                            .build();
-
-                    Product ChronoTriggerDSi = Product.builder()
-                            .productId(UUID.randomUUID().toString())
+                            .productSalePrice(28.99)
+                            .productDescription("Swing through the jungle and recover your stolen bananas.")
+                            .genre("Platformer")
+                            .productQuantity(7)
+                            .console(SNES)
+                            .build();
+                    productList.add(DonkeyKongCountry);
+
+                    Product ChronoTrigger = Product.builder()
                             .productName("Chrono Trigger")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(DSi)
+                            .productSalePrice(39.99)
+                            .productDescription("Travel through time to prevent the apocalypse in this legendary RPG.")
+                            .genre("RPG")
+                            .productQuantity(3)
+                            .console(SNES)
                             .build();
+                    productList.add(ChronoTrigger);
 
-                    Product NintendogsDSi = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Nintendogs")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(DSi)
+                    Product StreetFighterII = Product.builder()
+                            .productName("Street Fighter II")
+                            .productSalePrice(24.99)
+                            .productDescription("Fight your way to victory in this genre-defining fighting game.")
+                            .genre("Fighting")
+                            .productQuantity(8)
+                            .console(SNES)
                             .build();
+                    productList.add(StreetFighterII);
 
-                    Product PhoenixWrightJusticeForAll = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Phoenix Wright: Ace Attorney - Justice for All")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(DSi)
+                    Product FinalFantasyVI = Product.builder()
+                            .productName("Final Fantasy VI")
+                            .productSalePrice(34.99)
+                            .productDescription("Join Terra and her allies in this epic tale of magic and technology.")
+                            .genre("RPG")
+                            .productQuantity(5)
+                            .console(SNES)
                             .build();
+                    productList.add(FinalFantasyVI);
 
-                    Product MarioLuigiBowserInsideStory = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Mario & Luigi: Bowser's Inside Story")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(DSi)
+                    Product FZero = Product.builder()
+                            .productName("F-Zero")
+                            .productSalePrice(19.99)
+                            .productDescription("Race at breakneck speeds in this futuristic racing game.")
+                            .genre("Racing")
+                            .productQuantity(6)
+                            .console(SNES)
                             .build();
+                    productList.add(FZero);
 
-                    Product PokemonRangerShadowsAlmia = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon Ranger: Shadows of Almia")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(DSi)
+                    Product SuperMarioKart = Product.builder()
+                            .productName("Super Mario Kart")
+                            .productSalePrice(27.99)
+                            .productDescription("Compete in crazy races with Mario and friends in this kart racing classic.")
+                            .genre("Racing")
+                            .productQuantity(7)
+                            .console(SNES)
                             .build();
+                    productList.add(SuperMarioKart);
 
-
-                    Product PokemonX = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon X")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(DS3D)
+                    Product SuperMario64 = Product.builder()
+                            .productName("Super Mario 64")
+                            .productSalePrice(39.99)
+                            .productDescription("The iconic 3D platformer that redefined the genre.")
+                            .genre("Platformer")
+                            .productQuantity(5)
+                            .console(N64)
                             .build();
+                    productList.add(SuperMario64);
 
-                    Product PokemonY = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon Y")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(DS3D)
+                    Product ZeldaOcarina = Product.builder()
+                            .productName("The Legend of Zelda: Ocarina of Time")
+                            .productSalePrice(44.99)
+                            .productDescription("Embark on an epic journey to save Hyrule in this critically acclaimed adventure.")
+                            .genre("Action-Adventure")
+                            .productQuantity(6)
+                            .console(N64)
                             .build();
+                    productList.add(ZeldaOcarina);
 
-                    Product ZeldaOOT3D = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("The Legend of Zelda: Ocarina of Time 3D")
+                    Product GoldenEye007 = Product.builder()
+                            .productName("GoldenEye 007")
                             .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(DS3D)
+                            .productDescription("Step into the shoes of James Bond in this legendary first-person shooter.")
+                            .genre("Shooter")
+                            .productQuantity(7)
+                            .console(N64)
                             .build();
+                    productList.add(GoldenEye007);
 
-                    Product Mario3DLand = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Super Mario 3D Land")
+                    Product MarioKart64 = Product.builder()
+                            .productName("Mario Kart 64")
+                            .productSalePrice(34.99)
+                            .productDescription("Race with Mario and friends in this multiplayer kart racing classic.")
+                            .genre("Racing")
+                            .productQuantity(8)
+                            .console(N64)
+                            .build();
+                    productList.add(MarioKart64);
+
+                    Product StarFox64 = Product.builder()
+                            .productName("Star Fox 64")
+                            .productSalePrice(24.99)
+                            .productDescription("Take flight in the Arwing and save the galaxy from Andross.")
+                            .genre("Shooter")
+                            .productQuantity(5)
+                            .console(N64)
+                            .build();
+                    productList.add(StarFox64);
+
+                    Product DonkeyKong64 = Product.builder()
+                            .productName("Donkey Kong 64")
+                            .productSalePrice(32.99)
+                            .productDescription("Join Donkey Kong and friends in this expansive 3D platforming adventure.")
+                            .genre("Platformer")
+                            .productQuantity(4)
+                            .console(N64)
+                            .build();
+                    productList.add(DonkeyKong64);
+
+                    Product BanjoKazooie = Product.builder()
+                            .productName("Banjo-Kazooie")
+                            .productSalePrice(31.99)
+                            .productDescription("Help Banjo and Kazooie defeat Gruntilda in this charming platformer.")
+                            .genre("Platformer")
+                            .productQuantity(5)
+                            .console(N64)
+                            .build();
+                    productList.add(BanjoKazooie);
+
+                    Product SmashBros = Product.builder()
+                            .productName("Super Smash Bros.")
                             .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(DS3D)
+                            .productDescription("Battle it out with Nintendo's biggest stars in this groundbreaking fighting game.")
+                            .genre("Fighting")
+                            .productQuantity(6)
+                            .console(N64)
                             .build();
+                    productList.add(SmashBros);
 
-                    Product MarioKart7 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Mario Kart 7")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(DS3D)
+                    Product PaperMario = Product.builder()
+                            .productName("Paper Mario")
+                            .productSalePrice(34.99)
+                            .productDescription("Join Mario in a unique RPG adventure to save Princess Peach from Bowser.")
+                            .genre("RPG")
+                            .productQuantity(5)
+                            .console(N64)
                             .build();
+                    productList.add(PaperMario);
 
-                    Product FireEmblemAwakening = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Fire Emblem Awakening")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(DS3D)
+                    Product SuperMarioSunshine = Product.builder()
+                            .productName("Super Mario Sunshine")
+                            .productSalePrice(39.99)
+                            .productDescription("Join Mario on a tropical adventure to clean up Isle Delfino.")
+                            .genre("Platformer")
+                            .productQuantity(5)
+                            .console(GameCube)
                             .build();
+                    productList.add(SuperMarioSunshine);
 
-                    Product AnimalCrossingNewLeaf = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Animal Crossing: New Leaf")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(DS3D)
+                    Product ZeldaWindWaker = Product.builder()
+                            .productName("The Legend of Zelda: The Wind Waker")
+                            .productSalePrice(44.99)
+                            .productDescription("Set sail across the Great Sea to rescue your sister and defeat evil.")
+                            .genre("Action-Adventure")
+                            .productQuantity(6)
+                            .console(GameCube)
                             .build();
+                    productList.add(ZeldaWindWaker);
 
-                    Product ZeldaALBW = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("The Legend of Zelda: A Link Between Worlds")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(DS3D)
+                    Product MetroidPrime = Product.builder()
+                            .productName("Metroid Prime")
+                            .productSalePrice(34.99)
+                            .productDescription("Explore the mysterious planet Tallon IV in this first-person adventure.")
+                            .genre("Action-Adventure")
+                            .productQuantity(4)
+                            .console(GameCube)
                             .build();
+                    productList.add(MetroidPrime);
 
-                    Product PokemonSun = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon Sun")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(DS3D)
+                    Product SuperSmashBrosMelee = Product.builder()
+                            .productName("Super Smash Bros. Melee")
+                            .productSalePrice(39.99)
+                            .productDescription("Fight with Nintendo's greatest heroes in this iconic multiplayer brawler.")
+                            .genre("Fighting")
+                            .productQuantity(8)
+                            .console(GameCube)
                             .build();
+                    productList.add(SuperSmashBrosMelee);
 
-                    Product PokemonMoon = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon Moon")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(DS3D)
-                            .build();
-
-                    Product SmashBros3DS = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Super Smash Bros. for Nintendo 3DS")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(DS3D)
-                            .build();
-
-                    Product KirbyPlanetRobobot = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Kirby: Planet Robobot")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(DS3D)
-                            .build();
-
-                    Product MetroidSamusReturns = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Metroid: Samus Returns")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(DS3D)
-                            .build();
-
-                    Product XenobladeChronicles3D = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Xenoblade Chronicles 3D")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(DS3D)
-                            .build();
-
-                    Product LuigiMansionDarkMoon = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Luigi's Mansion: Dark Moon")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(DS3D)
-                            .build();
-
-                    Product ZeldaTriForceHeroes = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("The Legend of Zelda: Tri Force Heroes")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(DS3D)
-                            .build();
-
-                    Product MonsterHunter4Ultimate = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Monster Hunter 4 Ultimate")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(DS3D)
-                            .build();
-
-                    Product BravelyDefault = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Bravely Default")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(DS3D)
-                            .build();
-
-                    Product DragonQuestVIII = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Dragon Quest VIII: Journey of the Cursed King")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(DS3D)
-                            .build();
-
-                    Product PokemonOmegaRuby = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon Omega Ruby")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(DS3D)
-                            .build();
-
-
-                    Product XenobladeChroniclesNEW3D = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Xenoblade Chronicles 3D")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(New3DS)
-                            .build();
-
-                    Product PokemonUltraSun = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon Ultra Sun")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(New3DS)
-                            .build();
-
-                    Product PokemonUltraMoon = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon Ultra Moon")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(New3DS)
-                            .build();
-
-                    Product FireEmblemFatesBirthright = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Fire Emblem Fates: Birthright")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(New3DS)
-                            .build();
-
-                    Product FireEmblemFatesConquest = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Fire Emblem Fates: Conquest")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(New3DS)
-                            .build();
-
-                    Product MajoraMask3D = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("The Legend of Zelda: Majora's Mask 3D")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(New3DS)
-                            .build();
-
-                    Product SuperMarioMaker3DS = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Super Mario Maker for Nintendo 3DS")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(New3DS)
-                            .build();
-
-                    Product PokemonSunNew3DS = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon Sun")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(New3DS)
-                            .build();
-
-                    Product PokemonMoonNew3DS = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Pokémon Moon")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(New3DS)
-                            .build();
-
-                    Product KirbyPlanetRobobotNew3DS = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Kirby: Planet Robobot")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(New3DS)
-                            .build();
-
-                    Product HyruleWarriorsLegends = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Hyrule Warriors: Legends")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(New3DS)
-                            .build();
-
-                    Product SmashBrosNew3DS = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Super Smash Bros. for Nintendo 3DS")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(New3DS)
-                            .build();
-
-                    Product DragonQuestVII = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Dragon Quest VII: Fragments of the Forgotten Past")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(New3DS)
-                            .build();
-
-                    Product MetroidSamusReturnsNew3DS = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Metroid: Samus Returns")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(New3DS)
-                            .build();
-
-                    Product MarioLuigiPaperJam = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Mario & Luigi: Paper Jam")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(New3DS)
-                            .build();
-
-                    Product LuigiMansionNew3DS = Product.builder()
-                            .productId(UUID.randomUUID().toString())
+                    Product LuigiMansion = Product.builder()
                             .productName("Luigi's Mansion")
                             .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(New3DS)
+                            .productDescription("Help Luigi explore a haunted mansion to rescue Mario.")
+                            .genre("Action-Adventure")
+                            .productQuantity(5)
+                            .console(GameCube)
                             .build();
+                    productList.add(LuigiMansion);
 
-                    Product BravelySecondEndLayer = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Bravely Second: End Layer")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(New3DS)
+                    Product AnimalCrossing = Product.builder()
+                            .productName("Animal Crossing")
+                            .productSalePrice(24.99)
+                            .productDescription("Build your dream village and make new friends in this life simulation game.")
+                            .genre("Simulation")
+                            .productQuantity(6)
+                            .console(GameCube)
                             .build();
+                    productList.add(AnimalCrossing);
 
-                    Product DetectivePikachu = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Detective Pikachu")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(New3DS)
+                    Product MarioKartDoubleDash = Product.builder()
+                            .productName("Mario Kart: Double Dash!!")
+                            .productSalePrice(34.99)
+                            .productDescription("Race in teams of two in this unique entry in the Mario Kart series.")
+                            .genre("Racing")
+                            .productQuantity(7)
+                            .console(GameCube)
                             .build();
+                    productList.add(MarioKartDoubleDash);
 
-                    Product EverOasis = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Ever Oasis")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(New3DS)
+                    Product ResidentEvil4 = Product.builder()
+                            .productName("Resident Evil 4")
+                            .productSalePrice(44.99)
+                            .productDescription("Join Leon Kennedy on a mission to rescue the president's daughter in this survival horror masterpiece.")
+                            .genre("Survival Horror")
+                            .productQuantity(5)
+                            .console(GameCube)
                             .build();
+                    productList.add(ResidentEvil4);
 
-                    Product YoKaiWatch3 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Yo-Kai Watch 3")
+                    Product Pikmin = Product.builder()
+                            .productName("Pikmin")
                             .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(New3DS)
+                            .productDescription("Guide your Pikmin army to survive on a mysterious planet and repair your ship.")
+                            .genre("Strategy")
+                            .productQuantity(4)
+                            .console(GameCube)
                             .build();
+                    productList.add(Pikmin);
 
+                    Product WiiSports = Product.builder()
+                            .productName("Wii Sports")
+                            .productSalePrice(19.99)
+                            .productDescription("Experience motion-controlled sports like tennis, bowling, and boxing.")
+                            .genre("Sports")
+                            .productQuantity(10)
+                            .console(Wii)
+                            .build();
+                    productList.add(WiiSports);
 
-                    Product GTA3 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Grand Theft Auto III")
+                    Product SuperMarioGalaxy = Product.builder()
+                            .productName("Super Mario Galaxy")
+                            .productSalePrice(39.99)
+                            .productDescription("Join Mario in a space adventure to save Princess Peach and the galaxy.")
+                            .genre("Platformer")
+                            .productQuantity(8)
+                            .console(Wii)
+                            .build();
+                    productList.add(SuperMarioGalaxy);
+
+                    Product ZeldaTwilightPrincess = Product.builder()
+                            .productName("The Legend of Zelda: Twilight Princess")
+                            .productSalePrice(44.99)
+                            .productDescription("Help Link save Hyrule and the Twilight Realm in this epic adventure.")
+                            .genre("Action-Adventure")
+                            .productQuantity(6)
+                            .console(Wii)
+                            .build();
+                    productList.add(ZeldaTwilightPrincess);
+
+                    Product MarioKartWii = Product.builder()
+                            .productName("Mario Kart Wii")
+                            .productSalePrice(34.99)
+                            .productDescription("Race with Mario and friends using motion controls for immersive gameplay.")
+                            .genre("Racing")
+                            .productQuantity(9)
+                            .console(Wii)
+                            .build();
+                    productList.add(MarioKartWii);
+
+                    Product WiiFit = Product.builder()
+                            .productName("Wii Fit")
                             .productSalePrice(29.99)
-                            .productQuantity(50)
+                            .productDescription("Stay active and improve fitness with fun balance board exercises.")
+                            .genre("Fitness")
+                            .productQuantity(5)
+                            .console(Wii)
+                            .build();
+                    productList.add(WiiFit);
+
+                    Product SuperSmashBrosBrawl = Product.builder()
+                            .productName("Super Smash Bros. Brawl")
+                            .productSalePrice(39.99)
+                            .productDescription("Battle it out with Nintendo's biggest stars in this action-packed brawler.")
+                            .genre("Fighting")
+                            .productQuantity(7)
+                            .console(Wii)
+                            .build();
+                    productList.add(SuperSmashBrosBrawl);
+
+                    Product DonkeyKongCountryReturns = Product.builder()
+                            .productName("Donkey Kong Country Returns")
+                            .productSalePrice(34.99)
+                            .productDescription("Help Donkey Kong recover his stolen bananas in this thrilling platformer.")
+                            .genre("Platformer")
+                            .productQuantity(6)
+                            .console(Wii)
+                            .build();
+                    productList.add(DonkeyKongCountryReturns);
+
+                    Product NewSuperMarioBrosWii = Product.builder()
+                            .productName("New Super Mario Bros. Wii")
+                            .productSalePrice(29.99)
+                            .productDescription("Play with friends in this multiplayer Mario platforming adventure.")
+                            .genre("Platformer")
+                            .productQuantity(10)
+                            .console(Wii)
+                            .build();
+                    productList.add(NewSuperMarioBrosWii);
+
+                    Product XenobladeChronicles = Product.builder()
+                            .productName("Xenoblade Chronicles")
+                            .productSalePrice(49.99)
+                            .productDescription("Embark on a sprawling RPG adventure to uncover the secrets of the Monado.")
+                            .genre("RPG")
+                            .productQuantity(4)
+                            .console(Wii)
+                            .build();
+                    productList.add(XenobladeChronicles);
+
+                    Product SuperMario3DWorld = Product.builder()
+                            .productName("Super Mario 3D World")
+                            .productSalePrice(39.99)
+                            .productDescription("Team up with friends in this cooperative 3D Mario platformer.")
+                            .genre("Platformer")
+                            .productQuantity(6)
+                            .console(WiiU)
+                            .build();
+                    productList.add(SuperMario3DWorld);
+
+                    Product ZeldaWindWakerHD = Product.builder()
+                            .productName("The Legend of Zelda: The Wind Waker HD")
+                            .productSalePrice(44.99)
+                            .productDescription("Experience the classic seafaring adventure with enhanced HD visuals.")
+                            .genre("Action-Adventure")
+                            .productQuantity(5)
+                            .console(WiiU)
+                            .build();
+                    productList.add(ZeldaWindWakerHD);
+
+                    Product MarioKart8 = Product.builder()
+                            .productName("Mario Kart 8")
+                            .productSalePrice(39.99)
+                            .productDescription("Race upside-down and defy gravity in this high-speed kart racing game.")
+                            .genre("Racing")
+                            .productQuantity(8)
+                            .console(WiiU)
+                            .build();
+                    productList.add(MarioKart8);
+
+                    Product SuperSmashBrosWiiU = Product.builder()
+                            .productName("Super Smash Bros. for Wii U")
+                            .productSalePrice(44.99)
+                            .productDescription("Battle it out with Nintendo’s greatest characters in this multiplayer brawler.")
+                            .genre("Fighting")
+                            .productQuantity(7)
+                            .console(WiiU)
+                            .build();
+                    productList.add(SuperSmashBrosWiiU);
+
+                    Product Splatoon = Product.builder()
+                            .productName("Splatoon")
+                            .productSalePrice(34.99)
+                            .productDescription("Compete in colorful turf wars in this unique third-person shooter.")
+                            .genre("Shooter")
+                            .productQuantity(6)
+                            .console(WiiU)
+                            .build();
+                    productList.add(Splatoon);
+
+                    Product DonkeyKongTropicalFreeze = Product.builder()
+                            .productName("Donkey Kong Country: Tropical Freeze")
+                            .productSalePrice(39.99)
+                            .productDescription("Join Donkey Kong and friends in this challenging platforming adventure.")
+                            .genre("Platformer")
+                            .productQuantity(5)
+                            .console(WiiU)
+                            .build();
+                    productList.add(DonkeyKongTropicalFreeze);
+
+                    Product Pikmin3 = Product.builder()
+                            .productName("Pikmin 3")
+                            .productSalePrice(29.99)
+                            .productDescription("Lead your Pikmin army to solve puzzles and survive on a mysterious planet.")
+                            .genre("Strategy")
+                            .productQuantity(4)
+                            .console(WiiU)
+                            .build();
+                    productList.add(Pikmin3);
+
+                    Product ZeldaTwilightPrincessHD = Product.builder()
+                            .productName("The Legend of Zelda: Twilight Princess HD")
+                            .productSalePrice(49.99)
+                            .productDescription("Relive the classic adventure with enhanced HD visuals.")
+                            .genre("Action-Adventure")
+                            .productQuantity(4)
+                            .console(WiiU)
+                            .build();
+                    productList.add(ZeldaTwilightPrincessHD);
+
+                    Product NewSuperMarioBrosU = Product.builder()
+                            .productName("New Super Mario Bros. U")
+                            .productSalePrice(29.99)
+                            .productDescription("Jump into classic side-scrolling Mario action with friends.")
+                            .genre("Platformer")
+                            .productQuantity(7)
+                            .console(WiiU)
+                            .build();
+                    productList.add(NewSuperMarioBrosU);
+
+                    Product BreathOfTheWild = Product.builder()
+                            .productName("The Legend of Zelda: Breath of the Wild")
+                            .productSalePrice(59.99)
+                            .productDescription("Explore a vast open world and save Hyrule in this critically acclaimed adventure.")
+                            .genre("Action-Adventure")
+                            .productQuantity(10)
+                            .console(Switch)
+                            .build();
+                    productList.add(BreathOfTheWild);
+
+                    Product MarioOdyssey = Product.builder()
+                            .productName("Super Mario Odyssey")
+                            .productSalePrice(49.99)
+                            .productDescription("Join Mario on a globe-trotting adventure to rescue Princess Peach.")
+                            .genre("Platformer")
+                            .productQuantity(8)
+                            .console(Switch)
+                            .build();
+                    productList.add(MarioOdyssey);
+
+                    Product MarioKart8Deluxe = Product.builder()
+                            .productName("Mario Kart 8 Deluxe")
+                            .productSalePrice(59.99)
+                            .productDescription("Race with your favorite characters and enjoy enhanced features in this definitive edition.")
+                            .genre("Racing")
+                            .productQuantity(12)
+                            .console(Switch)
+                            .build();
+                    productList.add(MarioKart8Deluxe);
+
+                    Product SmashUltimate = Product.builder()
+                            .productName("Super Smash Bros. Ultimate")
+                            .productSalePrice(59.99)
+                            .productDescription("Battle it out with the largest roster of fighters in Smash Bros. history.")
+                            .genre("Fighting")
+                            .productQuantity(9)
+                            .console(Switch)
+                            .build();
+                    productList.add(SmashUltimate);
+
+                    Product AnimalCrossingNewHorizons = Product.builder()
+                            .productName("Animal Crossing: New Horizons")
+                            .productSalePrice(54.99)
+                            .productDescription("Build your dream island life and make friends in this relaxing simulation game.")
+                            .genre("Simulation")
+                            .productQuantity(10)
+                            .console(Switch)
+                            .build();
+                    productList.add(AnimalCrossingNewHorizons);
+
+                    Product Splatoon3 = Product.builder()
+                            .productName("Splatoon 3")
+                            .productSalePrice(49.99)
+                            .productDescription("Compete in new and exciting turf wars in this vibrant third-person shooter.")
+                            .genre("Shooter")
+                            .productQuantity(7)
+                            .console(Switch)
+                            .build();
+                    productList.add(Splatoon3);
+
+                    Product FireEmblemThreeHouses = Product.builder()
+                            .productName("Fire Emblem: Three Houses")
+                            .productSalePrice(59.99)
+                            .productDescription("Lead your students in battles and uncover mysteries in this epic tactical RPG.")
+                            .genre("RPG")
+                            .productQuantity(6)
+                            .console(Switch)
+                            .build();
+                    productList.add(FireEmblemThreeHouses);
+
+                    Product XenobladeChronicles3 = Product.builder()
+                            .productName("Xenoblade Chronicles 3")
+                            .productSalePrice(59.99)
+                            .productDescription("Embark on a massive RPG adventure with deep storytelling and combat.")
+                            .genre("RPG")
+                            .productQuantity(5)
+                            .console(Switch)
+                            .build();
+                    productList.add(XenobladeChronicles3);
+
+                    Product MetroidDread = Product.builder()
+                            .productName("Metroid Dread")
+                            .productSalePrice(49.99)
+                            .productDescription("Join Samus Aran in this thrilling 2D Metroid adventure to uncover a dangerous mystery.")
+                            .genre("Action-Adventure")
+                            .productQuantity(8)
+                            .console(Switch)
+                            .build();
+                    productList.add(MetroidDread);
+
+                    Product FinalFantasyVII = Product.builder()
+                            .productName("Final Fantasy VII")
+                            .productSalePrice(39.99)
+                            .productDescription("Join Cloud Strife and his allies in this groundbreaking RPG adventure.")
+                            .genre("RPG")
+                            .productQuantity(7)
+                            .console(PS1)
+                            .build();
+                    productList.add(FinalFantasyVII);
+
+                    Product MetalGearSolid = Product.builder()
+                            .productName("Metal Gear Solid")
+                            .productSalePrice(29.99)
+                            .productDescription("Step into the shoes of Solid Snake in this stealth-action masterpiece.")
+                            .genre("Action-Adventure")
+                            .productQuantity(6)
+                            .console(PS1)
+                            .build();
+                    productList.add(MetalGearSolid);
+
+                    Product ResidentEvil2 = Product.builder()
+                            .productName("Resident Evil 2")
+                            .productSalePrice(34.99)
+                            .productDescription("Survive the horrors of Raccoon City in this iconic survival horror game.")
+                            .genre("Survival Horror")
+                            .productQuantity(5)
+                            .console(PS1)
+                            .build();
+                    productList.add(ResidentEvil2);
+
+                    Product CrashBandicoot = Product.builder()
+                            .productName("Crash Bandicoot")
+                            .productSalePrice(24.99)
+                            .productDescription("Help Crash defeat Dr. Cortex in this wacky platforming adventure.")
+                            .genre("Platformer")
+                            .productQuantity(8)
+                            .console(PS1)
+                            .build();
+                    productList.add(CrashBandicoot);
+
+                    Product SpyroTheDragon = Product.builder()
+                            .productName("Spyro the Dragon")
+                            .productSalePrice(29.99)
+                            .productDescription("Guide Spyro through magical realms to save his friends from danger.")
+                            .genre("Platformer")
+                            .productQuantity(9)
+                            .console(PS1)
+                            .build();
+                    productList.add(SpyroTheDragon);
+
+                    Product GranTurismo = Product.builder()
+                            .productName("Gran Turismo")
+                            .productSalePrice(34.99)
+                            .productDescription("Experience realistic driving mechanics in this classic racing simulation.")
+                            .genre("Racing")
+                            .productQuantity(6)
+                            .console(PS1)
+                            .build();
+                    productList.add(GranTurismo);
+
+                    Product TombRaider = Product.builder()
+                            .productName("Tomb Raider")
+                            .productSalePrice(29.99)
+                            .productDescription("Join Lara Croft on her first adventure in this genre-defining action game.")
+                            .genre("Action-Adventure")
+                            .productQuantity(5)
+                            .console(PS1)
+                            .build();
+                    productList.add(TombRaider);
+
+                    Product Tekken3 = Product.builder()
+                            .productName("Tekken 3")
+                            .productSalePrice(24.99)
+                            .productDescription("Fight your way to the top in this iconic 3D fighting game.")
+                            .genre("Fighting")
+                            .productQuantity(10)
+                            .console(PS1)
+                            .build();
+                    productList.add(Tekken3);
+
+                    Product CastlevaniaSymphony = Product.builder()
+                            .productName("Castlevania: Symphony of the Night")
+                            .productSalePrice(39.99)
+                            .productDescription("Explore Dracula's castle in this critically acclaimed action-adventure game.")
+                            .genre("Action-Adventure")
+                            .productQuantity(4)
+                            .console(PS1)
+                            .build();
+                    productList.add(CastlevaniaSymphony);
+
+                    Product FinalFantasyX = Product.builder()
+                            .productName("Final Fantasy X")
+                            .productSalePrice(39.99)
+                            .productDescription("Join Tidus and Yuna on an epic RPG journey to save Spira.")
+                            .genre("RPG")
+                            .productQuantity(7)
                             .console(PS2)
                             .build();
+                    productList.add(FinalFantasyX);
 
-                    Product GTAViceCity = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Grand Theft Auto: Vice City")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
+                    Product MetalGearSolid2 = Product.builder()
+                            .productName("Metal Gear Solid 2: Sons of Liberty")
+                            .productSalePrice(34.99)
+                            .productDescription("Experience tactical espionage action in this iconic sequel.")
+                            .genre("Action-Adventure")
+                            .productQuantity(6)
                             .console(PS2)
                             .build();
+                    productList.add(MetalGearSolid2);
 
-                    Product GTASanAndreas = Product.builder()
-                            .productId(UUID.randomUUID().toString())
+                    Product GrandTheftAutoSanAndreas = Product.builder()
                             .productName("Grand Theft Auto: San Andreas")
                             .productSalePrice(29.99)
-                            .productQuantity(40)
+                            .productDescription("Explore the open-world of San Andreas in this groundbreaking action game.")
+                            .genre("Action-Adventure")
+                            .productQuantity(8)
                             .console(PS2)
                             .build();
+                    productList.add(GrandTheftAutoSanAndreas);
 
-                    Product FF10 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Final Fantasy X")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
+                    Product ShadowOfTheColossus = Product.builder()
+                            .productName("Shadow of the Colossus")
+                            .productSalePrice(39.99)
+                            .productDescription("Take down massive colossi in this breathtaking adventure.")
+                            .genre("Action-Adventure")
+                            .productQuantity(5)
                             .console(PS2)
                             .build();
-
-                    Product FF12 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Final Fantasy XII")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(PS2)
-                            .build();
-
-                    Product MGS2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Metal Gear Solid 2: Sons of Liberty")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(PS2)
-                            .build();
-
-                    Product MGS3 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Metal Gear Solid 3: Snake Eater")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(PS2)
-                            .build();
+                    productList.add(ShadowOfTheColossus);
 
                     Product GodOfWar = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("God of War")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
+                            .productSalePrice(34.99)
+                            .productDescription("Join Kratos on a quest for vengeance in this action-packed mythological adventure.")
+                            .genre("Action")
+                            .productQuantity(7)
                             .console(PS2)
                             .build();
-
-                    Product GodOfWar2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("God of War II")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(PS2)
-                            .build();
-
-                    Product ShadowOfColossus = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Shadow of the Colossus")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(PS2)
-                            .build();
-
-                    Product KingdomHearts = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Kingdom Hearts")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(PS2)
-                            .build();
-
-                    Product KingdomHearts2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Kingdom Hearts II")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(PS2)
-                            .build();
-
-                    Product DevilMayCry = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Devil May Cry")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(PS2)
-                            .build();
-
-                    Product DevilMayCry3 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Devil May Cry 3: Dante's Awakening")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(PS2)
-                            .build();
+                    productList.add(GodOfWar);
 
                     Product JakAndDaxter = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Jak and Daxter: The Precursor Legacy")
                             .productSalePrice(29.99)
-                            .productQuantity(25)
+                            .productDescription("Explore a vibrant world and uncover its secrets in this platforming adventure.")
+                            .genre("Platformer")
+                            .productQuantity(6)
                             .console(PS2)
                             .build();
+                    productList.add(JakAndDaxter);
 
-                    Product RatchetAndClank = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Ratchet & Clank")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
+                    Product KingdomHearts = Product.builder()
+                            .productName("Kingdom Hearts")
+                            .productSalePrice(39.99)
+                            .productDescription("Join Sora, Donald, and Goofy in a magical RPG adventure with Disney characters.")
+                            .genre("RPG")
+                            .productQuantity(9)
                             .console(PS2)
                             .build();
-
-                    Product SilentHill2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Silent Hill 2")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(PS2)
-                            .build();
-
-                    Product SilentHill3 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Silent Hill 3")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(PS2)
-                            .build();
+                    productList.add(KingdomHearts);
 
                     Product GranTurismo4 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Gran Turismo 4")
                             .productSalePrice(29.99)
-                            .productQuantity(30)
+                            .productDescription("Race realistic cars across stunning tracks in this racing simulation.")
+                            .genre("Racing")
+                            .productQuantity(8)
                             .console(PS2)
                             .build();
+                    productList.add(GranTurismo4);
 
-                    Product Bully = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Bully")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
+                    Product DevilMayCry = Product.builder()
+                            .productName("Devil May Cry")
+                            .productSalePrice(34.99)
+                            .productDescription("Battle demonic forces with Dante in this stylish action game.")
+                            .genre("Action")
+                            .productQuantity(7)
                             .console(PS2)
                             .build();
-
-
-                    Product Uncharted1 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Uncharted: Drake's Fortune")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(PS3)
-                            .build();
-
-                    Product Uncharted2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Uncharted 2: Among Thieves")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(PS3)
-                            .build();
-
-                    Product Uncharted3 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Uncharted 3: Drake's Deception")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(PS3)
-                            .build();
+                    productList.add(DevilMayCry);
 
                     Product TheLastOfUs = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("The Last of Us")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
+                            .productSalePrice(59.99)
+                            .productDescription("Embark on an emotional journey of survival in a post-apocalyptic world.")
+                            .genre("Action-Adventure")
+                            .productQuantity(7)
                             .console(PS3)
                             .build();
+                    productList.add(TheLastOfUs);
 
-                    Product GTA5 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Grand Theft Auto V")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
+                    Product Uncharted2 = Product.builder()
+                            .productName("Uncharted 2: Among Thieves")
+                            .productSalePrice(49.99)
+                            .productDescription("Join Nathan Drake on an action-packed treasure-hunting adventure.")
+                            .genre("Action-Adventure")
+                            .productQuantity(8)
                             .console(PS3)
                             .build();
-
-                    Product RedDeadRedemption = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Red Dead Redemption")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(PS3)
-                            .build();
+                    productList.add(Uncharted2);
 
                     Product GodOfWar3 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("God of War III")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
+                            .productSalePrice(39.99)
+                            .productDescription("Lead Kratos on his vengeful quest against the gods of Olympus.")
+                            .genre("Action")
+                            .productQuantity(6)
                             .console(PS3)
                             .build();
+                    productList.add(GodOfWar3);
 
-                    Product HeavyRain = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Heavy Rain")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
+                    Product RedDeadRedemption = Product.builder()
+                            .productName("Red Dead Redemption")
+                            .productSalePrice(49.99)
+                            .productDescription("Explore the Wild West in this critically acclaimed open-world adventure.")
+                            .genre("Action-Adventure")
+                            .productQuantity(9)
                             .console(PS3)
                             .build();
+                    productList.add(RedDeadRedemption);
 
                     Product LittleBigPlanet = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("LittleBigPlanet")
                             .productSalePrice(29.99)
-                            .productQuantity(30)
+                            .productDescription("Create, share, and explore unique platforming levels with Sackboy.")
+                            .genre("Platformer")
+                            .productQuantity(5)
                             .console(PS3)
                             .build();
+                    productList.add(LittleBigPlanet);
 
-                    Product LittleBigPlanet2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("LittleBigPlanet 2")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
+                    Product GranTurismo5 = Product.builder()
+                            .productName("Gran Turismo 5")
+                            .productSalePrice(34.99)
+                            .productDescription("Experience stunning realism in this racing simulation masterpiece.")
+                            .genre("Racing")
+                            .productQuantity(8)
                             .console(PS3)
                             .build();
-
-                    Product Bioshock = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("BioShock")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(PS3)
-                            .build();
-
-                    Product BioshockInfinite = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("BioShock Infinite")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(PS3)
-                            .build();
-
-                    Product Infamous = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("inFAMOUS")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(PS3)
-                            .build();
-
-                    Product Infamous2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("inFAMOUS 2")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(PS3)
-                            .build();
-
-                    Product Killzone2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Killzone 2")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(PS3)
-                            .build();
-
-                    Product Killzone3 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Killzone 3")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(PS3)
-                            .build();
+                    productList.add(GranTurismo5);
 
                     Product MetalGearSolid4 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Metal Gear Solid 4: Guns of the Patriots")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
+                            .productSalePrice(39.99)
+                            .productDescription("Follow Solid Snake's final mission in this cinematic stealth action game.")
+                            .genre("Action-Adventure")
+                            .productQuantity(6)
                             .console(PS3)
                             .build();
+                    productList.add(MetalGearSolid4);
 
-                    Product ResistanceFallOfMan = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Resistance: Fall of Man")
+                    Product HeavyRain = Product.builder()
+                            .productName("Heavy Rain")
                             .productSalePrice(29.99)
-                            .productQuantity(35)
+                            .productDescription("Unravel a gripping mystery in this emotional interactive drama.")
+                            .genre("Adventure")
+                            .productQuantity(7)
                             .console(PS3)
                             .build();
+                    productList.add(HeavyRain);
 
-                    Product Resistance3 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Resistance 3")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
+                    Product Journey = Product.builder()
+                            .productName("Journey")
+                            .productSalePrice(19.99)
+                            .productDescription("Embark on a beautiful and emotional adventure through a vast desert.")
+                            .genre("Adventure")
+                            .productQuantity(5)
                             .console(PS3)
                             .build();
+                    productList.add(Journey);
 
-                    Product Skyrim = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("The Elder Scrolls V: Skyrim")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(PS3)
-                            .build();
-
-
-                    Product GodOfWarPS4 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
+                    Product GodOfWar2018 = Product.builder()
                             .productName("God of War")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
+                            .productSalePrice(59.99)
+                            .productDescription("Join Kratos and Atreus on a mythological journey in the Norse realm.")
+                            .genre("Action-Adventure")
+                            .productQuantity(8)
                             .console(PS4)
                             .build();
+                    productList.add(GodOfWar2018);
 
-                    Product SpiderManPS4 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Marvel's Spider-Man")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
-                            .console(PS4)
-                            .build();
-
-                    Product TheLastOfUsPartII = Product.builder()
-                            .productId(UUID.randomUUID().toString())
+                    Product TheLastOfUsPart2 = Product.builder()
                             .productName("The Last of Us Part II")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
+                            .productSalePrice(59.99)
+                            .productDescription("Experience the emotional and harrowing sequel to the post-apocalyptic classic.")
+                            .genre("Action-Adventure")
+                            .productQuantity(6)
                             .console(PS4)
                             .build();
-
-                    Product HorizonZeroDawn = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Horizon Zero Dawn")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
-                            .console(PS4)
-                            .build();
-
-                    Product Bloodborne = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Bloodborne")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
-                            .console(PS4)
-                            .build();
-
-                    Product GhostOfTsushima = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Ghost of Tsushima")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
-                            .console(PS4)
-                            .build();
+                    productList.add(TheLastOfUsPart2);
 
                     Product Uncharted4 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Uncharted 4: A Thief's End")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
+                            .productSalePrice(49.99)
+                            .productDescription("Join Nathan Drake in his final treasure-hunting adventure.")
+                            .genre("Action-Adventure")
+                            .productQuantity(7)
                             .console(PS4)
                             .build();
+                    productList.add(Uncharted4);
 
-                    Product RatchetClankPS4 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
+                    Product SpiderMan = Product.builder()
+                            .productName("Marvel's Spider-Man")
+                            .productSalePrice(59.99)
+                            .productDescription("Swing through New York City as Spider-Man in this thrilling open-world adventure.")
+                            .genre("Action-Adventure")
+                            .productQuantity(9)
+                            .console(PS4)
+                            .build();
+                    productList.add(SpiderMan);
+
+                    Product HorizonZeroDawn = Product.builder()
+                            .productName("Horizon Zero Dawn")
+                            .productSalePrice(49.99)
+                            .productDescription("Explore a post-apocalyptic world dominated by robotic creatures.")
+                            .genre("Action-RPG")
+                            .productQuantity(8)
+                            .console(PS4)
+                            .build();
+                    productList.add(HorizonZeroDawn);
+
+                    Product Bloodborne = Product.builder()
+                            .productName("Bloodborne")
+                            .productSalePrice(39.99)
+                            .productDescription("Enter the haunting world of Yharnam in this challenging action RPG.")
+                            .genre("Action-RPG")
+                            .productQuantity(5)
+                            .console(PS4)
+                            .build();
+                    productList.add(Bloodborne);
+
+                    Product GhostOfTsushima = Product.builder()
+                            .productName("Ghost of Tsushima")
+                            .productSalePrice(59.99)
+                            .productDescription("Take on the role of a samurai and liberate Tsushima from Mongol invaders.")
+                            .genre("Action-Adventure")
+                            .productQuantity(7)
+                            .console(PS4)
+                            .build();
+                    productList.add(GhostOfTsushima);
+
+                    Product GranTurismoSport = Product.builder()
+                            .productName("Gran Turismo Sport")
+                            .productSalePrice(39.99)
+                            .productDescription("Race in stunning realism with the latest entry in the Gran Turismo series.")
+                            .genre("Racing")
+                            .productQuantity(6)
+                            .console(PS4)
+                            .build();
+                    productList.add(GranTurismoSport);
+
+                    Product RatchetAndClank = Product.builder()
                             .productName("Ratchet & Clank")
                             .productSalePrice(29.99)
-                            .productQuantity(100)
+                            .productDescription("Join Ratchet and Clank on a hilarious and action-packed adventure.")
+                            .genre("Platformer")
+                            .productQuantity(7)
                             .console(PS4)
                             .build();
+                    productList.add(RatchetAndClank);
 
-                    Product DeathStranding = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Death Stranding")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
-                            .console(PS4)
-                            .build();
-
-                    Product DaysGone = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Days Gone")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
-                            .console(PS4)
-                            .build();
-
-                    Product Persona5 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Persona 5")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
-                            .console(PS4)
-                            .build();
-
-                    Product FinalFantasyXV = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Final Fantasy XV")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
-                            .console(PS4)
-                            .build();
-
-                    Product ResidentEvil2Remake = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Resident Evil 2 Remake")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
-                            .console(PS4)
-                            .build();
-
-                    Product Sekiro = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Sekiro: Shadows Die Twice")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
-                            .console(PS4)
-                            .build();
-
-                    Product RedDeadRedemption2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Red Dead Redemption 2")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
-                            .console(PS4)
-                            .build();
-
-                    Product Cyberpunk2077 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Cyberpunk 2077")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
-                            .console(PS4)
-                            .build();
-
-                    Product Nioh = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Nioh")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
-                            .console(PS4)
-                            .build();
-
-                    Product ShadowOfTheColossusPS4 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Shadow of the Colossus")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
-                            .console(PS4)
-                            .build();
-
-                    Product DarkSouls3 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Dark Souls III")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
-                            .console(PS4)
-                            .build();
-
-                    Product MonsterHunterWorld = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Monster Hunter: World")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
-                            .console(PS4)
-                            .build();
-
-
-                    Product DemonsSoulsPS5 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
+                    Product DemonSouls = Product.builder()
                             .productName("Demon's Souls")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
+                            .productSalePrice(69.99)
+                            .productDescription("Experience the stunning remake of the classic action RPG that started it all.")
+                            .genre("Action-RPG")
+                            .productQuantity(6)
                             .console(PS5)
                             .build();
+                    productList.add(DemonSouls);
 
                     Product SpiderManMilesMorales = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Spider-Man: Miles Morales")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
+                            .productName("Marvel's Spider-Man: Miles Morales")
+                            .productSalePrice(49.99)
+                            .productDescription("Swing through Harlem as Miles Morales in this thrilling Spider-Man adventure.")
+                            .genre("Action-Adventure")
+                            .productQuantity(8)
                             .console(PS5)
                             .build();
+                    productList.add(SpiderManMilesMorales);
+
+                    Product RatchetAndClankRiftApart = Product.builder()
+                            .productName("Ratchet & Clank: Rift Apart")
+                            .productSalePrice(69.99)
+                            .productDescription("Join Ratchet and Clank in their next dimension-hopping adventure.")
+                            .genre("Platformer")
+                            .productQuantity(7)
+                            .console(PS5)
+                            .build();
+                    productList.add(RatchetAndClankRiftApart);
 
                     Product Returnal = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Returnal")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
+                            .productSalePrice(59.99)
+                            .productDescription("Survive a mysterious alien world in this fast-paced roguelike shooter.")
+                            .genre("Shooter")
+                            .productQuantity(5)
                             .console(PS5)
                             .build();
-
-                    Product RatchetClankRiftApart = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Ratchet & Clank: Rift Apart")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(PS5)
-                            .build();
+                    productList.add(Returnal);
 
                     Product HorizonForbiddenWest = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Horizon Forbidden West")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
+                            .productSalePrice(69.99)
+                            .productDescription("Explore a stunning open world and battle mechanical beasts in Aloy's latest adventure.")
+                            .genre("Action-RPG")
+                            .productQuantity(8)
                             .console(PS5)
                             .build();
+                    productList.add(HorizonForbiddenWest);
 
                     Product GodOfWarRagnarok = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("God of War: Ragnarök")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
+                            .productName("God of War: Ragnarok")
+                            .productSalePrice(69.99)
+                            .productDescription("Join Kratos and Atreus as they face the end of the Norse world in this epic saga.")
+                            .genre("Action-Adventure")
+                            .productQuantity(7)
                             .console(PS5)
                             .build();
-
-                    Product EldenRing = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Elden Ring")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(PS5)
-                            .build();
-
-                    Product FinalFantasyXVI = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Final Fantasy XVI")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(PS5)
-                            .build();
-
-                    Product GhostwireTokyo = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Ghostwire: Tokyo")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(PS5)
-                            .build();
-
-                    Product ResidentEvilVillage = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Resident Evil Village")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(PS5)
-                            .build();
-
-                    Product Deathloop = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Deathloop")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(PS5)
-                            .build();
-
-                    Product Cyberpunk2077PS5 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Cyberpunk 2077")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(PS5)
-                            .build();
-
-                    Product HogwartsLegacy = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Hogwarts Legacy")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(PS5)
-                            .build();
-
-                    Product CallOfDutyMWII = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Call of Duty: Modern Warfare II")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(PS5)
-                            .build();
-
-                    Product NBA2K24 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("NBA 2K24")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(PS5)
-                            .build();
-
-                    Product FIFA23 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("FIFA 23")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(PS5)
-                            .build();
+                    productList.add(GodOfWarRagnarok);
 
                     Product GranTurismo7 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Gran Turismo 7")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
+                            .productSalePrice(59.99)
+                            .productDescription("Race with stunning realism in the latest entry of the Gran Turismo series.")
+                            .genre("Racing")
+                            .productQuantity(6)
                             .console(PS5)
                             .build();
+                    productList.add(GranTurismo7);
 
-                    Product AssassinCreedValhalla = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Assassin's Creed Valhalla")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
+                    Product EldenRing = Product.builder()
+                            .productName("Elden Ring")
+                            .productSalePrice(69.99)
+                            .productDescription("Venture into the vast open world of the Lands Between in this critically acclaimed RPG.")
+                            .genre("Action-RPG")
+                            .productQuantity(9)
                             .console(PS5)
                             .build();
+                    productList.add(EldenRing);
 
-                    Product DiabloIV = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Diablo IV")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
+                    Product GhostwireTokyo = Product.builder()
+                            .productName("Ghostwire: Tokyo")
+                            .productSalePrice(59.99)
+                            .productDescription("Explore a supernatural Tokyo and battle spirits in this unique action-adventure game.")
+                            .genre("Action-Adventure")
+                            .productQuantity(5)
                             .console(PS5)
                             .build();
+                    productList.add(GhostwireTokyo);
 
-                    Product StreetFighter6 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Street Fighter 6")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(PS5)
-                            .build();
-
-
-                    Product GodOfWarChainsOfOlympus = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("God of War: Chains of Olympus")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(PSP)
-                            .build();
-
-                    Product GodOfWarGhostOfSparta = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("God of War: Ghost of Sparta")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(PSP)
-                            .build();
-
-                    Product CrisisCoreFF7 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
+                    Product CrisisCoreFinalFantasyVII = Product.builder()
                             .productName("Crisis Core: Final Fantasy VII")
                             .productSalePrice(29.99)
-                            .productQuantity(40)
+                            .productDescription("Follow Zack Fair's journey in this action-packed prequel to Final Fantasy VII.")
+                            .genre("Action-RPG")
+                            .productQuantity(6)
                             .console(PSP)
                             .build();
+                    productList.add(CrisisCoreFinalFantasyVII);
 
-                    Product MetalGearSolidPeaceWalker = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Metal Gear Solid: Peace Walker")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
+                    Product GodOfWarChainsOfOlympus = Product.builder()
+                            .productName("God of War: Chains of Olympus")
+                            .productSalePrice(24.99)
+                            .productDescription("Experience Kratos's brutal journey in this handheld God of War adventure.")
+                            .genre("Action")
+                            .productQuantity(7)
                             .console(PSP)
                             .build();
-
-                    Product MonsterHunterFreedom = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Monster Hunter Freedom")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(PSP)
-                            .build();
-
-                    Product MonsterHunterFreedomUnite = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Monster Hunter Freedom Unite")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(PSP)
-                            .build();
-
-                    Product KingdomHeartsBirthBySleep = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Kingdom Hearts: Birth by Sleep")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(PSP)
-                            .build();
+                    productList.add(GodOfWarChainsOfOlympus);
 
                     Product Daxter = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Daxter")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
+                            .productSalePrice(19.99)
+                            .productDescription("Help Daxter in this standalone platforming adventure set in the Jak and Daxter universe.")
+                            .genre("Platformer")
+                            .productQuantity(5)
                             .console(PSP)
                             .build();
+                    productList.add(Daxter);
 
-                    Product GTAChinatownWars = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Grand Theft Auto: Chinatown Wars")
+                    Product MonsterHunterFreedomUnite = Product.builder()
+                            .productName("Monster Hunter Freedom Unite")
                             .productSalePrice(29.99)
-                            .productQuantity(30)
+                            .productDescription("Hunt massive monsters and craft powerful gear in this epic action game.")
+                            .genre("Action")
+                            .productQuantity(8)
                             .console(PSP)
                             .build();
+                    productList.add(MonsterHunterFreedomUnite);
 
-                    Product GTAViceCityStories = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Grand Theft Auto: Vice City Stories")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
+                    Product MetalGearSolidPeaceWalker = Product.builder()
+                            .productName("Metal Gear Solid: Peace Walker")
+                            .productSalePrice(34.99)
+                            .productDescription("Join Big Boss in this stealth-action masterpiece set in Central America.")
+                            .genre("Action-Adventure")
+                            .productQuantity(6)
                             .console(PSP)
                             .build();
+                    productList.add(MetalGearSolidPeaceWalker);
 
                     Product Patapon = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Patapon")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
+                            .productSalePrice(14.99)
+                            .productDescription("Lead your tribe to victory with rhythm-based strategy gameplay.")
+                            .genre("Rhythm-Strategy")
+                            .productQuantity(9)
                             .console(PSP)
                             .build();
+                    productList.add(Patapon);
 
-                    Product Patapon2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Patapon 2")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(PSP)
-                            .build();
-
-                    Product ResistanceRetribution = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Resistance: Retribution")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(PSP)
-                            .build();
-
-                    Product LocoRoco = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("LocoRoco")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(PSP)
-                            .build();
-
-                    Product LocoRoco2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("LocoRoco 2")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(PSP)
-                            .build();
-
-                    Product FinalFantasyTacticsWarOfLions = Product.builder()
-                            .productId(UUID.randomUUID().toString())
+                    Product FinalFantasyTacticsWarOfTheLions = Product.builder()
                             .productName("Final Fantasy Tactics: The War of the Lions")
                             .productSalePrice(29.99)
-                            .productQuantity(30)
+                            .productDescription("Experience this enhanced tactical RPG classic with new content.")
+                            .genre("Tactical RPG")
+                            .productQuantity(5)
                             .console(PSP)
                             .build();
+                    productList.add(FinalFantasyTacticsWarOfTheLions);
 
-                    Product JeanneDArc = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Jeanne d'Arc")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
+                    Product KingdomHeartsBirthBySleep = Product.builder()
+                            .productName("Kingdom Hearts: Birth by Sleep")
+                            .productSalePrice(34.99)
+                            .productDescription("Uncover the origins of the Kingdom Hearts saga in this action-RPG prequel.")
+                            .genre("Action-RPG")
+                            .productQuantity(7)
                             .console(PSP)
                             .build();
+                    productList.add(KingdomHeartsBirthBySleep);
 
-                    Product SoulCaliburBrokenDestiny = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("SoulCalibur: Broken Destiny")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
+                    Product Lumines = Product.builder()
+                            .productName("Lumines")
+                            .productSalePrice(19.99)
+                            .productDescription("Enjoy this addictive puzzle game with a stylish soundtrack and visuals.")
+                            .genre("Puzzle")
+                            .productQuantity(8)
                             .console(PSP)
                             .build();
-
-                    Product TekkenDarkResurrection = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Tekken: Dark Resurrection")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(PSP)
-                            .build();
-
-                    Product Persona3Portable = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Persona 3 Portable")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(PSP)
-                            .build();
+                    productList.add(Lumines);
 
 
                     Product UnchartedGoldenAbyss = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Uncharted: Golden Abyss")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
+                            .productSalePrice(39.99)
+                            .productDescription("Join Nathan Drake on a portable treasure-hunting adventure.")
+                            .genre("Action-Adventure")
+                            .productQuantity(6)
                             .console(PSVita)
                             .build();
-
-                    Product Persona4Golden = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Persona 4 Golden")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(PSVita)
-                            .build();
+                    productList.add(UnchartedGoldenAbyss);
 
                     Product GravityRush = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Gravity Rush")
                             .productSalePrice(29.99)
-                            .productQuantity(40)
+                            .productDescription("Manipulate gravity and explore a stunning world in this unique action-adventure.")
+                            .genre("Action-Adventure")
+                            .productQuantity(7)
                             .console(PSVita)
                             .build();
+                    productList.add(GravityRush);
+
+                    Product Persona4Golden = Product.builder()
+                            .productName("Persona 4 Golden")
+                            .productSalePrice(49.99)
+                            .productDescription("Dive into this enhanced RPG classic and uncover a supernatural mystery.")
+                            .genre("RPG")
+                            .productQuantity(5)
+                            .console(PSVita)
+                            .build();
+                    productList.add(Persona4Golden);
 
                     Product KillzoneMercenary = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Killzone: Mercenary")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
+                            .productSalePrice(34.99)
+                            .productDescription("Experience intense FPS action in the Killzone universe, optimized for handheld gaming.")
+                            .genre("Shooter")
+                            .productQuantity(8)
                             .console(PSVita)
                             .build();
+                    productList.add(KillzoneMercenary);
 
                     Product Tearaway = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Tearaway")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
+                            .productSalePrice(24.99)
+                            .productDescription("Explore a charming paper-crafted world in this creative platformer.")
+                            .genre("Platformer")
+                            .productQuantity(6)
                             .console(PSVita)
                             .build();
-
-                    Product LittleBigPlanetPSVita = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("LittleBigPlanet PS Vita")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(PSVita)
-                            .build();
-
-                    Product FreedomWars = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Freedom Wars")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(PSVita)
-                            .build();
-
-                    Product SoulSacrifice = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Soul Sacrifice")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(PSVita)
-                            .build();
-
-                    Product SoulSacrificeDelta = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Soul Sacrifice Delta")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(PSVita)
-                            .build();
-
-                    Product Wipeout2048 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Wipeout 2048")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(PSVita)
-                            .build();
+                    productList.add(Tearaway);
 
                     Product DanganronpaTriggerHappyHavoc = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Danganronpa: Trigger Happy Havoc")
                             .productSalePrice(29.99)
-                            .productQuantity(40)
+                            .productDescription("Unravel mysteries and survive in this gripping visual novel adventure.")
+                            .genre("Adventure")
+                            .productQuantity(7)
                             .console(PSVita)
                             .build();
-
-                    Product Danganronpa2GoodbyeDespair = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Danganronpa 2: Goodbye Despair")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(PSVita)
-                            .build();
-
-                    Product TokyoXanadu = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Tokyo Xanadu")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(PSVita)
-                            .build();
-
-                    Product FinalFantasyXHDRemaster = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Final Fantasy X HD Remaster")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(PSVita)
-                            .build();
-
-                    Product FinalFantasyX2HDRemaster = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Final Fantasy X-2 HD Remaster")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(PSVita)
-                            .build();
+                    productList.add(DanganronpaTriggerHappyHavoc);
 
                     Product RaymanLegends = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Rayman Legends")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
+                            .productSalePrice(34.99)
+                            .productDescription("Join Rayman and friends in this colorful and thrilling platforming adventure.")
+                            .genre("Platformer")
+                            .productQuantity(5)
                             .console(PSVita)
                             .build();
+                    productList.add(RaymanLegends);
 
-                    Product OdinSphereLeifthrasir = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Odin Sphere Leifthrasir")
+                    Product LittleBigPlanetPSVita = Product.builder()
+                            .productName("LittleBigPlanet PS Vita")
                             .productSalePrice(29.99)
-                            .productQuantity(30)
+                            .productDescription("Create and share imaginative platforming levels with Sackboy on the go.")
+                            .genre("Platformer")
+                            .productQuantity(8)
                             .console(PSVita)
                             .build();
-
-                    Product YsMemoriesOfCelceta = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Ys: Memories of Celceta")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(PSVita)
-                            .build();
-
-                    Product DragonQuestBuilders = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Dragon Quest Builders")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(PSVita)
-                            .build();
+                    productList.add(LittleBigPlanetPSVita);
 
                     Product MinecraftPSVita = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Minecraft: PlayStation Vita Edition")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
+                            .productName("Minecraft: PS Vita Edition")
+                            .productSalePrice(19.99)
+                            .productDescription("Build, explore, and survive in the endless possibilities of Minecraft.")
+                            .genre("Sandbox")
+                            .productQuantity(9)
                             .console(PSVita)
                             .build();
+                    productList.add(MinecraftPSVita);
 
+                    Product PokemonRed = Product.builder()
+                            .productName("Pokemon Red")
+                            .productSalePrice(29.99)
+                            .productDescription("Catch and train Pokemon to become the ultimate Pokemon Master.")
+                            .genre("RPG")
+                            .productQuantity(8)
+                            .console(GameBoy)
+                            .build();
+                    productList.add(PokemonRed);
 
-                    Product HaloCE = Product.builder()
-                            .productId(UUID.randomUUID().toString())
+                    Product Tetris = Product.builder()
+                            .productName("Tetris")
+                            .productSalePrice(19.99)
+                            .productDescription("The classic block-stacking puzzle game that defined a genre.")
+                            .genre("Puzzle")
+                            .productQuantity(10)
+                            .console(GameBoy)
+                            .build();
+                    productList.add(Tetris);
+
+                    Product SuperMarioLand = Product.builder()
+                            .productName("Super Mario Land")
+                            .productSalePrice(24.99)
+                            .productDescription("Join Mario on a handheld platforming adventure to save Princess Daisy.")
+                            .genre("Platformer")
+                            .productQuantity(7)
+                            .console(GameBoy)
+                            .build();
+                    productList.add(SuperMarioLand);
+
+                    Product TheLegendOfZeldaLinksAwakening = Product.builder()
+                            .productName("The Legend of Zelda: Link's Awakening")
+                            .productSalePrice(29.99)
+                            .productDescription("Embark on a mysterious journey to awaken the Wind Fish.")
+                            .genre("Action-Adventure")
+                            .productQuantity(6)
+                            .console(GameBoy)
+                            .build();
+                    productList.add(TheLegendOfZeldaLinksAwakening);
+
+                    Product MetroidII = Product.builder()
+                            .productName("Metroid II: Return of Samus")
+                            .productSalePrice(27.99)
+                            .productDescription("Help Samus Aran eliminate the Metroid threat in this sci-fi adventure.")
+                            .genre("Action-Adventure")
+                            .productQuantity(5)
+                            .console(GameBoy)
+                            .build();
+                    productList.add(MetroidII);
+
+                    Product KirbyDreamLand = Product.builder()
+                            .productName("Kirby's Dream Land")
+                            .productSalePrice(19.99)
+                            .productDescription("Join Kirby on his first adventure to save Dream Land from King Dedede.")
+                            .genre("Platformer")
+                            .productQuantity(9)
+                            .console(GameBoy)
+                            .build();
+                    productList.add(KirbyDreamLand);
+
+                    Product DonkeyKong = Product.builder()
+                            .productName("Donkey Kong")
+                            .productSalePrice(22.99)
+                            .productDescription("Help Mario rescue Pauline in this puzzle-platforming classic.")
+                            .genre("Platformer")
+                            .productQuantity(8)
+                            .console(GameBoy)
+                            .build();
+                    productList.add(DonkeyKong);
+
+                    Product DrMario = Product.builder()
+                            .productName("Dr. Mario")
+                            .productSalePrice(19.99)
+                            .productDescription("Clear viruses with color-coded pills in this addictive puzzle game.")
+                            .genre("Puzzle")
+                            .productQuantity(7)
+                            .console(GameBoy)
+                            .build();
+                    productList.add(DrMario);
+
+                    Product FinalFantasyAdventure = Product.builder()
+                            .productName("Final Fantasy Adventure")
+                            .productSalePrice(29.99)
+                            .productDescription("Embark on a quest to save the Mana Tree in this action-RPG classic.")
+                            .genre("Action-RPG")
+                            .productQuantity(6)
+                            .console(GameBoy)
+                            .build();
+                    productList.add(FinalFantasyAdventure);
+
+                    Product PokemonGold = Product.builder()
+                            .productName("Pokemon Gold")
+                            .productSalePrice(34.99)
+                            .productDescription("Explore the Johto region and become the ultimate Pokemon Trainer.")
+                            .genre("RPG")
+                            .productQuantity(8)
+                            .console(GameBoyColor)
+                            .build();
+                    productList.add(PokemonGold);
+
+                    Product PokemonSilver = Product.builder()
+                            .productName("Pokemon Silver")
+                            .productSalePrice(34.99)
+                            .productDescription("Discover the mysteries of the Johto region and catch legendary Pokemon.")
+                            .genre("RPG")
+                            .productQuantity(8)
+                            .console(GameBoyColor)
+                            .build();
+                    productList.add(PokemonSilver);
+
+                    Product TheLegendOfZeldaOracleOfSeasons = Product.builder()
+                            .productName("The Legend of Zelda: Oracle of Seasons")
+                            .productSalePrice(29.99)
+                            .productDescription("Manipulate the seasons to solve puzzles and save the land of Holodrum.")
+                            .genre("Action-Adventure")
+                            .productQuantity(7)
+                            .console(GameBoyColor)
+                            .build();
+                    productList.add(TheLegendOfZeldaOracleOfSeasons);
+
+                    Product TheLegendOfZeldaOracleOfAges = Product.builder()
+                            .productName("The Legend of Zelda: Oracle of Ages")
+                            .productSalePrice(29.99)
+                            .productDescription("Travel through time to save Labrynna in this thrilling adventure.")
+                            .genre("Action-Adventure")
+                            .productQuantity(6)
+                            .console(GameBoyColor)
+                            .build();
+                    productList.add(TheLegendOfZeldaOracleOfAges);
+
+                    Product SuperMarioBrosDeluxe = Product.builder()
+                            .productName("Super Mario Bros. Deluxe")
+                            .productSalePrice(24.99)
+                            .productDescription("Enjoy the classic platformer with added features on the GameBoy Color.")
+                            .genre("Platformer")
+                            .productQuantity(9)
+                            .console(GameBoyColor)
+                            .build();
+                    productList.add(SuperMarioBrosDeluxe);
+
+                    Product WarioLand3 = Product.builder()
+                            .productName("Wario Land 3")
+                            .productSalePrice(24.99)
+                            .productDescription("Join Wario on his treasure-hunting adventure full of puzzles and enemies.")
+                            .genre("Platformer")
+                            .productQuantity(6)
+                            .console(GameBoyColor)
+                            .build();
+                    productList.add(WarioLand3);
+
+                    Product DonkeyKongCountryColor = Product.builder()
+                            .productName("Donkey Kong Country")
+                            .productSalePrice(29.99)
+                            .productDescription("Help Donkey Kong recover his bananas in this handheld platforming classic.")
+                            .genre("Platformer")
+                            .productQuantity(5)
+                            .console(GameBoyColor)
+                            .build();
+                    productList.add(DonkeyKongCountryColor);
+
+                    Product KirbyTiltAndTumble = Product.builder()
+                            .productName("Kirby Tilt 'n' Tumble")
+                            .productSalePrice(19.99)
+                            .productDescription("Use tilt controls to guide Kirby through fun and challenging levels.")
+                            .genre("Puzzle-Platformer")
+                            .productQuantity(7)
+                            .console(GameBoyColor)
+                            .build();
+                    productList.add(KirbyTiltAndTumble);
+
+                    Product DragonQuestIII = Product.builder()
+                            .productName("Dragon Quest III")
+                            .productSalePrice(29.99)
+                            .productDescription("Embark on an epic RPG journey in this enhanced version of the classic game.")
+                            .genre("RPG")
+                            .productQuantity(5)
+                            .console(GameBoyColor)
+                            .build();
+                    productList.add(DragonQuestIII);
+
+                    Product PokemonRuby = Product.builder()
+                            .productName("Pokemon Ruby")
+                            .productSalePrice(39.99)
+                            .productDescription("Explore the Hoenn region and battle Team Magma in this RPG adventure.")
+                            .genre("RPG")
+                            .productQuantity(8)
+                            .console(GameBoyAdvance)
+                            .build();
+                    productList.add(PokemonRuby);
+
+                    Product PokemonSapphire = Product.builder()
+                            .productName("Pokemon Sapphire")
+                            .productSalePrice(39.99)
+                            .productDescription("Discover the mysteries of the Hoenn region and battle Team Aqua.")
+                            .genre("RPG")
+                            .productQuantity(7)
+                            .console(GameBoyAdvance)
+                            .build();
+                    productList.add(PokemonSapphire);
+
+                    Product TheLegendOfZeldaMinishCap = Product.builder()
+                            .productName("The Legend of Zelda: The Minish Cap")
+                            .productSalePrice(34.99)
+                            .productDescription("Shrink to tiny sizes and save Hyrule in this unique Zelda adventure.")
+                            .genre("Action-Adventure")
+                            .productQuantity(6)
+                            .console(GameBoyAdvance)
+                            .build();
+                    productList.add(TheLegendOfZeldaMinishCap);
+
+                    Product MarioKartSuperCircuit = Product.builder()
+                            .productName("Mario Kart: Super Circuit")
+                            .productSalePrice(29.99)
+                            .productDescription("Race with your favorite characters in this handheld Mario Kart classic.")
+                            .genre("Racing")
+                            .productQuantity(9)
+                            .console(GameBoyAdvance)
+                            .build();
+                    productList.add(MarioKartSuperCircuit);
+
+                    Product MetroidFusion = Product.builder()
+                            .productName("Metroid Fusion")
+                            .productSalePrice(34.99)
+                            .productDescription("Help Samus Aran uncover the mystery of the X Parasites in this sci-fi adventure.")
+                            .genre("Action-Adventure")
+                            .productQuantity(5)
+                            .console(GameBoyAdvance)
+                            .build();
+                    productList.add(MetroidFusion);
+
+                    Product AdvanceWars = Product.builder()
+                            .productName("Advance Wars")
+                            .productSalePrice(29.99)
+                            .productDescription("Lead your army to victory in this strategic turn-based warfare game.")
+                            .genre("Strategy")
+                            .productQuantity(7)
+                            .console(GameBoyAdvance)
+                            .build();
+                    productList.add(AdvanceWars);
+
+                    Product FireEmblem = Product.builder()
+                            .productName("Fire Emblem")
+                            .productSalePrice(34.99)
+                            .productDescription("Command your units and experience a gripping tale in this tactical RPG.")
+                            .genre("Tactical RPG")
+                            .productQuantity(6)
+                            .console(GameBoyAdvance)
+                            .build();
+                    productList.add(FireEmblem);
+
+                    Product WarioWareInc = Product.builder()
+                            .productName("WarioWare, Inc.: Mega Microgames!")
+                            .productSalePrice(24.99)
+                            .productDescription("Enjoy fast-paced, quirky microgames with Wario and friends.")
+                            .genre("Party")
+                            .productQuantity(8)
+                            .console(GameBoyAdvance)
+                            .build();
+                    productList.add(WarioWareInc);
+
+                    Product GoldenSun = Product.builder()
+                            .productName("Golden Sun")
+                            .productSalePrice(34.99)
+                            .productDescription("Embark on a classic RPG adventure to save the world from alchemy’s power.")
+                            .genre("RPG")
+                            .productQuantity(5)
+                            .console(GameBoyAdvance)
+                            .build();
+                    productList.add(GoldenSun);
+
+                    Product PokemonFireRed = Product.builder()
+                            .productName("Pokemon FireRed")
+                            .productSalePrice(39.99)
+                            .productDescription("Relive the classic Pokemon Red adventure with updated graphics and features.")
+                            .genre("RPG")
+                            .productQuantity(8)
+                            .console(GameBoyAdvanceSP)
+                            .build();
+                    productList.add(PokemonFireRed);
+
+                    Product PokemonLeafGreen = Product.builder()
+                            .productName("Pokemon LeafGreen")
+                            .productSalePrice(39.99)
+                            .productDescription("Explore the Kanto region in this enhanced remake of Pokemon Green.")
+                            .genre("RPG")
+                            .productQuantity(7)
+                            .console(GameBoyAdvanceSP)
+                            .build();
+                    productList.add(PokemonLeafGreen);
+
+                    Product TheLegendOfZeldaFourSwords = Product.builder()
+                            .productName("The Legend of Zelda: A Link to the Past & Four Swords")
+                            .productSalePrice(34.99)
+                            .productDescription("Experience the classic adventure and a new cooperative multiplayer mode.")
+                            .genre("Action-Adventure")
+                            .productQuantity(6)
+                            .console(GameBoyAdvanceSP)
+                            .build();
+                    productList.add(TheLegendOfZeldaFourSwords);
+
+                    Product SuperMarioAdvance4 = Product.builder()
+                            .productName("Super Mario Advance 4: Super Mario Bros. 3")
+                            .productSalePrice(29.99)
+                            .productDescription("Enjoy one of the greatest platformers of all time on the GameBoy Advance SP.")
+                            .genre("Platformer")
+                            .productQuantity(9)
+                            .console(GameBoyAdvanceSP)
+                            .build();
+                    productList.add(SuperMarioAdvance4);
+
+                    Product MetroidZeroMission = Product.builder()
+                            .productName("Metroid: Zero Mission")
+                            .productSalePrice(34.99)
+                            .productDescription("Revisit Samus Aran's first mission with enhanced graphics and gameplay.")
+                            .genre("Action-Adventure")
+                            .productQuantity(5)
+                            .console(GameBoyAdvanceSP)
+                            .build();
+                    productList.add(MetroidZeroMission);
+
+                    Product MarioVsDonkeyKong = Product.builder()
+                            .productName("Mario vs. Donkey Kong")
+                            .productSalePrice(24.99)
+                            .productDescription("Help Mario retrieve stolen toys in this puzzle-platforming adventure.")
+                            .genre("Puzzle-Platformer")
+                            .productQuantity(7)
+                            .console(GameBoyAdvanceSP)
+                            .build();
+                    productList.add(MarioVsDonkeyKong);
+
+                    Product KirbyAndTheAmazingMirror = Product.builder()
+                            .productName("Kirby & The Amazing Mirror")
+                            .productSalePrice(29.99)
+                            .productDescription("Explore a sprawling, interconnected world with Kirby and his clones.")
+                            .genre("Action-Adventure")
+                            .productQuantity(6)
+                            .console(GameBoyAdvanceSP)
+                            .build();
+                    productList.add(KirbyAndTheAmazingMirror);
+
+                    Product FinalFantasyVIAdvance = Product.builder()
+                            .productName("Final Fantasy VI Advance")
+                            .productSalePrice(34.99)
+                            .productDescription("Rediscover the classic RPG with enhanced features and a new translation.")
+                            .genre("RPG")
+                            .productQuantity(5)
+                            .console(GameBoyAdvanceSP)
+                            .build();
+                    productList.add(FinalFantasyVIAdvance);
+
+                    Product CastlevaniaAriaOfSorrow = Product.builder()
+                            .productName("Castlevania: Aria of Sorrow")
+                            .productSalePrice(34.99)
+                            .productDescription("Join Soma Cruz in this gothic action-adventure with RPG elements.")
+                            .genre("Action-Adventure")
+                            .productQuantity(6)
+                            .console(GameBoyAdvanceSP)
+                            .build();
+                    productList.add(CastlevaniaAriaOfSorrow);
+
+                    Product PokemonDiamond = Product.builder()
+                            .productName("Pokemon Diamond")
+                            .productSalePrice(39.99)
+                            .productDescription("Explore the Sinnoh region and uncover the mystery of Dialga.")
+                            .genre("RPG")
+                            .productQuantity(8)
+                            .console(DS)
+                            .build();
+                    productList.add(PokemonDiamond);
+
+                    Product PokemonPearl = Product.builder()
+                            .productName("Pokemon Pearl")
+                            .productSalePrice(39.99)
+                            .productDescription("Journey through the Sinnoh region and encounter the legendary Palkia.")
+                            .genre("RPG")
+                            .productQuantity(7)
+                            .console(DS)
+                            .build();
+                    productList.add(PokemonPearl);
+
+                    Product NewSuperMarioBros = Product.builder()
+                            .productName("New Super Mario Bros.")
+                            .productSalePrice(34.99)
+                            .productDescription("Join Mario in this modern reimagining of classic platforming gameplay.")
+                            .genre("Platformer")
+                            .productQuantity(9)
+                            .console(DS)
+                            .build();
+                    productList.add(NewSuperMarioBros);
+
+                    Product TheLegendOfZeldaPhantomHourglass = Product.builder()
+                            .productName("The Legend of Zelda: Phantom Hourglass")
+                            .productSalePrice(39.99)
+                            .productDescription("Set sail in this touch-controlled adventure and save Tetra.")
+                            .genre("Action-Adventure")
+                            .productQuantity(6)
+                            .console(DS)
+                            .build();
+                    productList.add(TheLegendOfZeldaPhantomHourglass);
+
+                    Product MarioKartDS = Product.builder()
+                            .productName("Mario Kart DS")
+                            .productSalePrice(34.99)
+                            .productDescription("Race with your favorite characters and challenge friends wirelessly.")
+                            .genre("Racing")
+                            .productQuantity(8)
+                            .console(DS)
+                            .build();
+                    productList.add(MarioKartDS);
+
+                    Product AnimalCrossingWildWorld = Product.builder()
+                            .productName("Animal Crossing: Wild World")
+                            .productSalePrice(29.99)
+                            .productDescription("Create your dream village and connect with friends in this life simulation game.")
+                            .genre("Simulation")
+                            .productQuantity(7)
+                            .console(DS)
+                            .build();
+                    productList.add(AnimalCrossingWildWorld);
+
+                    Product BrainAge = Product.builder()
+                            .productName("Brain Age: Train Your Brain in Minutes a Day!")
+                            .productSalePrice(19.99)
+                            .productDescription("Sharpen your mind with puzzles, math, and memory games.")
+                            .genre("Puzzle")
+                            .productQuantity(10)
+                            .console(DS)
+                            .build();
+                    productList.add(BrainAge);
+
+                    Product ProfessorLaytonCuriousVillage = Product.builder()
+                            .productName("Professor Layton and the Curious Village")
+                            .productSalePrice(29.99)
+                            .productDescription("Solve puzzles and uncover the secrets of a mysterious village.")
+                            .genre("Puzzle-Adventure")
+                            .productQuantity(6)
+                            .console(DS)
+                            .build();
+                    productList.add(ProfessorLaytonCuriousVillage);
+
+                    Product CastlevaniaDawnOfSorrow = Product.builder()
+                            .productName("Castlevania: Dawn of Sorrow")
+                            .productSalePrice(34.99)
+                            .productDescription("Join Soma Cruz in this gothic action-adventure RPG sequel.")
+                            .genre("Action-Adventure")
+                            .productQuantity(5)
+                            .console(DS)
+                            .build();
+                    productList.add(CastlevaniaDawnOfSorrow);
+
+                    Product PokemonBlack = Product.builder()
+                            .productName("Pokemon Black")
+                            .productSalePrice(39.99)
+                            .productDescription("Explore the Unova region and battle Team Plasma in this RPG adventure.")
+                            .genre("RPG")
+                            .productQuantity(8)
+                            .console(DSi)
+                            .build();
+                    productList.add(PokemonBlack);
+
+                    Product PokemonWhite = Product.builder()
+                            .productName("Pokemon White")
+                            .productSalePrice(39.99)
+                            .productDescription("Embark on an epic journey in the Unova region and uncover the secrets of Reshiram.")
+                            .genre("RPG")
+                            .productQuantity(7)
+                            .console(DSi)
+                            .build();
+                    productList.add(PokemonWhite);
+
+                    Product TheLegendOfZeldaSpiritTracks = Product.builder()
+                            .productName("The Legend of Zelda: Spirit Tracks")
+                            .productSalePrice(34.99)
+                            .productDescription("Drive a magical train and save Hyrule in this touch-controlled adventure.")
+                            .genre("Action-Adventure")
+                            .productQuantity(6)
+                            .console(DSi)
+                            .build();
+                    productList.add(TheLegendOfZeldaSpiritTracks);
+
+                    Product MarioVsDonkeyKongMinisMarchAgain = Product.builder()
+                            .productName("Mario vs. Donkey Kong: Minis March Again!")
+                            .productSalePrice(19.99)
+                            .productDescription("Guide Minis through challenging puzzles to stop Donkey Kong's mischief.")
+                            .genre("Puzzle-Platformer")
+                            .productQuantity(9)
+                            .console(DSi)
+                            .build();
+                    productList.add(MarioVsDonkeyKongMinisMarchAgain);
+
+                    Product FlipnoteStudio = Product.builder()
+                            .productName("Flipnote Studio")
+                            .productSalePrice(14.99)
+                            .productDescription("Create your own animated flipnotes and share them with others.")
+                            .genre("Creative")
+                            .productQuantity(10)
+                            .console(DSi)
+                            .build();
+                    productList.add(FlipnoteStudio);
+
+                    Product WarioWareSnapped = Product.builder()
+                            .productName("WarioWare: Snapped!")
+                            .productSalePrice(14.99)
+                            .productDescription("Use the DSi camera to interact with quirky microgames.")
+                            .genre("Party")
+                            .productQuantity(8)
+                            .console(DSi)
+                            .build();
+                    productList.add(WarioWareSnapped);
+
+                    Product BrainAge2 = Product.builder()
+                            .productName("Brain Age 2: More Training in Minutes a Day!")
+                            .productSalePrice(19.99)
+                            .productDescription("Continue sharpening your mind with new puzzles and activities.")
+                            .genre("Puzzle")
+                            .productQuantity(10)
+                            .console(DSi)
+                            .build();
+                    productList.add(BrainAge2);
+
+                    Product ArtAcademy = Product.builder()
+                            .productName("Art Academy")
+                            .productSalePrice(24.99)
+                            .productDescription("Learn to draw and paint with step-by-step lessons on your DSi.")
+                            .genre("Creative")
+                            .productQuantity(7)
+                            .console(DSi)
+                            .build();
+                    productList.add(ArtAcademy);
+
+                    Product PhotoDojo = Product.builder()
+                            .productName("Photo Dojo")
+                            .productSalePrice(9.99)
+                            .productDescription("Create your own characters and battle in this fun, photo-based fighting game.")
+                            .genre("Fighting")
+                            .productQuantity(9)
+                            .console(DSi)
+                            .build();
+                    productList.add(PhotoDojo);
+
+                    Product PokemonX = Product.builder()
+                            .productName("Pokemon X")
+                            .productSalePrice(39.99)
+                            .productDescription("Explore the Kalos region and uncover the secrets of Mega Evolution.")
+                            .genre("RPG")
+                            .productQuantity(8)
+                            .console(DS3D)
+                            .build();
+                    productList.add(PokemonX);
+
+                    Product PokemonY = Product.builder()
+                            .productName("Pokemon Y")
+                            .productSalePrice(39.99)
+                            .productDescription("Discover the beauty of the Kalos region and battle to become Champion.")
+                            .genre("RPG")
+                            .productQuantity(7)
+                            .console(DS3D)
+                            .build();
+                    productList.add(PokemonY);
+
+                    Product TheLegendOfZeldaOcarinaOfTime3D = Product.builder()
+                            .productName("The Legend of Zelda: Ocarina of Time 3D")
+                            .productSalePrice(34.99)
+                            .productDescription("Relive Link's legendary adventure with updated 3D graphics.")
+                            .genre("Action-Adventure")
+                            .productQuantity(6)
+                            .console(DS3D)
+                            .build();
+                    productList.add(TheLegendOfZeldaOcarinaOfTime3D);
+
+                    Product SuperMario3DLand = Product.builder()
+                            .productName("Super Mario 3D Land")
+                            .productSalePrice(34.99)
+                            .productDescription("Join Mario in a 3D platforming adventure to rescue Princess Peach.")
+                            .genre("Platformer")
+                            .productQuantity(9)
+                            .console(DS3D)
+                            .build();
+                    productList.add(SuperMario3DLand);
+
+                    Product MarioKart7 = Product.builder()
+                            .productName("Mario Kart 7")
+                            .productSalePrice(34.99)
+                            .productDescription("Race underwater, in the air, and across classic tracks with friends.")
+                            .genre("Racing")
+                            .productQuantity(8)
+                            .console(DS3D)
+                            .build();
+                    productList.add(MarioKart7);
+
+                    Product AnimalCrossingNewLeaf = Product.builder()
+                            .productName("Animal Crossing: New Leaf")
+                            .productSalePrice(29.99)
+                            .productDescription("Build your dream village as the mayor in this charming life simulation game.")
+                            .genre("Simulation")
+                            .productQuantity(7)
+                            .console(DS3D)
+                            .build();
+                    productList.add(AnimalCrossingNewLeaf);
+
+                    Product FireEmblemAwakening = Product.builder()
+                            .productName("Fire Emblem: Awakening")
+                            .productSalePrice(39.99)
+                            .productDescription("Lead Chrom and his army to save Ylisse in this tactical RPG masterpiece.")
+                            .genre("Tactical RPG")
+                            .productQuantity(6)
+                            .console(DS3D)
+                            .build();
+                    productList.add(FireEmblemAwakening);
+
+                    Product LuigiMansionDarkMoon = Product.builder()
+                            .productName("Luigi's Mansion: Dark Moon")
+                            .productSalePrice(34.99)
+                            .productDescription("Help Luigi capture ghosts and solve puzzles in multiple haunted mansions.")
+                            .genre("Action-Adventure")
+                            .productQuantity(5)
+                            .console(DS3D)
+                            .build();
+                    productList.add(LuigiMansionDarkMoon);
+
+                    Product KirbyTripleDeluxe = Product.builder()
+                            .productName("Kirby: Triple Deluxe")
+                            .productSalePrice(29.99)
+                            .productDescription("Guide Kirby through colorful worlds in this delightful platformer.")
+                            .genre("Platformer")
+                            .productQuantity(7)
+                            .console(DS3D)
+                            .build();
+                    productList.add(KirbyTripleDeluxe);
+
+                    Product XenobladeChronicles3D = Product.builder()
+                            .productName("Xenoblade Chronicles 3D")
+                            .productSalePrice(39.99)
+                            .productDescription("Embark on a vast RPG adventure in this New3DS-exclusive port of the Wii classic.")
+                            .genre("RPG")
+                            .productQuantity(8)
+                            .console(New3DS)
+                            .build();
+                    productList.add(XenobladeChronicles3D);
+
+                    Product TheLegendOfZeldaMajorasMask3D = Product.builder()
+                            .productName("The Legend of Zelda: Majora's Mask 3D")
+                            .productSalePrice(34.99)
+                            .productDescription("Relive Link's eerie adventure to save Termina from the falling moon.")
+                            .genre("Action-Adventure")
+                            .productQuantity(7)
+                            .console(New3DS)
+                            .build();
+                    productList.add(TheLegendOfZeldaMajorasMask3D);
+
+                    Product FireEmblemFates = Product.builder()
+                            .productName("Fire Emblem Fates")
+                            .productSalePrice(39.99)
+                            .productDescription("Choose your path and lead your army in this epic tactical RPG.")
+                            .genre("Tactical RPG")
+                            .productQuantity(6)
+                            .console(New3DS)
+                            .build();
+                    productList.add(FireEmblemFates);
+
+                    Product SuperMarioMaker3DS = Product.builder()
+                            .productName("Super Mario Maker for Nintendo 3DS")
+                            .productSalePrice(34.99)
+                            .productDescription("Create and play custom Mario levels on the go.")
+                            .genre("Platformer")
+                            .productQuantity(9)
+                            .console(New3DS)
+                            .build();
+                    productList.add(SuperMarioMaker3DS);
+
+                    Product PokemonSun = Product.builder()
+                            .productName("Pokemon Sun")
+                            .productSalePrice(39.99)
+                            .productDescription("Explore the Alola region and uncover the mysteries of the legendary Solgaleo.")
+                            .genre("RPG")
+                            .productQuantity(8)
+                            .console(New3DS)
+                            .build();
+                    productList.add(PokemonSun);
+
+                    Product PokemonMoon = Product.builder()
+                            .productName("Pokemon Moon")
+                            .productSalePrice(39.99)
+                            .productDescription("Embark on an island-hopping adventure in the Alola region with Lunala.")
+                            .genre("RPG")
+                            .productQuantity(7)
+                            .console(New3DS)
+                            .build();
+                    productList.add(PokemonMoon);
+
+                    Product MonsterHunterGenerations = Product.builder()
+                            .productName("Monster Hunter Generations")
+                            .productSalePrice(34.99)
+                            .productDescription("Hunt massive monsters and craft powerful gear in this action-packed RPG.")
+                            .genre("Action-RPG")
+                            .productQuantity(6)
+                            .console(New3DS)
+                            .build();
+                    productList.add(MonsterHunterGenerations);
+
+                    Product MetroidSamusReturns = Product.builder()
+                            .productName("Metroid: Samus Returns")
+                            .productSalePrice(39.99)
+                            .productDescription("Help Samus Aran take on the Metroid menace in this reimagined classic.")
+                            .genre("Action-Adventure")
+                            .productQuantity(5)
+                            .console(New3DS)
+                            .build();
+                    productList.add(MetroidSamusReturns);
+
+                    Product HyruleWarriorsLegends = Product.builder()
+                            .productName("Hyrule Warriors: Legends")
+                            .productSalePrice(34.99)
+                            .productDescription("Battle hordes of enemies with Zelda characters in this action-packed spin-off.")
+                            .genre("Action")
+                            .productQuantity(7)
+                            .console(New3DS)
+                            .build();
+                    productList.add(HyruleWarriorsLegends);
+
+                    Product HaloCombatEvolved = Product.builder()
                             .productName("Halo: Combat Evolved")
                             .productSalePrice(29.99)
-                            .productQuantity(50)
+                            .productDescription("Step into the armor of Master Chief and save humanity from the Covenant.")
+                            .genre("Shooter")
+                            .productQuantity(8)
                             .console(Xbox)
                             .build();
-
-                    Product Halo2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Halo 2")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(Xbox)
-                            .build();
+                    productList.add(HaloCombatEvolved);
 
                     Product Fable = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Fable")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
+                            .productSalePrice(24.99)
+                            .productDescription("Forge your own path in this action-RPG set in the world of Albion.")
+                            .genre("Action-RPG")
+                            .productQuantity(7)
                             .console(Xbox)
                             .build();
-
-                    Product StarWarsKOTOR = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Star Wars: Knights of the Old Republic")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(Xbox)
-                            .build();
-
-                    Product StarWarsKOTOR2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Star Wars: Knights of the Old Republic II")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(Xbox)
-                            .build();
-
-                    Product ForzaMotorsport = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Forza Motorsport")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(Xbox)
-                            .build();
-
-                    Product NinjaGaidenBlack = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Ninja Gaiden Black")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(Xbox)
-                            .build();
-
-                    Product JadeEmpire = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Jade Empire")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(Xbox)
-                            .build();
-
-                    Product SplinterCell = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Tom Clancy's Splinter Cell")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(Xbox)
-                            .build();
-
-                    Product SplinterCellChaosTheory = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Tom Clancy's Splinter Cell: Chaos Theory")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(Xbox)
-                            .build();
-
-                    Product Burnout3Takedown = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Burnout 3: Takedown")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(Xbox)
-                            .build();
-
-                    Product CrimsonSkies = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Crimson Skies: High Road to Revenge")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(Xbox)
-                            .build();
+                    productList.add(Fable);
 
                     Product TheElderScrollsMorrowind = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("The Elder Scrolls III: Morrowind")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
+                            .productSalePrice(34.99)
+                            .productDescription("Explore the vast and immersive world of Morrowind in this RPG classic.")
+                            .genre("RPG")
+                            .productQuantity(6)
                             .console(Xbox)
                             .build();
+                    productList.add(TheElderScrollsMorrowind);
+
+                    Product StarWarsKnightsOfTheOldRepublic = Product.builder()
+                            .productName("Star Wars: Knights of the Old Republic")
+                            .productSalePrice(34.99)
+                            .productDescription("Decide your destiny in this critically acclaimed Star Wars RPG.")
+                            .genre("RPG")
+                            .productQuantity(9)
+                            .console(Xbox)
+                            .build();
+                    productList.add(StarWarsKnightsOfTheOldRepublic);
+
+                    Product ForzaMotorsport = Product.builder()
+                            .productName("Forza Motorsport")
+                            .productSalePrice(29.99)
+                            .productDescription("Experience high-speed thrills and realistic racing on the Xbox.")
+                            .genre("Racing")
+                            .productQuantity(8)
+                            .console(Xbox)
+                            .build();
+                    productList.add(ForzaMotorsport);
+
+                    Product NinjaGaidenBlack = Product.builder()
+                            .productName("Ninja Gaiden Black")
+                            .productSalePrice(34.99)
+                            .productDescription("Master ninja skills in this challenging and action-packed adventure.")
+                            .genre("Action")
+                            .productQuantity(7)
+                            .console(Xbox)
+                            .build();
+                    productList.add(NinjaGaidenBlack);
 
                     Product Doom3 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Doom 3")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
+                            .productSalePrice(24.99)
+                            .productDescription("Survive the horrors of a Martian research facility overrun by demons.")
+                            .genre("Shooter")
+                            .productQuantity(6)
                             .console(Xbox)
                             .build();
+                    productList.add(Doom3);
 
-                    Product HalfLife2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Half-Life 2")
+                    Product JadeEmpire = Product.builder()
+                            .productName("Jade Empire")
                             .productSalePrice(29.99)
-                            .productQuantity(25)
+                            .productDescription("Unleash martial arts skills in this action-RPG set in a mythical world.")
+                            .genre("Action-RPG")
+                            .productQuantity(8)
                             .console(Xbox)
                             .build();
+                    productList.add(JadeEmpire);
 
-                    Product DeadOrAlive3 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Dead or Alive 3")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
+                    Product Burnout3Takedown = Product.builder()
+                            .productName("Burnout 3: Takedown")
+                            .productSalePrice(24.99)
+                            .productDescription("Crash, smash, and speed your way to victory in this arcade racing game.")
+                            .genre("Racing")
+                            .productQuantity(9)
                             .console(Xbox)
                             .build();
-
-                    Product ProjectGothamRacing2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Project Gotham Racing 2")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(Xbox)
-                            .build();
-
-                    Product TimeSplitters2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("TimeSplitters 2")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(Xbox)
-                            .build();
-
-                    Product PrinceOfPersiaSandsOfTime = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Prince of Persia: The Sands of Time")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(Xbox)
-                            .build();
-
-                    Product Black = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Black")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(Xbox)
-                            .build();
-
+                    productList.add(Burnout3Takedown);
 
                     Product Halo3 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Halo 3")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
+                            .productSalePrice(39.99)
+                            .productDescription("Finish the fight and save humanity in this epic first-person shooter.")
+                            .genre("Shooter")
+                            .productQuantity(8)
                             .console(Xbox360)
                             .build();
-
-                    Product HaloReach = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Halo: Reach")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(Xbox360)
-                            .build();
+                    productList.add(Halo3);
 
                     Product GearsOfWar = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Gears of War")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
+                            .productSalePrice(34.99)
+                            .productDescription("Battle the Locust Horde in this groundbreaking third-person shooter.")
+                            .genre("Shooter")
+                            .productQuantity(7)
                             .console(Xbox360)
                             .build();
+                    productList.add(GearsOfWar);
 
-                    Product GearsOfWar2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Gears of War 2")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(Xbox360)
-                            .build();
-
-                    Product RedDeadRedemption360 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Red Dead Redemption")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(Xbox360)
-                            .build();
-
-                    Product GTA5Xbox360 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Grand Theft Auto V")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(Xbox360)
-                            .build();
-
-                    Product CallOfDuty4 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Call of Duty 4: Modern Warfare")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(Xbox360)
-                            .build();
-
-                    Product CallOfDutyMW2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Call of Duty: Modern Warfare 2")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(Xbox360)
-                            .build();
-
-                    Product SkyrimXbox360 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
+                    Product TheElderScrollsSkyrim = Product.builder()
                             .productName("The Elder Scrolls V: Skyrim")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
+                            .productSalePrice(39.99)
+                            .productDescription("Embark on an epic RPG adventure in the open world of Tamriel.")
+                            .genre("RPG")
+                            .productQuantity(9)
                             .console(Xbox360)
                             .build();
+                    productList.add(TheElderScrollsSkyrim);
 
-                    Product Fallout3 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Fallout 3")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
+                    Product GrandTheftAutoV = Product.builder()
+                            .productName("Grand Theft Auto V")
+                            .productSalePrice(49.99)
+                            .productDescription("Explore Los Santos in this open-world action-adventure masterpiece.")
+                            .genre("Action-Adventure")
+                            .productQuantity(8)
                             .console(Xbox360)
                             .build();
-
-                    Product FalloutNewVegas = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Fallout: New Vegas")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(Xbox360)
-                            .build();
-
-                    Product MassEffect = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Mass Effect")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(Xbox360)
-                            .build();
-
-                    Product MassEffect2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Mass Effect 2")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(Xbox360)
-                            .build();
-
-                    Product BioshockXbox360 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("BioShock")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(Xbox360)
-                            .build();
-
-                    Product BioshockInfinite360 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("BioShock Infinite")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(Xbox360)
-                            .build();
+                    productList.add(GrandTheftAutoV);
 
                     Product ForzaHorizon = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Forza Horizon")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
+                            .productSalePrice(34.99)
+                            .productDescription("Experience open-road racing and festival vibes in this dynamic racer.")
+                            .genre("Racing")
+                            .productQuantity(7)
                             .console(Xbox360)
                             .build();
+                    productList.add(ForzaHorizon);
 
-                    Product ForzaMotorsport4 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Forza Motorsport 4")
+                    Product BioShock = Product.builder()
+                            .productName("BioShock")
                             .productSalePrice(29.99)
-                            .productQuantity(30)
+                            .productDescription("Uncover the secrets of the underwater city of Rapture in this iconic FPS.")
+                            .genre("Shooter")
+                            .productQuantity(6)
                             .console(Xbox360)
                             .build();
+                    productList.add(BioShock);
 
-                    Product BatmanArkhamAsylum = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Batman: Arkham Asylum")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
+                    Product RedDeadRedemption360 = Product.builder()
+                            .productName("Red Dead Redemption")
+                            .productSalePrice(39.99)
+                            .productDescription("Explore the Wild West in this critically acclaimed open-world adventure.")
+                            .genre("Action-Adventure")
+                            .productQuantity(8)
                             .console(Xbox360)
                             .build();
+                    productList.add(RedDeadRedemption360);
 
-                    Product BatmanArkhamCity = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Batman: Arkham City")
+                    Product MassEffect = Product.builder()
+                            .productName("Mass Effect")
                             .productSalePrice(29.99)
-                            .productQuantity(30)
+                            .productDescription("Embark on an epic sci-fi journey to save the galaxy in this RPG classic.")
+                            .genre("RPG")
+                            .productQuantity(7)
                             .console(Xbox360)
                             .build();
+                    productList.add(MassEffect);
 
-                    Product AssassinCreed2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
+                    Product AssassinCreedII = Product.builder()
                             .productName("Assassin's Creed II")
                             .productSalePrice(29.99)
-                            .productQuantity(25)
+                            .productDescription("Step into the shoes of Ezio Auditore and uncover a conspiracy in Renaissance Italy.")
+                            .genre("Action-Adventure")
+                            .productQuantity(8)
                             .console(Xbox360)
                             .build();
+                    productList.add(AssassinCreedII);
 
                     Product Halo5Guardians = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Halo 5: Guardians")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
+                            .productSalePrice(49.99)
+                            .productDescription("Lead Spartan Locke and Master Chief in a galaxy-spanning adventure.")
+                            .genre("Shooter")
+                            .productQuantity(8)
                             .console(XboxOne)
                             .build();
-
-                    Product HaloMasterChiefCollection = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Halo: The Master Chief Collection")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
-                            .console(XboxOne)
-                            .build();
-
-                    Product ForzaHorizon4 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Forza Horizon 4")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
-                            .console(XboxOne)
-                            .build();
-
-                    Product ForzaMotorsport7 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Forza Motorsport 7")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
-                            .console(XboxOne)
-                            .build();
+                    productList.add(Halo5Guardians);
 
                     Product GearsOfWar4 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Gears of War 4")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
+                            .productSalePrice(39.99)
+                            .productDescription("Battle a new enemy with JD Fenix and his crew in this action-packed sequel.")
+                            .genre("Shooter")
+                            .productQuantity(7)
                             .console(XboxOne)
                             .build();
+                    productList.add(GearsOfWar4);
 
-                    Product Gears5 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Gears 5")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
+                    Product TheWitcher3WildHunt = Product.builder()
+                            .productName("The Witcher 3: Wild Hunt")
+                            .productSalePrice(39.99)
+                            .productDescription("Join Geralt of Rivia in a sprawling RPG adventure to find Ciri and defeat the Wild Hunt.")
+                            .genre("RPG")
+                            .productQuantity(9)
                             .console(XboxOne)
                             .build();
+                    productList.add(TheWitcher3WildHunt);
+
+                    Product RedDeadRedemption2 = Product.builder()
+                            .productName("Red Dead Redemption 2")
+                            .productSalePrice(59.99)
+                            .productDescription("Explore the sprawling Wild West in this critically acclaimed open-world masterpiece.")
+                            .genre("Action-Adventure")
+                            .productQuantity(8)
+                            .console(XboxOne)
+                            .build();
+                    productList.add(RedDeadRedemption2);
+
+                    Product ForzaHorizon4 = Product.builder()
+                            .productName("Forza Horizon 4")
+                            .productSalePrice(49.99)
+                            .productDescription("Race across the seasons in a beautifully realized Britain.")
+                            .genre("Racing")
+                            .productQuantity(7)
+                            .console(XboxOne)
+                            .build();
+                    productList.add(ForzaHorizon4);
 
                     Product SeaOfThieves = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Sea of Thieves")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
+                            .productSalePrice(39.99)
+                            .productDescription("Sail the seas, hunt for treasure, and battle pirates in this multiplayer adventure.")
+                            .genre("Action-Adventure")
+                            .productQuantity(6)
                             .console(XboxOne)
                             .build();
+                    productList.add(SeaOfThieves);
 
-                    Product OriBlindForest = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Ori and the Blind Forest")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
+                    Product Fallout4 = Product.builder()
+                            .productName("Fallout 4")
+                            .productSalePrice(34.99)
+                            .productDescription("Rebuild the wasteland and uncover the secrets of the Commonwealth in this RPG.")
+                            .genre("RPG")
+                            .productQuantity(7)
                             .console(XboxOne)
                             .build();
+                    productList.add(Fallout4);
 
-                    Product OriWillWisps = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Ori and the Will of the Wisps")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
+                    Product AssassinCreedOrigins = Product.builder()
+                            .productName("Assassin's Creed: Origins")
+                            .productSalePrice(39.99)
+                            .productDescription("Uncover the origins of the Brotherhood in ancient Egypt.")
+                            .genre("Action-Adventure")
+                            .productQuantity(8)
                             .console(XboxOne)
                             .build();
+                    productList.add(AssassinCreedOrigins);
 
-                    Product SunsetOverdrive = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Sunset Overdrive")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
-                            .console(XboxOne)
-                            .build();
-
-                    Product QuantumBreak = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Quantum Break")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
-                            .console(XboxOne)
-                            .build();
-
-                    Product RiseOfTheTombRaider = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Rise of the Tomb Raider")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
-                            .console(XboxOne)
-                            .build();
-
-                    Product TheWitcher3 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("The Witcher 3: Wild Hunt")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
-                            .console(XboxOne)
-                            .build();
-
-                    Product RedDeadRedemption2XOne = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Red Dead Redemption 2")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
-                            .console(XboxOne)
-                            .build();
-
-                    Product GTA5XOne = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Grand Theft Auto V")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
-                            .console(XboxOne)
-                            .build();
-
-                    Product Cyberpunk2077XOne = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Cyberpunk 2077")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
-                            .console(XboxOne)
-                            .build();
-
-                    Product AssassinCreedValhallaXOne = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Assassin's Creed Valhalla")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
-                            .console(XboxOne)
-                            .build();
-
-                    Product FIFA23XOne = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("FIFA 23")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
-                            .console(XboxOne)
-                            .build();
-
-                    Product CallOfDutyWarzone = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Call of Duty: Warzone")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
-                            .console(XboxOne)
-                            .build();
-
-                    Product DoomEternalXOne = Product.builder()
-                            .productId(UUID.randomUUID().toString())
+                    Product DoomEternal = Product.builder()
                             .productName("Doom Eternal")
-                            .productSalePrice(29.99)
-                            .productQuantity(100)
+                            .productSalePrice(49.99)
+                            .productDescription("Rip and tear through hordes of demons in this action-packed FPS.")
+                            .genre("Shooter")
+                            .productQuantity(9)
                             .console(XboxOne)
                             .build();
+                    productList.add(DoomEternal);
 
                     Product HaloInfinite = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Halo Infinite")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
+                            .productSalePrice(59.99)
+                            .productDescription("Join Master Chief in a new adventure to save humanity in this epic FPS.")
+                            .genre("Shooter")
+                            .productQuantity(8)
                             .console(XboxSeriesX)
                             .build();
+                    productList.add(HaloInfinite);
 
                     Product ForzaHorizon5 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Forza Horizon 5")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
+                            .productSalePrice(69.99)
+                            .productDescription("Race through stunning landscapes in Mexico in this ultimate racing experience.")
+                            .genre("Racing")
+                            .productQuantity(9)
                             .console(XboxSeriesX)
                             .build();
+                    productList.add(ForzaHorizon5);
 
-                    Product MicrosoftFlightSimulator = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Microsoft Flight Simulator")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
+                    Product GearsTactics = Product.builder()
+                            .productName("Gears Tactics")
+                            .productSalePrice(49.99)
+                            .productDescription("Lead your squad against the Locust Horde in this tactical turn-based strategy game.")
+                            .genre("Strategy")
+                            .productQuantity(7)
                             .console(XboxSeriesX)
                             .build();
-
-                    Product Gears5SeriesX = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Gears 5")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(XboxSeriesX)
-                            .build();
-
-                    Product FableReboot = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Fable (Reboot)")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(XboxSeriesX)
-                            .build();
-
-                    Product Starfield = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Starfield")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(XboxSeriesX)
-                            .build();
-
-                    Product Redfall = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Redfall")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(XboxSeriesX)
-                            .build();
+                    productList.add(GearsTactics);
 
                     Product TheMedium = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("The Medium")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
+                            .productSalePrice(39.99)
+                            .productDescription("Explore a haunting dual-reality world in this psychological horror game.")
+                            .genre("Horror")
+                            .productQuantity(6)
                             .console(XboxSeriesX)
                             .build();
+                    productList.add(TheMedium);
 
-                    Product Psychonauts2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Psychonauts 2")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
+                    Product AssassinCreedValhalla = Product.builder()
+                            .productName("Assassin's Creed: Valhalla")
+                            .productSalePrice(59.99)
+                            .productDescription("Lead Eivor in a Viking saga of conquest and exploration.")
+                            .genre("Action-Adventure")
+                            .productQuantity(8)
                             .console(XboxSeriesX)
                             .build();
+                    productList.add(AssassinCreedValhalla);
 
-                    Product Hellblade2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Hellblade II: Senua's Saga")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
+                    Product MicrosoftFlightSimulator = Product.builder()
+                            .productName("Microsoft Flight Simulator")
+                            .productSalePrice(69.99)
+                            .productDescription("Experience the entire world from above in this stunning flight simulator.")
+                            .genre("Simulation")
+                            .productQuantity(9)
                             .console(XboxSeriesX)
                             .build();
+                    productList.add(MicrosoftFlightSimulator);
 
-                    Product AssassinCreedMirageSeriesX = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Assassin's Creed Mirage")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
+                    Product DoomEternalSEX = Product.builder()
+                            .productName("Doom Eternal")
+                            .productSalePrice(49.99)
+                            .productDescription("Rip and tear through hordes of demons with next-gen enhancements.")
+                            .genre("Shooter")
+                            .productQuantity(7)
                             .console(XboxSeriesX)
                             .build();
+                    productList.add(DoomEternalSEX);
 
-                    Product CallOfDutyMWIII = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Call of Duty: Modern Warfare III")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
+                    Product Cyberpunk2077 = Product.builder()
+                            .productName("Cyberpunk 2077")
+                            .productSalePrice(59.99)
+                            .productDescription("Explore the neon-lit streets of Night City in this ambitious open-world RPG.")
+                            .genre("RPG")
+                            .productQuantity(6)
                             .console(XboxSeriesX)
                             .build();
+                    productList.add(Cyberpunk2077);
 
-                    Product Cyberpunk2077PhantomLiberty = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Cyberpunk 2077: Phantom Liberty")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
+                    Product ResidentEvilVillage = Product.builder()
+                            .productName("Resident Evil Village")
+                            .productSalePrice(59.99)
+                            .productDescription("Survive terrifying horrors in this chilling continuation of the Resident Evil saga.")
+                            .genre("Horror")
+                            .productQuantity(7)
                             .console(XboxSeriesX)
                             .build();
+                    productList.add(ResidentEvilVillage);
 
-                    Product ResidentEvil4Remake = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Resident Evil 4 Remake")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(XboxSeriesX)
-                            .build();
-
-                    Product EldenRingSeriesX = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Elden Ring")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(XboxSeriesX)
-                            .build();
-
-                    Product HogwartsLegacySeriesX = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Hogwarts Legacy")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(XboxSeriesX)
-                            .build();
-
-                    Product DiabloIVSeriesX = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Diablo IV")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(XboxSeriesX)
-                            .build();
-
-                    Product StreetFighter6SeriesX = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Street Fighter 6")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(XboxSeriesX)
-                            .build();
-
-                    Product NBA2K24SeriesX = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("NBA 2K24")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(XboxSeriesX)
-                            .build();
-
-                    Product ForzaMotorsport2023 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Forza Motorsport 2023")
-                            .productSalePrice(79.99)
-                            .productQuantity(100)
-                            .console(XboxSeriesX)
-                            .build();
-
-                    Product SonicTheHedgehogMasterSystem = Product.builder()
-                            .productId(UUID.randomUUID().toString())
+                    Product SonicTheHedgehog = Product.builder()
                             .productName("Sonic the Hedgehog")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
+                            .productSalePrice(19.99)
+                            .productDescription("Race through vibrant levels to stop Dr. Robotnik in this iconic platformer.")
+                            .genre("Platformer")
+                            .productQuantity(8)
                             .console(SegaMasterSystem)
                             .build();
+                    productList.add(SonicTheHedgehog);
 
                     Product AlexKiddInMiracleWorld = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Alex Kidd in Miracle World")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
+                            .productSalePrice(14.99)
+                            .productDescription("Join Alex Kidd on a quest to rescue his brother and defeat evil forces.")
+                            .genre("Platformer")
+                            .productQuantity(7)
                             .console(SegaMasterSystem)
                             .build();
-
-                    Product WonderBoyIII = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Wonder Boy III: The Dragon's Trap")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(SegaMasterSystem)
-                            .build();
+                    productList.add(AlexKiddInMiracleWorld);
 
                     Product PhantasyStar = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Phantasy Star")
                             .productSalePrice(29.99)
-                            .productQuantity(35)
+                            .productDescription("Embark on an epic sci-fi RPG journey to save the Algol star system.")
+                            .genre("RPG")
+                            .productQuantity(6)
                             .console(SegaMasterSystem)
                             .build();
+                    productList.add(PhantasyStar);
 
                     Product GoldenAxeWarrior = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Golden Axe Warrior")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
+                            .productSalePrice(24.99)
+                            .productDescription("Explore a sprawling world and defeat Dark Guld in this action RPG.")
+                            .genre("Action-RPG")
+                            .productQuantity(7)
                             .console(SegaMasterSystem)
                             .build();
-
-                    Product Shinobi = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Shinobi")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(SegaMasterSystem)
-                            .build();
-
-                    Product CastleOfIllusion = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Castle of Illusion Starring Mickey Mouse")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(SegaMasterSystem)
-                            .build();
-
-                    Product OutRun = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("OutRun")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(SegaMasterSystem)
-                            .build();
-
-                    Product AlteredBeast = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Altered Beast")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(SegaMasterSystem)
-                            .build();
-
-                    Product SpaceHarrier = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Space Harrier")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(SegaMasterSystem)
-                            .build();
-
-                    Product TheNinja = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("The Ninja")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(SegaMasterSystem)
-                            .build();
-
-                    Product FantasyZone = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Fantasy Zone")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(SegaMasterSystem)
-                            .build();
-
-                    Product BlackBelt = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Black Belt")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(SegaMasterSystem)
-                            .build();
+                    productList.add(GoldenAxeWarrior);
 
                     Product WonderBoy = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Wonder Boy")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
+                            .productSalePrice(19.99)
+                            .productDescription("Help Wonder Boy rescue his girlfriend in this classic action-platformer.")
+                            .genre("Platformer")
+                            .productQuantity(8)
                             .console(SegaMasterSystem)
                             .build();
+                    productList.add(WonderBoy);
 
-                    Product Zillion = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Zillion")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
+                    Product Shinobi = Product.builder()
+                            .productName("Shinobi")
+                            .productSalePrice(24.99)
+                            .productDescription("Battle as a ninja to defeat the evil Zeed organization.")
+                            .genre("Action")
+                            .productQuantity(6)
                             .console(SegaMasterSystem)
                             .build();
+                    productList.add(Shinobi);
 
+                    Product OutRun = Product.builder()
+                            .productName("OutRun")
+                            .productSalePrice(19.99)
+                            .productDescription("Speed through scenic routes in this arcade racing classic.")
+                            .genre("Racing")
+                            .productQuantity(7)
+                            .console(SegaMasterSystem)
+                            .build();
+                    productList.add(OutRun);
+
+                    Product SpaceHarrier = Product.builder()
+                            .productName("Space Harrier")
+                            .productSalePrice(24.99)
+                            .productDescription("Fly through surreal landscapes and battle enemies in this fast-paced shooter.")
+                            .genre("Shooter")
+                            .productQuantity(6)
+                            .console(SegaMasterSystem)
+                            .build();
+                    productList.add(SpaceHarrier);
 
                     Product RType = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("R-Type")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
+                            .productSalePrice(19.99)
+                            .productDescription("Pilot your ship and defeat the Bydo Empire in this iconic shoot-'em-up.")
+                            .genre("Shooter")
+                            .productQuantity(8)
                             .console(SegaMasterSystem)
                             .build();
+                    productList.add(RType);
 
-                    Product Choplifter = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Choplifter")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(SegaMasterSystem)
-                            .build();
-
-                    Product PenguinLand = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Penguin Land")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(SegaMasterSystem)
-                            .build();
-
-                    Product GhoulsNGhosts = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Ghouls 'n Ghosts")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(SegaMasterSystem)
-                            .build();
-
-                    Product SonicTheHedgehogGenesis = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Sonic the Hedgehog")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(SegaGenesis)
-                            .build();
-
-                    Product SonicTheHedgehog2Genesis = Product.builder()
-                            .productId(UUID.randomUUID().toString())
+                    Product SonicTheHedgehog2 = Product.builder()
                             .productName("Sonic the Hedgehog 2")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
+                            .productSalePrice(24.99)
+                            .productDescription("Team up with Tails to stop Dr. Robotnik in this high-speed platformer.")
+                            .genre("Platformer")
+                            .productQuantity(8)
                             .console(SegaGenesis)
                             .build();
+                    productList.add(SonicTheHedgehog2);
 
-                    Product StreetsOfRageGenesis = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Streets of Rage")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(SegaGenesis)
-                            .build();
-
-                    Product StreetsOfRage2Genesis = Product.builder()
-                            .productId(UUID.randomUUID().toString())
+                    Product StreetsOfRage2 = Product.builder()
                             .productName("Streets of Rage 2")
                             .productSalePrice(29.99)
-                            .productQuantity(35)
+                            .productDescription("Battle thugs and save the city in this classic beat-'em-up.")
+                            .genre("Action")
+                            .productQuantity(7)
                             .console(SegaGenesis)
                             .build();
+                    productList.add(StreetsOfRage2);
 
-                    Product GoldenAxeGenesis = Product.builder()
-                            .productId(UUID.randomUUID().toString())
+                    Product GoldenAxe = Product.builder()
                             .productName("Golden Axe")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
+                            .productSalePrice(19.99)
+                            .productDescription("Wield swords and magic in this hack-and-slash fantasy adventure.")
+                            .genre("Action")
+                            .productQuantity(9)
                             .console(SegaGenesis)
                             .build();
+                    productList.add(GoldenAxe);
 
-                    Product AlteredBeastGenesis = Product.builder()
-                            .productId(UUID.randomUUID().toString())
+                    Product AlteredBeast = Product.builder()
                             .productName("Altered Beast")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
+                            .productSalePrice(19.99)
+                            .productDescription("Rise from your grave and battle mythological creatures in this arcade classic.")
+                            .genre("Action")
+                            .productQuantity(6)
                             .console(SegaGenesis)
                             .build();
+                    productList.add(AlteredBeast);
 
-                    Product Shinobi3Genesis = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Shinobi III: Return of the Ninja Master")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
+                    Product PhantasyStarIV = Product.builder()
+                            .productName("Phantasy Star IV")
+                            .productSalePrice(34.99)
+                            .productDescription("Save the Algol star system in this critically acclaimed RPG.")
+                            .genre("RPG")
+                            .productQuantity(7)
                             .console(SegaGenesis)
                             .build();
+                    productList.add(PhantasyStarIV);
 
-                    Product GunstarHeroesGenesis = Product.builder()
-                            .productId(UUID.randomUUID().toString())
+                    Product GunstarHeroes = Product.builder()
                             .productName("Gunstar Heroes")
                             .productSalePrice(29.99)
-                            .productQuantity(30)
+                            .productDescription("Blast through enemies in this fast-paced run-and-gun shooter.")
+                            .genre("Shooter")
+                            .productQuantity(8)
                             .console(SegaGenesis)
                             .build();
+                    productList.add(GunstarHeroes);
 
-                    Product PhantasyStarIVGenesis = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Phantasy Star IV")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(SegaGenesis)
-                            .build();
-
-                    Product CastlevaniaBloodlines = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Castlevania: Bloodlines")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(SegaGenesis)
-                            .build();
-
-                    Product EarthwormJimGenesis = Product.builder()
-                            .productId(UUID.randomUUID().toString())
+                    Product EarthwormJim = Product.builder()
                             .productName("Earthworm Jim")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
+                            .productSalePrice(24.99)
+                            .productDescription("Take control of a super-powered worm in this hilarious platformer.")
+                            .genre("Platformer")
+                            .productQuantity(7)
                             .console(SegaGenesis)
                             .build();
+                    productList.add(EarthwormJim);
 
-                    Product ComixZone = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Comix Zone")
+                    Product ShiningForce = Product.builder()
+                            .productName("Shining Force")
                             .productSalePrice(29.99)
-                            .productQuantity(30)
+                            .productDescription("Lead your army in tactical battles to save the kingdom of Rune.")
+                            .genre("Tactical RPG")
+                            .productQuantity(6)
                             .console(SegaGenesis)
                             .build();
+                    productList.add(ShiningForce);
 
-                    Product ToeJamAndEarl = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("ToeJam & Earl")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(SegaGenesis)
-                            .build();
-
-                    Product ContraHardCorps = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Contra: Hard Corps")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(SegaGenesis)
-                            .build();
-
-                    Product Ristar = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Ristar")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(SegaGenesis)
-                            .build();
-
-                    Product AladdinGenesis = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Disney's Aladdin")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(SegaGenesis)
-                            .build();
-
-                    Product MortalKombatGenesis = Product.builder()
-                            .productId(UUID.randomUUID().toString())
+                    Product MortalKombat = Product.builder()
                             .productName("Mortal Kombat")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
+                            .productSalePrice(19.99)
+                            .productDescription("Enter the arena and test your skills in this legendary fighting game.")
+                            .genre("Fighting")
+                            .productQuantity(9)
                             .console(SegaGenesis)
                             .build();
-
-                    Product ThunderForceIV = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Thunder Force IV")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(SegaGenesis)
-                            .build();
-
-                    Product ShadowDancerGenesis = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Shadow Dancer: The Secret of Shinobi")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(SegaGenesis)
-                            .build();
-
-                    Product SonicAndKnuckles = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Sonic & Knuckles")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(SegaGenesis)
-                            .build();
+                    productList.add(MortalKombat);
 
                     Product NightsIntoDreams = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("NiGHTS into Dreams")
+                            .productName("Nights into Dreams")
                             .productSalePrice(29.99)
-                            .productQuantity(50)
+                            .productDescription("Fly through dreamscapes to stop nightmares in this beautiful action game.")
+                            .genre("Action-Adventure")
+                            .productQuantity(8)
                             .console(SegaSaturn)
                             .build();
-
-                    Product PanzerDragoon = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Panzer Dragoon")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(SegaSaturn)
-                            .build();
-
-                    Product PanzerDragoonSaga = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Panzer Dragoon Saga")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(SegaSaturn)
-                            .build();
+                    productList.add(NightsIntoDreams);
 
                     Product VirtuaFighter2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Virtua Fighter 2")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
+                            .productSalePrice(24.99)
+                            .productDescription("Master martial arts techniques in this groundbreaking 3D fighting game.")
+                            .genre("Fighting")
+                            .productQuantity(7)
                             .console(SegaSaturn)
                             .build();
+                    productList.add(VirtuaFighter2);
+
+                    Product PanzerDragoonSaga = Product.builder()
+                            .productName("Panzer Dragoon Saga")
+                            .productSalePrice(49.99)
+                            .productDescription("Embark on an epic RPG adventure with your dragon in a mysterious world.")
+                            .genre("RPG")
+                            .productQuantity(6)
+                            .console(SegaSaturn)
+                            .build();
+                    productList.add(PanzerDragoonSaga);
 
                     Product SegaRallyChampionship = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Sega Rally Championship")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
+                            .productSalePrice(19.99)
+                            .productDescription("Race through diverse terrains in this arcade racing classic.")
+                            .genre("Racing")
+                            .productQuantity(8)
                             .console(SegaSaturn)
                             .build();
-
-                    Product DaytonaUSA = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Daytona USA")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(SegaSaturn)
-                            .build();
+                    productList.add(SegaRallyChampionship);
 
                     Product ShiningForceIII = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Shining Force III")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
+                            .productSalePrice(39.99)
+                            .productDescription("Lead your army in strategic battles in this critically acclaimed RPG.")
+                            .genre("Tactical RPG")
+                            .productQuantity(6)
                             .console(SegaSaturn)
                             .build();
+                    productList.add(ShiningForceIII);
+
+                    Product DaytonaUSA = Product.builder()
+                            .productName("Daytona USA")
+                            .productSalePrice(19.99)
+                            .productDescription("Experience high-speed thrills in this legendary arcade racer.")
+                            .genre("Racing")
+                            .productQuantity(9)
+                            .console(SegaSaturn)
+                            .build();
+                    productList.add(DaytonaUSA);
 
                     Product BurningRangers = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Burning Rangers")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
+                            .productSalePrice(34.99)
+                            .productDescription("Save lives and battle fires in this futuristic action game.")
+                            .genre("Action")
+                            .productQuantity(7)
                             .console(SegaSaturn)
                             .build();
-
-                    Product SonicJam = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Sonic Jam")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(SegaSaturn)
-                            .build();
+                    productList.add(BurningRangers);
 
                     Product GuardianHeroes = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Guardian Heroes")
                             .productSalePrice(29.99)
-                            .productQuantity(25)
+                            .productDescription("Battle through a branching storyline in this action-packed beat-'em-up.")
+                            .genre("Action")
+                            .productQuantity(8)
                             .console(SegaSaturn)
                             .build();
+                    productList.add(GuardianHeroes);
 
-                    Product DragonForce = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Dragon Force")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
+                    Product VirtuaCop = Product.builder()
+                            .productName("Virtua Cop")
+                            .productSalePrice(24.99)
+                            .productDescription("Take on criminals in this light-gun shooting classic.")
+                            .genre("Shooter")
+                            .productQuantity(7)
                             .console(SegaSaturn)
                             .build();
-
-                    Product FightersMegamix = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Fighters Megamix")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(SegaSaturn)
-                            .build();
-
-                    Product ResidentEvilSaturn = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Resident Evil")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(SegaSaturn)
-                            .build();
-
-                    Product TombRaiderSaturn = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Tomb Raider")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(SegaSaturn)
-                            .build();
-
-                    Product SonicR = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Sonic R")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(SegaSaturn)
-                            .build();
-
-                    Product VirtuaCop2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Virtua Cop 2")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(SegaSaturn)
-                            .build();
-
-                    Product RadiantSilvergun = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Radiant Silvergun")
-                            .productSalePrice(29.99)
-                            .productQuantity(20)
-                            .console(SegaSaturn)
-                            .build();
-
-                    Product StreetFighterAlpha3 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Street Fighter Alpha 3")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(SegaSaturn)
-                            .build();
-
-                    Product TheHouseOfTheDead = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("The House of the Dead")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(SegaSaturn)
-                            .build();
-
-                    Product MarvelSuperHeroes = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Marvel Super Heroes")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(SegaSaturn)
-                            .build();
+                    productList.add(VirtuaCop);
 
                     Product SonicAdventure = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Sonic Adventure")
                             .productSalePrice(29.99)
-                            .productQuantity(50)
+                            .productDescription("Join Sonic and friends to stop Dr. Robotnik in this fast-paced 3D adventure.")
+                            .genre("Platformer")
+                            .productQuantity(8)
                             .console(SegaDreamcast)
                             .build();
-
-                    Product SonicAdventure2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Sonic Adventure 2")
-                            .productSalePrice(29.99)
-                            .productQuantity(45)
-                            .console(SegaDreamcast)
-                            .build();
+                    productList.add(SonicAdventure);
 
                     Product Shenmue = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Shenmue")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
+                            .productSalePrice(34.99)
+                            .productDescription("Embark on a quest for revenge in this groundbreaking open-world adventure.")
+                            .genre("Action-Adventure")
+                            .productQuantity(6)
                             .console(SegaDreamcast)
                             .build();
-
-                    Product Shenmue2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Shenmue II")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(SegaDreamcast)
-                            .build();
-
-                    Product JetSetRadio = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Jet Set Radio")
-                            .productSalePrice(29.99)
-                            .productQuantity(50)
-                            .console(SegaDreamcast)
-                            .build();
+                    productList.add(Shenmue);
 
                     Product CrazyTaxi = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("Crazy Taxi")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
+                            .productSalePrice(19.99)
+                            .productDescription("Race against time to deliver passengers in this chaotic arcade classic.")
+                            .genre("Racing")
+                            .productQuantity(9)
                             .console(SegaDreamcast)
                             .build();
+                    productList.add(CrazyTaxi);
 
-                    Product SkiesOfArcadia = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Skies of Arcadia")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
+                    Product JetSetRadio = Product.builder()
+                            .productName("Jet Set Radio")
+                            .productSalePrice(24.99)
+                            .productDescription("Skate, spray graffiti, and escape the cops in this vibrant action game.")
+                            .genre("Action")
+                            .productQuantity(7)
                             .console(SegaDreamcast)
                             .build();
-
-                    Product PowerStone = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Power Stone")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(SegaDreamcast)
-                            .build();
-
-                    Product PowerStone2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Power Stone 2")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(SegaDreamcast)
-                            .build();
+                    productList.add(JetSetRadio);
 
                     Product SoulCalibur = Product.builder()
-                            .productId(UUID.randomUUID().toString())
                             .productName("SoulCalibur")
                             .productSalePrice(29.99)
-                            .productQuantity(25)
+                            .productDescription("Fight in epic battles with a diverse roster of characters in this 3D fighter.")
+                            .genre("Fighting")
+                            .productQuantity(8)
                             .console(SegaDreamcast)
                             .build();
-
-                    Product MarvelVsCapcom2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Marvel vs. Capcom 2")
-                            .productSalePrice(29.99)
-                            .productQuantity(40)
-                            .console(SegaDreamcast)
-                            .build();
+                    productList.add(SoulCalibur);
 
                     Product ResidentEvilCodeVeronica = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Resident Evil Code: Veronica")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
+                            .productName("Resident Evil: Code Veronica")
+                            .productSalePrice(34.99)
+                            .productDescription("Survive the horrors of the Umbrella Corporation in this chilling survival horror.")
+                            .genre("Survival Horror")
+                            .productQuantity(6)
                             .console(SegaDreamcast)
                             .build();
+                    productList.add(ResidentEvilCodeVeronica);
 
-                    Product TheHouseOfTheDead2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("The House of the Dead 2")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
+                    Product SkiesOfArcadia = Product.builder()
+                            .productName("Skies of Arcadia")
+                            .productSalePrice(39.99)
+                            .productDescription("Sail the skies in an epic RPG filled with adventure and exploration.")
+                            .genre("RPG")
+                            .productQuantity(7)
                             .console(SegaDreamcast)
                             .build();
+                    productList.add(SkiesOfArcadia);
 
-                    Product VirtuaTennis = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Virtua Tennis")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
+                    Product MarvelVsCapcom2 = Product.builder()
+                            .productName("Marvel vs. Capcom 2")
+                            .productSalePrice(34.99)
+                            .productDescription("Team up with iconic characters for action-packed 3-on-3 fighting battles.")
+                            .genre("Fighting")
+                            .productQuantity(9)
                             .console(SegaDreamcast)
                             .build();
+                    productList.add(MarvelVsCapcom2);
 
-                    Product SegaRally2 = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Sega Rally 2")
+                    Product PhantasyStarOnline = Product.builder()
+                            .productName("Phantasy Star Online")
                             .productSalePrice(29.99)
-                            .productQuantity(25)
+                            .productDescription("Battle monsters and explore dungeons in this pioneering online RPG.")
+                            .genre("RPG")
+                            .productQuantity(7)
                             .console(SegaDreamcast)
                             .build();
-
-                    Product DaytonaUSADreamcast = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Daytona USA")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(SegaDreamcast)
-                            .build();
-
-                    Product GrandiaII = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Grandia II")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(SegaDreamcast)
-                            .build();
-
-                    Product Ikaruga = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Ikaruga")
-                            .productSalePrice(29.99)
-                            .productQuantity(35)
-                            .console(SegaDreamcast)
-                            .build();
-
-                    Product VirtuaFighter3tb = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Virtua Fighter 3tb")
-                            .productSalePrice(29.99)
-                            .productQuantity(30)
-                            .console(SegaDreamcast)
-                            .build();
-
-                    Product Quake3Arena = Product.builder()
-                            .productId(UUID.randomUUID().toString())
-                            .productName("Quake III Arena")
-                            .productSalePrice(29.99)
-                            .productQuantity(25)
-                            .console(SegaDreamcast)
-                            .build();
+                    productList.add(PhantasyStarOnline);
 
 
+                    productRepository.saveAll(productList);
             }
     }
 }
