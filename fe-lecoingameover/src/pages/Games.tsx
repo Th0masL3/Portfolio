@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import './Games.css';
 import {ProductResponseModel} from "../Models/ProductResponseModel";
 import {ConsoleResponseModel} from "../Models/ConsoleResponseModel";
+import { useNavigate } from 'react-router-dom';
+
+import Navigation from "./Navigation";
 
 
 export default function Games(): JSX.Element {
@@ -11,6 +14,7 @@ export default function Games(): JSX.Element {
     const [products, setProducts] = useState<ProductResponseModel[]>([]);
     const [error, setError] = useState<string | null>(null);
     const [consoleDetails, setConsoleDetails] = useState<ConsoleResponseModel | null>(null);
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -30,6 +34,9 @@ export default function Games(): JSX.Element {
         }
     };
 
+    const handleAddGameClick = (): void => {
+        navigate(`/add-game/${consoleId}`);
+    };
     const fetchProducts = async (): Promise<void> => {
         try {
             const response = await axios.get(`http://localhost:8080/api/v1/products/console/${consoleId}`);
@@ -48,6 +55,7 @@ export default function Games(): JSX.Element {
                 {consoleDetails ? `${consoleDetails.consoleName} Games` : 'Games'}
             </h1>
             {error && <p className="products-error">{error}</p>}
+            <button className="add-game-button" onClick={handleAddGameClick}>Add Game</button>
             <table className="products-table">
                 <thead>
                 <tr>
