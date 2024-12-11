@@ -1,6 +1,7 @@
 package com.lecoingameover.belecoingameover.dataaccess;
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Setter
@@ -11,10 +12,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "products")
 public class Product {
     @Id
-    private String id;
     private String productId;
+
+    @Indexed(unique = true)
     private String productName;
     private double productSalePrice;
+    private String productDescription;
+    private String genre;
     private int productQuantity;
     private Console console;
 }
