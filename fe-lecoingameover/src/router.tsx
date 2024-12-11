@@ -4,7 +4,7 @@ import EditConsole from './pages/EditConsole';
 import {ProtectedRoute} from './shared/components/ProtectedRoute';
 import {AppRoutes} from './shared/models/app.routes';
 import AddConsole from './pages/AddConsole';
-import Products from './pages/Products';
+import Games from './pages/Games.tsx';
 
 const router = createBrowserRouter([
     {
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
                 path: AppRoutes.Products,
                 element: (
                     <ProtectedRoute>
-                        <Products/>
+                        <Games/>
                     </ProtectedRoute>
                 )
             }

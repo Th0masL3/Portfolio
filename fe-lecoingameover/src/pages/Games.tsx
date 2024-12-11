@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import './Products.css';
+import './Games.css';
 import {ProductResponseModel} from "../Models/ProductResponseModel";
 import {ConsoleResponseModel} from "../Models/ConsoleResponseModel";
 
 
-export default function Products(): JSX.Element {
+export default function Games(): JSX.Element {
     const { consoleId } = useParams<{ consoleId: string }>();
     const [products, setProducts] = useState<ProductResponseModel[]>([]);
     const [error, setError] = useState<string | null>(null);
