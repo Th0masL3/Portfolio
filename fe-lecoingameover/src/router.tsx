@@ -1,9 +1,10 @@
-import { createBrowserRouter } from 'react-router-dom';
-import Consoles from './pages/Products';
+import {createBrowserRouter} from 'react-router-dom';
+import Consoles from './pages/Consoles';
 import EditConsole from './pages/EditConsole';
-import { ProtectedRoute } from './shared/components/ProtectedRoute';
-import { AppRoutes } from './shared/models/app.routes';
+import {ProtectedRoute} from './shared/components/ProtectedRoute';
+import {AppRoutes} from './shared/models/app.routes';
 import AddConsole from './pages/AddConsole';
+import Products from './pages/Products';
 
 const router = createBrowserRouter([
     {
@@ -31,6 +32,14 @@ const router = createBrowserRouter([
                         <AddConsole />
                     </ProtectedRoute>
                 ),
+            },
+            {
+                path: AppRoutes.Products,
+                element: (
+                    <ProtectedRoute>
+                        <Products/>
+                    </ProtectedRoute>
+                )
             }
         ],
     },

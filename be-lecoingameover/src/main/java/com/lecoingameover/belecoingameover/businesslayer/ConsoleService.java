@@ -1,4 +1,4 @@
-package com.lecoingameover.belecoingameover.buisnesslayer;
+package com.lecoingameover.belecoingameover.businesslayer;
 
 import com.lecoingameover.belecoingameover.presentationlayer.ConsoleRequestModel;
 import com.lecoingameover.belecoingameover.presentationlayer.ConsoleResponseModel;

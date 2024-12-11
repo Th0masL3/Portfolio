@@ -1,0 +1,85 @@
+/* Main container for the Products page */
+.products-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+    font-family: 'Roboto', sans-serif;
+    color: #e0e0e0;
+}
+
+/* Title styling */
+.products-title {
+    font-size: 32px;
+    color: #ff00ff; /* Neon pink */
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+}
+
+/* Error message styling */
+.products-error {
+    color: #ff4040; /* Neon red */
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Table styling */
+.products-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #0f3460; /* Deep blue */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+}
+
+/* Table Header */
+.products-table thead {
+    background: linear-gradient(135deg, #ff00ff, #00ffff); /* Neon gradient */
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.products-table th {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 2px solid #16213e; /* Subtle dark border */
+}
+
+/* Table Rows */
+.products-table td {
+    padding: 15px;
+    color: #e0e0e0;
+    border-bottom: 1px solid #1a1a2e; /* Subtle separator */
+}
+
+/* Hover effect for rows */
+.products-table tbody tr:hover {
+    background: linear-gradient(135deg, #16213e, #1a1a2e);
+    color: #ff00ff;
+    cursor: pointer;
+    box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .products-table {
+        font-size: 14px;
+    }
+
+    .products-title {
+        font-size: 26px;
+    }
+}
+
+/* Add glowing effect for neon vibe */
+.products-table thead th,
+.products-table tbody tr:hover td {
+    text-shadow: 0 0 5px #ff00ff, 0 0 10px #00ffff;
+}

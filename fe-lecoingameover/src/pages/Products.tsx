@@ -1,120 +1,77 @@
-import { useAuth0 } from "@auth0/auth0-react";
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import "./Consoles.css";
-import Navigation from "./Navigation";
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import './Products.css';
+import {ProductResponseModel} from "../Models/ProductResponseModel";
+import {ConsoleResponseModel} from "../Models/ConsoleResponseModel";
 
-interface ConsoleResponseModel {
-    consoleId: string;
-    consoleName: string;
-    releaseDate: string;
-    price: number;
-    quantityInStock: number;
-    company: string;
-}
 
-export default function Consoles(): JSX.Element {
-    const [consoles, setConsoles] = useState<ConsoleResponseModel[]>([]);
+export default function Products(): JSX.Element {
+    const { consoleId } = useParams<{ consoleId: string }>();
+    const [products, setProducts] = useState<ProductResponseModel[]>([]);
     const [error, setError] = useState<string | null>(null);
-    const navigate = useNavigate();
-    const { user, isAuthenticated } = useAuth0();
+    const [consoleDetails, setConsoleDetails] = useState<ConsoleResponseModel | null>(null);
+
 
     useEffect(() => {
-        fetchAllConsoles();
-    }, []);
+        fetchConsoleDetails();
+        fetchProducts();
+    }, [consoleId]);
 
-    const fetchAllConsoles = async (): Promise<void> => {
+    const fetchConsoleDetails = async (): Promise<void> => {
         try {
-            const response = await axios.get("http://localhost:8080/api/v1/consoles");
+            const response = await axios.get(`http://localhost:8080/api/v1/consoles/${consoleId}`);
             if (response.status === 200) {
-                setConsoles(response.data);
+                setConsoleDetails(response.data);
             }
         } catch (err) {
-            console.error("Error fetching consoles:", err);
-            setError("Failed to fetch consoles.");
+            console.error('Error fetching console details:', err);
+            setError('Failed to fetch console details.');
         }
     };
 
-    const handleEdit = (console: ConsoleResponseModel) => {
-        navigate("/consoles/edit", { state: { console } });
-    };
-
-    const handleAddConsole = () => {
-        navigate("/consoles/add");
-    };
-
-    const deleteConsole = async (id: string): Promise<void> => {
+    const fetchProducts = async (): Promise<void> => {
         try {
-            const response = await axios.delete(`http://localhost:8080/api/v1/consoles/${id}`);
-            if (response.status === 204) {
-                setConsoles((prevConsoles) => prevConsoles.filter((console) => console.consoleId !== id));
-                alert("Console deleted successfully!");
+            const response = await axios.get(`http://localhost:8080/api/v1/products/console/${consoleId}`);
+            if (response.status === 200) {
+                setProducts(response.data);
             }
         } catch (err) {
-            console.error("Error deleting console:", err);
-            setError("Failed to delete console.");
+            console.error('Error fetching products:', err);
+            setError('Failed to fetch products.');
         }
     };
-
-    const isAdmin = user && user["http://your-app.com/roles"]?.includes("ADMIN");
 
     return (
-        <>
-            <Navigation />
-            <div className="console-container">
-                <h1 className="console-title">Consoles</h1>
-                {error && <p className="console-error">{error}</p>}
-                {isAuthenticated && isAdmin && (
-                    <div className="console-actions">
-                        <button className="console-button" onClick={handleAddConsole}>
-                            Add Console
-                        </button>
-                    </div>
-                )}
-                <table className="console-table">
-                    <thead>
-                    <tr>
-                        <th>Console ID</th>
-                        <th>Name</th>
-                        <th>Release Date</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Company</th>
-                        {isAuthenticated && isAdmin && (
-                        <th>Actions</th>
-                        )}
+        <div className="products-container">
+            <h1 className="products-title">
+                {consoleDetails ? `${consoleDetails.consoleName} Games` : 'Games'}
+            </h1>
+            {error && <p className="products-error">{error}</p>}
+            <table className="products-table">
+                <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Genre</th>
+                    <th>Quantity</th>
+                </tr>
+                </thead>
+                <tbody>
+                {products.map((product) => (
+                    <tr key={product.productId}>
+                        <td>{product.productId}</td>
+                        <td>{product.productName}</td>
+                        <td>${product.productSalePrice.toFixed(2)}</td>
+                        <td>{product.productDescription}</td>
+                        <td>{product.genre}</td>
+                        <td>{product.productQuantity}</td>
                     </tr>
-                    </thead>
-                    <tbody>
-                    {consoles.map((console) => (
-                        <tr key={console.consoleId}>
-                            <td>{console.consoleId}</td>
-                            <td>{console.consoleName}</td>
-                            <td>{console.releaseDate}</td>
-                            <td>${console.price.toFixed(2)}</td>
-                            <td>{console.quantityInStock}</td>
-                            <td>{console.company}</td>
-                            <td>
-                                {isAuthenticated && isAdmin && (
-                                    <>
-                                        <button className="console-button" onClick={() => handleEdit(console)}>
-                                            Update
-                                        </button>
-                                        <button
-                                            className="console-button delete-button"
-                                            onClick={() => deleteConsole(console.consoleId)}
-                                        >
-                                            Delete
-                                        </button>
-                                    </>
-                                )}
-                            </td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </table>
-            </div>
-        </>
+                ))}
+                </tbody>
+            </table>
+        </div>
     );
 }

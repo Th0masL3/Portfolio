@@ -1,8 +1,7 @@
 package com.lecoingameover.belecoingameover.presentationlayer;
 
-import com.lecoingameover.belecoingameover.buisnesslayer.ConsoleService;
+import com.lecoingameover.belecoingameover.businesslayer.ConsoleService;
 import jakarta.validation.Valid;
-import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,5 +43,9 @@ public ResponseEntity<List<ConsoleResponseModel>> getAllConsoles() {
         consoleService.deleteConsoleByConsoleId(consoleId);
         return ResponseEntity.noContent().build();
     }
+
+
+
+
 
 }

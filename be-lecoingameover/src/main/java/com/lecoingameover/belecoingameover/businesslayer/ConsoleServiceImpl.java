@@ -1,10 +1,8 @@
-package com.lecoingameover.belecoingameover.buisnesslayer;
+package com.lecoingameover.belecoingameover.businesslayer;
 
 import com.lecoingameover.belecoingameover.DataMapperLayer.ConsoleRequestMapper;
 import com.lecoingameover.belecoingameover.DataMapperLayer.ConsoleResponseMapper;
-import com.lecoingameover.belecoingameover.dataaccess.Console;
-import com.lecoingameover.belecoingameover.dataaccess.ConsoleIdentifier;
-import com.lecoingameover.belecoingameover.dataaccess.ConsoleRepository;
+import com.lecoingameover.belecoingameover.dataaccess.*;
 import com.lecoingameover.belecoingameover.presentationlayer.ConsoleRequestModel;
 import com.lecoingameover.belecoingameover.presentationlayer.ConsoleResponseModel;
 import com.lecoingameover.belecoingameover.utils.exceptions.NotFoundException;
@@ -15,9 +13,10 @@ import java.util.List;
 @Service
 public class ConsoleServiceImpl implements ConsoleService {
 
-public ConsoleRepository consoleRepository;
+    public ConsoleRepository consoleRepository;
     private final ConsoleResponseMapper consoleResponseMapper;
     private final ConsoleRequestMapper consoleRequestMapper;
+
 
     public ConsoleServiceImpl(ConsoleRepository consoleRepository, ConsoleResponseMapper consoleResponseMapper, ConsoleRequestMapper consoleRequestMapper) {
         this.consoleRepository = consoleRepository;
@@ -84,9 +83,4 @@ public ConsoleRepository consoleRepository;
 
        consoleRepository.delete(console);
     }
-
-
-
-
-
 }
