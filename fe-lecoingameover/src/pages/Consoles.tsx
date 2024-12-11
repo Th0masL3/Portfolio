@@ -1,18 +1,12 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import "./Consoles.css";
 import Navigation from "./Navigation";
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import './Consoles.css';
+import {ConsoleResponseModel} from "../Models/ConsoleResponseModel";
 
-interface ConsoleResponseModel {
-    consoleId: string;
-    consoleName: string;
-    releaseDate: string;
-    price: number;
-    quantityInStock: number;
-    company: string;
-}
 
 export default function Consoles(): JSX.Element {
     const [consoles, setConsoles] = useState<ConsoleResponseModel[]>([]);
@@ -35,6 +29,10 @@ export default function Consoles(): JSX.Element {
             setError("Failed to fetch consoles.");
         }
     };
+
+    const handleRowClick = (consoleId: string) => {
+        navigate(`/consoles/${consoleId}/products`);
+    }
 
     const handleEdit = (console: ConsoleResponseModel) => {
         navigate("/consoles/edit", { state: { console } });
@@ -82,13 +80,17 @@ export default function Consoles(): JSX.Element {
                         <th>Quantity</th>
                         <th>Company</th>
                         {isAuthenticated && isAdmin && (
-                        <th>Actions</th>
+                            <th>Actions</th>
                         )}
                     </tr>
                     </thead>
                     <tbody>
                     {consoles.map((console) => (
-                        <tr key={console.consoleId}>
+                        <tr
+                            key={console.consoleId}
+                            onClick={() => handleRowClick(console.consoleId)}
+                            style={{cursor: 'pointer'}}
+                        >
                             <td>{console.consoleId}</td>
                             <td>{console.consoleName}</td>
                             <td>{console.releaseDate}</td>

@@ -3,11 +3,10 @@ package com.lecoingameover.belecoingameover.presentationlayer;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-import com.lecoingameover.belecoingameover.buisnesslayer.ConsoleService;
+import com.lecoingameover.belecoingameover.businesslayer.ConsoleService;
 import com.lecoingameover.belecoingameover.utils.exceptions.NotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.http.ResponseEntity;
 
 import java.time.LocalDate;
