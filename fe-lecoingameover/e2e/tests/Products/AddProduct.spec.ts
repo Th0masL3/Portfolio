@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 
 test('test', async ({ page }) => {
     await page.goto('http://localhost:3000/consoles');
-    await getByRole('cell', { name: '675b23a925b2c7669c35b62d' }).click();
+    await page.getByRole('cell', { name: '675b23a925b2c7669c35b62d' }).click();
     await expect(page.getByRole('button', { name: 'Add Game' })).toBeVisible();
     await page.getByRole('button', { name: 'Add Game' }).click();
     await expect(page.getByText('Add GameName:Price:')).toBeVisible();
@@ -17,3 +17,5 @@ test('test', async ({ page }) => {
     await page.getByRole('button', { name: 'Add Game' }).click();
     await expect(page.getByRole('cell', { name: 'ala' })).toBeVisible();
   });
+
+
