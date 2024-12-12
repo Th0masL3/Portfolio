@@ -43,13 +43,15 @@ const router = createBrowserRouter([
                 )
             },
             {
-                path: "/add-game/:consoleId",
+                path: AppRoutes.AddGame,
                 element: (
                     <ProtectedRoute>
                         <AddGame />
                     </ProtectedRoute>
                 ),
             },
+           
+            
         ],
     },
 ]);
