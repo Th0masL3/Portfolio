@@ -83,3 +83,96 @@
 .products-table tbody tr:hover td {
     text-shadow: 0 0 5px #ff00ff, 0 0 10px #00ffff;
 }
+/* Button styling for Add Game */
+.add-game-button {
+    display: inline-block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    background: linear-gradient(135deg, #00ffff, #ff00ff); /* Neon gradient */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    transition: all 0.3s ease;
+}
+
+.add-game-button:hover {
+    background: linear-gradient(135deg, #ff00ff, #00ffff); /* Reverse gradient */
+    box-shadow: 0 4px 20px #ff00ff, 0 4px 20px #00ffff;
+    transform: scale(1.05);
+}
+
+/* Form container styling for Add Game page */
+.add-game-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+    color: #e0e0e0;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Form title */
+.add-game-container h1 {
+    text-align: center;
+    font-size: 28px;
+    color: #ff00ff;
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+    margin-bottom: 20px;
+}
+
+/* Input and textarea styling */
+.add-game-container label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.add-game-container input,
+.add-game-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 8px;
+    background: #0f3460;
+    color: #e0e0e0;
+    box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.8);
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.add-game-container input:focus,
+.add-game-container textarea:focus {
+    outline: none;
+    background: #16213e;
+    box-shadow: inset 0 4px 20px rgba(0, 0, 0, 0.8), 0 0 10px #ff00ff;
+}
+
+/* Submit button */
+.add-game-container button[type="submit"] {
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    background: linear-gradient(135deg, #00ffff, #ff00ff);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    transition: all 0.3s ease;
+}
+
+.add-game-container button[type="submit"]:hover {
+    background: linear-gradient(135deg, #ff00ff, #00ffff);
+    box-shadow: 0 4px 20px #ff00ff, 0 4px 20px #00ffff;
+    transform: scale(1.05);
+}

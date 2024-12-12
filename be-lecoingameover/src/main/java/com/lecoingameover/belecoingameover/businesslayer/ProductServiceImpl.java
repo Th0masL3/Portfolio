@@ -3,7 +3,9 @@ package com.lecoingameover.belecoingameover.businesslayer;
 import com.lecoingameover.belecoingameover.DataMapperLayer.ProductRequestMapper;
 import com.lecoingameover.belecoingameover.DataMapperLayer.ProductResponseMapper;
 import com.lecoingameover.belecoingameover.dataaccess.Product;
+import com.lecoingameover.belecoingameover.dataaccess.ProductIdentifier;
 import com.lecoingameover.belecoingameover.dataaccess.ProductRepository;
+import com.lecoingameover.belecoingameover.presentationlayer.ProductRequestModel;
 import com.lecoingameover.belecoingameover.presentationlayer.ProductResponseModel;
 import com.lecoingameover.belecoingameover.utils.exceptions.NotFoundException;
 import org.springframework.stereotype.Service;
@@ -31,5 +33,12 @@ public class ProductServiceImpl implements ProductService {
             throw new NotFoundException("Products not found in console with ID " + consoleId);
         }
         return productResponseMapper.entityListToResponseModelList(products);
+    }
+
+    @Override
+    public ProductResponseModel addProductByConsoleId(String consoleId, ProductRequestModel productRequestModel) {
+        Product product = productRequestMapper.requestModelToEntity(productRequestModel, new ProductIdentifier());
+        Product savedProduct = productRepository.save(product);
+        return productResponseMapper.entityToResponseModel(savedProduct);
     }
 }

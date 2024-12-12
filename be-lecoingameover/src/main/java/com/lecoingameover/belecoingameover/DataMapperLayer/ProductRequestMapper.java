@@ -10,7 +10,8 @@ import org.mapstruct.Mappings;
 @Mapper(componentModel = "spring")
 public interface ProductRequestMapper {
     @Mappings({
-            @Mapping(target = "productId", expression = "java(productIdentifier.getProductId())"),
+            @Mapping(target = "productId", ignore = true),
+            
             @Mapping(target = "console.consoleId", source = "productRequestModel.console.consoleId")
     })
     Product requestModelToEntity(ProductRequestModel productRequestModel, ProductIdentifier productIdentifier);

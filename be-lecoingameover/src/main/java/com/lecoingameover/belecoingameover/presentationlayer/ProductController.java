@@ -2,6 +2,7 @@ package com.lecoingameover.belecoingameover.presentationlayer;
 
 import com.lecoingameover.belecoingameover.businesslayer.ProductService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,4 +21,10 @@ public class ProductController {
         List<ProductResponseModel> products = productService.getProductsByConsoleId(consoleId);
         return ResponseEntity.ok(products);
     }
+    @PostMapping("/console/{consoleId}")
+    public ResponseEntity<ProductResponseModel> addProduct(@PathVariable String consoleId,@RequestBody ProductRequestModel productRequestModel) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(productService.addProductByConsoleId(consoleId,productRequestModel));
+
+    }
+
 }

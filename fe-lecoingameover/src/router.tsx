@@ -5,6 +5,7 @@ import {ProtectedRoute} from './shared/components/ProtectedRoute';
 import {AppRoutes} from './shared/models/app.routes';
 import AddConsole from './pages/AddConsole';
 import Games from './pages/Games.tsx';
+import AddGame from './pages/addGame.tsx';
 
 const router = createBrowserRouter([
     {
@@ -40,7 +41,17 @@ const router = createBrowserRouter([
                         <Games/>
                     </ProtectedRoute>
                 )
-            }
+            },
+            {
+                path: AppRoutes.AddGame,
+                element: (
+                    <ProtectedRoute>
+                        <AddGame />
+                    </ProtectedRoute>
+                ),
+            },
+           
+            
         ],
     },
 ]);
