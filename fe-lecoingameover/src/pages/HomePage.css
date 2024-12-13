@@ -1,0 +1,112 @@
+html, body {
+    margin: 0;
+    width: 100%;
+    background: #1a1a1d;
+    color: #E0B0FF;
+    overflow-x: hidden;
+    padding: 0;
+  }
+  
+  .home-page {
+    height: 100%;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    background-image: url('background.png');
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0;
+  }
+  
+  .hero-section {
+    margin-top: 20px;
+    color: #E0B0FF;
+    padding: 0px 200px;
+  }
+  
+  .hero-section h1 {
+    font-family: "Jersey 20", sans-serif;
+    font-size: 4em;
+    color: #E0B0FF;
+  }
+
+  .hero-section h2 {
+    font-family: "Lilita One", sans-serif;
+    font-size: 2em;
+    margin-top: 50px;
+    color: #E0B0FF;
+  }
+  
+  .search-bar {
+    width: 100%;
+    max-width: 700px;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: none;
+  }
+  
+  .trending-section {
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .trending-image {
+    max-width: 100%;
+    border-radius: 10px;
+  }
+  
+  .shop-section {
+    margin-top: 40px;
+    position: relative;
+    padding: 0px 200px;
+  }
+  
+  .shop-section h2 {
+    font-family: "Lilita One", sans-serif;
+    font-size: 1.8rem;
+    color: #E0B0FF;
+    margin-bottom: 10px;
+  }
+
+  .button-image {
+    width: 225px;
+    height: 150px;
+    margin-right: 10px;
+  }
+  
+  .shop-button {
+    all: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    cursor: pointer;
+    background: transparent;
+    position: relative;
+    left: 10%;
+  }
+  
+  .shop-button:hover {
+    background-color: #E0B0FF;
+  }
+  
+  .about-section {
+    font-family: "Lilita One", sans-serif;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 200px;
+    color: white;
+  }
+  
+  .store-image {
+    width: 50%;
+    max-width: 600px;
+    margin-top: 20px;
+    border-radius: 10px;
+  }
