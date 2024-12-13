@@ -1,4 +1,5 @@
-import AddGame from "../../pages/addGame";
+import UpdateGame from "../../pages/UpdateGame";
+
 
 export enum AppRoutes {
 
@@ -6,5 +7,6 @@ export enum AppRoutes {
     EditConsole = '/consoles/edit',
     AddConsole = '/consoles/add',
     Products = '/consoles/:consoleId/products',
-    AddGame = '/add-game/:consoleId'
+    AddGame = '/add-game/:consoleId',
+    UpdateGame = '/update-game/:productId'
 }
