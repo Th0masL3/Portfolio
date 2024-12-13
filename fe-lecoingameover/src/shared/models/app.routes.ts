@@ -6,5 +6,6 @@ export enum AppRoutes {
     EditConsole = '/consoles/edit',
     AddConsole = '/consoles/add',
     Products = '/consoles/:consoleId/products',
-    AddGame = '/add-game/:consoleId'
+    AddGame = '/add-game/:consoleId',
+    Homepage = '/',
 }

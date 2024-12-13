@@ -2,14 +2,23 @@ import {createBrowserRouter} from 'react-router-dom';
 import Consoles from './pages/Consoles';
 import EditConsole from './pages/EditConsole';
 import {ProtectedRoute} from './shared/components/ProtectedRoute';
-import {AppRoutes} from './shared/models/app.routes';
+import { AppRoutes } from './shared/models/app.routes';
 import AddConsole from './pages/AddConsole';
 import Games from './pages/Games.tsx';
 import AddGame from './pages/addGame.tsx';
+import HomePage from './pages/HomePage';
 
 const router = createBrowserRouter([
     {
         children: [
+            {
+                path: AppRoutes.Homepage,
+                element: (
+                    <ProtectedRoute>
+                        <HomePage />
+                    </ProtectedRoute>
+                ),
+            },
             {
                 path: AppRoutes.ConsoleList,
                 element: (
