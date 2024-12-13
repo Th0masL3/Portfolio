@@ -6,6 +6,8 @@ import com.lecoingameover.belecoingameover.presentationlayer.ProductResponseMode
 import java.util.List;
 
 public interface ProductService {
+
+    ProductResponseModel getProductByProductId(String productId);
     List<ProductResponseModel> getProductsByConsoleId(String consoleId);
     ProductResponseModel addProductByConsoleId(String consoleId, ProductRequestModel productRequestModel);
 }
