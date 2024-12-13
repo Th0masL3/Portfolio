@@ -2,6 +2,7 @@ package com.lecoingameover.belecoingameover.presentationlayer;
 
 import com.lecoingameover.belecoingameover.businesslayer.ProductService;
 import com.lecoingameover.belecoingameover.dataaccess.Product;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,5 +33,11 @@ public class ProductController {
     public ResponseEntity<ProductResponseModel> addProduct(@PathVariable String consoleId,@RequestBody ProductRequestModel productRequestModel) {
         return ResponseEntity.status(HttpStatus.CREATED).body(productService.addProductByConsoleId(consoleId,productRequestModel));
 
+    }
+    @PutMapping("/{productId}")
+    public ResponseEntity<ProductResponseModel> updateProduct(
+            @PathVariable String productId,
+            @Valid @RequestBody ProductRequestModel productRequestModel) {
+        return ResponseEntity.ok(productService.updateProduct(productId, productRequestModel));
     }
 }

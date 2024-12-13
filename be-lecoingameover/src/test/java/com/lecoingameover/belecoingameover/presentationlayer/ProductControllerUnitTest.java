@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import com.lecoingameover.belecoingameover.businesslayer.ProductService;
 
 import com.lecoingameover.belecoingameover.utils.exceptions.NotFoundException;
+import jakarta.validation.ConstraintViolationException;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -149,5 +150,79 @@ class ProductControllerUnitTest {
         verify(productService, times(1)).getProductsByConsoleId(consoleId);
     }
 
-}
+    // Controller Unit Tests
+
+
+
+
+        @Test
+        void testUpdateProduct_Positive() {
+            // Arrange
+            String productId = "12345";
+            ProductRequestModel productRequestModel = ProductRequestModel.builder()
+                    .productName("Updated Name")
+                    .productDescription("Updated Description")
+                    .productSalePrice(100.00)
+                    .productQuantity(10)
+                    .build();
+
+            ProductResponseModel expectedResponse = ProductResponseModel.builder()
+                    .productId(productId)
+                    .productName("Updated Name")
+                    .productDescription("Updated Description")
+                    .productSalePrice(100.00)
+                    .productQuantity(10)
+                    .build();
+
+            when(productService.updateProduct(productId, productRequestModel)).thenReturn(expectedResponse);
+
+            // Act
+            ResponseEntity<ProductResponseModel> response = productController.updateProduct(productId, productRequestModel);
+
+            // Assert
+            assertEquals(HttpStatus.OK, response.getStatusCode());
+            assertEquals(expectedResponse, response.getBody());
+            verify(productService, times(1)).updateProduct(productId, productRequestModel);
+        }
+
+        @Test
+        void testUpdateProduct_Negative_ProductNotFound() {
+            // Arrange
+            String productId = "12345";
+            ProductRequestModel productRequestModel = ProductRequestModel.builder()
+                    .productName("Updated Name")
+                    .build();
+
+            when(productService.updateProduct(productId, productRequestModel))
+                    .thenThrow(new NotFoundException("Product with Id: " + productId + " not found"));
+
+            // Act & Assert
+            NotFoundException exception = assertThrows(NotFoundException.class, () -> {
+                productController.updateProduct(productId, productRequestModel);
+            });
+
+            assertEquals("Product with Id: 12345 not found", exception.getMessage());
+            verify(productService, times(1)).updateProduct(productId, productRequestModel);
+        }
+
+        @Test
+        void testUpdateProduct_Negative_InvalidRequest() {
+            // Arrange
+            String productId = "12345";
+            ProductRequestModel productRequestModel = new ProductRequestModel(); // Invalid request
+
+            when(productService.updateProduct(productId, productRequestModel))
+                    .thenThrow(new ConstraintViolationException(null));
+
+            // Act & Assert
+            ConstraintViolationException exception = assertThrows(ConstraintViolationException.class, () -> {
+                productController.updateProduct(productId, productRequestModel);
+            });
+
+            verify(productService, times(1)).updateProduct(productId, productRequestModel);
+        }
+    }
+
+
+
 
