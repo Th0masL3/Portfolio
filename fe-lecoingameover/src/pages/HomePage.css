@@ -1,6 +1,7 @@
 html, body {
     margin: 0;
     width: 100%;
+    height: auto;
     background: #1a1a1d;
     color: #E0B0FF;
     overflow-x: hidden;

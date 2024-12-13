@@ -9,7 +9,7 @@ const Navigation = (): JSX.Element => {
         <nav className="navigation-bar">
             <div className="logo-container">
                 {/* Add logo image */}
-                <img src="./logo.jpg" alt="Logo" className="logo" />
+                <img src="./assets/images/CoinGameOverLogo.jpg" alt="Logo" className="logo" />
             </div>
             <div className="nav-links">
                 <Link to="/consoles">Consoles</Link>

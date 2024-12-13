@@ -6,8 +6,6 @@ import {ProductResponseModel} from "../Models/ProductResponseModel";
 import {ConsoleResponseModel} from "../Models/ConsoleResponseModel";
 import { useNavigate } from 'react-router-dom';
 
-import Navigation from "./Navigation";
-
 
 export default function Games(): JSX.Element {
     const { consoleId } = useParams<{ consoleId: string }>();

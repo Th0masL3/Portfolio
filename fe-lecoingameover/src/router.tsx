@@ -8,9 +8,11 @@ import Games from './pages/Games.tsx';
 import AddGame from './pages/addGame.tsx';
 import HomePage from './pages/HomePage';
 import UpdateGame from './pages/UpdateGame.tsx';
+import MainLayout from './layouts/MainLayout';
 
 const router = createBrowserRouter([
     {
+        element: <MainLayout />,
         children: [
             {
                 path: AppRoutes.Homepage,
