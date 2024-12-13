@@ -1,18 +1,16 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import "./Consoles.css";
 import Navigation from "./Navigation";
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import './Consoles.css';
-import {ConsoleResponseModel} from "../Models/ConsoleResponseModel";
-
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { ConsoleResponseModel } from "../Models/ConsoleResponseModel";
 
 export default function Consoles(): JSX.Element {
     const [consoles, setConsoles] = useState<ConsoleResponseModel[]>([]);
     const [error, setError] = useState<string | null>(null);
     const navigate = useNavigate();
-    const { user, isAuthenticated } = useAuth0();
+    const { getAccessTokenSilently } = useAuth0();
 
     useEffect(() => {
         fetchAllConsoles();
@@ -32,9 +30,10 @@ export default function Consoles(): JSX.Element {
 
     const handleRowClick = (consoleId: string) => {
         navigate(`/consoles/${consoleId}/products`);
-    }
+    };
 
-    const handleEdit = (console: ConsoleResponseModel) => {
+    const handleEdit = (event: React.MouseEvent, console: ConsoleResponseModel) => {
+        event.stopPropagation(); // Prevent row click event
         navigate("/consoles/edit", { state: { console } });
     };
 
@@ -42,20 +41,27 @@ export default function Consoles(): JSX.Element {
         navigate("/consoles/add");
     };
 
-    const deleteConsole = async (id: string): Promise<void> => {
+    const deleteConsole = async (event: React.MouseEvent, id: string): Promise<void> => {
+        event.stopPropagation(); // Prevent row click event
         try {
-            const response = await axios.delete(`http://localhost:8080/api/v1/consoles/${id}`);
+            const token = await getAccessTokenSilently();
+
+            const response = await axios.delete(`http://localhost:8080/api/v1/consoles/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
             if (response.status === 204) {
                 setConsoles((prevConsoles) => prevConsoles.filter((console) => console.consoleId !== id));
                 alert("Console deleted successfully!");
             }
-        } catch (err) {
+        } catch (err: any) {
             console.error("Error deleting console:", err);
-            setError("Failed to delete console.");
+            const errorMessage = err.response?.data?.message || err.message || "An unknown error occurred.";
+            setError(`Failed to delete console: ${errorMessage}`);
         }
     };
-
-    const isAdmin = user && user["http://your-app.com/roles"]?.includes("ADMIN");
 
     return (
         <>
@@ -63,13 +69,13 @@ export default function Consoles(): JSX.Element {
             <div className="console-container">
                 <h1 className="console-title">Consoles</h1>
                 {error && <p className="console-error">{error}</p>}
-                {isAuthenticated && isAdmin && (
-                    <div className="console-actions">
-                        <button className="console-button" onClick={handleAddConsole}>
-                            Add Console
-                        </button>
-                    </div>
-                )}
+
+                <div className="console-actions">
+                    <button className="console-button" onClick={handleAddConsole}>
+                        Add Console
+                    </button>
+                </div>
+
                 <table className="console-table">
                     <thead>
                     <tr>
@@ -79,9 +85,7 @@ export default function Consoles(): JSX.Element {
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Company</th>
-                        {isAuthenticated && isAdmin && (
-                            <th>Actions</th>
-                        )}
+                        <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -89,7 +93,7 @@ export default function Consoles(): JSX.Element {
                         <tr
                             key={console.consoleId}
                             onClick={() => handleRowClick(console.consoleId)}
-                            style={{cursor: 'pointer'}}
+                            style={{ cursor: "pointer" }}
                         >
                             <td>{console.consoleId}</td>
                             <td>{console.consoleName}</td>
@@ -98,19 +102,20 @@ export default function Consoles(): JSX.Element {
                             <td>{console.quantityInStock}</td>
                             <td>{console.company}</td>
                             <td>
-                                {isAuthenticated && isAdmin && (
-                                    <>
-                                        <button className="console-button" onClick={() => handleEdit(console)}>
-                                            Update
-                                        </button>
-                                        <button
-                                            className="console-button delete-button"
-                                            onClick={() => deleteConsole(console.consoleId)}
-                                        >
-                                            Delete
-                                        </button>
-                                    </>
-                                )}
+                                <>
+                                    <button
+                                        className="console-button"
+                                        onClick={(e) => handleEdit(e, console)}
+                                    >
+                                        Update
+                                    </button>
+                                    <button
+                                        className="console-button delete-button"
+                                        onClick={(e) => deleteConsole(e, console.consoleId)}
+                                    >
+                                        Delete
+                                    </button>
+                                </>
                             </td>
                         </tr>
                     ))}
