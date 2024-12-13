@@ -27,6 +27,16 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public ProductResponseModel getProductByProductId(String productId) {
+        Product product = productRepository.findProductByProductId(productId);
+        if (product == null) {
+            throw new NotFoundException("Product with Id: " + productId + " not found");
+        }
+
+        return productResponseMapper.entityToResponseModel(product);
+    }
+
+    @Override
     public List<ProductResponseModel> getProductsByConsoleId(String consoleId) {
         List<Product> products = productRepository.findByConsole_ConsoleId(consoleId);
         if(products.isEmpty()) {

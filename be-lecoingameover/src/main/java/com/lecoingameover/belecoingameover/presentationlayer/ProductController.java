@@ -1,6 +1,7 @@
 package com.lecoingameover.belecoingameover.presentationlayer;
 
 import com.lecoingameover.belecoingameover.businesslayer.ProductService;
+import com.lecoingameover.belecoingameover.dataaccess.Product;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,12 @@ public class ProductController {
     private ProductService productService;
     public ProductController(ProductService productService) {this.productService = productService;}
 
+    @GetMapping("/{productId}")
+    public ResponseEntity<ProductResponseModel> getProductByProductId(@PathVariable("productId") String productId) {
+        ProductResponseModel product = productService.getProductByProductId(productId);
+        return ResponseEntity.status(HttpStatus.OK).body(product);
+    }
+
     @GetMapping("/console/{consoleId}")
     public ResponseEntity<List<ProductResponseModel>> getProductsByConsoleId(@PathVariable String consoleId) {
         List<ProductResponseModel> products = productService.getProductsByConsoleId(consoleId);
@@ -26,5 +33,4 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.CREATED).body(productService.addProductByConsoleId(consoleId,productRequestModel));
 
     }
-
 }

@@ -6,6 +6,6 @@ import java.util.List;
 
 @Repository
 public interface ProductRepository extends MongoRepository<Product, String> {
-    // Use dot notation to query nested fields
+    Product findProductByProductId(String productId);
     List<Product> findByConsole_ConsoleId(String consoleId);
 }
