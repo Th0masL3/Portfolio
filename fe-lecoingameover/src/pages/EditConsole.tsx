@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Consoles.css';
+import { useAuth0 } from "@auth0/auth0-react";
 
 interface ConsoleRequestModel {
     consoleName: string;
@@ -14,7 +15,7 @@ interface ConsoleRequestModel {
 export default function EditConsole(): JSX.Element {
     const location = useLocation();
     const navigate = useNavigate();
-
+    const { getAccessTokenSilently } = useAuth0();
     const console = location.state?.console;
     const [formData, setFormData] = useState<ConsoleRequestModel>({
         consoleName: console?.consoleName || '',
@@ -36,10 +37,19 @@ export default function EditConsole(): JSX.Element {
         event.preventDefault();
 
         try {
+            // Get the access token from Auth0
+            const token = await getAccessTokenSilently();
+            // Make the PUT request with the token in the Authorization header
             const response = await axios.put(
                 `http://localhost:8080/api/v1/consoles/${console.consoleId}`,
-                formData
+                formData,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
             );
+
             if (response.status === 200) {
                 navigate('/consoles');
             }

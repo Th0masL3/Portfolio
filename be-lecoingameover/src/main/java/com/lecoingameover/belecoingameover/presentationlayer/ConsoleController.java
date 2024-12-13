@@ -5,6 +5,7 @@ import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public ResponseEntity<List<ConsoleResponseModel>> getAllConsoles() {
     return ResponseEntity.ok().body(consoleService.getAllConsoles());
 }
     @PutMapping("/{consoleId}")
+    @PreAuthorize("hasAuthority('write:admin')")
     public ResponseEntity<ConsoleResponseModel> updateConsole(
             @PathVariable String consoleId,
             @Valid @RequestBody ConsoleRequestModel consoleRequestModel) {
@@ -34,11 +36,13 @@ public ResponseEntity<List<ConsoleResponseModel>> getAllConsoles() {
     }
 
     @PostMapping
+    @PreAuthorize("hasAuthority('write:admin')")
     public ResponseEntity<ConsoleResponseModel> addConsole(@Valid @RequestBody ConsoleRequestModel consoleRequestModel) {
         return ResponseEntity.status(HttpStatus.CREATED).body(consoleService.addConsole(consoleRequestModel));
     }
 
     @DeleteMapping("/{consoleId}")
+    @PreAuthorize("hasAuthority('write:admin')")
     public ResponseEntity<Void> deleteConsoleById(@PathVariable String consoleId) {
         consoleService.deleteConsoleByConsoleId(consoleId);
         return ResponseEntity.noContent().build();

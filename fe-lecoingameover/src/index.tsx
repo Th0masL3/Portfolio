@@ -5,10 +5,9 @@ import App from './App';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {auth0Config} from "./Auth/auth0-config";
 
 // Replace these with your Auth0 credentials
-const domain = "dev-pgf67fhh21tkyd1v.us.auth0.com";
-const clientId = "KhxrQwX2k8C0QWx2ogzl5pcZzBNXl9hk";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -17,11 +16,13 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Auth0Provider
-      domain={domain}
-      clientId={clientId}
+      domain={auth0Config.domain}
+      clientId={auth0Config.clientId}
       authorizationParams={{
-        redirect_uri: window.location.origin,
+          redirect_uri: auth0Config.callback,
+          audience: auth0Config.audience
       }}
+      cacheLocation="localstorage"
     >
       <App />
     </Auth0Provider>
