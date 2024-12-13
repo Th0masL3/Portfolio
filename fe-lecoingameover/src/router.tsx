@@ -7,6 +7,7 @@ import AddConsole from './pages/AddConsole';
 import Games from './pages/Games.tsx';
 import AddGame from './pages/addGame.tsx';
 import HomePage from './pages/HomePage';
+import UpdateGame from './pages/UpdateGame.tsx';
 
 const router = createBrowserRouter([
     {
@@ -59,6 +60,14 @@ const router = createBrowserRouter([
                     </ProtectedRoute>
                 ),
             },
+            {
+                path: "/update-game/:productId",
+                element: (
+                    <ProtectedRoute>
+                        <UpdateGame />
+                    </ProtectedRoute>
+                ),
+            }
            
             
         ],

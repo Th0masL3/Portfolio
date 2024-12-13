@@ -260,5 +260,104 @@ class ProductServiceImplTest {
         verify(productRepository, times(1)).findByConsole_ConsoleId(consoleId);
         verify(productResponseMapper, times(1)).entityListToResponseModelList(products);
     }
+    @Test
+    void testUpdateProduct_Positive() {
+        // Arrange
+        String productId = "12345";
+        ProductRequestModel productRequestModel = ProductRequestModel.builder()
+                .productName("Updated Name")
+                .productDescription("Updated Description")
+                .productSalePrice(100.00)
+                .productQuantity(10)
+                .build();
+
+        Product existingProduct = Product.builder()
+                .productId(productId)
+                .productName("Old Name")
+                .productDescription("Old Description")
+                .productSalePrice(50.00)
+                .productQuantity(5)
+                .build();
+
+        Product updatedProduct = Product.builder()
+                .productId(productId)
+                .productName("Updated Name")
+                .productDescription("Updated Description")
+                .productSalePrice(100.00)
+                .productQuantity(10)
+                .build();
+
+        ProductResponseModel expectedResponse = ProductResponseModel.builder()
+                .productId(productId)
+                .productName("Updated Name")
+                .productDescription("Updated Description")
+                .productSalePrice(100.00)
+                .productQuantity(10)
+                .build();
+
+        when(productRepository.findProductByProductId(productId)).thenReturn(existingProduct);
+        when(productRepository.save(existingProduct)).thenReturn(updatedProduct);
+        when(productResponseMapper.entityToResponseModel(updatedProduct)).thenReturn(expectedResponse);
+
+        // Act
+        ProductResponseModel response = productServiceImpl.updateProduct(productId, productRequestModel);
+
+        // Assert
+        assertEquals(expectedResponse, response);
+        verify(productRepository, times(1)).findProductByProductId(productId);
+        verify(productRepository, times(1)).save(existingProduct);
+        verify(productResponseMapper, times(1)).entityToResponseModel(updatedProduct);
+    }
+
+    @Test
+    void testUpdateProduct_Negative_ProductNotFound() {
+        // Arrange
+        String productId = "12345";
+        ProductRequestModel productRequestModel = ProductRequestModel.builder()
+                .productName("Updated Name")
+                .build();
+
+        when(productRepository.findProductByProductId(productId)).thenReturn(null);
+
+        // Act & Assert
+        NotFoundException exception = assertThrows(NotFoundException.class, () -> {
+            productServiceImpl.updateProduct(productId, productRequestModel);
+        });
+
+        assertEquals("Product with Id: 12345 not found", exception.getMessage());
+        verify(productRepository, times(1)).findProductByProductId(productId);
+        verify(productRepository, times(0)).save(any());
+    }
+
+    @Test
+    void testUpdateProduct_Negative_InvalidValues() {
+        // Arrange
+        String productId = "12345";
+        ProductRequestModel productRequestModel = ProductRequestModel.builder()
+                .productSalePrice(-10.00) // Invalid value
+                .productQuantity(-5)     // Invalid value
+                .build();
+
+        Product existingProduct = Product.builder()
+                .productId(productId)
+                .productName("Old Name")
+                .productDescription("Old Description")
+                .productSalePrice(50.00)
+                .productQuantity(5)
+                .build();
+
+        when(productRepository.findProductByProductId(productId)).thenReturn(existingProduct);
+
+        // Act
+        ProductResponseModel response = productServiceImpl.updateProduct(productId, productRequestModel);
+
+        // Assert
+        assertEquals("Old Name", existingProduct.getProductName());
+        assertEquals("Old Description", existingProduct.getProductDescription());
+        assertEquals(50.00, existingProduct.getProductSalePrice());
+        assertEquals(5, existingProduct.getProductQuantity());
+        verify(productRepository, times(1)).findProductByProductId(productId);
+        verify(productRepository, times(1)).save(existingProduct);
+    }
 
 }
