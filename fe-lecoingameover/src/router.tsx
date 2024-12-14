@@ -9,6 +9,7 @@ import AddGame from './pages/addGame';
 import HomePage from './pages/HomePage';
 import UpdateGame from './pages/UpdateGame';
 import SingleGame from './pages/SingleGame'
+import Users from "./pages/Users";
 
 const router = createBrowserRouter([
     {
@@ -74,6 +75,14 @@ const router = createBrowserRouter([
                 element: (
                     <ProtectedRoute>
                         <SingleGame />
+                    </ProtectedRoute>
+                ),
+            },
+            {
+                path: AppRoutes.Users,
+                element: (
+                    <ProtectedRoute>
+                        <Users />
                     </ProtectedRoute>
                 ),
             }

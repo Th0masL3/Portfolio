@@ -1,4 +1,5 @@
 import UpdateGame from "../../pages/UpdateGame";
+import Users from "../../pages/Users";
 
 
 export enum AppRoutes {
@@ -10,5 +11,6 @@ export enum AppRoutes {
     AddGame = '/add-game/:consoleId',
     Homepage = '/',
     UpdateGame = '/update-game/:productId',
-    SingleGame = '/products/:productId'
+    SingleGame = '/products/:productId',
+    Users = '/users'
 }
