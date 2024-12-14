@@ -1,0 +1,87 @@
+/* General body styles for a uniform background */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #4b0082, #9932cc);
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container to center the table and make it visually appealing */
+.users-container {
+    width: 95%;
+    max-width: 1200px;
+    background-color: #4b0082;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    margin: auto;
+}
+
+/* Header title styling */
+.users-title {
+    text-align: center;
+    font-size: 2.5em;
+    color: #ffc0cb;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Table styles for better readability */
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.users-table th,
+.users-table td {
+    padding: 12px;
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.users-table th {
+    background-color: #4b0082;
+    color: #ffc0cb;
+    font-size: 1.1em;
+}
+
+.users-table tr:nth-child(even),
+.users-table tr:nth-child(odd) {
+    background-color: #9932cc;
+    color: #fff;
+}
+
+.users-table tr:hover {
+    background-color: #ff69b4;
+    color: #fff;
+}
+
+/* Button styling for "Update" actions */
+.update-user-button {
+    background-color: #ffc0cb;
+    border: none;
+    color: #4b0082;
+    padding: 8px 12px;
+    font-size: 0.9em;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.update-user-button:hover {
+    background-color: #ff69b4;
+    color: #fff;
+}
+
+/* Error message styling */
+.users-error {
+    color: #ff6347;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
