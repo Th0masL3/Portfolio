@@ -9,5 +9,6 @@ export enum AppRoutes {
     Products = '/consoles/:consoleId/products',
     AddGame = '/add-game/:consoleId',
     Homepage = '/',
-    UpdateGame = '/update-game/:productId'
+    UpdateGame = '/update-game/:productId',
+    SingleGame = '/products/:productId'
 }

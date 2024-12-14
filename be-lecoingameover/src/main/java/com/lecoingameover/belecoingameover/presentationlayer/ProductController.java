@@ -40,4 +40,5 @@ public class ProductController {
             @Valid @RequestBody ProductRequestModel productRequestModel) {
         return ResponseEntity.ok(productService.updateProduct(productId, productRequestModel));
     }
+
 }
