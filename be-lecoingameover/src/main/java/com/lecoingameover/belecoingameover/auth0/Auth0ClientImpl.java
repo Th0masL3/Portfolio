@@ -16,16 +16,16 @@ import java.util.stream.Collectors;
 public class Auth0ClientImpl implements Auth0Client {
 
     @Value("${auth0.domain}")
-    private String domain;
+    String domain;
 
     @Value("${auth0.clientId}")
-    private String clientId;
+    String clientId;
 
     @Value("${auth0.clientSecret}")
-    private String clientSecret;
+    String clientSecret;
 
     @Value("${auth0.audience}")
-    private String audience;
+    String audience;
 
     private final RestTemplate restTemplate;
     private final ObjectMapper objectMapper;
@@ -35,7 +35,7 @@ public class Auth0ClientImpl implements Auth0Client {
         this.objectMapper = objectMapper;
     }
 
-    private String getAccessToken() {
+    public String getAccessToken() {
         Auth0TokenRequestModel requestModel = new Auth0TokenRequestModel(
                 clientId, clientSecret, audience, "client_credentials"
         );
@@ -87,7 +87,7 @@ public class Auth0ClientImpl implements Auth0Client {
                 .collect(Collectors.toList());
     }
 
-    private Auth0UserResponseModel fetchUser(String auth0UserId, String token) {
+    public Auth0UserResponseModel fetchUser(String auth0UserId, String token) {
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(token);
         HttpEntity<Void> request = new HttpEntity<>(headers);
@@ -108,7 +108,7 @@ public class Auth0ClientImpl implements Auth0Client {
         }
     }
 
-    private List<Auth0UserResponseModel> fetchAllUsers(String token) {
+    public List<Auth0UserResponseModel> fetchAllUsers(String token) {
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(token);
         HttpEntity<Void> request = new HttpEntity<>(headers);
@@ -129,7 +129,7 @@ public class Auth0ClientImpl implements Auth0Client {
         }
     }
 
-    private List<Auth0RoleResponseModel> fetchRoles(String auth0UserId, String token) {
+    public List<Auth0RoleResponseModel> fetchRoles(String auth0UserId, String token) {
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(token);
         HttpEntity<Void> request = new HttpEntity<>(headers);
@@ -150,7 +150,7 @@ public class Auth0ClientImpl implements Auth0Client {
         }
     }
 
-    private List<Auth0PermissionResponseModel> fetchPermissions(String auth0UserId, String token) {
+    public List<Auth0PermissionResponseModel> fetchPermissions(String auth0UserId, String token) {
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(token);
         HttpEntity<Void> request = new HttpEntity<>(headers);
