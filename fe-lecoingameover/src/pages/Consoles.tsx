@@ -54,7 +54,7 @@ export default function Consoles(): JSX.Element {
 
         try {
             const token = await getAccessTokenSilently();
-
+console.log(token);
             const response = await axios.delete(`http://localhost:8080/api/v1/consoles/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
