@@ -4,10 +4,11 @@ import EditConsole from './pages/EditConsole';
 import {ProtectedRoute} from './shared/components/ProtectedRoute';
 import { AppRoutes } from './shared/models/app.routes';
 import AddConsole from './pages/AddConsole';
-import Games from './pages/Games.tsx';
-import AddGame from './pages/addGame.tsx';
+import Games from './pages/Games';
+import AddGame from './pages/addGame';
 import HomePage from './pages/HomePage';
-import UpdateGame from './pages/UpdateGame.tsx';
+import UpdateGame from './pages/UpdateGame';
+import SingleGame from './pages/SingleGame'
 
 const router = createBrowserRouter([
     {
@@ -67,9 +68,19 @@ const router = createBrowserRouter([
                         <UpdateGame />
                     </ProtectedRoute>
                 ),
+            },
+            {
+                path: AppRoutes.SingleGame,
+                element: (
+                    <ProtectedRoute>
+                        <SingleGame />
+                    </ProtectedRoute>
+                ),
             }
-           
-            
+
+
+
+
         ],
     },
 ]);

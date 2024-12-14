@@ -221,7 +221,60 @@ class ProductControllerUnitTest {
 
             verify(productService, times(1)).updateProduct(productId, productRequestModel);
         }
+
+    @Test
+    void GetProductByProductId_ValidId() {
+        // Arrange
+        String productId = "product123";
+        ProductResponseModel productResponse = ProductResponseModel.builder()
+                .productId(productId)
+                .productName("Test Product")
+                .productSalePrice(99.99)
+                .productDescription("Test Description")
+                .genre("Action")
+                .productQuantity(10)
+                .build();
+
+        when(productService.getProductByProductId(productId)).thenReturn(productResponse);
+
+        // Act
+        ResponseEntity<ProductResponseModel> response = productController.getProductByProductId(productId);
+
+        // Assert
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertNotNull(response.getBody());
+        assertEquals("Test Product", response.getBody().getProductName());
+        verify(productService, times(1)).getProductByProductId(productId);
     }
+
+    @Test
+    void GetProductByProductId_NotFound() {
+        // Arrange
+        String productId = "invalidProduct123";
+        when(productService.getProductByProductId(productId)).thenThrow(new NotFoundException("Product with Id: " + productId + " not found"));
+
+        // Act & Assert
+        NotFoundException exception = assertThrows(NotFoundException.class,
+                () -> productController.getProductByProductId(productId));
+
+        assertEquals("Product with Id: invalidProduct123 not found", exception.getMessage());
+        verify(productService, times(1)).getProductByProductId(productId);
+    }
+
+    @Test
+    void GetProductByProductId_RuntimeException() {
+        // Arrange
+        String productId = "product123";
+        when(productService.getProductByProductId(productId)).thenThrow(new RuntimeException("Unexpected error occurred"));
+
+        // Act & Assert
+        RuntimeException exception = assertThrows(RuntimeException.class,
+                () -> productController.getProductByProductId(productId));
+
+        assertEquals("Unexpected error occurred", exception.getMessage());
+        verify(productService, times(1)).getProductByProductId(productId);
+    }
+}
 
 
 

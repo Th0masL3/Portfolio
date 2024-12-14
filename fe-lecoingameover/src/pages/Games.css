@@ -3,13 +3,12 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    /* background: linear-gradient(135deg, #1a1a2e, #16213e); */ /* Comment this line */
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
     font-family: 'Roboto', sans-serif;
     color: #e0e0e0;
 }
-
 /* Title styling */
 .products-title {
     font-size: 32px;
@@ -18,7 +17,6 @@
     margin-bottom: 20px;
     text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
 }
-
 /* Error message styling */
 .products-error {
     color: #ff4040; /* Neon red */
@@ -26,7 +24,6 @@
     text-align: center;
     margin-bottom: 20px;
 }
-
 /* Table styling */
 .products-table {
     width: 100%;
@@ -37,7 +34,6 @@
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
 }
-
 /* Table Header */
 .products-table thead {
     background: linear-gradient(135deg, #ff00ff, #00ffff); /* Neon gradient */
@@ -45,20 +41,17 @@
     text-transform: uppercase;
     font-weight: bold;
 }
-
 .products-table th {
     padding: 15px;
     text-align: left;
     border-bottom: 2px solid #16213e; /* Subtle dark border */
 }
-
 /* Table Rows */
 .products-table td {
     padding: 15px;
     color: #e0e0e0;
     border-bottom: 1px solid #1a1a2e; /* Subtle separator */
 }
-
 /* Hover effect for rows */
 .products-table tbody tr:hover {
     background: linear-gradient(135deg, #16213e, #1a1a2e);
@@ -66,18 +59,15 @@
     cursor: pointer;
     box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
 }
-
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
     .products-table {
         font-size: 14px;
     }
-
     .products-title {
         font-size: 26px;
     }
 }
-
 /* Add glowing effect for neon vibe */
 .products-table thead th,
 .products-table tbody tr:hover td {
@@ -99,13 +89,11 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
     transition: all 0.3s ease;
 }
-
 .add-game-button:hover {
     background: linear-gradient(135deg, #ff00ff, #00ffff); /* Reverse gradient */
     box-shadow: 0 4px 20px #ff00ff, 0 4px 20px #00ffff;
     transform: scale(1.05);
 }
-
 /* Form container styling for Add Game page */
 .add-game-container {
     max-width: 800px;
@@ -117,7 +105,6 @@
     color: #e0e0e0;
     font-family: 'Roboto', sans-serif;
 }
-
 /* Form title */
 .add-game-container h1 {
     text-align: center;
@@ -126,14 +113,12 @@
     text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
     margin-bottom: 20px;
 }
-
 /* Input and textarea styling */
 .add-game-container label {
     display: block;
     margin-bottom: 10px;
     font-weight: bold;
 }
-
 .add-game-container input,
 .add-game-container textarea {
     width: 100%;
@@ -147,14 +132,12 @@
     font-size: 16px;
     transition: all 0.3s ease;
 }
-
 .add-game-container input:focus,
 .add-game-container textarea:focus {
     outline: none;
     background: #16213e;
     box-shadow: inset 0 4px 20px rgba(0, 0, 0, 0.8), 0 0 10px #ff00ff;
 }
-
 /* Submit button */
 .add-game-container button[type="submit"] {
     width: 100%;
@@ -170,10 +153,8 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
     transition: all 0.3s ease;
 }
-
 .add-game-container button[type="submit"]:hover {
     background: linear-gradient(135deg, #ff00ff, #00ffff);
     box-shadow: 0 4px 20px #ff00ff, 0 4px 20px #00ffff;
     transform: scale(1.05);
 }
-
