@@ -5,11 +5,11 @@ html, body {
     background: #1a1a1d;
     color: #E0B0FF;
     overflow-x: hidden;
-    padding: 0;
+    padding: 0 -40px;
+    
   }
   
   .home-page {
-    height: 100%;
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -20,7 +20,7 @@ html, body {
     background-position: center;
     margin: 0;
   }
-  
+
   .hero-section {
     margin-top: 20px;
     color: #E0B0FF;
