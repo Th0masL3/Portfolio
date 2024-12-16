@@ -32,7 +32,7 @@ public class ProductServiceImpl implements ProductService {
     public ProductResponseModel getProductByProductId(String productId) {
         Product product = productRepository.findProductByProductId(productId);
         if (product == null) {
-            throw new NotFoundException("Product with Id: " + productId + " not found");
+            throw new NotFoundException("Product with Id: " + productId +" not found");
         }
 
         return productResponseMapper.entityToResponseModel(product);

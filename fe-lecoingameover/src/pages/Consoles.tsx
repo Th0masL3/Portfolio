@@ -42,9 +42,18 @@ export default function Consoles(): JSX.Element {
 
     const deleteConsole = async (event: React.MouseEvent, id: string): Promise<void> => {
         event.stopPropagation(); // Prevent row click event
+
+        const userConfirmed = window.confirm(
+            "Are you sure you want to delete this console?"
+        );
+
+        if (!userConfirmed) {
+            return; // Exit if user cancels the deletion
+        }
+
         try {
             const token = await getAccessTokenSilently();
-
+console.log(token);
             const response = await axios.delete(`http://localhost:8080/api/v1/consoles/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
