@@ -274,6 +274,38 @@ class ProductControllerUnitTest {
         assertEquals("Unexpected error occurred", exception.getMessage());
         verify(productService, times(1)).getProductByProductId(productId);
     }
+
+    @Test
+    void testDeleteProductById_ValidId() {
+        // Arrange
+        String productId = "1";
+
+        // Mock the service method to do nothing
+        doNothing().when(productService).deleteProductByProductId(productId);
+
+        // Act
+        ResponseEntity<Void> response = productController.deleteProductById(productId);
+
+        // Assert
+        assertEquals(204, response.getStatusCodeValue());
+        verify(productService, times(1)).deleteProductByProductId(productId);
+    }
+
+    @Test
+    void testDeleteProductById_ProductNotFound_ThrowsNotFoundException() {
+        // Arrange
+        String productId = "1";
+
+        // Mock the service method to throw NotFoundException
+        doThrow(new NotFoundException("Product with ID " + productId + " not found"))
+                .when(productService).deleteProductByProductId(productId);
+
+        // Act & Assert
+        NotFoundException exception = assertThrows(NotFoundException.class,
+                () -> productController.deleteProductById(productId));
+        assertEquals("Product with ID 1 not found", exception.getMessage());
+        verify(productService, times(1)).deleteProductByProductId(productId);
+    }
 }
 
 
