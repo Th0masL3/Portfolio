@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import Navigation from "./Navigation";
+import { Navigate, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Games.css';
-import { ProductResponseModel } from "../Models/ProductResponseModel";
-import { ConsoleResponseModel } from "../Models/ConsoleResponseModel";
+import {ProductResponseModel} from "../Models/ProductResponseModel";
+import {ConsoleResponseModel} from "../Models/ConsoleResponseModel";
 
 export default function Games(): JSX.Element {
     const { consoleId } = useParams<{ consoleId: string }>();

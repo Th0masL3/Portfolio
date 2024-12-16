@@ -1,86 +1,58 @@
+/* Navigation Bar */
 .navigation-bar {
+    background-color: #121212; /* Dark background */
+    border-bottom: 2px solid #333333;
+    padding: 10px 0; /* Top and bottom padding */
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #121212; /* Darker background for better contrast */
-    border-bottom: 1px solid #333333;
-    color: white;
+    justify-content: center; /* Center the nav-container */
 }
 
+/* Centered Container */
+.nav-container {
+    display: flex;
+    justify-content: space-between; /* Space between components */
+    align-items: center; /* Vertically center items */
+    width: 60%; /* Set width to 3/5 of the viewport */
+    max-width: 1200px; /* Optional: Prevent container from being too wide on large screens */
+}
+
+/* Logo Container */
 .logo-container {
     display: flex;
     align-items: center;
 }
 
 .logo {
-    width: 30px; /* Reduced size */
-    height: 30px; /* Reduced size */
-    border-radius: 5px; /* Optional for rounded corners */
-    margin-right: 10px; /* Add spacing */
+    width: 120px; /* Logo size */
+    height: auto;
+    border-radius: 5px;
 }
 
-.nav-links a {
-    margin-right: 15px;
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: 500;
-}
-
-.nav-links a:hover {
-    text-decoration: underline;
-}
-
-.nav-actions {
+/* Navigation Links */
+.nav-links {
     display: flex;
     align-items: center;
-    gap: 10px; /* Space between AuthButton and Profile */
+    justify-content: center;
 }
 
-nav button {
-    padding: 5px 10px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    border-radius: 5px;
-    font-size: 14px;
+.icon {
+    width: 25px; /* Icon size */
+    height: 25px;
     cursor: pointer;
 }
 
-nav button:hover {
-    background-color: #0056b3;
-}
-
-.profile-container {
+/* Navigation Actions (Auth Button and Profile) */
+.nav-actions {
     display: flex;
     align-items: center;
-    gap: 10px; /* Space between image and text */
+    gap: 15px; /* Space between elements */
 }
 
-.profile-container img {
-    width: 30px; /* Smaller size for profile image */
+/* Profile Picture */
+.profile-pic img {
+    width: 30px; /* Profile picture size */
     height: 30px;
     border-radius: 50%;
-    object-fit: cover; /* Ensure the image doesn't stretch */
     border: 2px solid white;
-}
-
-.profile-container .profile-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.profile-container .profile-info h2 {
-    margin: 0;
-    font-size: 12px; /* Adjusted size */
-    font-weight: 600;
-    color: white;
-}
-
-.profile-container .profile-info p {
-    margin: 0;
-    font-size: 10px; /* Adjusted size */
-    color: #cccccc; /* Lighter text for email */
+    object-fit: cover;
 }
