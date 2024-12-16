@@ -462,5 +462,44 @@ class ProductServiceImplTest {
         verify(productRepository, times(1)).findProductByProductId(productId);
         verify(productResponseMapper, times(1)).entityToResponseModel(product);
     }
+
+    @Test
+    void testDeleteProductByProductId_Positive() {
+        // Arrange
+        String productId = "12345";
+        Product product = Product.builder()
+                .productId(productId)
+                .productName("Test Product")
+                .productDescription("Test Description")
+                .productSalePrice(99.99)
+                .productQuantity(10)
+                .genre("Action")
+                .build();
+
+        when(productRepository.findProductByProductId(productId)).thenReturn(product);
+
+        // Act
+        productServiceImpl.deleteProductByProductId(productId);
+
+        // Assert
+        verify(productRepository, times(1)).findProductByProductId(productId);
+        verify(productRepository, times(1)).delete(product);
+    }
+
+    @Test
+    void testDeleteProductByProductId_Negative_ProductNotFound() {
+        // Arrange
+        String productId = "12345";
+        when(productRepository.findProductByProductId(productId)).thenReturn(null);
+
+        // Act & Assert
+        NotFoundException exception = assertThrows(NotFoundException.class, () -> {
+            productServiceImpl.deleteProductByProductId(productId);
+        });
+
+        assertEquals("Product with ID 12345 not found", exception.getMessage());
+        verify(productRepository, times(1)).findProductByProductId(productId);
+        verify(productRepository, times(0)).delete(any());
+    }
 }
 

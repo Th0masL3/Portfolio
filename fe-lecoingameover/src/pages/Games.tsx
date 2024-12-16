@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Navigate, useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import Navigation from "./Navigation";
 import axios from 'axios';
 import './Games.css';
-import {ProductResponseModel} from "../Models/ProductResponseModel";
-import {ConsoleResponseModel} from "../Models/ConsoleResponseModel";
+import { ProductResponseModel } from "../Models/ProductResponseModel";
+import { ConsoleResponseModel } from "../Models/ConsoleResponseModel";
 
 export default function Games(): JSX.Element {
     const { consoleId } = useParams<{ consoleId: string }>();
@@ -29,19 +30,6 @@ export default function Games(): JSX.Element {
         }
     };
 
-    const handleProductRowClick = (productId: string) => {
-        navigate(`/products/${productId}`);
-    };
-
-    const handleAddGameClick = (): void => {
-        navigate(`/add-game/${consoleId}`);
-    };
-
-    const handleUpdateGameClick = (event: React.MouseEvent, productId: string): void => {
-        event.stopPropagation(); // Prevent row click event from triggering
-        navigate(`/update-game/${productId}`);
-    };
-
     const fetchProducts = async (): Promise<void> => {
         try {
             const response = await axios.get(`http://localhost:8080/api/v1/products/console/${consoleId}`);
@@ -54,6 +42,33 @@ export default function Games(): JSX.Element {
         }
     };
 
+    const handleProductRowClick = (productId: string) => {
+        navigate(`/products/${productId}`);
+    };
+
+    const handleAddGameClick = (): void => {
+        navigate(`/add-game/${consoleId}`);
+    };
+
+    const handleUpdateGameClick = (event: React.MouseEvent, productId: string): void => {
+        event.stopPropagation();
+        navigate(`/update-game/${productId}`);
+    };
+
+    const handleDeleteGameClick = async (event: React.MouseEvent, productId: string): Promise<void> => {
+        event.stopPropagation();
+        const confirmed = window.confirm("Are you sure you want to delete this product?");
+        if (confirmed) {
+            try {
+                await axios.delete(`http://localhost:8080/api/v1/products/${productId}`);
+                setProducts(products.filter((product) => product.productId !== productId));
+            } catch (err) {
+                console.error('Error deleting product:', err);
+                setError('Failed to delete the product.');
+            }
+        }
+    };
+
     return (
         <div className="products-container">
             <h1 className="products-title">
@@ -63,39 +78,45 @@ export default function Games(): JSX.Element {
             <button className="add-game-button" onClick={handleAddGameClick}>Add Game</button>
             <table className="products-table">
                 <thead>
-                <tr>
-                    <th>Product ID</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Description</th>
-                    <th>Genre</th>
-                    <th>Quantity</th>
-                    <th>Actions</th>
-                </tr>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Description</th>
+                        <th>Genre</th>
+                        <th>Quantity</th>
+                        <th>Actions</th>
+                    </tr>
                 </thead>
                 <tbody>
-                {products.map((product) => (
-                    <tr
-                        key={product.productId}
-                        onClick={() => handleProductRowClick(product.productId)}
-                        style={{ cursor: "pointer" }}
-                    >
-                        <td>{product.productId}</td>
-                        <td>{product.productName}</td>
-                        <td>${product.productSalePrice.toFixed(2)}</td>
-                        <td>{product.productDescription}</td>
-                        <td>{product.genre}</td>
-                        <td>{product.productQuantity}</td>
-                        <td>
-                            <button
-                                className="add-game-button"
-                                onClick={(event) => handleUpdateGameClick(event, product.productId)}
-                            >
-                                Update
-                            </button>
-                        </td>
-                    </tr>
-                ))}
+                    {products.map((product) => (
+                        <tr
+                            key={product.productId}
+                            onClick={() => handleProductRowClick(product.productId)}
+                            style={{ cursor: "pointer" }}
+                        >
+                            <td>{product.productId}</td>
+                            <td>{product.productName}</td>
+                            <td>${product.productSalePrice.toFixed(2)}</td>
+                            <td>{product.productDescription}</td>
+                            <td>{product.genre}</td>
+                            <td>{product.productQuantity}</td>
+                            <td>
+                                <button
+                                    className="update-game-button"
+                                    onClick={(event) => handleUpdateGameClick(event, product.productId)}
+                                >
+                                    Update
+                                </button>
+                                <button
+                                    className="delete-game-button"
+                                    onClick={(event) => handleDeleteGameClick(event, product.productId)}
+                                >
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </div>
