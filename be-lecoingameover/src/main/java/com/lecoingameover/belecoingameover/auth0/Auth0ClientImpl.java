@@ -54,7 +54,7 @@ public class Auth0ClientImpl implements Auth0Client {
             log.info("Auth0 Access Token Retrieved Successfully");
             return response.getBody().getAccessToken();
         } else {
-            log.error("Auth0 Token Request Failed: {}", response.getStatusCode());
+
             throw new RuntimeException("Auth0 Token Request Failed");
         }
     }
@@ -103,7 +103,7 @@ public class Auth0ClientImpl implements Auth0Client {
             log.info("Fetched Auth0 User with ID {}: {}", auth0UserId, response.getBody());
             return response.getBody();
         } else {
-            log.error("Failed to fetch Auth0 User with ID: {}", auth0UserId);
+
             throw new RuntimeException("Failed to fetch Auth0 User");
         }
     }
@@ -124,7 +124,7 @@ public class Auth0ClientImpl implements Auth0Client {
             log.info("Fetched all Auth0 Users");
             return List.of(response.getBody());
         } else {
-            log.error("Failed to fetch all Auth0 Users");
+
             throw new RuntimeException("Failed to fetch all Auth0 Users");
         }
     }
@@ -145,7 +145,7 @@ public class Auth0ClientImpl implements Auth0Client {
             log.info("Fetched Roles for User ID {}: {}", auth0UserId, response.getBody());
             return List.of(response.getBody());
         } else {
-            log.error("Failed to fetch roles for User ID: {}", auth0UserId);
+
             throw new RuntimeException("Failed to fetch roles");
         }
     }
@@ -166,7 +166,7 @@ public class Auth0ClientImpl implements Auth0Client {
             log.info("Fetched Permissions for User ID {}: {}", auth0UserId, response.getBody());
             return List.of(response.getBody());
         } else {
-            log.error("Failed to fetch permissions for User ID: {}", auth0UserId);
+
             throw new RuntimeException("Failed to fetch permissions");
         }
     }
