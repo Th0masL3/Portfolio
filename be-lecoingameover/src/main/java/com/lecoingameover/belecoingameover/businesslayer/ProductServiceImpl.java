@@ -87,4 +87,13 @@ public class ProductServiceImpl implements ProductService {
         // Map the updated entity to a response model and return it
         return productResponseMapper.entityToResponseModel(updatedProduct);
     }
+
+    @Override
+    public void deleteProductByProductId(String productId) {
+        Product product = productRepository.findProductByProductId(productId);
+        if (product == null) {
+            throw new NotFoundException("Product with ID " + productId + " not found");
+        }
+        productRepository.delete(product);
+    }
 }

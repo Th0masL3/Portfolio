@@ -1,6 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import "./Consoles.css";
-import Navigation from "./Navigation";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -74,7 +73,6 @@ console.log(token);
 
     return (
         <>
-            <Navigation />
             <div className="console-container">
                 <h1 className="console-title">Consoles</h1>
                 {error && <p className="console-error">{error}</p>}

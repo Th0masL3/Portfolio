@@ -7,12 +7,14 @@ import AddConsole from './pages/AddConsole';
 import Games from './pages/Games';
 import AddGame from './pages/addGame';
 import HomePage from './pages/HomePage';
-import UpdateGame from './pages/UpdateGame';
+import UpdateGame from './pages/UpdateGame.tsx';
+import MainLayout from './layouts/MainLayout';
 import SingleGame from './pages/SingleGame'
 import Users from "./pages/Users";
 
 const router = createBrowserRouter([
     {
+        element: <MainLayout />,
         children: [
             {
                 path: AppRoutes.Homepage,
