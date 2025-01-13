@@ -1,9 +1,11 @@
 package com.lecoingameover.belecoingameover.utils;
 
+import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.Cart;
 import com.lecoingameover.belecoingameover.dataaccess.*;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -23,6 +25,10 @@ public class DatabaseInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
+            //cart for user
+            Cart cart = new Cart();
+
             List<User> sampleUsers = List.of(
                     // Admins
                     User.builder()
