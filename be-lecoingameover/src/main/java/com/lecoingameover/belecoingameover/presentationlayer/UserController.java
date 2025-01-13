@@ -18,13 +18,21 @@ public class UserController {
 
     @GetMapping
     public ResponseEntity<List<UserResponseModel>> getAllUsers() {
-        List<UserResponseModel> users = userService.getAllUsers();
-        return ResponseEntity.ok(users);
+        return ResponseEntity.ok(userService.getAllUsers());
     }
 
     @GetMapping("/{userId}")
     public ResponseEntity<UserResponseModel> getUserById(@PathVariable String userId) {
-        UserResponseModel user = userService.getUserById(userId);
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok(userService.getUserById(userId));
+    }
+
+    @PostMapping("/{userId}/add")
+    public ResponseEntity<UserResponseModel> addUserFromAuth0(@PathVariable String userId) {
+        return ResponseEntity.ok(userService.addUserFromAuth0(userId));
+    }
+
+    @PutMapping("/{userId}/sync")
+    public ResponseEntity<UserResponseModel> syncUserWithAuth0(@PathVariable String userId) {
+        return ResponseEntity.ok(userService.syncUserWithAuth0(userId));
     }
 }

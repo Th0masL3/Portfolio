@@ -1,6 +1,7 @@
 package com.lecoingameover.belecoingameover.utils;
 
 import com.lecoingameover.belecoingameover.dataaccess.*;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -16,9 +17,78 @@ public class DatabaseInitializer implements CommandLineRunner {
     ConsoleRepository consoleRepository;
     @Autowired
     ProductRepository productRepository;
+    @Autowired
+    UserRepository userRepository;
+
 
     @Override
     public void run(String... args) throws Exception {
+            List<User> sampleUsers = List.of(
+                    // Admins
+                    User.builder()
+                            .userId("auth0|675f4a7b9a80612ce548e063")
+                            .email("amelia.clark@lecoingameover.com")
+                            .firstName("Amelia")
+                            .lastName("Clark")
+                            .roles(List.of("admin"))
+                            .permissions(null)
+                            .build(),
+                    User.builder()
+                            .userId("auth0|675f4aa9e184fd643a8ed8fe")
+                            .email("liam.jones@lecoingameover.com")
+                            .firstName("Liam")
+                            .lastName("Jones")
+                            .roles(List.of("admin"))
+                            .permissions(null)
+                            .build(),
+
+                    // Customers
+                    User.builder()
+                            .userId("auth0|675f4b3c9a80612ce548e067")
+                            .email("sophia.johnson@example.com")
+                            .firstName("Sophia")
+                            .lastName("Johnson")
+                            .roles(List.of("customer"))
+                            .permissions(null)
+                            .build(),
+                    User.builder()
+                            .userId("auth0|675f4b619a80612ce548e068")
+                            .email("james.williams@example.com")
+                            .firstName("James")
+                            .lastName("Williams")
+                            .roles(List.of("customer"))
+                            .permissions(null)
+                            .build(),
+                    User.builder()
+                            .userId("auth0|675f4b7ae184fd643a8ed902")
+                            .email("ava.davis@example.com")
+                            .firstName("Ava")
+                            .lastName("Davis")
+                            .roles(List.of("customer"))
+                            .permissions(null)
+                            .build(),
+                    User.builder()
+                            .userId("auth0|675f4b9d9a80612ce548e069")
+                            .email("mason.miller@example.com")
+                            .firstName("Mason")
+                            .lastName("Miller")
+                            .roles(List.of("customer"))
+                            .permissions(null)
+                            .build(),
+                    User.builder()
+                            .userId("auth0|675f4bb4e184fd643a8ed903")
+                            .email("mia.moore@example.com")
+                            .firstName("Mia")
+                            .lastName("Moore")
+                            .roles(List.of("customer"))
+                            .permissions(null)
+                            .build()
+
+            );
+            if (userRepository.count() == 0) {
+                    userRepository.saveAll(sampleUsers);
+            }
+
             if (consoleRepository.count() == 0) {
                     List<Console> consoleList = new ArrayList<>();
 
