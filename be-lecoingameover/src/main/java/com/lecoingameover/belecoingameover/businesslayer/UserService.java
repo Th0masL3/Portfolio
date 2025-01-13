@@ -7,4 +7,6 @@ import java.util.List;
 public interface UserService {
     List<UserResponseModel> getAllUsers();
     UserResponseModel getUserById(String userId);
+    UserResponseModel addUserFromAuth0(String auth0UserId);
+    UserResponseModel syncUserWithAuth0(String auth0UserId);
 }
