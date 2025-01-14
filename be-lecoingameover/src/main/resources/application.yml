@@ -44,3 +44,9 @@ okta:
   oauth2:
     issuer: https://dev-pgf67fhh21tkyd1v.us.auth0.com/
     audience: http://api.LeCoinGameOver.com
+
+auth0:
+  domain: dev-pgf67fhh21tkyd1v.us.auth0.com
+  clientId: ${AUTH0_CLIENT_ID}
+  clientSecret: ${AUTH0_CLIENT_SECRET}
+  audience: https://dev-pgf67fhh21tkyd1v.us.auth0.com/api/v2/

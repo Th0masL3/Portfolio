@@ -3306,5 +3306,3 @@ public class DatabaseInitializer implements CommandLineRunner {
                 }
         }
 }
-
-//eu vou matar todo mundo

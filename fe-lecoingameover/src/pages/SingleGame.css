@@ -1,0 +1,106 @@
+/* General body styles for a consistent background */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: #e0e0e0;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Container for the single product details page */
+.products-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+    font-family: 'Roboto', sans-serif;
+    color: #e0e0e0;
+    text-align: center;
+}
+
+
+/* Product title styling */
+.products-title {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #ff00ff; /* Neon pink */
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+}
+
+
+/* Error message styling */
+.products-error {
+    color: #ff4040; /* Neon red */
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+/* Card styling for product details */
+.product-details-card {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+    text-align: center;
+}
+
+
+/* Product details content styling */
+.product-details-content {
+    text-align: left;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+
+/* Highlighted strong text inside details */
+.product-details-content strong {
+    color: #00ffff; /* Neon cyan */
+    font-weight: bold;
+}
+
+
+/* Back button styling */
+.add-game-button {
+    display: inline-block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    background: linear-gradient(135deg, #00ffff, #ff00ff); /* Neon gradient */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    transition: all 0.3s ease;
+}
+
+
+/* Back button hover effect */
+.add-game-button:hover {
+    background: linear-gradient(135deg, #ff00ff, #00ffff); /* Reverse gradient */
+    box-shadow: 0 4px 20px #ff00ff, 0 4px 20px #00ffff;
+    transform: scale(1.05);
+}
+
+
+/* Loader styling */
+.products-container p {
+    font-size: 18px;
+    text-align: center;
+    color: #e0e0e0;
+    margin-top: 20px;
+}
+
