@@ -31,7 +31,6 @@ export default function Users(): JSX.Element {
 
     return (
         <>
-            <Navigation />
         <div className="users-container">
             <h1 className="users-title">User List</h1>
             {error && <p className="users-error">{error}</p>}
