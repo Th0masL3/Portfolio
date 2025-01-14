@@ -12,5 +12,6 @@ export enum AppRoutes {
     Homepage = '/',
     UpdateGame = '/update-game/:productId',
     SingleGame = '/products/:productId',
-    Users = '/users'
+    Users = '/users',
+    UserProfile = '/users/:userId'
 }
