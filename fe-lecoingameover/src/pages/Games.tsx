@@ -68,6 +68,7 @@ export default function Games(): JSX.Element {
                 <th>Description</th>
                 <th>Genre</th>
                 <th>Quantity</th>
+                <th>Image</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -80,6 +81,13 @@ export default function Games(): JSX.Element {
                     <td>{product.productDescription}</td>
                     <td>{product.genre}</td>
                     <td>{product.productQuantity}</td>
+                    <td>
+                        <img
+                            src={product.image}
+                            alt={product.productName}
+                            className="product-image"
+                        />
+                    </td>
                     <td>
                         <button className="add-game-button" onClick={() => handleUpdateGameClick(product.productId)}>Update</button>
                     </td>

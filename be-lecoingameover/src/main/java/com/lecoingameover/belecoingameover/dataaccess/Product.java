@@ -21,4 +21,5 @@ public class Product {
     private String genre;
     private int productQuantity;
     private Console console;
+    private String image;
 }

@@ -5,4 +5,5 @@ export interface ConsoleResponseModel {
     price: number;
     quantityInStock: number;
     company: string;
+    image: string;
 }

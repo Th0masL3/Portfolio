@@ -16,5 +16,6 @@ public class ProductRequestModel {
     private String productDescription;
     private String genre;
     private int productQuantity;
+    private String image;
     private Console console;
 }

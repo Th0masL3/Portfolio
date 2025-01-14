@@ -12,6 +12,7 @@ export default function UpdateGame(): JSX.Element {
         productDescription: '',
         genre: '',
         productQuantity: '',
+        image: '',
         console: {
             consoleId: '',
             consoleName: '',
@@ -120,6 +121,15 @@ export default function UpdateGame(): JSX.Element {
                         value={formData.productQuantity}
                         onChange={handleChange}
                         required
+                    />
+                </label>
+                <label>
+                    Image Link:
+                    <input
+                        type="text"
+                        name="image"
+                        value={formData.image}
+                        onChange={handleChange}
                     />
                 </label>
 

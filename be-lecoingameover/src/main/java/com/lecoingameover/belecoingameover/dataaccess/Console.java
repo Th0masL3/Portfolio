@@ -24,4 +24,5 @@ public class Console {
     private double price;
     private int quantityInStock;
     private String company;
+    private String image;
 }
