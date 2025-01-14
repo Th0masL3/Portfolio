@@ -1,15 +1,17 @@
 package com.lecoingameover.belecoingameover.utils;
 
+import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.Cart;
+import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.CartItem;
+import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.CartRepository;
 import com.lecoingameover.belecoingameover.dataaccess.*;
-import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Component
 public class DatabaseInitializer implements CommandLineRunner {
@@ -19,10 +21,16 @@ public class DatabaseInitializer implements CommandLineRunner {
     ProductRepository productRepository;
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    CartRepository cartRepository;
 
 
     @Override
     public void run(String... args) throws Exception {
+
+            //cart for user
+
+
             List<User> sampleUsers = List.of(
                     // Admins
                     User.builder()
@@ -3070,6 +3078,17 @@ public class DatabaseInitializer implements CommandLineRunner {
                             .console(SegaDreamcast)
                             .build();
                     productList.add(PhantasyStarOnline);
+
+                    List<CartItem> cart = new ArrayList<>();
+                    CartItem cartItem1 = CartItem.builder().cartItemId("12").name(PS3.getConsoleName()).description(PS3.getCompany()).price(PS3.getPrice()).build();
+                    cart.add(cartItem1);
+                    Cart cart1 =
+                            Cart.builder().cartId("1")
+                                    .items(new ArrayList<>())
+                                    .total(0.0)
+                                    .build();
+
+                    cartRepository.save(cart1);
 
 
                     productRepository.saveAll(productList);

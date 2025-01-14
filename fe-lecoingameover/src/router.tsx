@@ -11,7 +11,11 @@ import UpdateGame from './pages/UpdateGame';
 import MainLayout from './layouts/MainLayout';
 import SingleGame from './pages/SingleGame'
 import Users from "./pages/Users";
+
+import Cart from './pages/Cart.tsx';
+
 import UserProfile from "./pages/UserProfile";
+
 
 const router = createBrowserRouter([
     {
@@ -81,15 +85,20 @@ const router = createBrowserRouter([
                     </ProtectedRoute>
                 ),
             },
+            
             {
-                path: AppRoutes.Users,
+
+                path: AppRoutes.Cart,  // Define the Cart route
                 element: (
                     <ProtectedRoute>
-                        <Users />
+                        <Cart />
                     </ProtectedRoute>
                 ),
             },
-            {
+
+
+
+   {
                 path: AppRoutes.UserProfile, // Add the profile page route
                 element: (
                   <ProtectedRoute>
@@ -97,6 +106,7 @@ const router = createBrowserRouter([
                   </ProtectedRoute>
                 ),
             },
+
         ],
     },
 ]);
