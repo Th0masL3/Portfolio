@@ -1,6 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import "./Consoles.css";
-import Navigation from "./Navigation";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -43,9 +42,18 @@ export default function Consoles(): JSX.Element {
 
     const deleteConsole = async (event: React.MouseEvent, id: string): Promise<void> => {
         event.stopPropagation(); // Prevent row click event
+
+        const userConfirmed = window.confirm(
+            "Are you sure you want to delete this console?"
+        );
+
+        if (!userConfirmed) {
+            return; // Exit if user cancels the deletion
+        }
+
         try {
             const token = await getAccessTokenSilently();
-
+console.log(token);
             const response = await axios.delete(`http://localhost:8080/api/v1/consoles/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -65,7 +73,6 @@ export default function Consoles(): JSX.Element {
 
     return (
         <>
-            <Navigation />
             <div className="console-container">
                 <h1 className="console-title">Consoles</h1>
                 {error && <p className="console-error">{error}</p>}

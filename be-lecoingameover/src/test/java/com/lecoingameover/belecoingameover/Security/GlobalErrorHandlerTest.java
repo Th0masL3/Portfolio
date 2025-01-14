@@ -32,14 +32,50 @@ class GlobalErrorHandlerTest {
     private PrintWriter printWriter;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws IOException {
         MockitoAnnotations.openMocks(this);
         globalErrorHandler = new GlobalErrorHandler(mapper);
 
         stringWriter = new StringWriter();
         printWriter = new PrintWriter(stringWriter);
+        when(response.getWriter()).thenReturn(printWriter);
     }
 
+    @Test
+    void handleAuthenticationError_shouldSetUnauthorizedStatusAndWriteMessage() throws IOException {
+        // Arrange
+        String exceptionMessage = "Invalid token";
+        String uri = "/test-uri";
+        String expectedJson = "{\"message\":\"Unauthorized: Invalid token\"}";
+
+        when(request.getRequestURI()).thenReturn(uri);
+        when(mapper.writeValueAsString(any(GlobalErrorHandler.ErrorMessage.class))).thenReturn(expectedJson);
+
+        // Act
+        globalErrorHandler.handleAuthenticationError(request, response, new Exception(exceptionMessage));
+
+        // Assert
+        verify(response).setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        assertEquals(expectedJson, stringWriter.toString());
+    }
+
+    @Test
+    void handleAccessDenied_shouldSetForbiddenStatusAndWriteMessage() throws IOException {
+        // Arrange
+        String exceptionMessage = "Access restricted";
+        String uri = "/restricted-uri";
+        String expectedJson = "{\"message\":\"Permission denied\"}";
+
+        when(request.getRequestURI()).thenReturn(uri);
+        when(mapper.writeValueAsString(any(GlobalErrorHandler.ErrorMessage.class))).thenReturn(expectedJson);
+
+        // Act
+        globalErrorHandler.handleAccessDenied(request, response, new Exception(exceptionMessage));
+
+        // Assert
+        verify(response).setStatus(HttpServletResponse.SC_FORBIDDEN);
+        assertEquals(expectedJson, stringWriter.toString());
+    }
 
 
     @Test
@@ -47,7 +83,8 @@ class GlobalErrorHandlerTest {
         // Arrange
         String message = "Test message";
         String expectedJson = "{\"message\":\"Test message\"}";
-        when(mapper.writeValueAsString(any())).thenReturn(expectedJson);
+
+        when(mapper.writeValueAsString(any(GlobalErrorHandler.ErrorMessage.class))).thenReturn(expectedJson);
 
         // Act
         String result = globalErrorHandler.createBody(message);

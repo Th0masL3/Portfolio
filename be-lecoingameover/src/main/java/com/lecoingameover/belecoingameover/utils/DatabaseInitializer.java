@@ -1,14 +1,17 @@
 package com.lecoingameover.belecoingameover.utils;
 
+import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.Cart;
+import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.CartItem;
+import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.CartRepository;
 import com.lecoingameover.belecoingameover.dataaccess.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Component
 public class DatabaseInitializer implements CommandLineRunner {
@@ -3305,4 +3308,3 @@ public class DatabaseInitializer implements CommandLineRunner {
                         productRepository.saveAll(productList);
                 }
         }
-}

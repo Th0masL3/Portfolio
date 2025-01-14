@@ -13,5 +13,6 @@ public interface ProductService {
     List<ProductResponseModel> getProductsByConsoleId(String consoleId);
     ProductResponseModel addProductByConsoleId(String consoleId, ProductRequestModel productRequestModel);
     ProductResponseModel updateProduct(String productId, ProductRequestModel productRequestModel );
+    void deleteProductByProductId(String productId);
 
 }

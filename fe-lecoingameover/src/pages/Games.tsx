@@ -1,13 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Navigate, useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import Navigation from "./Navigation";
 import axios from 'axios';
 import './Games.css';
-import {ProductResponseModel} from "../Models/ProductResponseModel";
-import {ConsoleResponseModel} from "../Models/ConsoleResponseModel";
-import { useNavigate } from 'react-router-dom';
-
-import Navigation from "./Navigation";
-
+import { ProductResponseModel } from "../Models/ProductResponseModel";
+import { ConsoleResponseModel } from "../Models/ConsoleResponseModel";
 
 export default function Games(): JSX.Element {
     const { consoleId } = useParams<{ consoleId: string }>();
@@ -15,7 +12,6 @@ export default function Games(): JSX.Element {
     const [error, setError] = useState<string | null>(null);
     const [consoleDetails, setConsoleDetails] = useState<ConsoleResponseModel | null>(null);
     const navigate = useNavigate();
-
 
     useEffect(() => {
         fetchConsoleDetails();
@@ -34,12 +30,6 @@ export default function Games(): JSX.Element {
         }
     };
 
-    const handleAddGameClick = (): void => {
-        navigate(`/add-game/${consoleId}`);
-    };
-    const handleUpdateGameClick = (productId: string): void => {
-        navigate(`/update-game/${productId}`);
-    };
     const fetchProducts = async (): Promise<void> => {
         try {
             const response = await axios.get(`http://localhost:8080/api/v1/products/console/${consoleId}`);
@@ -49,6 +39,33 @@ export default function Games(): JSX.Element {
         } catch (err) {
             console.error('Error fetching products:', err);
             setError('Failed to fetch products.');
+        }
+    };
+
+    const handleProductRowClick = (productId: string) => {
+        navigate(`/products/${productId}`);
+    };
+
+    const handleAddGameClick = (): void => {
+        navigate(`/add-game/${consoleId}`);
+    };
+
+    const handleUpdateGameClick = (event: React.MouseEvent, productId: string): void => {
+        event.stopPropagation();
+        navigate(`/update-game/${productId}`);
+    };
+
+    const handleDeleteGameClick = async (event: React.MouseEvent, productId: string): Promise<void> => {
+        event.stopPropagation();
+        const confirmed = window.confirm("Are you sure you want to delete this product?");
+        if (confirmed) {
+            try {
+                await axios.delete(`http://localhost:8080/api/v1/products/${productId}`);
+                setProducts(products.filter((product) => product.productId !== productId));
+            } catch (err) {
+                console.error('Error deleting product:', err);
+                setError('Failed to delete the product.');
+            }
         }
     };
 
