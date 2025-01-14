@@ -11,6 +11,7 @@ import UpdateGame from './pages/UpdateGame.tsx';
 import MainLayout from './layouts/MainLayout';
 import SingleGame from './pages/SingleGame'
 import Users from "./pages/Users";
+import Cart from './pages/Cart.tsx';
 
 const router = createBrowserRouter([
     {
@@ -87,7 +88,15 @@ const router = createBrowserRouter([
                         <Users />
                     </ProtectedRoute>
                 ),
-            }
+            },
+            {
+                path: AppRoutes.Cart,  // Define the Cart route
+                element: (
+                    <ProtectedRoute>
+                        <Cart />
+                    </ProtectedRoute>
+                ),
+            },
 
 
 

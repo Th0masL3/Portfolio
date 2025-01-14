@@ -2,7 +2,7 @@ import React from "react";
 import AuthButton from "./Auth/AuthButton";
 import Profile from "./Auth/Profile";
 import "./Navigation.css";
-import Cart from "./Cart";
+import { Link } from "react-router-dom";
 
 const Navigation = (): JSX.Element => {
     return (
@@ -29,11 +29,10 @@ const Navigation = (): JSX.Element => {
                         <Profile />
                     </div>
                     <div className="cart">
-                        <a href="/cart">
+                     {/* Replace anchor tag with Link to Cart page */}
+                     <Link to="/cart">
                             <img src="./assets/images/icons-cart.png" alt="carticon" className="icon" />
-                        </a>
-                        <Cart />
-                        
+                        </Link>
                     </div>
                 </div>
             </div>
