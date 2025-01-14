@@ -71,54 +71,47 @@ export default function Games(): JSX.Element {
 
     return (
         <div className="products-container">
-            <h1 className="products-title">
-                {consoleDetails ? `${consoleDetails.consoleName} Games` : 'Games'}
-            </h1>
-            {error && <p className="products-error">{error}</p>}
-            <button className="add-game-button" onClick={handleAddGameClick}>Add Game</button>
-            <table className="products-table">
-                <thead>
-                    <tr>
-                        <th>Product ID</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Description</th>
-                        <th>Genre</th>
-                        <th>Quantity</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {products.map((product) => (
-                        <tr
-                            key={product.productId}
-                            onClick={() => handleProductRowClick(product.productId)}
-                            style={{ cursor: "pointer" }}
-                        >
-                            <td>{product.productId}</td>
-                            <td>{product.productName}</td>
-                            <td>${product.productSalePrice.toFixed(2)}</td>
-                            <td>{product.productDescription}</td>
-                            <td>{product.genre}</td>
-                            <td>{product.productQuantity}</td>
-                            <td>
-                                <button
-                                    className="update-game-button"
-                                    onClick={(event) => handleUpdateGameClick(event, product.productId)}
-                                >
-                                    Update
-                                </button>
-                                <button
-                                    className="delete-game-button"
-                                    onClick={(event) => handleDeleteGameClick(event, product.productId)}
-                                >
-                                    Delete
-                                </button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
+        <h1 className="products-title">
+            {consoleDetails ? `${consoleDetails.consoleName} Games` : 'Games'}
+        </h1>
+        {error && <p className="products-error">{error}</p>}
+        <button className="add-game-button" onClick={handleAddGameClick}>Add Game</button>
+        <table className="products-table">
+            <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Genre</th>
+                <th>Quantity</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {products.map((product) => (
+                <tr key={product.productId}>
+                    <td>{product.productId}</td>
+                    <td>{product.productName}</td>
+                    <td>${product.productSalePrice.toFixed(2)}</td>
+                    <td>{product.productDescription}</td>
+                    <td>{product.genre}</td>
+                    <td>{product.productQuantity}</td>
+                    <td>
+                        <img
+                            src={product.image}
+                            alt={product.productName}
+                            className="product-image"
+                        />
+                    </td>
+                    <td>
+                        <button className="add-game-button" onClick={() => handleUpdateGameClick(product.productId)}>Update</button>
+                    </td>
+                </tr>
+            ))}
+            </tbody>
+        </table>
+    </div>
     );
 }

@@ -92,6 +92,7 @@ console.log(token);
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Company</th>
+                        <th>Image</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
@@ -108,6 +109,9 @@ console.log(token);
                             <td>${console.price.toFixed(2)}</td>
                             <td>{console.quantityInStock}</td>
                             <td>{console.company}</td>
+                            <td>
+                                <img src={console.image} alt={console.consoleName} className="console-image" />
+                            </td>
                             <td>
                                 <>
                                     <button

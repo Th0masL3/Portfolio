@@ -5,4 +5,5 @@ export interface ProductResponseModel {
     productDescription: string;
     genre: string;
     productQuantity: number;
+    image: string;
 }

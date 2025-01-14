@@ -10,6 +10,7 @@ interface ConsoleRequestModel {
     price: number;
     quantityInStock: number;
     company: string;
+    image: string;
 }
 
 export default function EditConsole(): JSX.Element {
@@ -23,6 +24,7 @@ export default function EditConsole(): JSX.Element {
         price: console?.price || 0,
         quantityInStock: console?.quantityInStock || 0,
         company: console?.company || '',
+        image: console?.image || '',
     });
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -105,6 +107,15 @@ export default function EditConsole(): JSX.Element {
                         type="text"
                         name="company"
                         value={formData.company}
+                        onChange={handleInputChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Image Link</label>
+                    <input
+                        type="text"
+                        name="image"
+                        value={formData.image}
                         onChange={handleInputChange}
                     />
                 </div>

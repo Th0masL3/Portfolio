@@ -15,4 +15,5 @@ public class ConsoleRequestModel {
     private double price;
     private int quantityInStock;
     private String company;
+    private String image;
 }

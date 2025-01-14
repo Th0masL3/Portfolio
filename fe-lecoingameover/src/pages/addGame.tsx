@@ -12,6 +12,7 @@ export default function AddGame(): JSX.Element {
         productDescription: '',
         genre: '',
         productQuantity: '',
+        image: '',
         console: {
             consoleId: consoleId || '',
             consoleName: '',
@@ -118,6 +119,16 @@ export default function AddGame(): JSX.Element {
                         onChange={handleChange}
                         required
                     />
+                </label>
+                <label>
+                    Image Link:
+                    <input
+                        type="text"
+                        name="image"
+                        value={formData.image}
+                        onChange={handleChange}
+                        required
+                    />      
                 </label>
 
                 {/* Console details (read-only except for ID) */}
