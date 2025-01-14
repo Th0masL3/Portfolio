@@ -3084,8 +3084,8 @@ public class DatabaseInitializer implements CommandLineRunner {
                     cart.add(cartItem1);
                     Cart cart1 =
                             Cart.builder().cartId("1")
-                                    .items(cart)
-                                    .total((cartItem1.getPrice() * cart.size()))
+                                    .items(new ArrayList<>())
+                                    .total(0.0)
                                     .build();
 
                     cartRepository.save(cart1);
