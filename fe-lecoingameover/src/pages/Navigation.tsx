@@ -2,6 +2,7 @@ import React from "react";
 import AuthButton from "./Auth/AuthButton";
 import Profile from "./Auth/Profile";
 import "./Navigation.css";
+import Cart from "./Cart";
 
 const Navigation = (): JSX.Element => {
     return (
@@ -31,6 +32,8 @@ const Navigation = (): JSX.Element => {
                         <a href="/cart">
                             <img src="./assets/images/icons-cart.png" alt="carticon" className="icon" />
                         </a>
+                        <Cart />
+                        
                     </div>
                 </div>
             </div>
