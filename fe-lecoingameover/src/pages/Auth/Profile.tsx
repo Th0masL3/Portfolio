@@ -15,10 +15,6 @@ const Profile = (): JSX.Element | null => {
   return (
     <div className="profile">
       <img src={user?.picture} alt={`${user?.name}'s profile`} />
-      <div className="profile-info">
-        <h2>{user?.name}</h2>
-        <p>{user?.email}</p>
-      </div>
     </div>
   );
 };
