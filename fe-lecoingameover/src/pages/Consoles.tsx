@@ -26,6 +26,31 @@ export default function Consoles(): JSX.Element {
             setError("Failed to fetch consoles.");
         }
     };
+    const addToCart = async (consoleId: string): Promise<void> => {
+        try {
+          const consoleRequest = consoles.find((c) => c.consoleId === consoleId);
+          if (!consoleRequest) return;
+      
+          const response = await axios.post(
+            `http://localhost:8080/api/v1/cart/console/${consoleId}`,
+            {
+              consoleId: consoleRequest.consoleId,
+              consoleName: consoleRequest.consoleName,
+              price: consoleRequest.price,
+              quantityInStock: consoleRequest.quantityInStock,
+              company: consoleRequest.company,
+              image: consoleRequest.image,
+            }
+          );
+          if (response.status === 201) {
+            alert("Console added to cart!");
+          }
+        } catch (err) {
+          console.error("Error adding to cart:", err);
+          setError("Failed to add console to cart.");
+        }
+      };
+      
 
     const handleRowClick = (consoleId: string) => {
         navigate(`/consoles/${consoleId}/products`);
@@ -126,6 +151,10 @@ console.log(token);
                                     >
                                         Delete
                                     </button>
+                                    <td>
+  <button onClick={() => addToCart(console.consoleId)}>Add to Cart</button>
+</td>
+
                                 </>
                             </td>
                         </tr>
