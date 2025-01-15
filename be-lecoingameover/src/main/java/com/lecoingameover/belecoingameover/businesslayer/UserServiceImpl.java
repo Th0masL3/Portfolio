@@ -19,7 +19,6 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
-
     private final Auth0Client auth0Client;
     private final UserRepository userRepository;
 
@@ -65,14 +64,29 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseModel addUserFromAuth0(String auth0UserId) {
-        var auth0User = auth0Client.getUserById(auth0UserId);
-        Optional<User> existingUser = userRepository.findByUserId(auth0UserId);
+        // Fetch user details from Auth0
+        UserResponseModel auth0User = auth0Client.getUserById(auth0UserId);
+        if (auth0User == null) {
+            throw new NotFoundException("User not found with Auth0 ID: " + auth0UserId);
+        }
 
+        // Check if the user already exists in the repository
+        Optional<User> existingUser = userRepository.findByUserId(auth0UserId);
         if (existingUser.isPresent()) {
-            log.info("User already exists in database: {}", existingUser.get());
+            log.info("User already exists in the database: {}", existingUser.get());
             return UserEntityToModel.toUserResponseModel(existingUser.get());
         }
 
+        // Assign a role to the user in Auth0
+        try {
+            auth0Client.assignRoleToUser(auth0UserId, "rol_WM8SiFHawyFeiq5O");
+            log.info("Successfully assigned 'Customer' role to User ID: {}", auth0UserId);
+        } catch (Exception e) {
+            log.error("Failed to assign 'Customer' role to User ID: {}", auth0UserId, e);
+            throw new RuntimeException("Role assignment failed", e);
+        }
+
+        // Create a new user in the repository
         User newUser = User.builder()
                 .userId(auth0UserId)
                 .email(auth0User.getEmail())
@@ -83,10 +97,15 @@ public class UserServiceImpl implements UserService {
                 .build();
 
         userRepository.save(newUser);
-        log.info("User added from Auth0: {}", newUser);
+        log.info("User successfully created in MongoDB: {}", newUser);
 
-        return UserEntityToModel.toUserResponseModel(newUser);
+        // Convert and return the response model
+        UserResponseModel responseModel = UserEntityToModel.toUserResponseModel(newUser);
+        log.info("Final User Response: {}", responseModel);
+
+        return responseModel;
     }
+
 
     @Override
     public UserResponseModel syncUserWithAuth0(String auth0UserId) {

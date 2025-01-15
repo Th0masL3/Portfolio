@@ -191,4 +191,47 @@ public class Auth0ClientImpl implements Auth0Client {
                 .permissions(permissionNames)
                 .build();
     }
+    @Override
+    public void assignRoleToUser(String auth0UserId, String roleName) {
+        log.info("Assigning Role '{}' to User ID: {}", roleName, auth0UserId);
+
+        try {
+            // Obtain the access token
+            String token = getAccessToken();
+
+            // Prepare the API URL
+            String url = "https://" + domain + "/api/v2/users/" + auth0UserId + "/roles";
+
+            // Set headers
+            HttpHeaders headers = new HttpHeaders();
+            headers.setBearerAuth(token);
+            headers.setContentType(MediaType.APPLICATION_JSON);
+
+            // Create the request body
+            AssignRolesRequestModel requestBody = new AssignRolesRequestModel(roleName);
+
+            // Wrap the request body and headers into an HttpEntity
+            HttpEntity<AssignRolesRequestModel> request = new HttpEntity<>(requestBody, headers);
+
+            // Make the POST request using RestTemplate
+            ResponseEntity<Void> response = restTemplate.exchange(
+                    url,
+                    HttpMethod.POST,
+                    request,
+                    Void.class
+            );
+
+            if (response.getStatusCode().is2xxSuccessful()) {
+                log.info("Role '{}' assigned successfully to User ID: {}", roleName, auth0UserId);
+            } else {
+                log.error("Failed to assign role '{}' to User ID: {}. Status: {}", roleName, auth0UserId, response.getStatusCode());
+                throw new RuntimeException("Failed to assign role to user");
+            }
+        } catch (Exception e) {
+            log.error("Error assigning role '{}' to User ID: {}", roleName, auth0UserId, e);
+            throw new RuntimeException("Error occurred while assigning role to user", e);
+        }
+    }
+
+
 }
