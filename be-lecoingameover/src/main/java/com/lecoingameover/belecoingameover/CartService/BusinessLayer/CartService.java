@@ -12,5 +12,5 @@ import com.lecoingameover.belecoingameover.presentationlayer.ProductRequestModel
 public interface CartService {
     CartResponseModel getCartById(String cartId);
     CartResponseModel addProductToCartItem(ProductRequestModel productRequestModel, String productId);
-    CartResponseModel addConsoleToCartItem(String consoleId, CartRequestModel cartRequestModel);
+    CartResponseModel addConsoleToCartItem(ConsoleRequestModel consoleRequestModel, String consoleId);
 }

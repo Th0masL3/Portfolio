@@ -26,8 +26,12 @@ public class CartController {
         CartResponseModel cart = cartService.getCartById(cartId);
         return ResponseEntity.status(HttpStatus.OK).body(cart);
     }
-    @PostMapping("/{productId}")
+    @PostMapping("/product/{productId}")
     public ResponseEntity<CartResponseModel> addProductToCartItem(@Valid @RequestBody ProductRequestModel productRequestModel,@PathVariable("productId") String productId) {
         return ResponseEntity.status(HttpStatus.CREATED).body(cartService.addProductToCartItem(productRequestModel,productId));
+    }
+    @PostMapping("/console/{consoleId}")
+    public ResponseEntity<CartResponseModel> addConsoleToCartItem(@Valid @RequestBody ConsoleRequestModel consoleRequestModel,@PathVariable("consoleId") String consoleId) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(cartService.addConsoleToCartItem(consoleRequestModel,consoleId));
     }
 }

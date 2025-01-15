@@ -11,10 +11,13 @@ import com.lecoingameover.belecoingameover.dataaccess.Console;
 import com.lecoingameover.belecoingameover.dataaccess.ConsoleRepository;
 import com.lecoingameover.belecoingameover.dataaccess.Product;
 import com.lecoingameover.belecoingameover.dataaccess.ProductRepository;
+import com.lecoingameover.belecoingameover.presentationlayer.ConsoleRequestModel;
 import com.lecoingameover.belecoingameover.presentationlayer.ConsoleResponseModel;
 import com.lecoingameover.belecoingameover.presentationlayer.ProductRequestModel;
 import com.lecoingameover.belecoingameover.utils.exceptions.NotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class CartServiceImpl implements CartService {
@@ -64,8 +67,18 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public CartResponseModel addConsoleToCartItem(String consoleId, CartRequestModel cartRequestModel) {
-        return null;
+    public CartResponseModel addConsoleToCartItem(ConsoleRequestModel consoleRequestModel, String consoleId) {
+        Cart onlyCart =cartRepository.findCartByCartId("1");
+        Optional<Console> console =consoleRepository.findById(consoleId);
+        CartItem cartItem = new CartItem();
+        cartItem.setCartItemId(console.get().getConsoleId());
+        cartItem.setName(console.get().getConsoleName());
+        cartItem.setPrice(console.get().getPrice());
+        cartItem.setDescription(console.get().getCompany());
+        onlyCart.getItems().add(cartItem);
+        onlyCart.setTotal(onlyCart.getItems().stream().mapToDouble(CartItem::getPrice).sum());
+        cartRepository.save(onlyCart);
+        return cartResponseMapper.entityToResponseModel(onlyCart);
     }
 
 
