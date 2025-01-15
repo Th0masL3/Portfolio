@@ -7,4 +7,5 @@ import java.util.List;
 public interface Auth0Client {
     UserResponseModel getUserById(String auth0UserId);
     List<UserResponseModel> getAllUsers();
+    void assignRoleToUser(String auth0UserId, String roleName);
 }
