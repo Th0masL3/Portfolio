@@ -13,6 +13,7 @@ public class UserEntityToModel {
                 .lastName(user.getLastName())
                 .roles(user.getRoles())
                 .permissions(user.getPermissions())
+                .isBlocked(user.isBlocked())
                 .build();
     }
 }

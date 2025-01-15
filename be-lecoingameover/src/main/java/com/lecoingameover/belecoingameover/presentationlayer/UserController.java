@@ -35,4 +35,13 @@ public class UserController {
     public ResponseEntity<UserResponseModel> syncUserWithAuth0(@PathVariable String userId) {
         return ResponseEntity.ok(userService.syncUserWithAuth0(userId));
     }
+
+
+    @PutMapping("/{userId}/block")
+    public ResponseEntity<Void> blockUserById(
+            @PathVariable String userId,
+            @RequestParam boolean isBlocked) {
+        userService.blockUserById(userId, isBlocked);
+        return ResponseEntity.ok().build();
+    }
 }
