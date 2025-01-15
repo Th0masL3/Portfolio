@@ -1,5 +1,8 @@
 package com.lecoingameover.belecoingameover.utils;
 
+import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.Cart;
+import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.CartItem;
+import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.CartRepository;
 import com.lecoingameover.belecoingameover.auth0.Auth0Client;
 import com.lecoingameover.belecoingameover.dataaccess.*;
 import com.lecoingameover.belecoingameover.presentationlayer.UserResponseModel;
@@ -22,6 +25,8 @@ public class DatabaseInitializer implements CommandLineRunner {
         UserRepository userRepository;
         @Autowired
         private Auth0Client auth0Client;
+        @Autowired
+        CartRepository cartRepository;
         @Override
         public void run(String... args) throws Exception {
                 List<User> sampleUsers = List.of(
@@ -3391,6 +3396,16 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .build();
                         productList.add(PhantasyStarOnline);
 
+                        List<CartItem> cart = new ArrayList<>();
+                        CartItem cartItem1 = CartItem.builder().cartItemId("12").name(PS3.getConsoleName()).description(PS3.getCompany()).price(PS3.getPrice()).build();
+                        cart.add(cartItem1);
+                        Cart cart1 =
+                                Cart.builder().cartId("1")
+                                        .items(new ArrayList<>())
+                                        .total(0.0)
+                                        .build();
+
+                        cartRepository.save(cart1);
 
                         productRepository.saveAll(productList);
                 }
