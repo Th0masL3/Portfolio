@@ -29,6 +29,32 @@ export default function Games(): JSX.Element {
             setError('Failed to fetch console details.');
         }
     };
+    const addToCart = async (productId: string): Promise<void> => {
+  try {
+    const productRequest = products.find((p) => p.productId === productId);
+    if (!productRequest) return;
+
+    const response = await axios.post(
+      `http://localhost:8080/api/v1/cart/product/${productId}`,
+      {
+        productId: productRequest.productId,
+        productName: productRequest.productName,
+        productSalePrice: productRequest.productSalePrice,
+        productDescription: productRequest.productDescription,
+        genre: productRequest.genre,
+        productQuantity: productRequest.productQuantity,
+        image: productRequest.image,
+      }
+    );
+    if (response.status === 201) {
+      alert("Game added to cart!");
+    }
+  } catch (err) {
+    console.error("Error adding to cart:", err);
+    setError("Failed to add game to cart.");
+  }
+};
+
 
     const fetchProducts = async (): Promise<void> => {
         try {
@@ -108,6 +134,10 @@ export default function Games(): JSX.Element {
                     <td>
                         <button className="add-game-button" onClick={() => handleUpdateGameClick(product.productId)}>Update</button>
                     </td>
+                    <td>
+  <button onClick={() => addToCart(product.productId)}>Add to Cart</button>
+</td>
+
                 </tr>
             ))}
             </tbody>

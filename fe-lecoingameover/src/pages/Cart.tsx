@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Games.css';
+import './Cart.css';
 
 
 interface CartItem {
@@ -8,6 +8,7 @@ interface CartItem {
   price: number;
   description: string;
 }
+
 
 const Cart = (): JSX.Element => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
