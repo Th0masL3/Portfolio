@@ -2,7 +2,12 @@ package com.lecoingameover.belecoingameover.CartService.PresentationLayer;
 
 import com.lecoingameover.belecoingameover.CartService.BusinessLayer.CartService;
 import com.lecoingameover.belecoingameover.businesslayer.ProductService;
+import com.lecoingameover.belecoingameover.dataaccess.Product;
+import com.lecoingameover.belecoingameover.presentationlayer.ConsoleRequestModel;
+import com.lecoingameover.belecoingameover.presentationlayer.ConsoleResponseModel;
+import com.lecoingameover.belecoingameover.presentationlayer.ProductRequestModel;
 import com.lecoingameover.belecoingameover.presentationlayer.ProductResponseModel;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,5 +25,9 @@ public class CartController {
     public ResponseEntity<CartResponseModel> getCartById(@PathVariable("cartId") String cartId) {
         CartResponseModel cart = cartService.getCartById(cartId);
         return ResponseEntity.status(HttpStatus.OK).body(cart);
+    }
+    @PostMapping("/{productId}")
+    public ResponseEntity<CartResponseModel> addProductToCartItem(@Valid @RequestBody ProductRequestModel productRequestModel,@PathVariable("productId") String productId) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(cartService.addProductToCartItem(productRequestModel,productId));
     }
 }
