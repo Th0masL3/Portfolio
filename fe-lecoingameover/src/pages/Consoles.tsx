@@ -110,6 +110,7 @@ export default function Consoles(): JSX.Element {
                         <p>Stock: {console.quantityInStock}</p>
                         <p>Company: {console.company}</p>
                         <div className="console-card-actions">
+                            <button onClick={() => addToCart(console.consoleId)}>Add to Cart</button>
                             <button
                                 className="console-button"
                                 onClick={(event) => handleUpdateConsole(event, console)}

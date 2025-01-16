@@ -15,6 +15,7 @@ export default function Games(): JSX.Element {
     useEffect(() => {
         fetchConsoleDetails();
         fetchProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [consoleId]);
 
     const fetchConsoleDetails = async (): Promise<void> => {
@@ -95,6 +96,7 @@ export default function Games(): JSX.Element {
         }
     };
 
+
     return (
         <div className="products-container">
             <h1 className="products-title">
@@ -122,6 +124,7 @@ export default function Games(): JSX.Element {
                         <p>Genre: {product.genre}</p>
                         <p>Stock: {product.productQuantity}</p>
                         <div className="product-card-actions">
+                            <button onClick={() => addToCart(product.productId)}>Add to Cart</button>
                             <button
                                 className="product-button"
                                 onClick={(event) => handleUpdateProductClick(event, product.productId)}
