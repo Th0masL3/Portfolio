@@ -2,6 +2,7 @@ package com.lecoingameover.belecoingameover.CartService.BusinessLayer;
 
 import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.Cart;
 import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.CartItem;
+import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.CartItemRepository;
 import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.CartRepository;
 import com.lecoingameover.belecoingameover.CartService.DataMapperLayer.CartRequestMapper;
 import com.lecoingameover.belecoingameover.CartService.DataMapperLayer.CartResponseMapper;
@@ -27,13 +28,15 @@ public class CartServiceImpl implements CartService {
     public final CartResponseMapper cartResponseMapper;
     public ProductRepository productRepository;
     public ConsoleRepository consoleRepository;
+    public CartItemRepository cartItemRepository;
 
-    public CartServiceImpl(CartRepository cartRepository, CartRequestMapper cartRequestMapper, CartResponseMapper cartResponseMapper,ConsoleRepository consoleRepository, ProductRepository productRepository) {
+    public CartServiceImpl(CartRepository cartRepository, CartRequestMapper cartRequestMapper, CartResponseMapper cartResponseMapper,ConsoleRepository consoleRepository, ProductRepository productRepository,CartItemRepository cartItemRepository) {
         this.cartRepository = cartRepository;
         this.cartRequestMapper = cartRequestMapper;
         this.cartResponseMapper = cartResponseMapper;
         this.consoleRepository = consoleRepository;
         this.productRepository = productRepository;
+        this.cartItemRepository = cartItemRepository;
     }
 
 
@@ -60,6 +63,7 @@ public class CartServiceImpl implements CartService {
         cartItem.setName(product.getProductName());
         cartItem.setPrice(product.getProductSalePrice());
         cartItem.setDescription(product.getProductDescription());
+        cartItemRepository.save(cartItem);
         onlyCart.getItems().add(cartItem);
         onlyCart.setTotal(onlyCart.getItems().stream().mapToDouble(CartItem::getPrice).sum());
         cartRepository.save(onlyCart);
@@ -75,11 +79,39 @@ public class CartServiceImpl implements CartService {
         cartItem.setName(console.get().getConsoleName());
         cartItem.setPrice(console.get().getPrice());
         cartItem.setDescription(console.get().getCompany());
+        cartItemRepository.save(cartItem);
         onlyCart.getItems().add(cartItem);
         onlyCart.setTotal(onlyCart.getItems().stream().mapToDouble(CartItem::getPrice).sum());
         cartRepository.save(onlyCart);
         return cartResponseMapper.entityToResponseModel(onlyCart);
     }
+
+    @Override
+    public void deleteCartItemByCartItemId(String cartItemId) {
+        // Find the cart item to delete
+        CartItem cartItem = cartItemRepository.findCartItemByCartItemId(cartItemId);
+        if (cartItem == null) {
+            throw new NotFoundException("Product with ID " + cartItemId + " not found");
+        }
+
+        // Delete the cart item
+        cartItemRepository.delete(cartItem);
+
+        // Find the cart and remove the item
+        Cart onlyCart = cartRepository.findCartByCartId("1");
+        if (onlyCart != null) {
+            boolean removed = onlyCart.getItems().removeIf(item -> item.getCartItemId().equals(cartItemId));
+            if (removed) {
+                // Update the total price
+                double updatedTotal = onlyCart.getItems().stream().mapToDouble(CartItem::getPrice).sum();
+                onlyCart.setTotal(updatedTotal);
+
+                // Save the updated cart
+                cartRepository.save(onlyCart);
+            }
+        }
+    }
+
 
 
 }

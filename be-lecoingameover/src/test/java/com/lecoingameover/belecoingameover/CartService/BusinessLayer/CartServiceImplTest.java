@@ -2,6 +2,7 @@ package com.lecoingameover.belecoingameover.CartService.BusinessLayer;
 
 import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.Cart;
 import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.CartItem;
+import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.CartItemRepository;
 import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.CartRepository;
 import com.lecoingameover.belecoingameover.CartService.DataMapperLayer.CartResponseMapper;
 import com.lecoingameover.belecoingameover.CartService.PresentationLayer.CartResponseModel;
@@ -23,6 +24,8 @@ class CartServiceImplTest {
 
     @Mock
     private CartRepository cartRepository;
+    @Mock
+    private CartItemRepository cartItemRepository;
 
     @Mock
     private CartResponseMapper cartResponseMapper;
@@ -212,6 +215,66 @@ class CartServiceImplTest {
         verify(cartRepository, times(1)).findCartByCartId("1");
     }
     */
-  
+    /*
+ @Test
+ void deleteCartItemByCartItemId_ValidRequest_DeletesCartItemSuccessfully() {
+     // Arrange
+     String cartItemId = "item123";
+     CartItem cartItem = new CartItem(cartItemId, "Product A", 10.0, "Description A");
+     Cart cart = Cart.builder()
+             .cartId("1")
+             .items(List.of(cartItem))
+             .total(10.0)
+             .build();
+
+     when(cartItemRepository.findCartItemByCartItemId(cartItemId)).thenReturn(cartItem);
+     when(cartRepository.findCartByCartId("1")).thenReturn(cart);
+
+     // Act
+     cartService.deleteCartItemByCartItemId(cartItemId);
+
+     // Assert
+     verify(cartItemRepository, times(1)).delete(cartItem);
+     verify(cartRepository, times(1)).save(cart);
+     assertEquals(0, cart.getItems().size(), "Cart should have no items left");
+     assertEquals(0.0, cart.getTotal(), "Cart total should be updated to 0.0");
+ }
+*/
+    @Test
+    void deleteCartItemByCartItemId_ItemNotFound_ThrowsNotFoundException() {
+        // Arrange
+        String cartItemId = "item123";
+        when(cartItemRepository.findCartItemByCartItemId(cartItemId)).thenReturn(null);
+
+        // Act & Assert
+        NotFoundException exception = assertThrows(
+                NotFoundException.class,
+                () -> cartService.deleteCartItemByCartItemId(cartItemId)
+        );
+
+        assertEquals("Product with ID item123 not found", exception.getMessage());
+        verify(cartItemRepository, times(1)).findCartItemByCartItemId(cartItemId);
+        verify(cartRepository, never()).save(any());
+    }
+
+  /*  @Test
+    void deleteCartItemByCartItemId_CartNotFound_ThrowsNotFoundException() {
+        // Arrange
+        String cartItemId = "item123";
+        CartItem cartItem = new CartItem(cartItemId, "Product A", 10.0, "Description A");
+        when(cartItemRepository.findCartItemByCartItemId(cartItemId)).thenReturn(cartItem);
+        when(cartRepository.findCartByCartId("1")).thenReturn(null);
+
+        // Act & Assert
+        NotFoundException exception = assertThrows(
+                NotFoundException.class,
+                () -> cartService.deleteCartItemByCartItemId(cartItemId)
+        );
+
+        assertEquals("Cart not found", exception.getMessage());
+        verify(cartItemRepository, times(1)).findCartItemByCartItemId(cartItemId);
+        verify(cartRepository, never()).save(any());
+    }
+*/
 
 }

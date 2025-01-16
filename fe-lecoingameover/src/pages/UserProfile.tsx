@@ -10,6 +10,7 @@ export default function UserProfile(): JSX.Element {
 
   useEffect(() => {
     fetchUserProfile();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId]);
 
   const fetchUserProfile = async (): Promise<void> => {

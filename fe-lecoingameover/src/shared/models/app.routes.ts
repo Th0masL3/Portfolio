@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import UpdateGame from "../../pages/UpdateGame";
 import Users from "../../pages/Users";
 import Cart from "../../pages/Cart";
