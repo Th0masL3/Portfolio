@@ -35,56 +35,32 @@ class UserServiceImplTest {
 
     @Test
     void testGetAllUsers() {
-        // Mock database user
-        User dbUser = User.builder()
-                .userId("db|123")
-                .email("dbuser@example.com")
-                .firstName("Db")
-                .lastName("User")
-                .roles(List.of("admin"))
-                .permissions(List.of("read"))
-                .build();
+        // Mock users in the database
+        when(userRepository.findAll()).thenReturn(List.of(
+                User.builder()
+                        .userId("1")
+                        .email("john.doe@example.com")
+                        .firstName("John")
+                        .lastName("Doe")
+                        .build(),
+                User.builder()
+                        .userId("2")
+                        .email("jane.doe@example.com")
+                        .firstName("Jane")
+                        .lastName("Doe")
+                        .build()
+        ));
 
-        // Mock Auth0 user
-        UserResponseModel auth0User = UserResponseModel.builder()
-                .userId("auth0|456")
-                .email("auth0user@example.com")
-                .firstName("Auth0")
-                .lastName("User")
-                .roles(List.of("customer"))
-                .permissions(List.of("write"))
-                .build();
+        // Test method
+        List<UserResponseModel> users = userService.getAllUsers();
 
-        // Initial behavior of findAll (before sync)
-        when(userRepository.findAll()).thenReturn(List.of(dbUser));
+        // Verify results
+        assertEquals(2, users.size());
+        assertEquals("1", users.get(0).getUserId());
+        assertEquals("2", users.get(1).getUserId());
 
-        // Mock Auth0 client to return Auth0 user
-        when(auth0Client.getAllUsers()).thenReturn(List.of(auth0User));
-
-        // Simulate saving the Auth0 user into the database
-        doAnswer(invocation -> {
-            User savedUser = invocation.getArgument(0);
-            // Update the behavior of findAll to include the saved user
-            when(userRepository.findAll()).thenReturn(List.of(dbUser, savedUser));
-            return savedUser;
-        }).when(userRepository).save(any(User.class));
-
-        // Execute the method under test
-        List<UserResponseModel> allUsers = userService.getAllUsers();
-
-        // Verify the result
-        assertEquals(2, allUsers.size(), "Expected 2 users (1 from DB, 1 from Auth0)");
-        assertTrue(allUsers.stream().anyMatch(user -> user.getUserId().equals("db|123")));
-        assertTrue(allUsers.stream().anyMatch(user -> user.getUserId().equals("auth0|456")));
-
-        // Verify interactions
-        verify(userRepository, atLeastOnce()).findAll();
-        verify(auth0Client, times(1)).getAllUsers();
-        verify(userRepository, times(1)).save(any(User.class)); // Ensure Auth0 user is saved
+        verify(userRepository, times(1)).findAll();
     }
-
-
-
     @Test
     void testGetUserById() {
         // Mock user
@@ -177,4 +153,52 @@ class UserServiceImplTest {
         verify(auth0Client, times(1)).getUserById("auth0|456");
         verify(userRepository, times(1)).save(any(User.class));
     }
+    @Test
+    void testBlockUserById() {
+        // Mock existing database user
+        User dbUser = User.builder()
+                .userId("auth0|123")
+                .email("user@example.com")
+                .firstName("John")
+                .lastName("Doe")
+                .blocked(false)
+                .build();
+        when(userRepository.findByUserId("auth0|123")).thenReturn(Optional.of(dbUser));
+
+        // Mock Auth0 call
+        doNothing().when(auth0Client).blockUser("auth0|123", true);
+
+        // Test method to block the user
+        userService.blockUserById("auth0|123", true);
+
+        // Verify database update
+        verify(userRepository, times(1)).save(dbUser);
+        assertTrue(dbUser.isBlocked());
+
+        // Verify interaction with Auth0
+        verify(auth0Client, times(1)).blockUser("auth0|123", true);
+
+        // Test method to unblock the user
+        userService.blockUserById("auth0|123", false);
+
+        // Verify database update
+        verify(userRepository, times(2)).save(dbUser);
+        assertFalse(dbUser.isBlocked());
+
+        // Verify interaction with Auth0
+        verify(auth0Client, times(1)).blockUser("auth0|123", false);
+    }
+
+    @Test
+    void testBlockUserByIdNotFound() {
+        when(userRepository.findByUserId("nonexistent")).thenReturn(Optional.empty());
+
+        // Test method and assert exception
+        assertThrows(NotFoundException.class, () -> userService.blockUserById("nonexistent", true));
+
+        // Verify no interactions with Auth0 or save
+        verify(auth0Client, never()).blockUser(anyString(), anyBoolean());
+        verify(userRepository, never()).save(any(User.class));
+    }
+
 }

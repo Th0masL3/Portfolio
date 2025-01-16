@@ -24,35 +24,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserResponseModel> getAllUsers() {
-        // Fetch users from the database
+        // Fetch users from MongoDB
+        log.info("Fetching all users from MongoDB...");
         List<User> dbUsers = userRepository.findAll();
 
-        // Fetch users from Auth0
-        List<UserResponseModel> auth0Users = auth0Client.getAllUsers();
-
-        // Sync missing Auth0 users into the database
-        for (UserResponseModel auth0User : auth0Users) {
-            boolean existsInDb = dbUsers.stream()
-                    .anyMatch(dbUser -> dbUser.getUserId().equals(auth0User.getUserId()));
-            if (!existsInDb) {
-                User newUser = User.builder()
-                        .userId(auth0User.getUserId())
-                        .email(auth0User.getEmail())
-                        .firstName(auth0User.getFirstName())
-                        .lastName(auth0User.getLastName())
-                        .roles(auth0User.getRoles())
-                        .permissions(auth0User.getPermissions())
-                        .build();
-                userRepository.save(newUser);
-            }
-        }
-
-        // Convert the updated database users to response models
-        return userRepository.findAll()
-                .stream()
+        // Convert database users to response models
+        return dbUsers.stream()
                 .map(UserEntityToModel::toUserResponseModel)
                 .collect(Collectors.toList());
     }
+
+
 
 
     @Override
@@ -124,4 +106,21 @@ public class UserServiceImpl implements UserService {
 
         return UserEntityToModel.toUserResponseModel(existingUser);
     }
+    @Override
+    public void blockUserById(String userId, boolean isBlocked) {
+        // Fetch the user from the database
+        User user = userRepository.findByUserId(userId)
+                .orElseThrow(() -> new NotFoundException("User not found with ID: " + userId));
+
+        // Block the user in Auth0
+        auth0Client.blockUser(userId, isBlocked);
+
+        // Update the block status in the database
+        user.setBlocked(isBlocked); // Use setBlocked
+        userRepository.save(user);
+
+        log.info("User {} successfully in Auth0 and database.", isBlocked ? "blocked" : "unblocked");
+    }
+
+
 }

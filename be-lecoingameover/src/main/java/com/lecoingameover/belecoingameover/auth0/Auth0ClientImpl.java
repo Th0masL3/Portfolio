@@ -3,12 +3,16 @@ package com.lecoingameover.belecoingameover.auth0;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lecoingameover.belecoingameover.presentationlayer.UserResponseModel;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -31,7 +35,8 @@ public class Auth0ClientImpl implements Auth0Client {
     private final ObjectMapper objectMapper;
 
     public Auth0ClientImpl(RestTemplate restTemplate, ObjectMapper objectMapper) {
-        this.restTemplate = restTemplate;
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        this.restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory(httpClient));
         this.objectMapper = objectMapper;
     }
 
@@ -232,6 +237,46 @@ public class Auth0ClientImpl implements Auth0Client {
             throw new RuntimeException("Error occurred while assigning role to user", e);
         }
     }
+    @Override
+    public void blockUser(String auth0UserId, boolean isBlocked) {
+        log.info("{} User ID: {}", isBlocked ? "Blocking" : "Unblocking", auth0UserId);
+
+        try {
+            String token = getAccessToken();
+
+            // Prepare the API URL
+            String url = "https://" + domain + "/api/v2/users/" + auth0UserId;
+
+            // Set headers
+            HttpHeaders headers = new HttpHeaders();
+            headers.setBearerAuth(token);
+            headers.setContentType(MediaType.APPLICATION_JSON);
+
+            // Create the request body
+            Map<String, Object> requestBody = Map.of("blocked", isBlocked);
+
+            // Wrap the request body and headers into an HttpEntity
+            HttpEntity<Map<String, Object>> request = new HttpEntity<>(requestBody, headers);
+
+            // Make the PATCH request using RestTemplate
+            ResponseEntity<Void> response = restTemplate.exchange(
+                    url,
+                    HttpMethod.PATCH,
+                    request,
+                    Void.class
+            );
+
+            if (response.getStatusCode().is2xxSuccessful()) {
+                log.info("Successfully {} User ID: {}", isBlocked ? "blocked" : "unblocked", auth0UserId);
+            } else {
+                throw new RuntimeException("Failed to " + (isBlocked ? "block" : "unblock") + " user");
+            }
+        } catch (Exception e) {
+            log.error("Error {} User ID: {}", isBlocked ? "blocking" : "unblocking", auth0UserId, e);
+            throw new RuntimeException("Error occurred while " + (isBlocked ? "blocking" : "unblocking") + " user", e);
+        }
+    }
+
 
 
 }

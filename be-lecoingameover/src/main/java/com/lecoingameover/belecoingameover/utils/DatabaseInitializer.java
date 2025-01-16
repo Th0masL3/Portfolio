@@ -29,6 +29,7 @@ public class DatabaseInitializer implements CommandLineRunner {
         CartRepository cartRepository;
         @Override
         public void run(String... args) throws Exception {
+                // Sample users with the new `blocked` field
                 List<User> sampleUsers = List.of(
                         // Admins
                         User.builder()
@@ -38,6 +39,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .lastName("Clark")
                                 .roles(List.of("admin"))
                                 .permissions(null)
+                                .blocked(false) // Default to not blocked
                                 .build(),
                         User.builder()
                                 .userId("auth0|675f4aa9e184fd643a8ed8fe")
@@ -46,6 +48,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .lastName("Jones")
                                 .roles(List.of("admin"))
                                 .permissions(null)
+                                .blocked(false)
                                 .build(),
                         // Customers
                         User.builder()
@@ -55,6 +58,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .lastName("Johnson")
                                 .roles(List.of("customer"))
                                 .permissions(null)
+                                .blocked(false)
                                 .build(),
                         User.builder()
                                 .userId("auth0|675f4b619a80612ce548e068")
@@ -63,6 +67,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .lastName("Williams")
                                 .roles(List.of("customer"))
                                 .permissions(null)
+                                .blocked(false)
                                 .build(),
                         User.builder()
                                 .userId("auth0|675f4b7ae184fd643a8ed902")
@@ -71,6 +76,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .lastName("Davis")
                                 .roles(List.of("customer"))
                                 .permissions(null)
+                                .blocked(false)
                                 .build(),
                         User.builder()
                                 .userId("auth0|675f4b9d9a80612ce548e069")
@@ -79,6 +85,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .lastName("Miller")
                                 .roles(List.of("customer"))
                                 .permissions(null)
+                                .blocked(false)
                                 .build(),
                         User.builder()
                                 .userId("auth0|675f4bb4e184fd643a8ed903")
@@ -87,8 +94,11 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .lastName("Moore")
                                 .roles(List.of("customer"))
                                 .permissions(null)
+                                .blocked(false)
                                 .build()
                 );
+
+                // Fetch Auth0 users and initialize their `blocked` field
                 List<UserResponseModel> auth0Users = auth0Client.getAllUsers();
 
                 // Convert Auth0 users to database User entities
@@ -100,6 +110,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .lastName(auth0User.getLastName())
                                 .roles(auth0User.getRoles())
                                 .permissions(auth0User.getPermissions())
+                                .blocked(auth0User.isBlocked())// Default to not blocked
                                 .build())
                         .toList();
 
@@ -111,7 +122,6 @@ public class DatabaseInitializer implements CommandLineRunner {
                 allUsers.stream()
                         .filter(user -> !userRepository.findByUserId(user.getUserId()).isPresent())
                         .forEach(userRepository::save);
-
 
 
                 if (consoleRepository.count() == 0) {

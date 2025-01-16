@@ -8,4 +8,5 @@ public interface Auth0Client {
     UserResponseModel getUserById(String auth0UserId);
     List<UserResponseModel> getAllUsers();
     void assignRoleToUser(String auth0UserId, String roleName);
+    void blockUser(String auth0UserId, boolean isBlocked);
 }

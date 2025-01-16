@@ -9,4 +9,5 @@ public interface UserService {
     UserResponseModel getUserById(String userId);
     UserResponseModel addUserFromAuth0(String auth0UserId);
     UserResponseModel syncUserWithAuth0(String auth0UserId);
+    void blockUserById(String userId, boolean isBlocked);
 }

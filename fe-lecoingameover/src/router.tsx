@@ -12,7 +12,7 @@ import MainLayout from './layouts/MainLayout';
 import SingleGame from './pages/SingleGame'
 import Users from "./pages/Users";
 
-import Cart from './pages/Cart.tsx';
+import Cart from './pages/Cart';
 
 import UserProfile from "./pages/UserProfile";
 
@@ -37,6 +37,14 @@ const router = createBrowserRouter([
                     </ProtectedRoute>
                 ),
             },
+          {
+            path: AppRoutes.Users,
+            element: (
+              <ProtectedRoute>
+                <Users />
+              </ProtectedRoute>
+            ),
+          },
             {
                 path: AppRoutes.EditConsole,
                 element: (
