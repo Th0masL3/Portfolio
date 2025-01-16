@@ -2,6 +2,7 @@ package com.lecoingameover.belecoingameover.utils;
 
 import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.Cart;
 import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.CartItem;
+import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.CartItemRepository;
 import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.CartRepository;
 import com.lecoingameover.belecoingameover.auth0.Auth0Client;
 import com.lecoingameover.belecoingameover.dataaccess.*;
@@ -27,6 +28,8 @@ public class DatabaseInitializer implements CommandLineRunner {
         private Auth0Client auth0Client;
         @Autowired
         CartRepository cartRepository;
+        @Autowired
+        CartItemRepository cartItemRepository;
         @Override
         public void run(String... args) throws Exception {
                 // Sample users with the new `blocked` field
@@ -3408,6 +3411,7 @@ public class DatabaseInitializer implements CommandLineRunner {
 
                         List<CartItem> cart = new ArrayList<>();
                         CartItem cartItem1 = CartItem.builder().cartItemId("12").name(PS3.getConsoleName()).description(PS3.getCompany()).price(PS3.getPrice()).build();
+                        cartItemRepository.save(cartItem1);
                         cart.add(cartItem1);
                         Cart cart1 =
                                 Cart.builder().cartId("1")
