@@ -6,7 +6,9 @@ const MainLayout: React.FC = () => {
     return (
         <>
             <Navigation />
-            <main style={{ padding: '1rem' }}>
+            <main style={{ backgroundColor: '#8A00C4',
+                height: '100vh',
+             }}>
                 <Outlet />
             </main>
         </>

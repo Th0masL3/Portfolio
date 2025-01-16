@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import './SingleGame.css';
 
 
 export default function ProductDetails(): JSX.Element {

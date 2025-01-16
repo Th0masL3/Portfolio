@@ -1,3 +1,7 @@
+.html, body {
+    background-color: #702963;
+}
+
 .consoles-container {
     padding: 20px;
     width: 100%;
@@ -7,14 +11,16 @@
 .consoles-title {
     text-align: center;
     margin-bottom: 20px;
+    color: #E0B0FF;
+    font-family: "Jersey 20", sans-serif;
 }
 
 .add-console-button {
     display: block;
     margin: 10px auto 20px;
     padding: 10px 20px;
-    background: #3498db;
-    color: #fff;
+    background: #E0B0FF;
+    color: darkblue;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -33,7 +39,7 @@
 }
 
 .console-card {
-    background: #fff;
+    background: #E0B0FF;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 15px;
@@ -59,11 +65,12 @@
 .console-card h3 {
     font-size: 1.2rem;
     margin: 10px 0;
+    color: darkblue;
 }
 
 .console-card p {
     font-size: 0.9rem;
-    color: #555;
+    color: darkblue;
     margin: 5px 0;
 }
 
@@ -79,11 +86,15 @@
     border-radius: 4px;
     font-size: 0.9rem;
     cursor: pointer;
+    background: darkblue;
+    color: #E0B0FF;
 }
 
 .console-button:hover {
     background: #ddd;
 }
+
+
 
 .delete-button {
     background: #e74c3c;
