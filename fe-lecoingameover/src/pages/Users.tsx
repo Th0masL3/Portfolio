@@ -29,23 +29,23 @@ export default function Users(): JSX.Element {
         navigate(`/users/${userId}`);
     };
 
-    const handleBlockUser = async (userId: string, isBlocked: boolean): Promise<void> => {
+    const handleBlockUser = async (userId: string, blocked: boolean): Promise<void> => {
         try {
             // Update backend
             await axios.put(`http://localhost:8080/api/v1/users/${userId}/block`, null, {
-                params: { isBlocked },
+                params: { isBlocked: blocked },
             });
 
             // Optimistically update local state
             setUsers((prevUsers) =>
               prevUsers.map((user) =>
-                user.userId === userId ? { ...user, isBlocked } : user
+                user.userId === userId ? { ...user, blocked } : user
               )
             );
-            console.log(`User ${userId} is now ${isBlocked ? 'blocked' : 'unblocked'}.`);
+            console.log(`User ${userId} is now ${blocked ? 'blocked' : 'unblocked'}.`);
         } catch (err) {
-            console.error(`Error ${isBlocked ? 'blocking' : 'unblocking'} user:`, err);
-            setError(`Failed to ${isBlocked ? 'block' : 'unblock'} user.`);
+            console.error(`Error ${blocked ? 'blocking' : 'unblocking'} user:`, err);
+            setError(`Failed to ${blocked ? 'block' : 'unblock'} user.`);
         }
     };
 
@@ -78,10 +78,10 @@ export default function Users(): JSX.Element {
                         <button
                           onClick={(e) => {
                               e.stopPropagation(); // Prevent row click
-                              handleBlockUser(user.userId, !user.isBlocked); // Toggle block/unblock
+                              handleBlockUser(user.userId, !user.blocked); // Toggle block/unblock
                           }}
                         >
-                            {user.isBlocked ? 'Unblock' : 'Block'}
+                            {user.blocked ? 'Unblock' : 'Block'}
                         </button>
                     </td>
                 </tr>
@@ -92,12 +92,11 @@ export default function Users(): JSX.Element {
     );
 }
 
-
 // UserResponseModel TypeScript Interface
 interface UserResponseModel {
     userId: string;
     firstName: string;
     lastName: string;
     email: string;
-    isBlocked: boolean; // Added the isBlocked property
+    blocked: boolean;
 }

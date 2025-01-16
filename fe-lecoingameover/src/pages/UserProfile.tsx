@@ -54,6 +54,7 @@ interface UserResponseModel {
   firstName: string;
   lastName: string;
   email: string;
+  blocked: boolean;
   roles?: string[];
   permissions?: string[];
 }

@@ -110,7 +110,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .lastName(auth0User.getLastName())
                                 .roles(auth0User.getRoles())
                                 .permissions(auth0User.getPermissions())
-                                .blocked(false) // Default to not blocked
+                                .blocked(auth0User.isBlocked())// Default to not blocked
                                 .build())
                         .toList();
 
