@@ -11,6 +11,7 @@ import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -33,5 +34,10 @@ public class CartController {
     @PostMapping("/console/{consoleId}")
     public ResponseEntity<CartResponseModel> addConsoleToCartItem(@Valid @RequestBody ConsoleRequestModel consoleRequestModel,@PathVariable("consoleId") String consoleId) {
         return ResponseEntity.status(HttpStatus.CREATED).body(cartService.addConsoleToCartItem(consoleRequestModel,consoleId));
+    }
+    @DeleteMapping("/{cartItemId}")
+    public ResponseEntity<Void> deleteCartItemByCartItemId(@PathVariable String cartItemId) {
+        cartService.deleteCartItemByCartItemId(cartItemId);
+        return ResponseEntity.noContent().build();
     }
 }
