@@ -157,4 +157,52 @@ class CartControllerTest {
         assertEquals("Console not found", exception.getMessage());
         verify(cartService, times(1)).addConsoleToCartItem(consoleRequest, consoleId);
     }
+    @Test
+    void deleteCartItemByCartItemId_ValidRequest_ReturnsNoContent() {
+        // Arrange
+        String cartItemId = "item123";
+        doNothing().when(cartService).deleteCartItemByCartItemId(cartItemId);
+
+        // Act
+        ResponseEntity<Void> response = cartController.deleteCartItemByCartItemId(cartItemId);
+
+        // Assert
+        assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
+        verify(cartService, times(1)).deleteCartItemByCartItemId(cartItemId);
+    }
+
+    @Test
+    void deleteCartItemByCartItemId_ItemNotFound_ThrowsNotFoundException() {
+        // Arrange
+        String cartItemId = "item123";
+        doThrow(new NotFoundException("Product with ID " + cartItemId + " not found"))
+                .when(cartService).deleteCartItemByCartItemId(cartItemId);
+
+        // Act & Assert
+        NotFoundException exception = assertThrows(
+                NotFoundException.class,
+                () -> cartController.deleteCartItemByCartItemId(cartItemId)
+        );
+
+        assertEquals("Product with ID item123 not found", exception.getMessage());
+        verify(cartService, times(1)).deleteCartItemByCartItemId(cartItemId);
+    }
+
+    @Test
+    void deleteCartItemByCartItemId_CartNotFound_ThrowsNotFoundException() {
+        // Arrange
+        String cartItemId = "item123";
+        doThrow(new NotFoundException("Cart not found"))
+                .when(cartService).deleteCartItemByCartItemId(cartItemId);
+
+        // Act & Assert
+        NotFoundException exception = assertThrows(
+                NotFoundException.class,
+                () -> cartController.deleteCartItemByCartItemId(cartItemId)
+        );
+
+        assertEquals("Cart not found", exception.getMessage());
+        verify(cartService, times(1)).deleteCartItemByCartItemId(cartItemId);
+    }
+
 }
