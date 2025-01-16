@@ -52,116 +52,81 @@ export default function Consoles(): JSX.Element {
       };
       
 
-    const handleRowClick = (consoleId: string) => {
+    const handleCardClick = (consoleId: string) => {
         navigate(`/consoles/${consoleId}/products`);
-    };
-
-    const handleEdit = (event: React.MouseEvent, console: ConsoleResponseModel) => {
-        event.stopPropagation(); // Prevent row click event
-        navigate("/consoles/edit", { state: { console } });
     };
 
     const handleAddConsole = () => {
         navigate("/consoles/add");
     };
 
-    const deleteConsole = async (event: React.MouseEvent, id: string): Promise<void> => {
-        event.stopPropagation(); // Prevent row click event
+    const handleUpdateConsole = (event: React.MouseEvent, console: ConsoleResponseModel) => {
+        event.stopPropagation();
+        navigate("/consoles/edit", { state: { console } });
+    };
 
-        const userConfirmed = window.confirm(
-            "Are you sure you want to delete this console?"
-        );
-
-        if (!userConfirmed) {
-            return; // Exit if user cancels the deletion
-        }
-
-        try {
-            const token = await getAccessTokenSilently();
-console.log(token);
-            const response = await axios.delete(`http://localhost:8080/api/v1/consoles/${id}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-
-            if (response.status === 204) {
+    const handleDeleteConsole = async (event: React.MouseEvent, id: string): Promise<void> => {
+        event.stopPropagation();
+        const confirmed = window.confirm("Are you sure you want to delete this console?");
+        if (confirmed) {
+            try {
+                const token = await getAccessTokenSilently();
+                await axios.delete(`http://localhost:8080/api/v1/consoles/${id}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
                 setConsoles((prevConsoles) => prevConsoles.filter((console) => console.consoleId !== id));
                 alert("Console deleted successfully!");
+            } catch (err) {
+                console.error("Error deleting console:", err);
+                setError("Failed to delete console.");
             }
-        } catch (err: any) {
-            console.error("Error deleting console:", err);
-            const errorMessage = err.response?.data?.message || err.message || "An unknown error occurred.";
-            setError(`Failed to delete console: ${errorMessage}`);
         }
     };
 
     return (
-        <>
-            <div className="console-container">
-                <h1 className="console-title">Consoles</h1>
-                {error && <p className="console-error">{error}</p>}
-
-                <div className="console-actions">
-                    <button className="console-button" onClick={handleAddConsole}>
-                        Add Console
-                    </button>
-                </div>
-
-                <table className="console-table">
-                    <thead>
-                    <tr>
-                        <th>Console ID</th>
-                        <th>Name</th>
-                        <th>Release Date</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Company</th>
-                        <th>Image</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {consoles.map((console) => (
-                        <tr
-                            key={console.consoleId}
-                            onClick={() => handleRowClick(console.consoleId)}
-                            style={{ cursor: "pointer" }}
-                        >
-                            <td>{console.consoleId}</td>
-                            <td>{console.consoleName}</td>
-                            <td>{console.releaseDate}</td>
-                            <td>${console.price.toFixed(2)}</td>
-                            <td>{console.quantityInStock}</td>
-                            <td>{console.company}</td>
-                            <td>
-                                <img src={console.image} alt={console.consoleName} className="console-image" />
-                            </td>
-                            <td>
-                                <>
-                                    <button
-                                        className="console-button"
-                                        onClick={(e) => handleEdit(e, console)}
-                                    >
-                                        Update
-                                    </button>
-                                    <button
-                                        className="console-button delete-button"
-                                        onClick={(e) => deleteConsole(e, console.consoleId)}
-                                    >
-                                        Delete
-                                    </button>
-                                    <td>
-  <button onClick={() => addToCart(console.consoleId)}>Add to Cart</button>
-</td>
-
-                                </>
-                            </td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </table>
+        <div className="consoles-container">
+            <h1 className="consoles-title">Consoles</h1>
+            {error && <p className="consoles-error">{error}</p>}
+            <button className="add-console-button" onClick={handleAddConsole}>
+                Add Console
+            </button>
+            <div className="consoles-grid">
+                {consoles.map((console) => (
+                    <div
+                        key={console.consoleId}
+                        className="console-card"
+                        onClick={() => handleCardClick(console.consoleId)}
+                    >
+                        <img
+                            src={console.image}
+                            alt={console.consoleName}
+                            className="console-card-image"
+                        />
+                        <h3>{console.consoleName}</h3>
+                        <p>Release Date: {console.releaseDate}</p>
+                        <p>Price: ${console.price.toFixed(2)}</p>
+                        <p>Stock: {console.quantityInStock}</p>
+                        <p>Company: {console.company}</p>
+                        <div className="console-card-actions">
+                            <button onClick={() => addToCart(console.consoleId)}>Add to Cart</button>
+                            <button
+                                className="console-button"
+                                onClick={(event) => handleUpdateConsole(event, console)}
+                            >
+                                Update
+                            </button>
+                            <button
+                                className="console-button delete-button"
+                                onClick={(event) => handleDeleteConsole(event, console.consoleId)}
+                            >
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                ))}
             </div>
-        </>
+        </div>
     );
 }

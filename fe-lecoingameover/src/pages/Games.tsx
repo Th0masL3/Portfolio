@@ -1,21 +1,21 @@
-import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import Navigation from "./Navigation";
-import axios from 'axios';
-import './Games.css';
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
+import "./Games.css";
 import { ProductResponseModel } from "../Models/ProductResponseModel";
 import { ConsoleResponseModel } from "../Models/ConsoleResponseModel";
 
 export default function Games(): JSX.Element {
     const { consoleId } = useParams<{ consoleId: string }>();
     const [products, setProducts] = useState<ProductResponseModel[]>([]);
-    const [error, setError] = useState<string | null>(null);
     const [consoleDetails, setConsoleDetails] = useState<ConsoleResponseModel | null>(null);
+    const [error, setError] = useState<string | null>(null);
     const navigate = useNavigate();
 
     useEffect(() => {
         fetchConsoleDetails();
         fetchProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [consoleId]);
 
     const fetchConsoleDetails = async (): Promise<void> => {
@@ -25,8 +25,8 @@ export default function Games(): JSX.Element {
                 setConsoleDetails(response.data);
             }
         } catch (err) {
-            console.error('Error fetching console details:', err);
-            setError('Failed to fetch console details.');
+            console.error("Error fetching console details:", err);
+            setError("Failed to fetch console details.");
         }
     };
     const addToCart = async (productId: string): Promise<void> => {
@@ -63,85 +63,84 @@ export default function Games(): JSX.Element {
                 setProducts(response.data);
             }
         } catch (err) {
-            console.error('Error fetching products:', err);
-            setError('Failed to fetch products.');
+            console.error("Error fetching products:", err);
+            setError("Failed to fetch products.");
         }
     };
 
-    const handleProductRowClick = (productId: string) => {
+    const handleCardClick = (productId: string) => {
         navigate(`/products/${productId}`);
     };
 
-    const handleAddGameClick = (): void => {
+    const handleAddProductClick = () => {
         navigate(`/add-game/${consoleId}`);
     };
 
-    const handleUpdateGameClick = (event: React.MouseEvent, productId: string): void => {
-        event.stopPropagation();
+    const handleUpdateProductClick = (event: React.MouseEvent, productId: string) => {
+        event.stopPropagation(); // Prevent parent click
         navigate(`/update-game/${productId}`);
     };
 
-    const handleDeleteGameClick = async (event: React.MouseEvent, productId: string): Promise<void> => {
-        event.stopPropagation();
+    const handleDeleteProductClick = async (event: React.MouseEvent, productId: string) => {
+        event.stopPropagation(); // Prevent parent click
         const confirmed = window.confirm("Are you sure you want to delete this product?");
         if (confirmed) {
             try {
                 await axios.delete(`http://localhost:8080/api/v1/products/${productId}`);
-                setProducts(products.filter((product) => product.productId !== productId));
+                setProducts((prevProducts) => prevProducts.filter((product) => product.productId !== productId));
+                alert("Product deleted successfully!");
             } catch (err) {
-                console.error('Error deleting product:', err);
-                setError('Failed to delete the product.');
+                console.error("Error deleting product:", err);
+                setError("Failed to delete the product.");
             }
         }
     };
 
+
     return (
         <div className="products-container">
-        <h1 className="products-title">
-            {consoleDetails ? `${consoleDetails.consoleName} Games` : 'Games'}
-        </h1>
-        {error && <p className="products-error">{error}</p>}
-        <button className="add-game-button" onClick={handleAddGameClick}>Add Game</button>
-        <table className="products-table">
-            <thead>
-            <tr>
-                <th>Product ID</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Description</th>
-                <th>Genre</th>
-                <th>Quantity</th>
-                <th>Image</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            {products.map((product) => (
-                <tr key={product.productId}>
-                    <td>{product.productId}</td>
-                    <td>{product.productName}</td>
-                    <td>${product.productSalePrice.toFixed(2)}</td>
-                    <td>{product.productDescription}</td>
-                    <td>{product.genre}</td>
-                    <td>{product.productQuantity}</td>
-                    <td>
+            <h1 className="products-title">
+                {consoleDetails ? `${consoleDetails.consoleName} Games` : "Games"}
+            </h1>
+            {error && <p className="products-error">{error}</p>}
+            <button className="add-product-button" onClick={handleAddProductClick}>
+                Add Game
+            </button>
+            <div className="products-grid">
+                {products.map((product) => (
+                    <div
+                        key={product.productId}
+                        className="product-card"
+                        onClick={() => handleCardClick(product.productId)}
+                    >
                         <img
                             src={product.image}
                             alt={product.productName}
-                            className="product-image"
+                            className="product-card-image"
                         />
-                    </td>
-                    <td>
-                        <button className="add-game-button" onClick={() => handleUpdateGameClick(product.productId)}>Update</button>
-                    </td>
-                    <td>
-  <button onClick={() => addToCart(product.productId)}>Add to Cart</button>
-</td>
-
-                </tr>
-            ))}
-            </tbody>
-        </table>
-    </div>
+                        <h3>{product.productName}</h3>
+                        <p>Price: ${product.productSalePrice.toFixed(2)}</p>
+                        <p>{product.productDescription}</p>
+                        <p>Genre: {product.genre}</p>
+                        <p>Stock: {product.productQuantity}</p>
+                        <div className="product-card-actions">
+                            <button onClick={() => addToCart(product.productId)}>Add to Cart</button>
+                            <button
+                                className="product-button"
+                                onClick={(event) => handleUpdateProductClick(event, product.productId)}
+                            >
+                                Update
+                            </button>
+                            <button
+                                className="product-button delete-button"
+                                onClick={(event) => handleDeleteProductClick(event, product.productId)}
+                            >
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
     );
 }

@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Users.css';
 
-
 export default function Users(): JSX.Element {
     const [users, setUsers] = useState<UserResponseModel[]>([]);
     const [error, setError] = useState<string | null>(null);
