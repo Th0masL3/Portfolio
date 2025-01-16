@@ -13,6 +13,7 @@ export default function ProductDetails(): JSX.Element {
 
     useEffect(() => {
         fetchProductDetails();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [productId]);
 
 
