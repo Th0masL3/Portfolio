@@ -1,160 +1,95 @@
-/* Main container for the Games page */
 .products-container {
-    max-width: 1200px;
-    margin: 0 auto;
     padding: 20px;
-    /* background: linear-gradient(135deg, #1a1a2e, #16213e); */ /* Comment this line */
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
-    font-family: 'Roboto', sans-serif;
-    color: #e0e0e0;
+    width: 100%;
+    box-sizing: border-box;
 }
-/* Title styling */
+
 .products-title {
-    font-size: 32px;
-    color: #ff00ff; /* Neon pink */
-    text-align: center;
-    margin-bottom: 20px;
-    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
-}
-/* Error message styling */
-.products-error {
-    color: #ff4040; /* Neon red */
-    font-size: 18px;
     text-align: center;
     margin-bottom: 20px;
 }
-/* Table styling */
-.products-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    background: #0f3460; /* Deep blue */
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
-}
-/* Table Header */
-.products-table thead {
-    background: linear-gradient(135deg, #ff00ff, #00ffff); /* Neon gradient */
-    color: #ffffff;
-    text-transform: uppercase;
-    font-weight: bold;
-}
-.products-table th {
-    padding: 15px;
-    text-align: left;
-    border-bottom: 2px solid #16213e; /* Subtle dark border */
-}
-/* Table Rows */
-.products-table td {
-    padding: 15px;
-    color: #e0e0e0;
-    border-bottom: 1px solid #1a1a2e; /* Subtle separator */
-}
-/* Hover effect for rows */
-.products-table tbody tr:hover {
-    background: linear-gradient(135deg, #16213e, #1a1a2e);
-    color: #ff00ff;
-    cursor: pointer;
-    box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
-}
-/* Responsive design for smaller screens */
-@media (max-width: 768px) {
-    .products-table {
-        font-size: 14px;
-    }
-    .products-title {
-        font-size: 26px;
-    }
-}
-/* Add glowing effect for neon vibe */
-.products-table thead th,
-.products-table tbody tr:hover td {
-    text-shadow: 0 0 5px #ff00ff, 0 0 10px #00ffff;
-}
-/* Button styling for Add Game */
-.add-game-button {
-    display: inline-block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #ffffff;
-    background: linear-gradient(135deg, #00ffff, #ff00ff); /* Neon gradient */
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-    transition: all 0.3s ease;
-}
-.add-game-button:hover {
-    background: linear-gradient(135deg, #ff00ff, #00ffff); /* Reverse gradient */
-    box-shadow: 0 4px 20px #ff00ff, 0 4px 20px #00ffff;
-    transform: scale(1.05);
-}
-/* Form container styling for Add Game page */
-.add-game-container {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    background: linear-gradient(135deg, #1a1a2e, #16213e);
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
-    color: #e0e0e0;
-    font-family: 'Roboto', sans-serif;
-}
-/* Form title */
-.add-game-container h1 {
-    text-align: center;
-    font-size: 28px;
-    color: #ff00ff;
-    text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
-    margin-bottom: 20px;
-}
-/* Input and textarea styling */
-.add-game-container label {
+
+.add-product-button {
     display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-.add-game-container input,
-.add-game-container textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: none;
-    border-radius: 8px;
-    background: #0f3460;
-    color: #e0e0e0;
-    box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.8);
-    font-size: 16px;
-    transition: all 0.3s ease;
-}
-.add-game-container input:focus,
-.add-game-container textarea:focus {
-    outline: none;
-    background: #16213e;
-    box-shadow: inset 0 4px 20px rgba(0, 0, 0, 0.8), 0 0 10px #ff00ff;
-}
-/* Submit button */
-.add-game-container button[type="submit"] {
-    width: 100%;
+    margin: 10px auto 20px;
     padding: 10px 20px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #ffffff;
-    background: linear-gradient(135deg, #00ffff, #ff00ff);
+    background: #3498db;
+    color: #fff;
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
     cursor: pointer;
-    text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-    transition: all 0.3s ease;
 }
-.add-game-container button[type="submit"]:hover {
-    background: linear-gradient(135deg, #ff00ff, #00ffff);
-    box-shadow: 0 4px 20px #ff00ff, 0 4px 20px #00ffff;
-    transform: scale(1.05);
+
+.add-product-button:hover {
+    background: #2980b9;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Fit as many cards as possible */
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.product-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px); /* Lift effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+}
+
+.product-card-image {
+    width: 100%;
+    max-width: 150px; /* Consistent image size */
+    height: auto;
+    margin: 0 auto 10px;
+    display: block;
+}
+
+.product-card h3 {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.product-card p {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 5px 0;
+}
+
+.product-card-actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.product-button:hover {
+    background: #ddd;
+}
+
+.delete-button {
+    background: #e74c3c;
+    color: #fff;
+}
+
+.delete-button:hover {
+    background: #c0392b;
 }
