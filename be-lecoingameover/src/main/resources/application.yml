@@ -50,3 +50,8 @@ auth0:
   clientId: ${AUTH0_CLIENT_ID}
   clientSecret: ${AUTH0_CLIENT_SECRET}
   audience: https://dev-pgf67fhh21tkyd1v.us.auth0.com/api/v2/
+
+paypal:
+  client-id: AUSomxZCDtxUNMvbVFtw-i8ApK0wbYwQVAsRZQ_VHwBMD3ItBhQM8lbV3VHoXWBrSH-lOnpcL-IOU_Yt
+  client-secret: EGc5pjw3UPq5Dy18b3Rc3dwYwgx1UY_ozQXW6ub9kStAqnh3T7xjQkHupPhH7ZxwmuxplSDaHOmZAoos
+  base-url: https://api-m.sandbox.paypal.com
