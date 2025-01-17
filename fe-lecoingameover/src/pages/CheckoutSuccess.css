@@ -1,0 +1,46 @@
+.order-success-container {
+    text-align: center;
+    margin: 50px auto;
+    padding: 30px;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+}
+
+.order-success-container h1 {
+    font-size: 2.5rem;
+    color: #007bff;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.order-success-container p {
+    font-size: 1.3rem;
+    margin: 20px 0;
+    color: #b0b0b0;
+    line-height: 1.5;
+}
+
+.order-success-button {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.order-success-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.order-success-button:active {
+    background-color: #003d80;
+    transform: translateY(0);
+}

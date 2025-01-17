@@ -89,3 +89,30 @@
         font-size: 26px;
     }
 }
+
+.checkout-button {
+    background-color: #007bff; /* Replace with a blue that matches your site's theme */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px; /* Rounded corners */
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for a modern look */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+
+.checkout-button:hover {
+    background-color: #0056b3; /* Darker shade for hover effect */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+
+.checkout-button:active {
+    background-color: #003d80; /* Even darker shade when pressed */
+    transform: scale(0.98); /* Slightly shrink on click */
+}
+
+
