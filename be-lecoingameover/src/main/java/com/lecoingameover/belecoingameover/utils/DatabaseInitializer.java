@@ -2,6 +2,7 @@ package com.lecoingameover.belecoingameover.utils;
 
 import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.Cart;
 import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.CartItem;
+import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.CartItemRepository;
 import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.CartRepository;
 import com.lecoingameover.belecoingameover.dataaccess.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,8 @@ public class DatabaseInitializer implements CommandLineRunner {
     UserRepository userRepository;
     @Autowired
     CartRepository cartRepository;
+    @Autowired
+    CartItemRepository cartItemRepository;
 
 
     @Override
