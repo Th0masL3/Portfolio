@@ -5,15 +5,51 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ConsoleResponseModel } from "../Models/ConsoleResponseModel";
 
+interface UserResponseModel {
+    userId: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    blocked: boolean;
+    roles?: string[];
+    permissions?: string[];
+}
+
 export default function Consoles(): JSX.Element {
     const [consoles, setConsoles] = useState<ConsoleResponseModel[]>([]);
     const [error, setError] = useState<string | null>(null);
+    const [user, setUser] = useState<UserResponseModel | null>(null);
     const navigate = useNavigate();
     const { getAccessTokenSilently } = useAuth0();
 
+    const isAdmin = user?.roles?.includes("Admin"); // Check if the user has the Admin role
+    const isCustomer = user?.roles?.includes("Customer"); // Check if the user has the Customer role
+
     useEffect(() => {
+        fetchUserDetails();
         fetchAllConsoles();
     }, []);
+
+    const fetchUserDetails = async (): Promise<void> => {
+        try {
+            const token = await getAccessTokenSilently();
+
+            // Call the /me endpoint to fetch current user details
+            const response = await axios.get<UserResponseModel>(
+                `http://localhost:8080/api/v1/users/me`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+
+            if (response.status === 200) {
+                setUser(response.data); // Set user state with the fetched details
+            }
+        } catch (err) {
+        }
+    };
 
     const fetchAllConsoles = async (): Promise<void> => {
         try {
@@ -26,31 +62,31 @@ export default function Consoles(): JSX.Element {
             setError("Failed to fetch consoles.");
         }
     };
+
     const addToCart = async (consoleId: string): Promise<void> => {
         try {
-          const consoleRequest = consoles.find((c) => c.consoleId === consoleId);
-          if (!consoleRequest) return;
-      
-          const response = await axios.post(
-            `http://localhost:8080/api/v1/cart/console/${consoleId}`,
-            {
-              consoleId: consoleRequest.consoleId,
-              consoleName: consoleRequest.consoleName,
-              price: consoleRequest.price,
-              quantityInStock: consoleRequest.quantityInStock,
-              company: consoleRequest.company,
-              image: consoleRequest.image,
+            const consoleRequest = consoles.find((c) => c.consoleId === consoleId);
+            if (!consoleRequest) return;
+
+            const response = await axios.post(
+                `http://localhost:8080/api/v1/cart/console/${consoleId}`,
+                {
+                    consoleId: consoleRequest.consoleId,
+                    consoleName: consoleRequest.consoleName,
+                    price: consoleRequest.price,
+                    quantityInStock: consoleRequest.quantityInStock,
+                    company: consoleRequest.company,
+                    image: consoleRequest.image,
+                }
+            );
+            if (response.status === 201) {
+                alert("Console added to cart!");
             }
-          );
-          if (response.status === 201) {
-            alert("Console added to cart!");
-          }
         } catch (err) {
-          console.error("Error adding to cart:", err);
-          setError("Failed to add console to cart.");
+            console.error("Error adding to cart:", err);
+            setError("Failed to add console to cart.");
         }
-      };
-      
+    };
 
     const handleCardClick = (consoleId: string) => {
         navigate(`/consoles/${consoleId}/products`);
@@ -89,9 +125,11 @@ export default function Consoles(): JSX.Element {
         <div className="consoles-container">
             <h1 className="consoles-title">Consoles</h1>
             {error && <p className="consoles-error">{error}</p>}
-            <button className="add-console-button" onClick={handleAddConsole}>
-                Add Console
-            </button>
+            {isAdmin && (
+                <button className="add-console-button" onClick={handleAddConsole}>
+                    Add Console
+                </button>
+            )}
             <div className="consoles-grid">
                 {consoles.map((console) => (
                     <div
@@ -110,19 +148,25 @@ export default function Consoles(): JSX.Element {
                         <p>Stock: {console.quantityInStock}</p>
                         <p>Company: {console.company}</p>
                         <div className="console-card-actions">
-                            <button onClick={() => addToCart(console.consoleId)}>Add to Cart</button>
-                            <button
-                                className="console-button"
-                                onClick={(event) => handleUpdateConsole(event, console)}
-                            >
-                                Update
-                            </button>
-                            <button
-                                className="console-button delete-button"
-                                onClick={(event) => handleDeleteConsole(event, console.consoleId)}
-                            >
-                                Delete
-                            </button>
+                            {isCustomer && (
+                                <button onClick={() => addToCart(console.consoleId)}>Add to Cart</button>
+                            )}
+                            {isAdmin && (
+                                <>
+                                    <button
+                                        className="console-button"
+                                        onClick={(event) => handleUpdateConsole(event, console)}
+                                    >
+                                        Update
+                                    </button>
+                                    <button
+                                        className="console-button delete-button"
+                                        onClick={(event) => handleDeleteConsole(event, console.consoleId)}
+                                    >
+                                        Delete
+                                    </button>
+                                </>
+                            )}
                         </div>
                     </div>
                 ))}
