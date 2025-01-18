@@ -19,7 +19,7 @@ const Cart = (): JSX.Element => {
         const data = await response.json();
         setCartItems(data.items); // Assuming the API returns { items: [ ... ] }
       } catch (error) {
-        console.error('Error fetching cart items:', error);
+        console.error("Error fetching cart items:", error);
       }
     };
 
@@ -28,6 +28,41 @@ const Cart = (): JSX.Element => {
 
   const calculateSubtotal = (): number => {
     return cartItems.reduce((total, item) => total + item.price, 0);
+  };
+
+  const handleCheckout = async () => {
+    try {
+      const total = calculateSubtotal();
+      const currency = "CAD";
+      const description = "Purchase from Le Coin Game Over";
+
+      // Sending data as query parameters
+      const response = await fetch(
+          `http://localhost:8080/api/paypal/create-order?total=${total}&currency=${currency}&description=${encodeURIComponent(
+              description
+          )}`,
+          {
+            method: "POST",
+          }
+      );
+
+      const data = await response.json();
+
+      // Find the "approve" link in the links array
+      const approvalLink = data.links?.find(
+          (link: any) => link.rel === "approve"
+      )?.href;
+
+      if (approvalLink) {
+        window.location.href = approvalLink; // Redirect the user to the approval URL
+      } else {
+        console.error("Approval link not found in response:", data);
+        alert("Failed to initiate payment.");
+      }
+    } catch (error) {
+      console.error("Error during checkout:", error);
+      alert("Something went wrong. Please try again.");
+    }
   };
 
   const removeCartItem = async (cartItemId: string) => {
@@ -81,11 +116,18 @@ const Cart = (): JSX.Element => {
         </tbody>
       </table>
 
-      {/* Subtotal Section */}
-      <div className="subtotal">
-        <h3>Subtotal: ${calculateSubtotal().toFixed(2)}</h3>
+        {/* Subtotal Section */}
+        <div className="subtotal">
+          <h3>Subtotal: ${calculateSubtotal().toFixed(2)}</h3>
+        </div>
+
+        {/* Checkout Button */}
+        <div className="checkout">
+          <button onClick={handleCheckout} className="checkout-button">
+            Checkout with PayPal
+          </button>
+        </div>
       </div>
-    </div>
   );
 };
 

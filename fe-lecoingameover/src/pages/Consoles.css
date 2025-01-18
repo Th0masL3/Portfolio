@@ -1,169 +1,106 @@
-/* General body styles for a uniform background */
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #4b0082, #9932cc);
-    color: #fff;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.html, body {
+    background-color: #702963;
 }
 
-/* Container to center the table and make it more visually structured */
-.console-container,
-.console-edit-container {
-    width: 95%;
-    max-width: 1200px;
-    background-color: #4b0082;
+.consoles-container {
     padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
-    margin: auto;
-}
-
-/* Header title styling */
-.console-title {
-    text-align: center;
-    font-size: 2.5em;
-    color: #ffc0cb;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-}
-
-/* Table styles for better readability */
-/* Table styles for better readability */
-.console-table {
     width: 100%;
-    border-collapse: collapse;
-    text-align: left;
+    box-sizing: border-box;
 }
 
-.console-table th,
-.console-table td {
-    padding: 12px;
-    border: 1px solid #fff;
-    color: #fff; /* Ensure text inside cells is white */
+.consoles-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #E0B0FF;
+    font-family: "Jersey 20", sans-serif;
 }
 
-.console-table th {
-    background-color: #4b0082;
-    color: #ffc0cb;
-    font-size: 1.1em;
-}
-
-.console-table tr:nth-child(even),
-.console-table tr:nth-child(odd) {
-    background-color: #9932cc; /* Alternating purple rows */
-    color: #fff; /* White text for all rows */
-}
-
-.console-table tr:hover {
-    background-color: #ff69b4; /* Pink hover */
-    color: #fff; /* White text on hover */
-}
-
-
-/* Button styling for "Update" and form buttons */
-.console-button {
-    background-color: #ffc0cb;
+.add-console-button {
+    display: block;
+    margin: 10px auto 20px;
+    padding: 10px 20px;
+    background: #E0B0FF;
+    color: darkblue;
     border: none;
-    color: #4b0082;
-    padding: 8px 12px;
-    font-size: 0.9em;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.add-console-button:hover {
+    background: #2980b9;
+}
+
+.consoles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjusts to fit more cards per row */
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.console-card {
+    background: #E0B0FF;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds depth */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.console-card:hover {
+    transform: translateY(-5px); /* Lift effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+}
+
+.console-card-image {
+    width: 100%;
+    max-width: 150px; /* Consistent image size */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 auto 10px; /* Center image */
+    display: block;
+}
+
+.console-card h3 {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    color: darkblue;
+}
+
+.console-card p {
+    font-size: 0.9rem;
+    color: darkblue;
+    margin: 5px 0;
+}
+
+.console-card-actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.console-button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    background: darkblue;
+    color: #E0B0FF;
 }
 
 .console-button:hover {
-    background-color: #ff69b4;
-    color: #fff;
+    background: #ddd;
 }
 
-.console-button-cancel {
-    background-color: #4b0082;
-    border: 1px solid #ffc0cb;
-    color: #ffc0cb;
-    padding: 8px 12px;
-    font-size: 0.9em;
-    border-radius: 5px;
-    cursor: pointer;
-}
 
-.console-button-cancel:hover {
-    background-color: #9932cc;
-    color: #fff;
-}
-
-/* Form group styling for edit console page */
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #ffc0cb;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #9932cc;
-    border-radius: 5px;
-    background-color: #4b0082;
-    color: #fff;
-}
-
-/* Make the container take up the whole screen height */
-.console-container,
-.console-edit-container {
-    min-height: 90vh;
-}
 
 .delete-button {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
+    background: #e74c3c;
+    color: #fff;
 }
 
 .delete-button:hover {
-    background-color: darkred;
-}
-
-.console-success {
-    color: green;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-nav a {
-    margin-right: 15px;
-    text-decoration: none;
-    color: #007bff;
-}
-
-nav button {
-    margin-left: 10px;
-    padding: 5px 10px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-nav button:hover {
-    background-color: #0056b3;
+    background: #c0392b;
 }

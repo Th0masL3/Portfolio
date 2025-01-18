@@ -4,6 +4,7 @@ import com.lecoingameover.belecoingameover.businesslayer.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,7 +36,14 @@ public class UserController {
     public ResponseEntity<UserResponseModel> syncUserWithAuth0(@PathVariable String userId) {
         return ResponseEntity.ok(userService.syncUserWithAuth0(userId));
     }
-
+    private String getCurrentUserId() {
+        return SecurityContextHolder.getContext().getAuthentication().getName();
+    }
+    @GetMapping("/me")
+    public ResponseEntity<UserResponseModel> getCurrentUser() {
+        String userId = getCurrentUserId(); // A method to fetch the current user's ID from the security context
+        return ResponseEntity.ok(userService.getUserById(userId));
+    }
 
     @PutMapping("/{userId}/block")
     public ResponseEntity<Void> blockUserById(
