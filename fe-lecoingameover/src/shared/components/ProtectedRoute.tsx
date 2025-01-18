@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
-interface ProtectedRoute {
+interface ProtectedRoutes {
     children: ReactNode;
 }
 export const ProtectedRoute = ({
                                    children,
-                               }: ProtectedRoute): JSX.Element => {
+                               }: ProtectedRoutes): JSX.Element => {
     return <>{children}</>;
 };
