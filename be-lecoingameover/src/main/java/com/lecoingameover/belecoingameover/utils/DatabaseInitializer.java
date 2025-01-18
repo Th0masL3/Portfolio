@@ -4,7 +4,9 @@ import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.Cart;
 import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.CartItem;
 import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.CartItemRepository;
 import com.lecoingameover.belecoingameover.CartService.DataAccessLayer.CartRepository;
+import com.lecoingameover.belecoingameover.auth0.Auth0Client;
 import com.lecoingameover.belecoingameover.dataaccess.*;
+import com.lecoingameover.belecoingameover.presentationlayer.UserResponseModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 
@@ -26,13 +28,12 @@ public class DatabaseInitializer implements CommandLineRunner {
     CartRepository cartRepository;
     @Autowired
     CartItemRepository cartItemRepository;
+    @Autowired
+    private Auth0Client auth0Client;
 
 
     @Override
     public void run(String... args) throws Exception {
-
-            //cart for user
-
 
             List<User> sampleUsers = List.of(
                     // Admins
@@ -43,6 +44,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                             .lastName("Clark")
                             .roles(List.of("admin"))
                             .permissions(null)
+                            .blocked(false) // Default to not blocked
                             .build(),
                     User.builder()
                             .userId("auth0|675f4aa9e184fd643a8ed8fe")
@@ -51,8 +53,8 @@ public class DatabaseInitializer implements CommandLineRunner {
                             .lastName("Jones")
                             .roles(List.of("admin"))
                             .permissions(null)
+                            .blocked(false)
                             .build(),
-
                     // Customers
                     User.builder()
                             .userId("auth0|675f4b3c9a80612ce548e067")
@@ -61,6 +63,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                             .lastName("Johnson")
                             .roles(List.of("customer"))
                             .permissions(null)
+                            .blocked(false)
                             .build(),
                     User.builder()
                             .userId("auth0|675f4b619a80612ce548e068")
@@ -69,6 +72,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                             .lastName("Williams")
                             .roles(List.of("customer"))
                             .permissions(null)
+                            .blocked(false)
                             .build(),
                     User.builder()
                             .userId("auth0|675f4b7ae184fd643a8ed902")
@@ -77,6 +81,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                             .lastName("Davis")
                             .roles(List.of("customer"))
                             .permissions(null)
+                            .blocked(false)
                             .build(),
                     User.builder()
                             .userId("auth0|675f4b9d9a80612ce548e069")
@@ -85,6 +90,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                             .lastName("Miller")
                             .roles(List.of("customer"))
                             .permissions(null)
+                            .blocked(false)
                             .build(),
                     User.builder()
                             .userId("auth0|675f4bb4e184fd643a8ed903")
@@ -93,12 +99,34 @@ public class DatabaseInitializer implements CommandLineRunner {
                             .lastName("Moore")
                             .roles(List.of("customer"))
                             .permissions(null)
+                            .blocked(false)
                             .build()
-
             );
-            if (userRepository.count() == 0) {
-                    userRepository.saveAll(sampleUsers);
-            }
+
+            // Fetch Auth0 users and initialize their `blocked` field
+            List<UserResponseModel> auth0Users = auth0Client.getAllUsers();
+
+            // Convert Auth0 users to database User entities
+            List<User> auth0UsersAsEntities = auth0Users.stream()
+                    .map(auth0User -> User.builder()
+                            .userId(auth0User.getUserId())
+                            .email(auth0User.getEmail())
+                            .firstName(auth0User.getFirstName())
+                            .lastName(auth0User.getLastName())
+                            .roles(auth0User.getRoles())
+                            .permissions(auth0User.getPermissions())
+                            .blocked(auth0User.isBlocked())// Default to not blocked
+                            .build())
+                    .toList();
+
+            // Merge sample data and Auth0 users
+            List<User> allUsers = new ArrayList<>(sampleUsers);
+            allUsers.addAll(auth0UsersAsEntities);
+
+            // Save only users that don't already exist in the database
+            allUsers.stream()
+                    .filter(user -> !userRepository.findByUserId(user.getUserId()).isPresent())
+                    .forEach(userRepository::save);
 
             if (consoleRepository.count() == 0) {
                     List<Console> consoleList = new ArrayList<>();
