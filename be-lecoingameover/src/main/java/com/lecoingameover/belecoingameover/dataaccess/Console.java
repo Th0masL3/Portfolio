@@ -25,4 +25,5 @@ public class Console {
     private int quantityInStock;
     private String company;
     private String image;
+//    private boolean isHot;
 }

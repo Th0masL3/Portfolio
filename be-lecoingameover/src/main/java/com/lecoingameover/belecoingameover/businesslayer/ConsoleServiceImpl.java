@@ -83,4 +83,17 @@ public class ConsoleServiceImpl implements ConsoleService {
 
        consoleRepository.delete(console);
     }
+
+//    @Override
+//    public ConsoleResponseModel setHotConsole(String productId, boolean isHot) {
+//        Console console = consoleRepository.findById(productId)
+//                .orElseThrow(() -> new NotFoundException("Console with ID " + productId + " not found"));
+//        console.setHot(isHot);
+//        return consoleResponseMapper.entityToResponseModel(consoleRepository.save(console));
+//    }
+//
+//    @Override
+//    public List<ConsoleResponseModel> getHotConsoles() {
+//        return consoleResponseMapper.entityListToResponseModelList(consoleRepository.findByIsHotTrue());
+//    }
 }

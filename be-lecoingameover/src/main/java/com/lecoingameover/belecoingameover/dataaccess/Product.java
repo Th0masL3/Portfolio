@@ -22,4 +22,5 @@ public class Product {
     private int productQuantity;
     private Console console;
     private String image;
+    private boolean isHot;
 }

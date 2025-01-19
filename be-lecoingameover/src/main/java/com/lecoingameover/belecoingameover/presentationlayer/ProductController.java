@@ -18,6 +18,11 @@ public class ProductController {
     private ProductService productService;
     public ProductController(ProductService productService) {this.productService = productService;}
 
+    @GetMapping
+    public ResponseEntity<List<ProductResponseModel>> getAllProducts() {
+        return ResponseEntity.ok().body(productService.getAllProducts());
+    }
+
     @GetMapping("/{productId}")
     public ResponseEntity<ProductResponseModel> getProductByProductId(@PathVariable("productId") String productId) {
         ProductResponseModel product = productService.getProductByProductId(productId);
@@ -44,6 +49,16 @@ public class ProductController {
     public ResponseEntity<Void> deleteProductById(@PathVariable String productId) {
         productService.deleteProductByProductId(productId);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{productId}/hot")
+    public ResponseEntity<ProductResponseModel> setHotProduct(@PathVariable String productId, @RequestParam boolean isHot) {
+        return ResponseEntity.ok(productService.setHotProduct(productId, isHot));
+    }
+
+    @GetMapping("/hot")
+    public ResponseEntity<List<ProductResponseModel>> getHotProducts() {
+        return ResponseEntity.ok(productService.getHotProducts());
     }
 
 }

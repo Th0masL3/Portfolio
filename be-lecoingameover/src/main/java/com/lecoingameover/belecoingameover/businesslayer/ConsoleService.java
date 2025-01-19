@@ -11,4 +11,6 @@ public interface ConsoleService {
     ConsoleResponseModel getConsoleById(String consoleId);
     ConsoleResponseModel addConsole(ConsoleRequestModel consoleRequestModel);
     void deleteConsoleByConsoleId(String consoleId);
+//    ConsoleResponseModel setHotConsole(String productId, boolean isHot);
+//    List<ConsoleResponseModel> getHotConsoles();
 }
