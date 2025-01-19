@@ -17,5 +17,6 @@ public class ProductRequestModel {
     private String genre;
     private int productQuantity;
     private String image;
+    private boolean isHot;
     private Console console;
 }
