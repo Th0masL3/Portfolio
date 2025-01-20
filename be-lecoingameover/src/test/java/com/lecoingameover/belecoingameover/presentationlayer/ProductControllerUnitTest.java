@@ -306,6 +306,61 @@ class ProductControllerUnitTest {
         assertEquals("Product with ID 1 not found", exception.getMessage());
         verify(productService, times(1)).deleteProductByProductId(productId);
     }
+
+    @Test
+    void getHotProducts_Positive() {
+        // Arrange
+        ProductResponseModel product1 = ProductResponseModel.builder()
+                .productId("product1234")
+                .productName("Sample Product")
+                .productSalePrice(111.99)
+                .productDescription("Test Description")
+                .genre("Racing")
+                .productQuantity(20)
+                .build();
+
+        ProductResponseModel product2 = ProductResponseModel.builder()
+                .productId("product123")
+                .productName("Test Product")
+                .productSalePrice(99.99)
+                .productDescription("Test Description")
+                .genre("Action")
+                .productQuantity(10)
+                .build();
+
+        List<ProductResponseModel> products = new ArrayList<>();
+        products.add(product1);
+        products.add(product2);
+
+        when(productService.getHotProducts()).thenReturn(products);
+
+        // Act
+        ResponseEntity<List<ProductResponseModel>> response = productController.getHotProducts();
+
+        // Assert
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertNotNull(response.getBody());
+        assertEquals(2, response.getBody().size());
+        assertEquals("Sample Product", response.getBody().get(0).getProductName());
+        assertEquals("Test Product", response.getBody().get(1).getProductName());
+        verify(productService, times(1)).getHotProducts();
+    }
+
+    @Test
+    void getHotProducts_EmptyList() {
+        // Arrange
+        when(productService.getHotProducts()).thenReturn(new ArrayList<>());
+
+        // Act
+        ResponseEntity<List<ProductResponseModel>> response = productController.getHotProducts();
+
+        // Assert
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertNotNull(response.getBody());
+        assertTrue(response.getBody().isEmpty());
+        verify(productService, times(1)).getHotProducts();
+    }
+
 }
 
 
