@@ -8,14 +8,14 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 public class BeLecoingameoverApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(BeLecoingameoverApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(BeLecoingameoverApplication.class, args);
+    }
 
-	@Bean
-	RestTemplate restTemplate()
-	{
-		return new RestTemplate();
-	}
+    @Bean
+    RestTemplate restTemplate()
+    {
+        return new RestTemplate();
+    }
 
 }
