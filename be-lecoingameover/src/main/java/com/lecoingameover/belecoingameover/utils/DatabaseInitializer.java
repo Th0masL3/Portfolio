@@ -3110,15 +3110,15 @@ public class DatabaseInitializer implements CommandLineRunner {
                             .build();
                     productList.add(PhantasyStarOnline);
 
-                        List<CartItem> cart = new ArrayList<>();
-                        CartItem cartItem1 = CartItem.builder().cartItemId("12").name(PS3.getConsoleName()).description(PS3.getCompany()).price(PS3.getPrice()).build();
-                        cartItemRepository.save(cartItem1);
-                        cart.add(cartItem1);
-                        Cart cart1 =
-                                Cart.builder().cartId("1")
-                                        .items(new ArrayList<>())
-                                        .total(cartItem1.getPrice())
-                                        .build();
+                    List<CartItem> cart = new ArrayList<>();
+                    CartItem cartItem1 = CartItem.builder().cartItemId("12").name(PS3.getConsoleName()).description(PS3.getCompany()).price(PS3.getPrice()).build();
+                    cartItemRepository.save(cartItem1);
+                    cart.add(cartItem1);
+                    Cart cart1 =
+                            Cart.builder().cartId("1")
+                                    .items(new ArrayList<>())
+                                    .total(cartItem1.getPrice())
+                                    .build();
 
                     cartRepository.save(cart1);
 
