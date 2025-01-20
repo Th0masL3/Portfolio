@@ -102,29 +102,29 @@ public class DatabaseInitializer implements CommandLineRunner {
                 );
 
                 // Fetch Auth0 users and initialize their `blocked` field
-                List<UserResponseModel> auth0Users = auth0Client.getAllUsers();
+//                List<UserResponseModel> auth0Users = auth0Client.getAllUsers();
 
                 // Convert Auth0 users to database User entities
-                List<User> auth0UsersAsEntities = auth0Users.stream()
-                        .map(auth0User -> User.builder()
-                                .userId(auth0User.getUserId())
-                                .email(auth0User.getEmail())
-                                .firstName(auth0User.getFirstName())
-                                .lastName(auth0User.getLastName())
-                                .roles(auth0User.getRoles())
-                                .permissions(auth0User.getPermissions())
-                                .blocked(auth0User.isBlocked())// Default to not blocked
-                                .build())
-                        .toList();
+//                List<User> auth0UsersAsEntities = auth0Users.stream()
+//                        .map(auth0User -> User.builder()
+//                                .userId(auth0User.getUserId())
+//                                .email(auth0User.getEmail())
+//                                .firstName(auth0User.getFirstName())
+//                                .lastName(auth0User.getLastName())
+//                                .roles(auth0User.getRoles())
+//                                .permissions(auth0User.getPermissions())
+//                                .blocked(auth0User.isBlocked())// Default to not blocked
+//                                .build())
+//                        .toList();
 
                 // Merge sample data and Auth0 users
-                List<User> allUsers = new ArrayList<>(sampleUsers);
-                allUsers.addAll(auth0UsersAsEntities);
+//                List<User> allUsers = new ArrayList<>(sampleUsers);
+//                allUsers.addAll(auth0UsersAsEntities);
 
                 // Save only users that don't already exist in the database
-                allUsers.stream()
-                        .filter(user -> !userRepository.findByUserId(user.getUserId()).isPresent())
-                        .forEach(userRepository::save);
+//                allUsers.stream()
+//                        .filter(user -> !userRepository.findByUserId(user.getUserId()).isPresent())
+//                        .forEach(userRepository::save);
 
 
                 if (consoleRepository.count() == 0) {
