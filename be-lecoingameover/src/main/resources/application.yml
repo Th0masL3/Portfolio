@@ -39,6 +39,7 @@ spring:
       username: root
       password: password
       authentication-database: admin
+      uri: mongodb+srv://doadmin:8ZJ2F405wm3br61A@db-mongodb-nyc3-04788-6e4fbf9e.mongo.ondigitalocean.com/admin?tls=true&authSource=admin
 
 okta:
   oauth2:
