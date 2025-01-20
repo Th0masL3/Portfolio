@@ -15,7 +15,7 @@ public interface ProductService {
     ProductResponseModel addProductByConsoleId(String consoleId, ProductRequestModel productRequestModel);
     ProductResponseModel updateProduct(String productId, ProductRequestModel productRequestModel );
     void deleteProductByProductId(String productId);
-    ProductResponseModel setHotProduct(String productId, boolean isHot);
+    ProductResponseModel setHotProduct(String productId);
     List<ProductResponseModel> getHotProducts();
 
 }

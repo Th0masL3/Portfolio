@@ -107,12 +107,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductResponseModel setHotProduct(String productId, boolean isHot) {
+    public ProductResponseModel setHotProduct(String productId) {
         Product product = productRepository.findProductByProductId(productId);
         if (product == null) {
             throw new NotFoundException("Product with ID " + productId + " not found");
         }
-        product.setHot(isHot);
+        product.setHot(!product.isHot());
         Product updatedProduct = productRepository.save(product);
         return productResponseMapper.entityToResponseModel(updatedProduct);
     }

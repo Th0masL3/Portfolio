@@ -2,6 +2,7 @@
 import UpdateGame from "../../pages/UpdateGame";
 import Users from "../../pages/Users";
 import Cart from "../../pages/Cart";
+import ManageHotProducts from "../../pages/ManageHotProducts";
 
 export enum AppRoutes {
 
@@ -18,6 +19,8 @@ export enum AppRoutes {
     Cart = '/cart',
 
     UserProfile = '/users/:userId',
-    CheckoutSuccess = '/cart/success'
+    CheckoutSuccess = '/cart/success',
+
+    ManageHotProducts = '/managehotproducts',
 
 }
