@@ -32,21 +32,40 @@ const HomePage: React.FC = () => {
     fetchHotProducts();
   }, []);
 
-  const sliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: true,
-  };
-
   const handleManageHotProducts = () => {
     navigate('/managehotproducts');
   }
 
   const handleNavigate = () => {
     navigate('/consoles');
+  };
+
+  const CustomPrevArrow = (props: any) => {
+    const { className, onClick } = props;
+    return (
+      <div className={`${className} custom-arrow prev-arrow`} onClick={onClick}>
+        &#10094; {/* Left Arrow Unicode */}
+      </div>
+    );
+  };
+
+  const CustomNextArrow = (props: any) => {
+    const { className, onClick } = props;
+    return (
+      <div className={`${className} custom-arrow next-arrow`} onClick={onClick}>
+        &#10095; {/* Right Arrow Unicode */}
+      </div>
+    );
+  };
+
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    prevArrow: <CustomPrevArrow />,
+    nextArrow: <CustomNextArrow />,
   };
 
   return (
@@ -56,14 +75,17 @@ const HomePage: React.FC = () => {
         <h1>Bienvenue au Coin Game Over!</h1>
         <input type="text" placeholder="Que cherchez vous?" className="search-bar" />
         <h2>Tendances</h2>
-        
+
         {/* Hot Products Carousel */}
         <div className="hot-products-carousel">
           {error && <p className="error-message">{error}</p>}
           <Slider {...sliderSettings}>
             {hotProducts.map((product) => (
               <div key={product.id} className="carousel-slide">
+                {/* Product image on the left */}
                 <img src={product.image} alt={product.name} className="product-image" />
+
+                {/* Product info on the right */}
                 <div className="product-info">
                   <h2>{product.name}</h2>
                   <p>{product.description}</p>

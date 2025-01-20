@@ -104,3 +104,142 @@ html, body {
     margin-top: 20px;
     border-radius: 10px;
   }
+
+.hot-products-carousel {
+  margin: 0; /* Remove margins */
+  padding: 20px 0; /* Add some vertical padding */
+  background-color: #f9f9f9;
+  width: 100vw; /* Full width */
+  max-width: 100%; /* Ensure it spans the container */
+  height: 400px; /* Fixed height */
+  text-align: center;
+  overflow: hidden; /* Ensure content doesn't overflow */
+  display: flex; /* Added to ensure alignment */
+  justify-content: center; /* Center align the carousel */
+  align-items: center; /* Vertically align the content */
+}
+
+.carousel-slide:hover {
+  transform: scale(1.05);
+}
+
+.carousel-slide {
+  display: flex; /* Align contents horizontally */
+  justify-content: space-between; /* Ensure spacing between image and text */
+  align-items: center; /* Center contents vertically */
+  height: 100%; /* Stretch to fill the height */
+  padding: 20px; /* Add spacing within the slide */
+  box-sizing: border-box; /* Include padding in width/height calculation */
+  background-color: #ffffff; /* Add a background color */
+  border-radius: 10px; /* Optional: Rounded edges */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Subtle shadow */
+}
+
+.product-image {
+  max-width: 40%; /* Limit the image width */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Ensure the image scales nicely */
+  border-radius: 10px; /* Optional: Add rounded corners */
+}
+
+.product-info {
+  flex: 1; /* Use remaining space for text */
+  margin-left: 20px; /* Add space between image and text */
+  display: flex;
+  flex-direction: column; /* Stack text vertically */
+  justify-content: center; /* Center align text vertically */
+  color: #333; /* Text color */
+}
+
+.product-info h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.product-info p {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+
+/* Admin Message */
+.admin-message {
+  margin-top: 10px;
+  font-style: italic;
+  color: #ff9800;
+  font-weight: bold;
+}
+
+/* Slider Arrows */
+.slick-arrow {
+  background-color: #ff9800;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.slick-arrow:hover {
+  background-color: #e68a00;
+}
+
+.slick-prev {
+  left: 10px;
+}
+
+.slick-next {
+  right: 10px;
+}
+
+/* Slider Dots */
+.slick-dots {
+  bottom: 10px;
+}
+
+.slick-dots li button:before {
+  color: #999;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #ff9800;
+}
+
+/* Custom Arrow Styles */
+.custom-arrow {
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px; /* Adjust arrow size */
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  z-index: 10;
+  transition: background-color 0.3s ease;
+}
+
+.custom-arrow:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev-arrow {
+  left: 10px;
+  transform: translateY(-50%);
+}
+
+.next-arrow {
+  right: 10px;
+  transform: translateY(-50%);
+}
