@@ -8,4 +8,5 @@ import java.util.List;
 public interface ProductRepository extends MongoRepository<Product, String> {
     Product findProductByProductId(String productId);
     List<Product> findByConsole_ConsoleId(String consoleId);
+    List<Product> findByIsHotTrue();
 }

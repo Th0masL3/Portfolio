@@ -48,8 +48,15 @@ public ResponseEntity<List<ConsoleResponseModel>> getAllConsoles() {
         return ResponseEntity.noContent().build();
     }
 
-
-
-
+//    @PutMapping("/{consoleId}/hot")
+//    @PreAuthorize("hasAuthority('write:admin')")
+//    public ResponseEntity<ConsoleResponseModel> setHotConsole(@PathVariable String consoleId, @RequestParam boolean isHot) {
+//        return ResponseEntity.ok(consoleService.setHotConsole(consoleId, isHot));
+//    }
+//
+//    @GetMapping("/hot")
+//    public ResponseEntity<List<ConsoleResponseModel>> getHotConsoles() {
+//        return ResponseEntity.ok(consoleService.getHotConsoles());
+//    }
 
 }

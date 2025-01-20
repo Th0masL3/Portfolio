@@ -29,6 +29,15 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<ProductResponseModel> getAllProducts() {
+        List<Product> products = productRepository.findAll();
+        if (products.isEmpty()) {
+            throw new NotFoundException("No products found");
+        }
+        return productResponseMapper.entityListToResponseModelList(products);
+    }
+
+    @Override
     public ProductResponseModel getProductByProductId(String productId) {
         Product product = productRepository.findProductByProductId(productId);
         if (product == null) {
@@ -95,5 +104,25 @@ public class ProductServiceImpl implements ProductService {
             throw new NotFoundException("Product with ID " + productId + " not found");
         }
         productRepository.delete(product);
+    }
+
+    @Override
+    public ProductResponseModel setHotProduct(String productId) {
+        Product product = productRepository.findProductByProductId(productId);
+        if (product == null) {
+            throw new NotFoundException("Product with ID " + productId + " not found");
+        }
+        product.setHot(!product.isHot());
+        Product updatedProduct = productRepository.save(product);
+        return productResponseMapper.entityToResponseModel(updatedProduct);
+    }
+
+    @Override
+    public List<ProductResponseModel> getHotProducts() {
+        List<Product> products = productRepository.findByIsHotTrue();
+        if (products.isEmpty()) {
+            throw new NotFoundException("No hot products found");
+        }
+        return productResponseMapper.entityListToResponseModelList(products);
     }
 }
