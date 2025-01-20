@@ -53,7 +53,8 @@ public class ProductController {
 
     @PutMapping("/{productId}/hot")
     public ResponseEntity<ProductResponseModel> setHotProduct(@PathVariable String productId) {
-        return ResponseEntity.ok(productService.setHotProduct(productId));
+        productService.setHotProduct(productId);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/hot")

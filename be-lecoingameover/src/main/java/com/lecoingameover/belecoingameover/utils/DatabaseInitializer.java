@@ -62,43 +62,43 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .roles(List.of("customer"))
                                 .permissions(null)
                                 .blocked(false)
+                                .build(),
+                        User.builder()
+                                .userId("auth0|675f4b619a80612ce548e068")
+                                .email("james.williams@example.com")
+                                .firstName("James")
+                                .lastName("Williams")
+                                .roles(List.of("customer"))
+                                .permissions(null)
+                                .blocked(false)
+                                .build(),
+                        User.builder()
+                                .userId("auth0|675f4b7ae184fd643a8ed902")
+                                .email("ava.davis@example.com")
+                                .firstName("Ava")
+                                .lastName("Davis")
+                                .roles(List.of("customer"))
+                                .permissions(null)
+                                .blocked(false)
+                                .build(),
+                        User.builder()
+                                .userId("auth0|675f4b9d9a80612ce548e069")
+                                .email("mason.miller@example.com")
+                                .firstName("Mason")
+                                .lastName("Miller")
+                                .roles(List.of("customer"))
+                                .permissions(null)
+                                .blocked(false)
+                                .build(),
+                        User.builder()
+                                .userId("auth0|675f4bb4e184fd643a8ed903")
+                                .email("mia.moore@example.com")
+                                .firstName("Mia")
+                                .lastName("Moore")
+                                .roles(List.of("customer"))
+                                .permissions(null)
+                                .blocked(false)
                                 .build()
-//                        User.builder()
-//                                .userId("auth0|675f4b619a80612ce548e068")
-//                                .email("james.williams@example.com")
-//                                .firstName("James")
-//                                .lastName("Williams")
-//                                .roles(List.of("customer"))
-//                                .permissions(null)
-//                                .blocked(false)
-//                                .build(),
-//                        User.builder()
-//                                .userId("auth0|675f4b7ae184fd643a8ed902")
-//                                .email("ava.davis@example.com")
-//                                .firstName("Ava")
-//                                .lastName("Davis")
-//                                .roles(List.of("customer"))
-//                                .permissions(null)
-//                                .blocked(false)
-//                                .build(),
-//                        User.builder()
-//                                .userId("auth0|675f4b9d9a80612ce548e069")
-//                                .email("mason.miller@example.com")
-//                                .firstName("Mason")
-//                                .lastName("Miller")
-//                                .roles(List.of("customer"))
-//                                .permissions(null)
-//                                .blocked(false)
-//                                .build(),
-//                        User.builder()
-//                                .userId("auth0|675f4bb4e184fd643a8ed903")
-//                                .email("mia.moore@example.com")
-//                                .firstName("Mia")
-//                                .lastName("Moore")
-//                                .roles(List.of("customer"))
-//                                .permissions(null)
-//                                .blocked(false)
-//                                .build()
                 );
 
                 // Fetch Auth0 users and initialize their `blocked` field
@@ -147,7 +147,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .price(249.99)
                                 .quantityInStock(450)
                                 .company("Nintendo")
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/SNES-Mod1-Console-Set.jpg/640px-SNES-Mod1-Console-Set.jpg")
                                 .build();
                         consoleList.add(SNES);
 
@@ -157,7 +157,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .price(299.99)
                                 .quantityInStock(400)
                                 .company("Nintendo")
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Nintendo-64-wController-L.jpg/640px-Nintendo-64-wController-L.jpg")
                                 .build();
 
                         consoleList.add(N64);
@@ -168,7 +168,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .price(199.99)
                                 .quantityInStock(350)
                                 .company("Nintendo")
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/GameCube-Set.jpg/640px-GameCube-Set.jpg")
                                 .build();
                         consoleList.add(GameCube);
 
@@ -178,7 +178,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .price(249.99)
                                 .quantityInStock(300)
                                 .company("Nintendo")
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Wii-console.jpg/640px-Wii-console.jpg")
                                 .build();
                         consoleList.add(Wii);
                         Console WiiU = Console.builder()
@@ -187,7 +187,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .price(299.99)
                                 .quantityInStock(300)
                                 .company("Nintendo")
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Wii_U_Console_and_Gamepad.png/640px-Wii_U_Console_and_Gamepad.png")
                                 .build();
                         consoleList.add(WiiU);
 
@@ -197,7 +197,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .price(599.99)
                                 .quantityInStock(300)
                                 .company("Nintendo")
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Nintendo-Switch-Console-Docked-wJoyConRB.jpg/640px-Nintendo-Switch-Console-Docked-wJoyConRB.jpg")
                                 .build();
                         consoleList.add(Switch);
                         Console PS1 = Console.builder()
@@ -206,7 +206,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .price(299.99)
                                 .quantityInStock(400)
                                 .company("Sony")
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/PSX-Console-wController.png/640px-PSX-Console-wController.png")
                                 .build();
                         consoleList.add(PS1);
 
@@ -216,7 +216,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .price(299.99)
                                 .quantityInStock(400)
                                 .company("Sony")
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Sony-PlayStation-2-30001-wController-L.png/640px-Sony-PlayStation-2-30001-wController-L.png")
                                 .build();
                         consoleList.add(PS2);
                         Console PS3 = Console.builder()
@@ -225,7 +225,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .price(399.99)
                                 .quantityInStock(350)
                                 .company("Sony")
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Sony-PlayStation-3-2001A-wController-L.jpg/640px-Sony-PlayStation-3-2001A-wController-L.jpg")
                                 .build();
                         consoleList.add(PS3);
 
@@ -235,7 +235,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .price(599.99)
                                 .quantityInStock(300)
                                 .company("Sony")
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/PlayStation_5_and_DualSense_with_transparent_background.png/640px-PlayStation_5_and_DualSense_with_transparent_background.png")
                                 .build();
                         consoleList.add(PS5);
                         Console PS4 = Console.builder()
@@ -244,7 +244,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .price(399.99)
                                 .quantityInStock(350)
                                 .company("Sony")
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/PS4-Console-wDS4.png/640px-PS4-Console-wDS4.png")
                                 .build();
                         consoleList.add(PS4);
 
@@ -254,7 +254,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .price(249.99)
                                 .quantityInStock(300)
                                 .company("Sony")
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/PSP-3000-Model.png/640px-PSP-3000-Model.png")
                                 .build();
                         consoleList.add(PSP);
 
@@ -264,7 +264,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .price(249.99)
                                 .quantityInStock(250)
                                 .company("Sony")
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/PlayStation-Vita-1101-FL.png/640px-PlayStation-Vita-1101-FL.png")
                                 .build();
                         consoleList.add(PSVita);
 
@@ -274,7 +274,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .price(99.99)
                                 .quantityInStock(500)
                                 .company("Nintendo")
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Game-Boy-FL.png/640px-Game-Boy-FL.png")
                                 .build();
                         consoleList.add(GameBoy);
 
@@ -284,7 +284,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .price(129.99)
                                 .quantityInStock(400)
                                 .company("Nintendo")
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Nintendo-Game-Boy-Color-FL.jpg/640px-Nintendo-Game-Boy-Color-FL.jpg")
                                 .build();
                         consoleList.add(GameBoyColor);
 
@@ -294,7 +294,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .price(99.99)
                                 .quantityInStock(350)
                                 .company("Nintendo")
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Nintendo-Game-Boy-Advance-Milky-Blue-FL.jpg/640px-Nintendo-Game-Boy-Advance-Milky-Blue-FL.jpg")
                                 .build();
                         consoleList.add(GameBoyAdvance);
 
@@ -304,7 +304,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .price(129.99)
                                 .quantityInStock(300)
                                 .company("Nintendo")
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Gameboy-Advance-SP-Mk2.jpg/640px-Gameboy-Advance-SP-Mk2.jpg")
                                 .build();
                         consoleList.add(GameBoyAdvanceSP);
                         Console DS = Console.builder()
@@ -322,7 +322,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .price(169.99)
                                 .quantityInStock(300)
                                 .company("Nintendo")
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Nintendo-DS-Lite-Black-Open.jpg/640px-Nintendo-DS-Lite-Black-Open.jpg")
                                 .build();
                         consoleList.add(DSi);
 
@@ -332,7 +332,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .price(249.99)
                                 .quantityInStock(250)
                                 .company("Nintendo")
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Nintendo-3DS-AquaOpen.png/640px-Nintendo-3DS-AquaOpen.png")
                                 .build();
                         consoleList.add(DS3D);
 
@@ -351,7 +351,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .price(299.99)
                                 .quantityInStock(300)
                                 .company("Microsoft")
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/New-3DS-XL-Black.jpg/640px-New-3DS-XL-Black.jpg")
                                 .build();
                         consoleList.add(Xbox);
 
@@ -361,7 +361,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .price(399.99)
                                 .quantityInStock(350)
                                 .company("Microsoft")
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Microsoft-Xbox-360-Pro-Flat-wController-L.png/640px-Microsoft-Xbox-360-Pro-Flat-wController-L.png")
                                 .build();
                         consoleList.add(Xbox360);
 
@@ -372,7 +372,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .price(499.99)
                                 .quantityInStock(300)
                                 .company("Microsoft")
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Microsoft-Xbox-One-Console-wKinect.png/640px-Microsoft-Xbox-One-Console-wKinect.png")
                                 .build();
                         consoleList.add(XboxOne);
 
@@ -383,7 +383,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .price(599.99)
                                 .quantityInStock(300)
                                 .company("Microsoft")
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Xbox_series_X_%2850648118708%29.jpg/640px-Xbox_series_X_%2850648118708%29.jpg")
                                 .build();
                         consoleList.add(XboxSeriesX);
 
@@ -394,7 +394,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .price(199.99)
                                 .quantityInStock(400)
                                 .company("Sega")
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Sega-Master-System-Set.jpg/640px-Sega-Master-System-Set.jpg")
                                 .build();
 
                         consoleList.add(SegaMasterSystem);
@@ -406,7 +406,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .price(249.99)
                                 .quantityInStock(400)
                                 .company("Sega")
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Sega-Genesis-NA-Mk2-Console-Set.png/640px-Sega-Genesis-NA-Mk2-Console-Set.png")
                                 .build();
                         consoleList.add(SegaGenesis);
 
@@ -416,7 +416,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .price(299.99)
                                 .quantityInStock(300)
                                 .company("Sega")
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Sega-Saturn-Console-Set-Mk1.png/640px-Sega-Saturn-Console-Set-Mk1.png")
                                 .build();
                         consoleList.add(SegaSaturn);
 
@@ -427,7 +427,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .price(249.99)
                                 .quantityInStock(250)
                                 .company("Sega")
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Sega-dreamcast-set.png/640px-Sega-dreamcast-set.png")
                                 .build();
                         consoleList.add(SegaDreamcast);
 
@@ -456,7 +456,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Action-Adventure")
                                 .productQuantity(5)
                                 .console(NES)
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/The_Legend_of_Zelda_-_Golden_Catridge.jpg/640px-The_Legend_of_Zelda_-_Golden_Catridge.jpg")
                                 .build();
                         productList.add(Zelda);
 
@@ -467,7 +467,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Action-Adventure")
                                 .productQuantity(6)
                                 .console(NES)
-                                .image("")
+                                .image("https://e7.pngegg.com/pngimages/213/966/png-clipart-chrono-trigger-secret-of-mana-video-game-consoles-super-nintendo-entertainment-system-super-metroid-super-metroid-game-gadget.png")
                                 .build();
                         productList.add(Metroid);
 
@@ -478,7 +478,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Platformer")
                                 .productQuantity(3)
                                 .console(NES)
-                                .image("")
+                                .image("https://gamehoard.com/cdn/shop/files/MegaMan_USA_400x.png?v=1706649139")
                                 .build();
                         productList.add(MegaMan);
 
@@ -489,7 +489,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Shooter")
                                 .productQuantity(8)
                                 .console(NES)
-                                .image("")
+                                .image("https://images.launchbox-app.com/e2b015a8-9673-4632-9ae9-ce43e93ad559.png")
                                 .build();
                         productList.add(DuckHunt);
 
@@ -500,7 +500,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Platformer")
                                 .productQuantity(4)
                                 .console(NES)
-                                .image("")
+                                .image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvRLtUXp-pEP-EIH0Q2FLT2AjkYULn1r6glQ&s")
                                 .build();
                         productList.add(Castlevania);
 
@@ -511,7 +511,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Shooter")
                                 .productQuantity(7)
                                 .console(NES)
-                                .image("")
+                                .image("https://images.launchbox-app.com/6dcffd9c-ca8c-495b-a4b3-0ea59f67a8d1.png")
                                 .build();
                         productList.add(Contra);
 
@@ -522,7 +522,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("RPG")
                                 .productQuantity(5)
                                 .console(NES)
-                                .image("")
+                                .image("https://microplaynewmarket.com/cdn/shop/products/nescart_a9901145-6719-4676-b974-21a00e6db4fb_1200x1200.png?v=1648238092")
                                 .build();
                         productList.add(FinalFantasy);
 
@@ -533,7 +533,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Sports")
                                 .productQuantity(6)
                                 .console(NES)
-                                .image("")
+                                .image("https://gamehoard.com/cdn/shop/files/MikeTyson_sPunch-Out_Japan_USA_400x.png?v=1706125535")
                                 .build();
                         productList.add(PunchOut);
 
@@ -544,7 +544,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Platformer")
                                 .productQuantity(5)
                                 .console(SNES)
-                                .image("")
+                                .image("https://gamehoard.com/cdn/shop/files/MikeTyson_sPunch-Out_Japan_USA_400x.png?v=1706125535")
                                 .build();
                         productList.add(SuperMarioWorld);
 
@@ -555,7 +555,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Action-Adventure")
                                 .productQuantity(6)
                                 .console(SNES)
-                                .image("")
+                                .image("https://forums.launchbox-app.com/uploads/monthly_2020_02/670389783_SuperMarioWorld(USA).png.abd06a53c2bc6918f9456e02a40518d5.png")
                                 .build();
                         productList.add(ZeldaLinkToThePast);
 
@@ -566,7 +566,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Action-Adventure")
                                 .productQuantity(4)
                                 .console(SNES)
-                                .image("")
+                                .image("https://www.thevideogamecompany.com/cdn/shop/products/super-metroid-nintendo-snes-045496830298-cartridge.jpg?v=1657859657&width=600")
                                 .build();
                         productList.add(SuperMetroid);
 
@@ -577,7 +577,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Platformer")
                                 .productQuantity(7)
                                 .console(SNES)
-                                .image("")
+                                .image("https://www.thevideogamecompany.com/cdn/shop/products/donkey-kong-country-2-nintendo-snes-045496830489-cartridge.jpg?v=1657858405")
                                 .build();
                         productList.add(DonkeyKongCountry);
 
@@ -588,7 +588,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("RPG")
                                 .productQuantity(3)
                                 .console(SNES)
-                                .image("")
+                                .image("https://static.wikia.nocookie.net/chrono/images/2/24/Chrono_Trigger_cover.jpg/revision/latest?cb=20080705191436")
                                 .build();
                         productList.add(ChronoTrigger);
 
@@ -599,7 +599,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Fighting")
                                 .productQuantity(8)
                                 .console(SNES)
-                                .image("")
+                                .image("https://gamehoard.com/cdn/shop/files/SuperStreetFighterII_USA_800x.png?v=1701811548")
                                 .build();
                         productList.add(StreetFighterII);
 
@@ -610,7 +610,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("RPG")
                                 .productQuantity(5)
                                 .console(SNES)
-                                .image("")
+                                .image("https://www.retrobitgame.com/wp-content/uploads/2019/09/IMG_8625.jpg")
                                 .build();
                         productList.add(FinalFantasyVI);
 
@@ -621,7 +621,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Racing")
                                 .productQuantity(6)
                                 .console(SNES)
-                                .image("")
+                                .image("https://www.retroplace.com/pics/snes/packshots/171165--f-zero.png")
                                 .build();
                         productList.add(FZero);
 
@@ -632,7 +632,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Racing")
                                 .productQuantity(7)
                                 .console(SNES)
-                                .image("")
+                                .image("https://static.wikia.nocookie.net/mario/images/4/41/Super_Mario_Kart_NA_boxart.png/revision/latest?cb=20220726224505")
                                 .build();
                         productList.add(SuperMarioKart);
 
@@ -643,7 +643,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Platformer")
                                 .productQuantity(5)
                                 .console(N64)
-                                .image("")
+                                .image("https://e1.pngegg.com/pngimages/120/604/png-clipart-nintendo-64-plastic-cartridge-icon-icon-sample-super-mario-64-game-cartridge-thumbnail.png")
                                 .build();
                         productList.add(SuperMario64);
 
@@ -654,7 +654,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Action-Adventure")
                                 .productQuantity(6)
                                 .console(N64)
-                                .image("")
+                                .image("https://www.theretroroom.ca/cdn/shop/files/TLOZ-Ocarina-of-Time-Box.jpg?v=1708799610")
                                 .build();
                         productList.add(ZeldaOcarina);
 
@@ -665,7 +665,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Shooter")
                                 .productQuantity(7)
                                 .console(N64)
-                                .image("")
+                                .image("https://static.wikia.nocookie.net/perfectdark/images/5/53/Cartrige.png/revision/latest?cb=20170423200747")
                                 .build();
                         productList.add(GoldenEye007);
 
@@ -687,7 +687,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Shooter")
                                 .productQuantity(5)
                                 .console(N64)
-                                .image("")
+                                .image("https://static.wikia.nocookie.net/mariokart/images/d/d2/Mk64cover.png/revision/latest?cb=20101009200804")
                                 .build();
                         productList.add(StarFox64);
 
@@ -698,7 +698,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Platformer")
                                 .productQuantity(4)
                                 .console(N64)
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/3/3a/Donkey_Kong_64_logo.png")
                                 .build();
                         productList.add(DonkeyKong64);
 
@@ -709,7 +709,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Platformer")
                                 .productQuantity(5)
                                 .console(N64)
-                                .image("")
+                                .image("https://static.wikia.nocookie.net/banjokazooie/images/4/43/FJlmyxDUUAYdBZh.jpeg/revision/latest/scale-to-width-down/1200?cb=20220424170327")
                                 .build();
                         productList.add(BanjoKazooie);
 
@@ -720,7 +720,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Fighting")
                                 .productQuantity(6)
                                 .console(N64)
-                                .image("")
+                                .image("https://ssb.wiki.gallery/images/4/45/SSB64_box.png")
                                 .build();
                         productList.add(SmashBros);
 
@@ -731,7 +731,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("RPG")
                                 .productQuantity(5)
                                 .console(N64)
-                                .image("")
+                                .image("https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/paper_mario_3.png")
                                 .build();
                         productList.add(PaperMario);
 
@@ -742,7 +742,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Platformer")
                                 .productQuantity(5)
                                 .console(GameCube)
-                                .image("")
+                                .image("https://mario.wiki.gallery/images/thumb/2/2c/Super_Mario_Sunshine_NA_logo.png/227px-Super_Mario_Sunshine_NA_logo.png")
                                 .build();
                         productList.add(SuperMarioSunshine);
 
@@ -753,7 +753,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Action-Adventure")
                                 .productQuantity(6)
                                 .console(GameCube)
-                                .image("")
+                                .image("https://www.pngmart.com/files/22/The-Legend-Of-Zelda-The-Wind-Waker-Logo-PNG-HD.png")
                                 .build();
                         productList.add(ZeldaWindWaker);
 
@@ -764,7 +764,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Action-Adventure")
                                 .productQuantity(4)
                                 .console(GameCube)
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Metroid-Prime-Logo.png/640px-Metroid-Prime-Logo.png")
                                 .build();
                         productList.add(MetroidPrime);
 
@@ -775,7 +775,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Fighting")
                                 .productQuantity(8)
                                 .console(GameCube)
-                                .image("")
+                                .image("https://static.wikia.nocookie.net/ssb/images/7/7b/Meleelogo.png/revision/latest?cb=20211215101603")
                                 .build();
                         productList.add(SuperSmashBrosMelee);
 
@@ -786,7 +786,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Action-Adventure")
                                 .productQuantity(5)
                                 .console(GameCube)
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/commons/a/a2/Luigi%27s_Mansion_Logo.png")
                                 .build();
                         productList.add(LuigiMansion);
 
@@ -797,7 +797,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Simulation")
                                 .productQuantity(6)
                                 .console(GameCube)
-                                .image("")
+                                .image("https://dodo.ac/np/images/thumb/d/d1/PG_Box_NA.png/200px-PG_Box_NA.png")
                                 .build();
                         productList.add(AnimalCrossing);
 
@@ -808,7 +808,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Racing")
                                 .productQuantity(7)
                                 .console(GameCube)
-                                .image("")
+                                .image("https://static.wikia.nocookie.net/gamegrumps/images/6/69/Mario_Kart_Double_Dash.png/revision/latest?cb=20131227214926")
                                 .build();
                         productList.add(MarioKartDoubleDash);
 
@@ -830,7 +830,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Strategy")
                                 .productQuantity(4)
                                 .console(GameCube)
-                                .image("")
+                                .image("https://pikmin.wiki.gallery/images/thumb/e/e9/Pikmin1boxart.jpg/1200px-Pikmin1boxart.jpg")
                                 .build();
                         productList.add(Pikmin);
 
@@ -841,7 +841,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Sports")
                                 .productQuantity(10)
                                 .console(Wii)
-                                .image("")
+                                .image("https://static.wikia.nocookie.net/w__/images/4/4f/Wiisportsnorthamericacover.png/revision/latest?cb=20211001002019&path-prefix=wiisports")
                                 .build();
                         productList.add(WiiSports);
 
@@ -852,7 +852,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Platformer")
                                 .productQuantity(8)
                                 .console(Wii)
-                                .image("")
+                                .image("https://static.wikia.nocookie.net/mario/images/3/39/Super_Mario_Galaxy_-_North_American_Boxart.png/revision/latest?cb=20120831230730")
                                 .build();
                         productList.add(SuperMarioGalaxy);
 
@@ -863,7 +863,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Action-Adventure")
                                 .productQuantity(6)
                                 .console(Wii)
-                                .image("")
+                                .image("https://cdn.mobygames.com/covers/4495460-the-legend-of-zelda-twilight-princess-wii-front-cover.jpg")
                                 .build();
                         productList.add(ZeldaTwilightPrincess);
 
@@ -874,7 +874,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Racing")
                                 .productQuantity(9)
                                 .console(Wii)
-                                .image("")
+                                .image("https://static.wikia.nocookie.net/mariokart/images/2/2f/560px-Mkwiimm.PNG/revision/latest?cb=20080426002946")
                                 .build();
                         productList.add(MarioKartWii);
 
@@ -885,7 +885,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Fitness")
                                 .productQuantity(5)
                                 .console(Wii)
-                                .image("")
+                                .image("https://static.wikia.nocookie.net/w__/images/2/2a/Wii_Fit_%28NA%29.jpg/revision/latest?cb=20200504042415&path-prefix=wiisports")
                                 .build();
                         productList.add(WiiFit);
 
@@ -896,7 +896,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Fighting")
                                 .productQuantity(7)
                                 .console(Wii)
-                                .image("")
+                                .image("https://howlongtobeat.com/games/9441_Super_Smash_Bros.png")
                                 .build();
                         productList.add(SuperSmashBrosBrawl);
 
@@ -907,7 +907,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Platformer")
                                 .productQuantity(6)
                                 .console(Wii)
-                                .image("")
+                                .image("https://static.wikia.nocookie.net/wii/images/f/f1/Donkey_Kong_Country_Returns_cover.jpg/revision/latest?cb=20110102054232")
                                 .build();
                         productList.add(DonkeyKongCountryReturns);
 
@@ -929,7 +929,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("RPG")
                                 .productQuantity(4)
                                 .console(Wii)
-                                .image("")
+                                .image("https://upload.wikimedia.org/wikipedia/en/8/8f/NewSuperMarioBrosWiiBoxart.png")
                                 .build();
                         productList.add(XenobladeChronicles);
 
@@ -940,7 +940,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Platformer")
                                 .productQuantity(6)
                                 .console(WiiU)
-                                .image("")
+                                .image("https://m.media-amazon.com/images/I/81S8S6iFkIL.jpg")
                                 .build();
                         productList.add(SuperMario3DWorld);
 
@@ -951,7 +951,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Action-Adventure")
                                 .productQuantity(5)
                                 .console(WiiU)
-                                .image("")
+                                .image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwW0ROqI0f76IkRbtbQMzVcsk7t0gWOCAnjg&s")
                                 .build();
                         productList.add(ZeldaWindWakerHD);
 
@@ -962,7 +962,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Racing")
                                 .productQuantity(8)
                                 .console(WiiU)
-                                .image("")
+                                .image("https://mario.wiki.gallery/images/thumb/9/9b/MK8_Deluxe_-_Box_NA.png/250px-MK8_Deluxe_-_Box_NA.png")
                                 .build();
                         productList.add(MarioKart8);
 
@@ -973,7 +973,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Fighting")
                                 .productQuantity(7)
                                 .console(WiiU)
-                                .image("")
+                                .image("https://m.media-amazon.com/images/I/813IEtp8EHL._AC_UF1000,1000_QL80_.jpg")
                                 .build();
                         productList.add(SuperSmashBrosWiiU);
 
@@ -984,7 +984,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Shooter")
                                 .productQuantity(6)
                                 .console(WiiU)
-                                .image("")
+                                .image("https://m.media-amazon.com/images/I/813IEtp8EHL._AC_UF1000,1000_QL80_.jpg")
                                 .build();
                         productList.add(Splatoon);
 
@@ -995,7 +995,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Platformer")
                                 .productQuantity(5)
                                 .console(WiiU)
-                                .image("")
+                                .image("https://assets1.ignimgs.com/2018/01/11/dkc-tropical-freeze---button-1515700382348.jpg")
                                 .build();
                         productList.add(DonkeyKongTropicalFreeze);
 
@@ -1006,7 +1006,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                                 .genre("Strategy")
                                 .productQuantity(4)
                                 .console(WiiU)
-                                .image("")
+                                .image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC3P51gCQenMWTlfvOsw2YhlHxu3VVRBaE5Q&s")
                                 .build();
                         productList.add(Pikmin3);
 

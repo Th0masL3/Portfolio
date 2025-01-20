@@ -501,5 +501,150 @@ class ProductServiceImplTest {
         verify(productRepository, times(1)).findProductByProductId(productId);
         verify(productRepository, times(0)).delete(any());
     }
+
+    @Test
+    void testGetHotProducts() {
+        // Arrange
+        Product product1 = Product.builder()
+                .productId("product1234")
+                .productName("Sample Product")
+                .productSalePrice(111.99)
+                .productDescription("Test Description")
+                .genre("Racing")
+                .productQuantity(20)
+                .isHot(true)
+                .build();
+
+        Product product2 = Product.builder()
+                .productId("product123")
+                .productName("Test Product")
+                .productSalePrice(99.99)
+                .productDescription("Test Description")
+                .genre("Action")
+                .productQuantity(10)
+                .isHot(true)
+                .build();
+
+        ProductResponseModel productResponse1 = ProductResponseModel.builder()
+                .productId("product1234")
+                .productName("Sample Product")
+                .productSalePrice(111.99)
+                .productDescription("Test Description")
+                .genre("Racing")
+                .productQuantity(20)
+                .isHot(true)
+                .build();
+
+        ProductResponseModel productResponse2 = ProductResponseModel.builder()
+                .productId("product123")
+                .productName("Test Product")
+                .productSalePrice(99.99)
+                .productDescription("Test Description")
+                .genre("Action")
+                .productQuantity(10)
+                .isHot(true)
+                .build();
+
+        List<Product> products = new ArrayList<>();
+        products.add(product1);
+        products.add(product2);
+
+        List<ProductResponseModel> responseModels = new ArrayList<>();
+        responseModels.add(productResponse1);
+        responseModels.add(productResponse2);
+
+        when(productRepository.findByIsHotTrue()).thenReturn(products);
+        when(productResponseMapper.entityListToResponseModelList(products)).thenReturn(responseModels);
+
+        // Act
+        List<ProductResponseModel> result = productServiceImpl.getHotProducts();
+
+        // Assert
+        assertNotNull(result);
+        assertEquals(2, result.size());
+        assertEquals("Sample Product", result.get(0).getProductName());
+        assertEquals("Test Product", result.get(1).getProductName());
+        verify(productRepository, times(1)).findByIsHotTrue();
+        verify(productResponseMapper, times(1)).entityListToResponseModelList(products);
+    }
+
+    @Test
+    void testGetHotProducts_EmptyProducts() {
+        // Arrange
+        when(productRepository.findByIsHotTrue()).thenReturn(Collections.emptyList());
+
+        // Act & Assert
+        NotFoundException exception = assertThrows(NotFoundException.class,
+                () -> productServiceImpl.getHotProducts());
+
+        assertEquals("No hot products found", exception.getMessage());
+        verify(productRepository, times(1)).findByIsHotTrue();
+        verify(productResponseMapper, never()).entityListToResponseModelList(any());
+    }
+
+    @Test
+    void testSetHotProducts_Positive() {
+        // Arrange
+        String productId = "12345";
+        Product product = Product.builder()
+                .productId(productId)
+                .productName("Test Product")
+                .productDescription("Test Description")
+                .productSalePrice(99.99)
+                .productQuantity(10)
+                .genre("Action")
+                .isHot(false)
+                .build();
+
+        Product updatedProduct = Product.builder()
+                .productId(productId)
+                .productName("Test Product")
+                .productDescription("Test Description")
+                .productSalePrice(99.99)
+                .productQuantity(10)
+                .genre("Action")
+                .isHot(true)
+                .build();
+
+        ProductResponseModel expectedResponse = ProductResponseModel.builder()
+                .productId(productId)
+                .productName("Test Product")
+                .productDescription("Test Description")
+                .productSalePrice(99.99)
+                .productQuantity(10)
+                .genre("Action")
+                .isHot(true)
+                .build();
+
+        when(productRepository.findProductByProductId(productId)).thenReturn(product);
+        when(productRepository.save(product)).thenReturn(updatedProduct);
+        when(productResponseMapper.entityToResponseModel(updatedProduct)).thenReturn(expectedResponse);
+
+        // Act
+        ProductResponseModel response = productServiceImpl.setHotProduct(productId);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(expectedResponse, response);
+        verify(productRepository, times(1)).findProductByProductId(productId);
+        verify(productRepository, times(1)).save(product);
+        verify(productResponseMapper, times(1)).entityToResponseModel(updatedProduct);
+    }
+
+    @Test
+    void testSetHotProducts_Negative_ProductNotFound() {
+        // Arrange
+        String productId = "12345";
+        when(productRepository.findProductByProductId(productId)).thenReturn(null);
+
+        // Act & Assert
+        NotFoundException exception = assertThrows(NotFoundException.class, () -> {
+            productServiceImpl.setHotProduct(productId);
+        });
+
+        assertEquals("Product with ID 12345 not found", exception.getMessage());
+        verify(productRepository, times(1)).findProductByProductId(productId);
+        verify(productRepository, times(0)).save(any());
+    }
 }
 
