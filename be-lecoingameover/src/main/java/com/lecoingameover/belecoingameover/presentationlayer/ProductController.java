@@ -52,8 +52,8 @@ public class ProductController {
     }
 
     @PutMapping("/{productId}/hot")
-    public ResponseEntity<ProductResponseModel> setHotProduct(@PathVariable String productId, @RequestParam boolean isHot) {
-        return ResponseEntity.ok(productService.setHotProduct(productId, isHot));
+    public ResponseEntity<ProductResponseModel> setHotProduct(@PathVariable String productId) {
+        return ResponseEntity.ok(productService.setHotProduct(productId));
     }
 
     @GetMapping("/hot")

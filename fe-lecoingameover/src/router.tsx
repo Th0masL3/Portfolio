@@ -15,6 +15,7 @@ import Users from "./pages/Users";
 import Cart from './pages/Cart';
 
 import UserProfile from "./pages/UserProfile";
+import ManageHotProducts from './pages/ManageHotProducts';
 
 
 const router = createBrowserRouter([
@@ -106,7 +107,7 @@ const router = createBrowserRouter([
 
 
 
-   {
+            {
                 path: AppRoutes.UserProfile, // Add the profile page route
                 element: (
                   <ProtectedRoute>
@@ -114,6 +115,15 @@ const router = createBrowserRouter([
                   </ProtectedRoute>
                 ),
             },
+            
+            {
+                path: AppRoutes.ManageHotProducts,
+                element: (
+                    <ProtectedRoute>
+                        <ManageHotProducts />
+                    </ProtectedRoute>
+                ),
+            }
 
         ],
     },

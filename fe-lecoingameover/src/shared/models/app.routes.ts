@@ -17,6 +17,8 @@ export enum AppRoutes {
 
     Cart = '/cart',
 
-    UserProfile = '/users/:userId'
+    UserProfile = '/users/:userId',
+
+    ManageHotProducts = '/managehotproducts',
 
 }

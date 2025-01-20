@@ -6,4 +6,5 @@ export interface ProductResponseModel {
     genre: string;
     productQuantity: number;
     image: string;
+    isHot: boolean;
 }
