@@ -39,20 +39,5 @@ spring:
       username: root
       password: password
       authentication-database: admin
-      uri: mongodb+srv://doadmin:8ZJ2F405wm3br61A@db-mongodb-nyc3-04788-6e4fbf9e.mongo.ondigitalocean.com/admin?tls=true&authSource=admin
+      uri: mongodb://root:password@mongo:27017/lecoingameoverdb?authSource=admin
 
-okta:
-  oauth2:
-    issuer: https://dev-pgf67fhh21tkyd1v.us.auth0.com/
-    audience: http://api.LeCoinGameOver.com
-
-auth0:
-  domain: ${AUTH0_DOMAIN}
-  clientId: ${AUTH0_CLIENT_ID}
-  clientSecret: ${AUTH0_CLIENT_SECRET}
-  audience: ${AUTH0_AUDIENCE}
-
-paypal:
-  client-id: AUSomxZCDtxUNMvbVFtw-i8ApK0wbYwQVAsRZQ_VHwBMD3ItBhQM8lbV3VHoXWBrSH-lOnpcL-IOU_Yt
-  client-secret: EGc5pjw3UPq5Dy18b3Rc3dwYwgx1UY_ozQXW6ub9kStAqnh3T7xjQkHupPhH7ZxwmuxplSDaHOmZAoos
-  base-url: https://api-m.sandbox.paypal.com

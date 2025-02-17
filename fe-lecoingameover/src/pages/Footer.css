@@ -1,0 +1,103 @@
+.footer {
+    background: linear-gradient(90deg, #000e29, #0044a8);
+    color: white;
+    padding: 20px 30px;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.8);
+    margin-top: 0;
+    position: relative;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin: 10px;
+}
+
+.footer-section h2,
+.footer-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+/* Footer Links */
+.footer-links,
+.footer-contact {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: row; /* Icons side by side */
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-links a,
+.footer-contact a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+}
+
+.footer-links a:hover,
+.footer-contact a:hover {
+    color: #b3e5fc;
+    text-decoration: underline;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    border-top: 1px solid #b3e5fc;
+    padding-top: 10px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Ensures Footer Stays at Bottom */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Fix footer icons appearing with white background */
+.footer-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    background: none !important;
+    box-shadow: none !important;
+    filter: brightness(1); /* Remove forced white inversion */
+}
+
+
+/* Fix for white icons */
+.footer-contact a img {
+    filter: none; /* Ensures the original colors of the icons */
+}
+
+.footer-icon:hover {
+    transform: scale(1.1);
+}

@@ -1,10 +1,17 @@
-import './App.css';
-import { RouterProvider } from 'react-router-dom';
-// @ts-ignore
-import router from './router';
+import "./App.css";
+import { Suspense } from "react";
+import { RouterProvider } from "react-router-dom";
+import { LanguageProvider } from "./LanguageContext";
+import router from "./router";
 
 function App(): JSX.Element {
-  return <RouterProvider router={router} />;
+    return (
+        <LanguageProvider>
+            <Suspense fallback={<div>Loading...</div>}>
+                <RouterProvider router={router} />
+            </Suspense>
+        </LanguageProvider>
+    );
 }
 
 export default App;

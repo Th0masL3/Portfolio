@@ -1,0 +1,107 @@
+/* Navbar */
+.navbar {
+    background: linear-gradient(90deg, #000e29, #0044a8);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 1);
+}
+
+/* Prevent navbar from overlapping page content */
+body {
+    padding-top: 70px; /* Ensures content is not covered */
+}
+
+/* Navbar Title */
+.navbar-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Navbar Links */
+.navbar-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    gap: 30px; /* More spacing between links */
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar Link Styling */
+.navbar-links .nav-link {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* Hover Effect - Only Text Color Change, No Border */
+.navbar-links .nav-link:hover {
+    color: #b3e5fc; /* Light blue */
+    transform: scale(1.05); /* Slight zoom for interaction */
+}
+
+/* Active Link Styling */
+.navbar-links .nav-link.active {
+    color: #b3e5fc;
+    font-weight: bold;
+    border-bottom: 2px solid #b3e5fc;
+}
+
+/* Auth Container */
+.auth-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Auth Buttons */
+.auth-btn {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.auth-btn:hover {
+    background: white;
+    color: #000e29;
+}
+
+/* Language Toggle Button */
+.lang-btn {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-left: 15px; /* Adds spacing from other elements */
+}
+
+/* Hover Effect for Language Button */
+.lang-btn:hover {
+    background: white;
+    color: #000e29; /* Dark blue */
+}

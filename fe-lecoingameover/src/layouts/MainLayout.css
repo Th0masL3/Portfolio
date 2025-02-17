@@ -1,0 +1,14 @@
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Apply gradient only on homepage */
+.home-page .main-container {
+    background: linear-gradient(135deg, #003366, #0074cc);
+}

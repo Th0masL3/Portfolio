@@ -1,0 +1,67 @@
+.admin-comments-container {
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+.comments-table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.comments-table th, .comments-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+    color: #333;
+}
+
+
+.comments-table th {
+    background-color: #004a99;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.comments-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.comments-table tbody tr:nth-child(odd) {
+    background-color: #e6e6e6;
+}
+
+.delete-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.delete-btn:hover {
+    background-color: #cc0000;
+    transform: scale(1.05);
+}
+
+.approve-btn {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+    font-weight: bold;
+}
+
+.approve-btn:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
