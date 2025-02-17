@@ -1,0 +1,39 @@
+.navbar {
+    background: linear-gradient(90deg, #000e29, #0044a8); /* Darker blue gradient */
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 1); /* Adds a subtle shadow */
+}
+
+.navbar-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.navbar-links .nav-link {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    padding: 5px 10px;
+}
+
+.navbar-links .nav-link:hover {
+    color: #b3e5fc;
+}
