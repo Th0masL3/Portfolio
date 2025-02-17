@@ -1,0 +1,88 @@
+.admin-projects-container {
+    background: rgba(20, 40, 80, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 900px;
+    margin: auto;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+h2 {
+    color: #b3e5fc;
+}
+
+/* Add Project Form */
+.add-project-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.add-project-form input {
+    width: 80%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #b3e5fc;
+    background: #102a48;
+    color: white;
+}
+
+.add-project-form button {
+    background-color: #0074cc;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+}
+
+.add-project-form button:hover {
+    background-color: #1E90FF;
+}
+
+/* Projects Table */
+.projects-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.projects-table th, .projects-table td {
+    border: 1px solid #b3e5fc;
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+
+.projects-table th {
+    background: rgba(15, 50, 90, 0.8);
+}
+
+.projects-table td a {
+    color: #1E90FF;
+    text-decoration: none;
+}
+
+.projects-table td a:hover {
+    text-decoration: underline;
+}
+
+/* Delete Button */
+.delete-btn {
+    background: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 5px;
+}
+
+.delete-btn:hover {
+    background: darkred;
+}

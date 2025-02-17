@@ -1,0 +1,97 @@
+/* Remove the container background */
+body {
+    background: none;
+}
+
+/* Make the form larger and wider */
+.login-form {
+    background-color: white;
+    padding: 50px;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Login Header */
+.login-form h2 {
+    color: #16213e;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+/* Input Fields */
+.input-group {
+    position: relative;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    background: white;
+    padding: 2px 8px;
+    font-size: 1rem;
+    color: #16213e;
+    font-weight: bold;
+}
+
+.login-input {
+    width: 100%;
+    padding: 16px;
+    font-size: 1.1rem;
+    border: 2px solid #b0b3c6;
+    border-radius: 8px;
+    background-color: white;
+    color: #1a1a2e;
+    font-family: Arial, sans-serif;
+    outline: none;
+}
+
+.login-input:focus {
+    border-color: #0f3460;
+    box-shadow: 0px 0px 6px rgba(15, 52, 96, 0.3);
+}
+
+/* Login Button */
+.login-button {
+    width: 100%;
+    padding: 16px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(45deg, #0f3460, #16213e);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.login-button:hover {
+    background: linear-gradient(45deg, #16213e, #0f3460);
+    transform: scale(1.03);
+}
+
+.login-button:active {
+    transform: scale(0.97);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .login-form {
+        width: 95%;
+        padding: 40px;
+    }
+
+    .login-input {
+        font-size: 1rem;
+    }
+
+    .login-button {
+        font-size: 1.1rem;
+    }
+}

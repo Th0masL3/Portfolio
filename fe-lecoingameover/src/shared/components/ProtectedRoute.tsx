@@ -1,9 +1,19 @@
-import { ReactNode } from 'react';
-interface ProtectedRoutes {
-    children: ReactNode;
+import React, { useContext } from 'react';
+import { Navigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
+interface ProtectedRouteProps {
+    element: JSX.Element;
+    requiredRole: 'admin' | 'user';
 }
-export const ProtectedRoute = ({
-                                   children,
-                               }: ProtectedRoutes): JSX.Element => {
-    return <>{children}</>;
+
+const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ element, requiredRole }) => {
+    const auth = useContext(AuthContext);
+
+    if (!auth?.user || auth.user.role !== requiredRole) {
+        return <Navigate to="/" />;
+    }
+
+    return element;
 };
+
+export default ProtectedRoute;
