@@ -21,7 +21,7 @@ const AdminAboutMe: React.FC = () => {
             fetchSkills();
             fetchHobbies();
         }
-    }, [auth, navigate, language]); // ✅ Fetch new data when language changes
+    }, [auth, navigate, language]); // ✅ Fetches new data when language changes
 
     const fetchSkills = async () => {
         try {
