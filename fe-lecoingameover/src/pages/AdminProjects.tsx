@@ -3,7 +3,7 @@ import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import "./AdminProjects.css";
 
-const API_URL = "http://localhost:8080/api/v1/projects";
+const API_URL = "https://portfolio-iofk.onrender.com/api/v1/projects";
 
 const AdminProjects: React.FC = () => {
     const [projects, setProjects] = useState<{ projectId: string, projectName: string, projectDescription: string, githubUrl: string }[]>([]);
