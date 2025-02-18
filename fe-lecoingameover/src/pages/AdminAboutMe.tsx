@@ -18,32 +18,32 @@ const AdminAboutMe: React.FC = () => {
         if (!auth?.user || auth.user.role !== "admin") {
             navigate("/");
         } else {
+            const fetchSkills = async () => {
+                try {
+                    const response = await fetch(`${API_URL}/skills?lang=${language}`);
+                    if (!response.ok) throw new Error("Failed to fetch skills");
+                    const data = await response.json();
+                    setSkills(data.skills || []);
+                } catch (error) {
+                    console.error("Error fetching skills:", error);
+                }
+            };
+
+            const fetchHobbies = async () => {
+                try {
+                    const response = await fetch(`${API_URL}/hobbies?lang=${language}`);
+                    if (!response.ok) throw new Error("Failed to fetch hobbies");
+                    const data = await response.json();
+                    setHobbies(data.hobbies || []);
+                } catch (error) {
+                    console.error("Error fetching hobbies:", error);
+                }
+            };
+
             fetchSkills();
             fetchHobbies();
         }
-    }, [auth, navigate, language]); // ✅ Fetch new data when language changes
-
-    const fetchSkills = async () => {
-        try {
-            const response = await fetch(`${API_URL}/skills?lang=${language}`);
-            if (!response.ok) throw new Error("Failed to fetch skills");
-            const data = await response.json();
-            setSkills(data.skills || []);
-        } catch (error) {
-            console.error("Error fetching skills:", error);
-        }
-    };
-
-    const fetchHobbies = async () => {
-        try {
-            const response = await fetch(`${API_URL}/hobbies?lang=${language}`);
-            if (!response.ok) throw new Error("Failed to fetch hobbies");
-            const data = await response.json();
-            setHobbies(data.hobbies || []);
-        } catch (error) {
-            console.error("Error fetching hobbies:", error);
-        }
-    };
+    }, [auth, navigate, language]); // ✅ No more missing dependencies!
 
     const handleAddSkill = async () => {
         if (!newSkill.trim()) return;
@@ -51,7 +51,7 @@ const AdminAboutMe: React.FC = () => {
             const response = await fetch(`${API_URL}/skills`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ skill: newSkill, lang: language }), // ✅ Pass selected language
+                body: JSON.stringify({ skill: newSkill, lang: language }),
             });
             if (response.ok) {
                 setSkills((prev) => [...prev, newSkill]);

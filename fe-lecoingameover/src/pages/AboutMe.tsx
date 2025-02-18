@@ -6,39 +6,36 @@ import "./AboutMe.css";
 export default function About() {
     const { t, language } = useLanguage(); // Get current language from context
 
-    // State to store skills and hobbies
     const [skills, setSkills] = useState<string[]>([]);
     const [hobbies, setHobbies] = useState<string[]>([]);
 
-    // Fetch data whenever the language changes
     useEffect(() => {
+        const fetchSkills = async () => {
+            try {
+                const response = await fetch(`http://localhost:8080/api/v1/aboutme/skills?lang=${language}`);
+                if (!response.ok) throw new Error("Failed to fetch skills");
+                const data = await response.json();
+                setSkills(data.skills || []);
+            } catch (error) {
+                console.error("Error fetching skills:", error);
+            }
+        };
+
+        const fetchHobbies = async () => {
+            try {
+                const response = await fetch(`http://localhost:8080/api/v1/aboutme/hobbies?lang=${language}`);
+                if (!response.ok) throw new Error("Failed to fetch hobbies");
+                const data = await response.json();
+                setHobbies(data.hobbies || []);
+            } catch (error) {
+                console.error("Error fetching hobbies:", error);
+            }
+        };
+
         fetchSkills();
         fetchHobbies();
     }, [language]);
 
-    const fetchSkills = async () => {
-        try {
-            const response = await fetch(`http://localhost:8080/api/v1/aboutme/skills?lang=${language}`);
-            if (!response.ok) throw new Error("Failed to fetch skills");
-            const data = await response.json();
-            setSkills(data.skills || []); // Ensure it doesn't break if response is empty
-        } catch (error) {
-            console.error("Error fetching skills:", error);
-        }
-    };
-
-    const fetchHobbies = async () => {
-        try {
-            const response = await fetch(`http://localhost:8080/api/v1/aboutme/hobbies?lang=${language}`);
-            if (!response.ok) throw new Error("Failed to fetch hobbies");
-            const data = await response.json();
-            setHobbies(data.hobbies || []); // Ensure it doesn't break if response is empty
-        } catch (error) {
-            console.error("Error fetching hobbies:", error);
-        }
-    };
-
-    // Translate function to fall back to the original text if no translation exists
     const translate = (key: string): string => {
         const normalizedKey = key.toLowerCase().replace(/\s+/g, "");
         return translations[language]?.[normalizedKey as keyof TranslationKeys] || key;
@@ -92,7 +89,6 @@ export default function About() {
                     </a>
                 </p>
             </div>
-</section>
-)
-    ;
+        </section>
+    );
 }
