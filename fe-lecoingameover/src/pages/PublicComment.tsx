@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./PublicComment.css";
 import { useLanguage } from "../LanguageContext";
 
-const API_URL = "http://localhost:8080/api/v1/comments";
+const API_URL = "https://portfolio-iofk.onrender.com/api/v1/comments";
 
 interface Comment {
     id: string;

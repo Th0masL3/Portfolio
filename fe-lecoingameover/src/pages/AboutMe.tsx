@@ -12,7 +12,7 @@ export default function About() {
     useEffect(() => {
         const fetchSkills = async () => {
             try {
-                const response = await fetch(`http://localhost:8080/api/v1/aboutme/skills?lang=${language}`);
+                const response = await fetch(`https://portfolio-iofk.onrender.com/api/v1/aboutme/skills?lang=${language}`);
                 if (!response.ok) throw new Error("Failed to fetch skills");
                 const data = await response.json();
                 setSkills(data.skills || []);
@@ -23,7 +23,7 @@ export default function About() {
 
         const fetchHobbies = async () => {
             try {
-                const response = await fetch(`http://localhost:8080/api/v1/aboutme/hobbies?lang=${language}`);
+                const response = await fetch(`https://portfolio-iofk.onrender.com/api/v1/aboutme/hobbies?lang=${language}`);
                 if (!response.ok) throw new Error("Failed to fetch hobbies");
                 const data = await response.json();
                 setHobbies(data.hobbies || []);

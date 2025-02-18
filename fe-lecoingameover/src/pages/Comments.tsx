@@ -3,7 +3,7 @@ import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import "./Comments.css";
 
-const API_URL = "http://localhost:8080/api/v1/comments";
+const API_URL = "https://portfolio-iofk.onrender.com/api/v1/comments";
 
 interface Comment {
     commentId: string;
