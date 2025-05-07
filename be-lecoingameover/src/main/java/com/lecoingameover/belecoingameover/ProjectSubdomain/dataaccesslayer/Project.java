@@ -18,6 +18,7 @@ public class Project {
     @Indexed(unique = true)
     private ProjectIdentifier projectIdentifier;
     private String projectName;
+    private String projectImage;
     private String projectDescription;
     private String githubUrl;
 }

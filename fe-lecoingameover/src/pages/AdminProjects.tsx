@@ -6,8 +6,8 @@ import "./AdminProjects.css";
 const API_URL = "http://localhost:8080/api/v1/projects";
 
 const AdminProjects: React.FC = () => {
-    const [projects, setProjects] = useState<{ projectId: string, projectName: string, projectDescription: string, githubUrl: string }[]>([]);
-    const [newProject, setNewProject] = useState({ projectName: "", projectDescription: "", githubUrl: "" });
+    const [projects, setProjects] = useState<{ projectId: string, projectImage: string, projectName: string, projectDescription: string, githubUrl: string }[]>([]);
+    const [newProject, setNewProject] = useState({ projectName: "", projectImage: "", projectDescription: "", githubUrl: "" });
     const auth = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -52,7 +52,7 @@ const AdminProjects: React.FC = () => {
             if (response.ok) {
                 const addedProject = await response.json();
                 setProjects((prev) => [...prev, addedProject]);
-                setNewProject({ projectName: "", projectDescription: "", githubUrl: "" }); // Reset form
+                setNewProject({ projectName: "", projectImage: "", projectDescription: "", githubUrl: "" });
             } else {
                 console.error("Failed to add project");
             }
@@ -92,6 +92,14 @@ const AdminProjects: React.FC = () => {
                     required
                 />
                 <input
+                    type="url"
+                    name="projectImage"
+                    value={newProject.projectImage}
+                    onChange={handleInputChange}
+                    placeholder="Project Image"
+                    required
+                />
+                <input
                     type="text"
                     name="projectDescription"
                     value={newProject.projectDescription}
@@ -114,6 +122,7 @@ const AdminProjects: React.FC = () => {
                 <thead>
                 <tr>
                     <th>Project Name</th>
+                    <th>Project Image</th>
                     <th>Description</th>
                     <th>GitHub</th>
                     <th>Action</th>
@@ -123,6 +132,7 @@ const AdminProjects: React.FC = () => {
                 {projects.map((project) => (
                     <tr key={project.projectId}>
                         <td>{project.projectName}</td>
+                        <td>{project.projectImage}</td>
                         <td>{project.projectDescription || "No description"}</td>
                         <td>
                             <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">

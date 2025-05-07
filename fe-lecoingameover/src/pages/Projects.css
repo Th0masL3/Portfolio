@@ -61,3 +61,11 @@
 .project-link:hover {
     background: #005ba3;
 }
+
+.project-image {
+    width: auto;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}

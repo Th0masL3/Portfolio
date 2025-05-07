@@ -9,6 +9,7 @@ import lombok.*;
 @Builder
 public class ProjectRequestModel {
     private String projectName;
+    private String projectImage;
     private String projectDescription;
     private String githubUrl;
 }
