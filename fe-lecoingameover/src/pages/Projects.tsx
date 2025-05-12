@@ -47,13 +47,18 @@ export default function Projects() {
                 {projects.map((project, index) => (
                     <div key={index} className="project-card">
                         <img
-                            src={project.image} // this now loads from /public/images/
+                            src={`${process.env.PUBLIC_URL}${project.image}`}
                             alt={`${project.title} preview`}
                             className="project-image"
                         />
                         <h3 className="project-title">{project.title}</h3>
                         <p className="project-description">{project.description}</p>
-                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link">
+                        <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="project-link"
+                        >
                             {t("githubLink")}
                         </a>
                     </div>
