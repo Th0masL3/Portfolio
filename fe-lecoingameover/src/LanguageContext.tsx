@@ -191,7 +191,7 @@ export const translations: Record<"en" | "fr", TranslationKeys> = {
         projectManagement: "Gestion de projet",
         gaming: "Jeux vidéo",
         workout: "Musculation",
-        volleyball: "Volley-ball",
+        volleyball: "Volleyball",
         iceSkating: "Patinage sur glace",
         jogging: "Jogging",
         cvPrompt: "Si vous voulez en savoir plus sur moi, vous pouvez télécharger mon CV :",

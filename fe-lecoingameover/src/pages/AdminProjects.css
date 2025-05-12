@@ -86,3 +86,26 @@ h2 {
 .delete-btn:hover {
     background: darkred;
 }
+
+.edit-btn {
+    background-color: #0074cc;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    margin-right: 5px;
+}
+
+.edit-btn:hover {
+    background-color: #1E90FF;
+}
+
+.projects-table td .edit-btn,
+.projects-table td .delete-btn {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+}
+

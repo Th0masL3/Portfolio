@@ -86,7 +86,7 @@ export default function About() {
                         <button className="download-btn">{t("downloadCV")} EN</button>
                     </a>
                 </p>
-                <p>Version Française:
+                <p>Version Francophone:
                     <a href="/File/CVFrench.pdf" download>
                         <button className="download-btn">{t("downloadCV")} FR</button>
                     </a>

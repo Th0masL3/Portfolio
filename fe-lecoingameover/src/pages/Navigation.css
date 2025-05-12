@@ -16,7 +16,7 @@
 
 /* Prevent navbar from overlapping page content */
 body {
-    padding-top: 70px; /* Ensures content is not covered */
+    padding-top: 70px;
 }
 
 /* Navbar Title */
@@ -32,7 +32,7 @@ body {
     display: flex;
     justify-content: center;
     flex-grow: 1;
-    gap: 30px; /* More spacing between links */
+    gap: 30px;
     margin: 0;
     padding: 0;
 }
@@ -48,13 +48,11 @@ body {
     transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
 
-/* Hover Effect - Only Text Color Change, No Border */
 .navbar-links .nav-link:hover {
-    color: #b3e5fc; /* Light blue */
-    transform: scale(1.05); /* Slight zoom for interaction */
+    color: #b3e5fc;
+    transform: scale(1.05);
 }
 
-/* Active Link Styling */
 .navbar-links .nav-link.active {
     color: #b3e5fc;
     font-weight: bold;
@@ -79,6 +77,7 @@ body {
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    margin-left: 8px;
 }
 
 .auth-btn:hover {
@@ -97,11 +96,75 @@ body {
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    margin-left: 15px; /* Adds spacing from other elements */
+    margin-left: 15px;
 }
 
-/* Hover Effect for Language Button */
 .lang-btn:hover {
     background: white;
-    color: #000e29; /* Dark blue */
+    color: #000e29;
+}
+
+/* Hamburger Icon */
+.hamburger {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+/* Responsive (Mobile View) */
+@media screen and (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .navbar-links {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background-color: #000e29;
+        flex-direction: column;
+        width: 250px;
+        display: none;
+        padding-top: 0;
+        border-left: 3px solid #0044a8;
+        box-shadow: -5px 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .navbar-links.open {
+        display: flex;
+    }
+
+    .navbar-links li {
+        padding: 10px 20px;
+        text-align: left;
+        border-bottom: 1px solid #0044a8;
+    }
+
+    .auth-container,
+    .desktop-lang {
+        display: none;
+    }
+
+    .mobile-auth,
+    .mobile-lang {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 8px 20px 10px 20px;
+        gap: 4px;
+    }
+
+    .mobile-auth .auth-btn,
+    .mobile-lang .lang-btn {
+        margin-left: 8px;
+    }
+}
+
+/* Hide mobile buttons on desktop */
+@media screen and (min-width: 769px) {
+    .mobile-auth,
+    .mobile-lang {
+        display: none !important;
+    }
 }

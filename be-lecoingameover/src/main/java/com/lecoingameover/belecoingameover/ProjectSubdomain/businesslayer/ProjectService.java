@@ -9,5 +9,6 @@ public interface ProjectService {
     public List<ProjectResponseModel> getAllProjects();
     public ProjectResponseModel addProject (ProjectRequestModel project);
     void deleteProjectByProjectId(String projectId);
+    public ProjectResponseModel updateProject (ProjectRequestModel project, String projectId);
 
 }

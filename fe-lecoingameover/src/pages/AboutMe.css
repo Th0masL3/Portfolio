@@ -1,103 +1,110 @@
-/* About Me Section - Dark Blue Background */
+/* About Me Section */
 .about {
-    background-color: #1E3A5F; /* Dark Navy Blue */
-    padding: 50px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 900px;
-    margin: 50px auto;
-    color: white; /* White text for readability */
+    background-color: #16243b;
+    padding: 60px 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    width: 90%;
+    max-width: 1000px;
+    margin: 60px auto;
+    color: #f0f4f8;
     text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .about h2 {
-    font-size: 2rem;
-    color: #DCE6F2; /* Light Blue for contrast */
+    font-size: 2.2rem;
+    color: #ffffff;
+    margin-bottom: 20px;
 }
 
 .about p {
-    font-size: 1.2rem;
-    margin-top: 15px;
-    line-height: 1.6;
+    font-size: 1.1rem;
+    margin-top: 10px;
+    line-height: 1.7;
+    color: #d0d8e2;
 }
 
-/* Skills & Hobbies - Horizontal Layout */
 .skills-hobbies-container {
     display: flex;
     justify-content: space-between;
-    gap: 20px;
-    margin-top: 30px;
+    gap: 30px;
+    margin-top: 40px;
+    flex-wrap: wrap;
 }
 
-/* Individual Sections */
 .skills, .hobbies {
     flex: 1;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    text-align: center;
+    min-width: 280px;
+    background-color: #273c55;
+    padding: 30px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Darker Blue for Skills */
-.skills {
-    background-color: #254A74; /* Deep Blue */
-    color: white;
+.skills:hover, .hobbies:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
-/* Lighter Blue for Hobbies */
-.hobbies {
-    background-color: #3F6FA3; /* Medium Blue */
-    color: white;
+.skills h3, .hobbies h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #ffffff;
+    border-bottom: 2px solid #5582ff;
+    padding-bottom: 5px;
+    width: 100%;
+    text-align: center;
 }
 
-/* Skills & Hobbies List Styling */
-.skills ul, .hobbies ul {
+.skills ul {
     list-style: none;
     padding: 0;
-    margin: 15px 0 0 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin: 0;
     width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 16px;
+}
+
+.hobbies ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px 16px;
 }
 
 .skills li, .hobbies li {
-    font-size: 1.2rem;
-    padding: 8px 0; /* Adds spacing between items */
-    color: white;
-    text-align: center;
-    width: 100%;
-    word-wrap: break-word;
+    font-size: 1.05rem;
+    padding: 6px 10px;
+    color: #e6ecf2;
+    text-align: left;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* Bold Titles for Sections */
-.skills li strong, .hobbies li strong {
-    font-weight: bold;
-    color: #DCE6F2; /* Light Blue for subtle contrast */
-}
-
-/* CV Download Section */
 .cv-download {
-    margin-top: 40px;
-    background-color: #254A74; /* Same Dark Blue as Skills */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 50px;
+    background-color: #273c55;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
 
-/* CV Download Title */
 .cv-download h3 {
-    color: #DCE6F2;
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+    color: #ffffff;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
 }
 
-/* CV Download Links */
 .cv-download p {
     font-size: 1.2rem;
     font-weight: bold;
@@ -106,35 +113,39 @@
     margin-bottom: 10px;
 }
 
-/* Download Button */
+
 .download-btn {
-    display: inline-block;
-    background-color: #007BFF;
+    background-color: #5582ff;
     color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
     transition: background-color 0.3s;
+    min-width: 160px;
 }
 
 .download-btn:hover {
-    background-color: #0056b3;
+    background-color: #416ed4;
 }
 
-/* Responsive Design for Smaller Screens */
 @media (max-width: 768px) {
     .skills-hobbies-container {
-        flex-direction: column; /* Stack skills & hobbies on smaller screens */
+        flex-direction: column;
+        gap: 20px;
     }
 
     .skills, .hobbies {
-        width: 100%; /* Take full width */
-        margin-bottom: 20px; /* Add spacing */
+        width: 100%;
+    }
+
+    .skills ul {
+        grid-template-columns: 1fr;
     }
 
     .cv-download {
         width: 100%;
     }
 }
-

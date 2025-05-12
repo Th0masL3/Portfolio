@@ -10,6 +10,8 @@ const AdminProjects: React.FC = () => {
     const [newProject, setNewProject] = useState({ projectName: "", projectImage: "", projectDescription: "", githubUrl: "" });
     const auth = useContext(AuthContext);
     const navigate = useNavigate();
+    const [updatingProjectId, setUpdatingProjectId] = useState<string | null>(null);
+
 
     // Redirect non-admin users
     useEffect(() => {
@@ -40,8 +42,6 @@ const AdminProjects: React.FC = () => {
     // Add a new project
     const handleAddProject = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!newProject.projectName.trim() || !newProject.githubUrl.trim()) return;
-
         try {
             const response = await fetch(API_URL, {
                 method: "POST",
@@ -50,14 +50,40 @@ const AdminProjects: React.FC = () => {
             });
 
             if (response.ok) {
-                const addedProject = await response.json();
-                setProjects((prev) => [...prev, addedProject]);
-                setNewProject({ projectName: "", projectImage: "", projectDescription: "", githubUrl: "" });
+                const added = await response.json();
+                setProjects((prev) => [...prev, added]);
+                resetForm();
             } else {
                 console.error("Failed to add project");
             }
         } catch (error) {
             console.error("Error adding project:", error);
+        }
+    };
+
+    //Update a project
+    const handleUpdateProject = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!updatingProjectId) return;
+
+        try {
+            const response = await fetch(`${API_URL}/${updatingProjectId}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(newProject),
+            });
+
+            if (response.ok) {
+                const updated = await response.json();
+                setProjects((prev) =>
+                    prev.map((p) => (p.projectId === updatingProjectId ? updated : p))
+                );
+                resetForm();
+            } else {
+                console.error("Failed to update project");
+            }
+        } catch (error) {
+            console.error("Error updating project:", error);
         }
     };
 
@@ -77,12 +103,30 @@ const AdminProjects: React.FC = () => {
         }
     };
 
+    const handleUpdateClick = (projectId: string) => {
+        const project = projects.find(p => p.projectId === projectId);
+        if (project) {
+            setNewProject({
+                projectName: project.projectName,
+                projectImage: project.projectImage,
+                projectDescription: project.projectDescription,
+                githubUrl: project.githubUrl,
+            });
+            setUpdatingProjectId(projectId);
+        }
+    };
+
+    const resetForm = () => {
+        setNewProject({ projectName: "", projectImage: "", projectDescription: "", githubUrl: "" });
+        setUpdatingProjectId(null);
+    };
+
     return (
         <div className="admin-projects-container">
             <h2>Manage Projects</h2>
 
-            {/* Form to add a new project */}
-            <form className="add-project-form" onSubmit={handleAddProject}>
+            {/* Form to add or update a project */}
+            <form className="add-project-form" onSubmit={updatingProjectId ? handleUpdateProject : handleAddProject}>
                 <input
                     type="text"
                     name="projectName"
@@ -92,7 +136,7 @@ const AdminProjects: React.FC = () => {
                     required
                 />
                 <input
-                    type="url"
+                    type="text"
                     name="projectImage"
                     value={newProject.projectImage}
                     onChange={handleInputChange}
@@ -114,7 +158,14 @@ const AdminProjects: React.FC = () => {
                     placeholder="GitHub URL"
                     required
                 />
-                <button type="submit">Add Project</button>
+                <button type="submit">
+                    {updatingProjectId ? "Update Project" : "Add Project"}
+                </button>
+                {updatingProjectId && (
+                    <button type="button" onClick={resetForm} className="cancel-btn">
+                        Cancel Edit
+                    </button>
+                )}
             </form>
 
             {/* Table displaying projects */}
@@ -140,7 +191,9 @@ const AdminProjects: React.FC = () => {
                             </a>
                         </td>
                         <td>
-                            <button className="delete-btn" onClick={() => handleDeleteProject(project.projectId)}>❌</button>
+                            <button className="edit-btn" onClick={() => handleUpdateClick(project.projectId)}>✏️</button>
+                            <button className="delete-btn" onClick={() => handleDeleteProject(project.projectId)}>❌
+                            </button>
                         </td>
                     </tr>
                 ))}
