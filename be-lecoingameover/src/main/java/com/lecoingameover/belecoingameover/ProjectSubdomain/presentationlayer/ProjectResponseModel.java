@@ -9,6 +9,7 @@
     @Builder
     public class ProjectResponseModel {
         private String projectId;
+        private String projectImage;
         private String projectName;
         private String projectDescription;
         private String githubUrl;

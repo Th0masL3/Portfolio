@@ -6,7 +6,12 @@ const API_URL = "https://portfolio-iofk.onrender.com/api/v1/projects";
 
 export default function Projects() {
     const { t } = useLanguage();
-    const [projects, setProjects] = useState<{ title: string, description: string, github: string }[]>([]);
+    const [projects, setProjects] = useState<{
+        title: string;
+        description: string;
+        github: string;
+        image: string;
+    }[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -19,8 +24,10 @@ export default function Projects() {
                 setProjects(data.map((project: any) => ({
                     title: project.projectName,
                     description: project.projectDescription,
-                    github: project.githubUrl
+                    github: project.githubUrl,
+                    image: project.projectImage
                 })));
+
             } catch (error) {
                 setError("Error loading projects");
                 console.error(error);
@@ -40,6 +47,11 @@ export default function Projects() {
             <div className="projects-grid">
                 {projects.map((project, index) => (
                     <div key={index} className="project-card">
+                        <img
+                            src={`http://localhost:8080${project.image}`}
+                            alt={`${project.title} preview`}
+                            className="project-image"
+                        />
                         <h3 className="project-title">{project.title}</h3>
                         <p className="project-description">{project.description}</p>
                         <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link">

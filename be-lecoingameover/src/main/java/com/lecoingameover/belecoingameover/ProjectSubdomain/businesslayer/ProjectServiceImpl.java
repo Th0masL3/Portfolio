@@ -46,4 +46,15 @@ public class ProjectServiceImpl implements ProjectService {
                 .orElseThrow(() -> new NotFoundException("Project not found with id: " + projectId));
         projectRepository.delete(project);
     }
+
+    @Override
+    public ProjectResponseModel updateProject(ProjectRequestModel projectRequestModel, String projectId) {
+        Project existingProject = projectRepository.findById(projectId)
+                .orElseThrow(() -> new NotFoundException("Project not found with id: " + projectId));
+        Project updatedProject = projectRequestMapper.requestModelToEntity(projectRequestModel, existingProject.getProjectIdentifier());
+        updatedProject.setProjectId(existingProject.getProjectId());
+        Project savedProject = projectRepository.save(updatedProject);
+        return projectResponseMapper.entityToResponseModel(savedProject);
+    }
+
 }
