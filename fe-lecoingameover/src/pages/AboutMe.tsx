@@ -3,6 +3,8 @@ import { TranslationKeys, useLanguage } from "../LanguageContext";
 import { translations } from "../LanguageContext";
 import "./AboutMe.css";
 
+const API_URL = "https://portfolio-iofk.onrender.com/api/v1/aboutme";
+
 export default function About() {
     const { t, language } = useLanguage(); // Get current language from context
 
@@ -12,7 +14,7 @@ export default function About() {
     useEffect(() => {
         const fetchSkills = async () => {
             try {
-                const response = await fetch(`https://portfolio-iofk.onrender.com/api/v1/aboutme/skills?lang=${language}`);
+                const response = await fetch(`${API_URL}/skills?lang=${language}`);
                 if (!response.ok) throw new Error("Failed to fetch skills");
                 const data = await response.json();
                 setSkills(data.skills || []);
@@ -23,7 +25,7 @@ export default function About() {
 
         const fetchHobbies = async () => {
             try {
-                const response = await fetch(`https://portfolio-iofk.onrender.com/api/v1/aboutme/hobbies?lang=${language}`);
+                const response = await fetch(`${API_URL}/hobbies?lang=${language}`);
                 if (!response.ok) throw new Error("Failed to fetch hobbies");
                 const data = await response.json();
                 setHobbies(data.hobbies || []);
