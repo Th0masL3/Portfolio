@@ -3,7 +3,7 @@ import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import "./AdminAboutMe.css";
 
-const API_URL = "http://localhost:8080/api/v1/aboutme";
+const API_URL = "https://portfolio-iofk.onrender.com/api/v1/aboutme";
 
 const AdminAboutMe: React.FC = () => {
     const [skills, setSkills] = useState<string[]>([]);

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLanguage } from "../LanguageContext";
 import "./Projects.css";
 
-const API_URL = "http://localhost:8080/api/v1/projects";
+const API_URL = "https://portfolio-iofk.onrender.com/api/v1/projects";
 
 export default function Projects() {
     const { t } = useLanguage();
