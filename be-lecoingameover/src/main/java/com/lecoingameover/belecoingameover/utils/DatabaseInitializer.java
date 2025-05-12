@@ -109,7 +109,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                         UUID.randomUUID().toString(),
                         new ProjectIdentifier(),
                         "Le Coin Game Over",
-                        "/images/CoinGameOver.png",
+                        "/assets/images/CoinGameOver.png",
                         "A website for a local game store featuring authentication, payment processing, and product browsing, built with Java and React.",
                         "https://github.com/AndrewBadIdea/LeCoinGameOver"
                 ),
@@ -117,7 +117,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                         UUID.randomUUID().toString(),
                         new ProjectIdentifier(),
                         "Champlain Pet Clinic",
-                        "/images/petClinic.png",
+                        "/assets/images/petClinic.png",
                         "A multi-service microservices-based application built using Spring Boot, Scrum, version control, and CI/CD.",
                         "https://github.com/cgerard321/champlain_petclinic"
                 ),
@@ -125,7 +125,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                         UUID.randomUUID().toString(),
                         new ProjectIdentifier(),
                         "Pirate Ship Defense - Unity",
-                        "/images/GameDevProject.png",
+                        "/assets/images/GameDevProject.png",
                         "A pirate-themed tower defense game inspired by Bloons TD, developed in Unity using C#.",
                         "https://github.com/Th0masL3/PirateShipDefense-UnityProject"
                 ),
@@ -133,7 +133,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                         UUID.randomUUID().toString(),
                         new ProjectIdentifier(),
                         "Resume Builder",
-                        "/images/resumebuilder.png",
+                        "/assets/images/resumebuilder.png",
                         "A .NET application that allows users to build and customize resumes, developed in C#.",
                         "https://github.com/Th0masL3/ResumeBuilder"
                 )
