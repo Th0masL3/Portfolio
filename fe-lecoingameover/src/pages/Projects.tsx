@@ -27,7 +27,6 @@ export default function Projects() {
                     github: project.githubUrl,
                     image: project.projectImage
                 })));
-
             } catch (error) {
                 setError("Error loading projects");
                 console.error(error);
@@ -48,7 +47,7 @@ export default function Projects() {
                 {projects.map((project, index) => (
                     <div key={index} className="project-card">
                         <img
-                            src={`http://localhost:8080${project.image}`}
+                            src={project.image} // this now loads from /public/images/
                             alt={`${project.title} preview`}
                             className="project-image"
                         />
